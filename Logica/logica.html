@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,50 +9,97 @@
 
 <body>
 
-    Preço das Obras: <input type="number" id="input_precoObras"> <br><br>
+    <div id="div_calculadora" style="display: flex; flex-direction: row; gap: 60px;">
 
-    Quantidade de Obras: <input type="number" id="input_qtd_obras"> <br><br>
+        <div id="div_componentes" style="display: flex; flex-direction: column;">
 
-    <select id="select_tipo_tinta">
+            Preço das Obras: <input type="number" id="input_precoObras"> <br>
 
-        <option value="#" selected disabled> Selecione o tipo de tinta </option>
-        <option value="acrilica"> Acrílica</option>
-        <option value="guache"> Guache </option>
-        <option value="oleo"> Óleo</option>
+            Quantidade de Obras: <input type="number" id="input_qtd_obras"> <br>
 
-    </select> <br> <br>
+            <select id="select_tipo_tinta">
 
-    <select id="select_tam_obra">
+                <option value="#" selected disabled> Selecione o tipo de tinta </option>
+                <option value="acrilica"> Acrílica</option>
+                <option value="guache"> Guache </option>
+                <option value="oleo"> Óleo</option>
 
-        <option value="#" selected disabled> Selecione o tamanho </option>
-        <option value="pequeno"> Pequeno </option>
-        <option value="medio"> Médio </option>
-        <option value="grande"> Grande </option>
-        
-    </select> <br><br>
+            </select> <br>
 
-    <div style="display: flex; flex-direction: row; gap: 12px;">   
-        <button onclick="adicionarObra()"> Adicionar </button>
+            <select id="select_tam_obra">
 
-        <button onclick="calcPrejuizo()"id="botaoCalcular"  style="display: none;">Calcular</button>
-    
+                <option value="#" selected disabled> Selecione o tamanho </option>
+                <option value="pequeno"> Pequeno </option>
+                <option value="medio"> Médio </option>
+                <option value="grande"> Grande </option>
+
+            </select> <br>
+
+            <div style="display: flex; flex-direction: row; gap: 12px;">
+
+                <button onclick="adicionarObra()"> Adicionar </button>
+                <button onclick="calcPrejuizo()" id="botaoCalcular" style="display: none;">Calcular</button>
+
+            </div>
+
+        </div>
+
+        <div id="div_orientacoes" style="display: flex; flex-direction: column;">
+
+            <b>
+
+                Tamanhos de Referência:
+
+            </b>
+
+            <p>
+
+                Pequeno = Até 50cm <br>
+                Médio = Entre 50cm e 150cm <br>
+                Grande = Acima 150cm <br>
+
+            </p>
+
+        </div>
+
+        <div id="div_recomendado">
+
+            <b>Tipo de tinta selecionada:</b> Acrílica <br>
+            <b>Nível de umidade relativa recomendada:</b> 40-60% <br>
+            <b>Níveis recomendados de luminosidade:</b> 50 lux no máximo <br>
+            <b>Níveis de temperatura recomendos:</b> 18-21 ºC <br><br>
+
+            <b>Tipo de tinta selecionada:</b>Óleo <br>
+            <b>Nível de umidade relativa recomendada:</b> 40-45% <br>
+            <b>Níveis recomendados de luminosidade:</b> 200 lux no máximo <br>
+            <b>Níveis de temperatura recomendos:</b> 18-21 ºC <br><br>
+
+            <b>Tipo de tinta selecionada:</b> Guache <br>
+            <b>Nível de umidade relativa recomendada:</b> 45-55% <br>
+            <b>Níveis recomendados de luminosidade:</b> 50 lux no máximo <br>
+            <b>Níveis de temperatura recomendos:</b> 20 ºC <br>
+
+        </div>
+
     </div>
 
-   
     <div id="div_resultado"></div>
-    <div id="div_soma"></div>
-    <span style="display:none;" value="0"></span>
+
+    <div id="div_soma">
+    </div>
+
 </body>
 
 </html>
 
 <script>
-    
- 
+
+
+    let valorTotal = 0;
     let numero = 0;
 
     function adicionarObra() {
-        
+
         // Variáveis do Valor do precoObras e Quantidade de Obras
 
         const precoObras = Number(input_precoObras.value);
@@ -61,118 +109,108 @@
 
         const tipoTinta = select_tipo_tinta.value;
         const tamObra = select_tam_obra.value;
-        const validacao = tipoTinta == "#" || tamObra == "#" || precoObras <=0 || qtdObras <=0
-        if(validacao){
+
+        const validacao = tipoTinta == "#" || tamObra == "#" || precoObras <= 0 || qtdObras <= 0;
+
+        if (validacao) {
             alert(`ERRO: Insira os valores validos`)
-        }else{
-
-        botaoCalcular.style.display = "block";  
-            
-
-        let variacaoTam;
-        let variacaoTinta;
-
-
-
-        if (tamObra == "pequeno") {
-            variacaoTam = `Pequeno`
-        } else if (tamObra == "medio") {
-            variacaoTam = `Médio`
         } else {
-            variacaoTam = `Grande`
-        }
 
-        if (tipoTinta == "acrilica") {
-            variacaoTinta = `Acrílica`
-        } else if (tipoTinta == "guache") {
-            variacaoTinta = `Guache`
-        } else {
-            variacaoTinta = `Óleo`
-        }
-       
+            botaoCalcular.style.display = "block";
 
-        // Criando variáveis numéricas relacionadas a diferentes tintas e tamanho
+            let variacaoTam;
+            let variacaoTinta;
 
-        let adicionalTintaAcrilica = 0;
-        let adicionalTintaGuache = 0;
-        let adicionalTintaOleo = 0;
+            if (tamObra == "pequeno") {
+                variacaoTam = `Pequeno`
+            } else if (tamObra == "medio") {
+                variacaoTam = `Médio`
+            } else {
+                variacaoTam = `Grande`
+            }
 
-        let adicionalTamanhoPequeno = 0;
-        let adicionalTamanhoMedio = 0;
-        let adicionalTamanhoGrande = 0;
+            if (tipoTinta == "acrilica") {
+                variacaoTinta = `Acrílica`
+            } else if (tipoTinta == "guache") {
+                variacaoTinta = `Guache`
+            } else {
+                variacaoTinta = `Óleo`
+            }
 
-        // Calculando quantidade de obras por cada tamanho (MÉDIA)
+            // Criando variáveis numéricas relacionadas a diferentes tintas e tamanho
 
-        const precoUnitarioObras = precoObras / qtdObras
+            let adicionalTintaAcrilica = 0;
+            let adicionalTintaGuache = 0;
+            let adicionalTintaOleo = 0;
 
-        // Media de preço sobre os tamanhos diversos
-        // Acrescentando divisor para tornar o calculo mais preciso
+            let adicionalTamanhoPequeno = 0;
+            let adicionalTamanhoMedio = 0;
+            let adicionalTamanhoGrande = 0;
 
-        if (tamObra == "pequeno") {
-            adicionalTamanhoPequeno = (precoUnitarioObras * 0.02) + 4000;
-        }
-        if (tamObra == "medio") {
-            adicionalTamanhoMedio = (precoUnitarioObras * 0.035) + 14000;
-        }
-        if (tamObra == "grande") {
-            adicionalTamanhoGrande = (precoUnitarioObras * 0.05) + 20000;
-        }
-        // Adicional do preco das tintas sobre o valor total da obra
+            // Calculando quantidade de obras por cada tamanho (MÉDIA)
 
-        if (tipoTinta == "acrilica") {
-            adicionalTintaAcrilica = precoUnitarioObras * 0.02;
-        } 
-        if (tipoTinta == "guache") {
-            adicionalTintaGuache = precoUnitarioObras * 0.02;
-        }
-        if (tipoTinta == "oleo") {
-            adicionalTintaOleo = precoUnitarioObras * 0.02;
-        }
+            const precoUnitarioObras = precoObras / qtdObras
 
-        
+            // Media de preço sobre os tamanhos diversos
+            // Acrescentando divisor para tornar o calculo mais preciso
 
-        // Multiplicando valores para ter uma média em geral por quantidade de obra com aquele tamanho
+            if (tamObra == "pequeno") {
+                adicionalTamanhoPequeno = (precoUnitarioObras * 0.02) + 4000;
+            }
+            if (tamObra == "medio") {
+                adicionalTamanhoMedio = (precoUnitarioObras * 0.035) + 14000;
+            }
+            if (tamObra == "grande") {
+                adicionalTamanhoGrande = (precoUnitarioObras * 0.06) + 20000;
+            }
+            // Adicional do preco das tintas sobre o valor total da obra
 
-        const mediaPorObraTamanhoPequeno = qtdObras * adicionalTamanhoPequeno
-        const mediaPorObraTamanhoMedio = qtdObras * adicionalTamanhoMedio
-        const mediaPorObraTamanhoGrande = qtdObras * adicionalTamanhoGrande
+            if (tipoTinta == "acrilica") {
+                adicionalTintaAcrilica = precoUnitarioObras * 0.02;
+            }
+            if (tipoTinta == "guache") {
+                adicionalTintaGuache = precoUnitarioObras * 0.02;
+            }
+            if (tipoTinta == "oleo") {
+                adicionalTintaOleo = precoUnitarioObras * 0.02;
+            }
 
-        // Calculando preço que seria gasto em (MÉDIA) com restauração
+            // Multiplicando valores para ter uma média em geral por quantidade de obra com aquele tamanho
 
-        let precoMedioComRestauracao = mediaPorObraTamanhoPequeno + mediaPorObraTamanhoMedio + mediaPorObraTamanhoGrande + adicionalTintaAcrilica + adicionalTintaOleo + adicionalTintaGuache
+            const mediaPorObraTamanhoPequeno = qtdObras * adicionalTamanhoPequeno
+            const mediaPorObraTamanhoMedio = qtdObras * adicionalTamanhoMedio
+            const mediaPorObraTamanhoGrande = qtdObras * adicionalTamanhoGrande
 
-         // Calculando media do preço de cada obra individualmente
+            // Calculando preço que seria gasto em (MÉDIA) com restauração
 
-         const preco = precoObras / qtdObras; 
-         const posRestauracao = precoObras * 0.25
-        
-         if(numero != 1){
-            precoMedioComRestauracao = precoMedioComRestauracao + precoMedioComRestauracao;
-         } 
-        
-         const economiaEmRestauracao = precoMedioComRestauracao.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            let precoMedioComRestauracao = mediaPorObraTamanhoPequeno + mediaPorObraTamanhoMedio + mediaPorObraTamanhoGrande + adicionalTintaAcrilica + adicionalTintaOleo + adicionalTintaGuache
 
-            const precoObrasFormatadas = precoObras.toLocaleString('pt-BR', {style: 'currency',currency:'BRL'}); 
+            // Calculando media do preço de cada obra individualmente
+
+            const preco = precoObras / qtdObras;
+            const posRestauracao = precoObras * 0.25
+
+            valorTotal = valorTotal + precoMedioComRestauracao;
+
+            const economiaEmRestauracao = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            const precoObrasFormatadas = precoObras.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             numero++;
 
             div_resultado.innerHTML += `<br> ${numero} <br> Preço: ${precoObrasFormatadas} <br> Quantidade: ${qtdObras} <br> Tinta: ${variacaoTinta} <br> Tamanho: ${variacaoTam} <br>`
-            
-            div_soma.innerHTML = precoMedioComRestauracao;
 
-            select_tipo_tinta.value = `#`; 
-            select_tam_obra.value = `#`; 
+            div_soma.innerHTML = `<br> ${economiaEmRestauracao}`;
+
+            select_tipo_tinta.value = `#`;
+            select_tam_obra.value = `#`;
             input_qtd_obras.value = ``;
             input_precoObras.value = ``;
 
-            
         }
     }
 
     function calcPrejuizo() {
-
-         
-        
     }
-    
+
 
 </script>
