@@ -39,13 +39,15 @@
 
    
     <div id="div_resultado"></div>
-    
+    <div id="div_soma"></div>
+    <span style="display:none;" value="0"></span>
 </body>
 
 </html>
 
 <script>
     
+ 
     let numero = 0;
 
     function adicionarObra() {
@@ -87,24 +89,7 @@
         } else {
             variacaoTinta = `Óleo`
         }
-            const precoObrasFormatadas = precoObras.toLocaleString('pt-BR', {style: 'currency',currency:'BRL'}); 
-            numero++;
-
-            div_resultado.innerHTML += `<br> ${numero} <br> Preço: ${precoObrasFormatadas} <br> Quantidade: ${qtdObras} <br> Tinta: ${variacaoTinta} <br> Tamanho: ${variacaoTam} <br>`
-
-            select_tipo_tinta.value = `#`; 
-            select_tam_obra.value = `#`; 
-            input_qtd_obras.value = ``;
-            input_precoObras.value = ``;
-        }
-    }
-
-    function calcPrejuizo() {
-
-        // Calculando media do preço de cada obra individualmente
-
-        const precoMedioObras = precoObras / qtdObras;
-        const posRestauracao = precoMedioObras * 0.25
+       
 
         // Criando variáveis numéricas relacionadas a diferentes tintas e tamanho
 
@@ -116,48 +101,77 @@
         let adicionalTamanhoMedio = 0;
         let adicionalTamanhoGrande = 0;
 
+        // Calculando quantidade de obras por cada tamanho (MÉDIA)
+
+        const precoUnitarioObras = precoObras / qtdObras
+
         // Media de preço sobre os tamanhos diversos
         // Acrescentando divisor para tornar o calculo mais preciso
 
-        if (tamPeq) {
-            adicionalTamanhoPequeno = (precoMedioObras * 0.02) + 4000;
+        if (tamObra == "pequeno") {
+            adicionalTamanhoPequeno = (precoUnitarioObras * 0.02) + 4000;
         }
-        if (tamMed) {
-            adicionalTamanhoMedio = (precoMedioObras * 0.035) + 14000;
+        if (tamObra == "medio") {
+            adicionalTamanhoMedio = (precoUnitarioObras * 0.035) + 14000;
         }
-        if (tamGra) {
-            adicionalTamanhoGrande = (precoMedioObras * 0.05) + 20000;
+        if (tamObra == "grande") {
+            adicionalTamanhoGrande = (precoUnitarioObras * 0.05) + 20000;
         }
         // Adicional do preco das tintas sobre o valor total da obra
 
-        if (tinAcrilica) {
-            adicionalTintaAcrilica = precoMedioObras * 0.02;
+        if (tipoTinta == "acrilica") {
+            adicionalTintaAcrilica = precoUnitarioObras * 0.02;
         } 
-        if (tinGuache) {
-            adicionalTintaGuache = precoMedioObras * 0.02;
+        if (tipoTinta == "guache") {
+            adicionalTintaGuache = precoUnitarioObras * 0.02;
         }
-        if (tinOleo) {
-            adicionalTintaOleo = precoMedioObras * 0.02;
+        if (tipoTinta == "oleo") {
+            adicionalTintaOleo = precoUnitarioObras * 0.02;
         }
 
-        // Calculando quantidade de obras por cada tamanho (MÉDIA)
-
-        const qtdObrasParaCadaTamanho = qtdObras / divisor
+        
 
         // Multiplicando valores para ter uma média em geral por quantidade de obra com aquele tamanho
 
-        const mediaPorObraTamanhoPequeno = qtdObrasParaCadaTamanho * adicionalTamanhoPequeno
-        const mediaPorObraTamanhoMedio = qtdObrasParaCadaTamanho * adicionalTamanhoMedio
-        const mediaPorObraTamanhoGrande = qtdObrasParaCadaTamanho * adicionalTamanhoGrande
+        const mediaPorObraTamanhoPequeno = qtdObras * adicionalTamanhoPequeno
+        const mediaPorObraTamanhoMedio = qtdObras * adicionalTamanhoMedio
+        const mediaPorObraTamanhoGrande = qtdObras * adicionalTamanhoGrande
 
         // Calculando preço que seria gasto em (MÉDIA) com restauração
 
-        const precoMedioComRestauracao = mediaPorObraTamanhoPequeno + mediaPorObraTamanhoMedio + mediaPorObraTamanhoGrande + adicionalTintaAcrilica + adicionalTintaOleo + adicionalTintaGuache
+        let precoMedioComRestauracao = mediaPorObraTamanhoPequeno + mediaPorObraTamanhoMedio + mediaPorObraTamanhoGrande + adicionalTintaAcrilica + adicionalTintaOleo + adicionalTintaGuache
 
-        const economiaEmRestauracao = precoMedioComRestauracao.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+         // Calculando media do preço de cada obra individualmente
 
+         const preco = precoObras / qtdObras; 
+         const posRestauracao = precoObras * 0.25
+        
+         if(numero != 1){
+            precoMedioComRestauracao = precoMedioComRestauracao + precoMedioComRestauracao;
+         } 
+        
+         const economiaEmRestauracao = precoMedioComRestauracao.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
 
+            const precoObrasFormatadas = precoObras.toLocaleString('pt-BR', {style: 'currency',currency:'BRL'}); 
+            numero++;
 
+            div_resultado.innerHTML += `<br> ${numero} <br> Preço: ${precoObrasFormatadas} <br> Quantidade: ${qtdObras} <br> Tinta: ${variacaoTinta} <br> Tamanho: ${variacaoTam} <br>`
+            
+            div_soma.innerHTML = precoMedioComRestauracao;
+
+            select_tipo_tinta.value = `#`; 
+            select_tam_obra.value = `#`; 
+            input_qtd_obras.value = ``;
+            input_precoObras.value = ``;
+
+            
+        }
+    }
+
+    function calcPrejuizo() {
+
+         
+        
     }
     
 
