@@ -25,11 +25,7 @@ void loop() {
   float umidade1 = dht_1.readHumidity();         
   float temperatura1 = dht_1.readTemperature();  
 
-  //DHT11 AMBIENTE 2
-  float umidade2 = dht_1.readHumidity() * 10;
-  float temperatura2 = dht_1.readTemperature() * 10;
-
-  if (isnan(temperatura1) or isnan(umidade1) or isnan(temperatura2) or isnan(umidade2)) { // checando se o valor for inváliado 
+  if (isnan(temperatura1) or isnan(umidade1)) { // checando se o valor for inváliado 
 
     Serial.println("Erro ao ler");
   
@@ -52,19 +48,9 @@ void loop() {
     Serial.print("Luminosidade:") ;
     Serial.println(ldr_sensorValue1);
 
-    //AMBIENTE 2
-    Serial.print("Umidade2:");
-    Serial.print(umidade2);
 
-    Serial.print(", "); 
-
-    Serial.print("Temperatura2:");
-    Serial.print(temperatura2);
-
-    Serial.print(", "); 
-    
     //LDR
-    ldr_sensorValue2 = analogRead(ldr_sensorPin) * 10; 
+    ldr_sensorValue2 = analogRead(ldr_sensorPin); 
     Serial.print("Luminosidade2:") ;
     Serial.print(ldr_sensorValue2); 
 
@@ -79,5 +65,5 @@ void loop() {
     Serial.println(min);
 
   }
-  delay(50); // delay 👍
+  delay(1000); // delay 👍
 }
