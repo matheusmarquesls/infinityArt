@@ -5,88 +5,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>logicaCalculadora</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div id="div_calculadora" style="display: flex; flex-direction: row; gap: 60px;">
+    <div class="container">
 
-        <div id="div_componentes" style="display: flex; flex-direction: column;">
 
-            Preço das Obras: <input type="number" id="input_precoObras"> <br>
+        <div class="div_calculadora">
 
-            Quantidade de Obras: <input type="number" id="input_qtd_obras"> <br>
 
-            <select id="select_tipo_tinta">
+            <div class="div_orientacoes">
 
-                <option value="#" selected disabled> Selecione o tipo de tinta </option>
-                <option value="acrilica"> Acrílica</option>
-                <option value="guache"> Guache </option>
-                <option value="oleo"> Óleo</option>
+                <b>
 
-            </select> <br>
+                    Tamanhos de Referência:
 
-            <select id="select_tam_obra">
+                </b>
 
-                <option value="#" selected disabled> Selecione o tamanho </option>
-                <option value="pequeno"> Pequeno </option>
-                <option value="medio"> Médio </option>
-                <option value="grande"> Grande </option>
+                <p>
 
-            </select> <br>
+                    Pequeno = Até 50cm <br>
+                    Médio = Entre 50cm e 150cm <br>
+                    Grande = Acima 150cm <br>
 
-            <div style="display: flex; flex-direction: row; gap: 12px;">
+                </p>
 
-                <button onclick="adicionarObra()"> Adicionar </button>
-                <button onclick="calcPrejuizo()" id="botaoCalcular" style="display: none;">Calcular</button>
+            </div>
+
+            <div class="div_componentes">
+
+                <h1> Simule suas Economias </h1> <br>
+
+                <input type="number" class="input_calculadora" id="input_precoObras" placeholder="Preço das Obras"> <br>
+
+                <input type="number" class="input_calculadora" id="input_qtd_obras" placeholder="Quantidade de Obras"> <br>
+
+                <select id="select_tipo_tinta" class="select_calculadora">
+
+                    <option value="#" selected disabled> Selecione o tipo de tinta </option>
+                    <option value="acrilica"> Acrílica</option>
+                    <option value="guache"> Guache </option>
+                    <option value="oleo"> Óleo</option>
+
+                </select> <br>
+
+                <select id="select_tam_obra" class="select_calculadora">
+
+                    <option value="#" selected disabled> Selecione o tamanho </option>
+                    <option value="pequeno"> Pequeno </option>
+                    <option value="medio"> Médio </option>
+                    <option value="grande"> Grande </option>
+
+                </select> <br>
+
+                <div class="div_botoes">
+
+                    <button onclick="adicionarObra()" class="button_add"> Adicionar </button>
+                    <button onclick="calcPrejuizo()" id="botaoCalcular" class="button_calc" style="display: none;">Calcular</button>
+
+                </div>
+
+            </div>
+
+            <div id="div_recomendado" style="display: none;">
+
+                <b>Tipo de tinta selecionada:</b> Acrílica <br>
+                <b>Nível de umidade relativa recomendada:</b> 40-60% <br>
+                <b>Níveis recomendados de luminosidade:</b> 50 lux no máximo <br>
+                <b>Níveis de temperatura recomendos:</b> 18-21 ºC <br><br>
+
+                <b>Tipo de tinta selecionada:</b>Óleo <br>
+                <b>Nível de umidade relativa recomendada:</b> 40-45% <br>
+                <b>Níveis recomendados de luminosidade:</b> 200 lux no máximo <br>
+                <b>Níveis de temperatura recomendos:</b> 18-21 ºC <br><br>
+
+                <b>Tipo de tinta selecionada:</b> Guache <br>
+                <b>Nível de umidade relativa recomendada:</b> 45-55% <br>
+                <b>Níveis recomendados de luminosidade:</b> 50 lux no máximo <br>
+                <b>Níveis de temperatura recomendos:</b> 20 ºC <br>
 
             </div>
 
         </div>
 
-        <div id="div_orientacoes" style="display: flex; flex-direction: column;">
+    </div>
 
-            <b>
+    <div class="div_view">
 
-                Tamanhos de Referência:
+        <div id="div_resultado"></div>
 
-            </b>
-
-            <p>
-
-                Pequeno = Até 50cm <br>
-                Médio = Entre 50cm e 150cm <br>
-                Grande = Acima 150cm <br>
-
-            </p>
-
-        </div>
-
-        <div id="div_recomendado">
-
-            <b>Tipo de tinta selecionada:</b> Acrílica <br>
-            <b>Nível de umidade relativa recomendada:</b> 40-60% <br>
-            <b>Níveis recomendados de luminosidade:</b> 50 lux no máximo <br>
-            <b>Níveis de temperatura recomendos:</b> 18-21 ºC <br><br>
-
-            <b>Tipo de tinta selecionada:</b>Óleo <br>
-            <b>Nível de umidade relativa recomendada:</b> 40-45% <br>
-            <b>Níveis recomendados de luminosidade:</b> 200 lux no máximo <br>
-            <b>Níveis de temperatura recomendos:</b> 18-21 ºC <br><br>
-
-            <b>Tipo de tinta selecionada:</b> Guache <br>
-            <b>Nível de umidade relativa recomendada:</b> 45-55% <br>
-            <b>Níveis recomendados de luminosidade:</b> 50 lux no máximo <br>
-            <b>Níveis de temperatura recomendos:</b> 20 ºC <br>
-
-        </div>
+        <div id="div_soma" style="display: none;"></div>
 
     </div>
 
-    <div id="div_resultado"></div>
-
-    <div id="div_soma">
-    </div>
 
 </body>
 
@@ -94,7 +107,7 @@
 
 <script>
 
-
+    let precoTotal = 0;
     let valorTotal = 0;
     let numero = 0;
 
@@ -106,6 +119,8 @@
         const qtdObras = Number(input_qtd_obras.value);
 
         // Variáveis dos tipos de tintas usadas e dos tamanhos das obras
+
+        precoTotal = precoTotal + precoObras;
 
         const tipoTinta = select_tipo_tinta.value;
         const tamObra = select_tam_obra.value;
@@ -194,12 +209,50 @@
 
             const economiaEmRestauracao = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-            const precoObrasFormatadas = precoObras.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            const precoObrasFormatado = precoObras.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            const precoTotalFormatado = precoTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            const perdaPatrimonialFormatada = (precoTotal * 0.25).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); 
+
             numero++;
 
-            div_resultado.innerHTML += `<br> ${numero} <br> Preço: ${precoObrasFormatadas} <br> Quantidade: ${qtdObras} <br> Tinta: ${variacaoTinta} <br> Tamanho: ${variacaoTam} <br>`
+            div_resultado.innerHTML += `
 
-            div_soma.innerHTML = `<br> ${economiaEmRestauracao}`;
+                <p>
+            
+                <br> <span style="color: blue"> <b> ${numero} </b> </span>
+
+                <br> Preço: <b> ${precoObrasFormatado} </b> <br> 
+
+                Quantidade: <b> ${qtdObras} </b> <br> 
+                
+                Tinta: <b> ${variacaoTinta} </b> <br> 
+                
+                Tamanho: <b> ${variacaoTam} </b> <br>
+
+                </p>
+            
+            `
+
+            div_soma.innerHTML = `
+
+                <p>
+
+                <br> Preço total do Acervo: 
+                <span style="color: blue"> <b> ${precoTotalFormatado} </b> </span>
+
+                <br> Economia em restauração: 
+                <span style="color: green;"> <b> ${economiaEmRestauracao} </b> </span>
+
+                <br> Recomendações: 
+
+                <br> Perda patrimonial: Quando suas obras são reparadas, ela perde cerca de <span style="color: red;"> 25% </span> do seu valor original. Oque é equivalente à 
+                <span style="color: red;"> <b> ${perdaPatrimonialFormatada} </b> </span>
+
+                </p>
+
+            `;
 
             select_tipo_tinta.value = `#`;
             select_tam_obra.value = `#`;
@@ -210,6 +263,9 @@
     }
 
     function calcPrejuizo() {
+
+        div_soma.style.display = "flex";
+
     }
 
 

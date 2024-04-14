@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    background-image: url(image/background.png);
+    background-repeat: no-repeat;
+}
+
+.container {
+    display: flex;
+    margin: auto;
+    width: 1300px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 120px;
+}
+
+.div_calculadora {
+    display: flex; 
+    flex-direction: row; 
+    gap: 60px;
+    width: 880px;
+    background-color: rgb(255, 141, 100);
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+.div_componentes {
+    width: 100%;
+    display: flex; 
+    flex-direction: column;
+    background-color: chartreuse;
+    height: 440px;
+    padding: 15px;
+    text-align: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.input_calculadora {
+
+    font-size: 15px;
+    width: 325px;
+    padding: 12px;
+    border-radius: 7px;
+    border: 1px solid rgb(150, 204, 255);
+    outline: none;
+
+}
+
+.select_calculadora {
+
+    width: 350px;
+    font-size: 15px;
+    padding: 12px;
+    border-radius: 7px;
+
+}
+
+.div_botoes {
+
+    display: flex; 
+    flex-direction: row;
+    gap: 12px;
+
+}
+
+.div_botoes button {
+
+    padding: 8px;
+
+}
+
+.div_orientacoes {
+    align-items: center;
+    display: flex; 
+    flex-direction: column;
+    background-color: aqua;
+    height: 440px;
+    width: 100%;
+    padding: 15px;
+}
+
+
+.div_view {
+
+    width: 760px;
+    display: flex; 
+    flex-direction: row;
+    gap: 72px;
+
+}
+
+#div_resultado {
+
+    display: flex; 
+    flex-direction: column;
+
+}
+
