@@ -18,19 +18,27 @@
 
             <div class="div_orientacoes">
 
-                <b>
+                <b class="text-tam-b">
 
                     Tamanhos de Referência:
 
                 </b>
 
-                <p>
+                <p class="text-tam-p">
 
                     Pequeno = Até 50cm <br>
                     Médio = Entre 50cm e 150cm <br>
                     Grande = Acima 150cm <br>
 
                 </p>
+
+                <img id="imagem" class="img-ori" src="image/view.png">
+
+                <div class="div_view" id="div_visualizar">
+                <div class="div_view_final" id="div_soma" style="display: none;"></div>
+
+
+                </div>
 
             </div>
 
@@ -40,7 +48,8 @@
 
                 <input type="number" class="input_calculadora" id="input_precoObras" placeholder="Preço das Obras"> <br>
 
-                <input type="number" class="input_calculadora" id="input_qtd_obras" placeholder="Quantidade de Obras"> <br>
+                <input type="number" class="input_calculadora" id="input_qtd_obras" placeholder="Quantidade de Obras">
+                <br>
 
                 <select id="select_tipo_tinta" class="select_calculadora">
 
@@ -63,7 +72,8 @@
                 <div class="div_botoes">
 
                     <button onclick="adicionarObra()" class="button_add"> Adicionar </button>
-                    <button onclick="calcPrejuizo()" id="botaoCalcular" class="button_calc" style="display: none;">Calcular</button>
+                    <button onclick="calcPrejuizo()" id="botaoCalcular" class="button_calc"
+                        style="display: none;">Calcular</button>
 
                 </div>
 
@@ -89,14 +99,6 @@
             </div>
 
         </div>
-
-    </div>
-
-    <div class="div_view">
-
-        <div id="div_resultado"></div>
-
-        <div id="div_soma" style="display: none;"></div>
 
     </div>
 
@@ -213,15 +215,19 @@
 
             const precoTotalFormatado = precoTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-            const perdaPatrimonialFormatada = (precoTotal * 0.25).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); 
+            const perdaPatrimonialFormatada = (precoTotal * 0.25).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
             numero++;
 
-            div_resultado.innerHTML += `
+            imagem.style.display = "none";
+
+            div_visualizar.innerHTML += `
+
+            <div id="div_resultado">
 
                 <p>
             
-                <br> <span style="color: blue"> <b> ${numero} </b> </span>
+                <b> ${numero} </b> 
 
                 <br> Preço: <b> ${precoObrasFormatado} </b> <br> 
 
@@ -232,8 +238,11 @@
                 Tamanho: <b> ${variacaoTam} </b> <br>
 
                 </p>
+
+            </div>
             
-            `
+            
+            `;
 
             div_soma.innerHTML = `
 
@@ -252,19 +261,21 @@
 
                 </p>
 
-            `;
+        `;
 
-            select_tipo_tinta.value = `#`;
-            select_tam_obra.value = `#`;
-            input_qtd_obras.value = ``;
-            input_precoObras.value = ``;
+            // select_tipo_tinta.value = `#`;
+            // select_tam_obra.value = `#`;
+            // input_qtd_obras.value = ``;
+            // input_precoObras.value = ``;
 
         }
+
     }
 
     function calcPrejuizo() {
 
-        div_soma.style.display = "flex";
+        div_visualizar.style.display = "none";
+        div_soma.style.display = "block";
 
     }
 

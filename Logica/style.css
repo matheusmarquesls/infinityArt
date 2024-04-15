@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Exo:ital,wght@0,100..900;1,100..900&family=Jaldi:wght@400;700&display=swap');
+
+.jaldi-regular {
+    font-family: "Jaldi", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.jaldi-bold {
+    font-family: "Jaldi", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -15,30 +29,44 @@ body {
     width: 1300px;
     align-items: center;
     justify-content: center;
-    padding-top: 120px;
+    margin-top: 65px;
 }
 
 .div_calculadora {
     display: flex; 
     flex-direction: row; 
-    gap: 60px;
-    width: 880px;
-    background-color: rgb(255, 141, 100);
+    /* gap: 60px; */
+    width: 1100px;
+    height: auto;
+    background-color: white;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
+    padding: 22px;
+    box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.75);
 }
 
 .div_componentes {
     width: 100%;
     display: flex; 
     flex-direction: column;
-    background-color: chartreuse;
-    height: 440px;
-    padding: 15px;
+    height: 420px;
+    padding: 40px;
     text-align: center;
     align-items: center;
     justify-content: space-evenly;
+    gap: 4px;
+}
+
+.div_componentes h1{
+
+    font-family: "Jaldi", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 55px;
+    line-height: 50px;
+    color: #2d1f1f;
+
 }
 
 .input_calculadora {
@@ -47,13 +75,15 @@ body {
     width: 325px;
     padding: 12px;
     border-radius: 7px;
-    border: 1px solid rgb(150, 204, 255);
+    border: 2px solid rgb(250, 197, 5);
     outline: none;
 
 }
 
 .select_calculadora {
 
+    border: 2px solid rgb(250, 197, 5);
+    outline: none;
     width: 350px;
     font-size: 15px;
     padding: 12px;
@@ -66,39 +96,95 @@ body {
     display: flex; 
     flex-direction: row;
     gap: 12px;
+    justify-content: space-between;
 
 }
 
-.div_botoes button {
+button {
 
-    padding: 8px;
+    padding: 12px;
+    border-radius: 24px;
+    background-color: rgb(250, 197, 5);
+    box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.3);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
 
+}
+
+button:hover{
+    transition: 0.5s;
+    background-color: #2d1f1f;
 }
 
 .div_orientacoes {
     align-items: center;
     display: flex; 
     flex-direction: column;
-    background-color: aqua;
     height: 440px;
     width: 100%;
     padding: 15px;
+    justify-content: space-evenly;
 }
+
+.text-tam-b{
+
+    font-family: "Jaldi", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 28px;
+    line-height: 25px;
+
+}
+
+.text-tam-p{
+
+    font-family: "Jaldi", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+
+}
+
+.img-ori {
+    width: 350px;
+    height: 350px;
+    margin: 0;
+}
+
 
 
 .div_view {
 
-    width: 760px;
+    width: 580px;
+    justify-content: center;
     display: flex; 
-    flex-direction: row;
-    gap: 72px;
+    flex-wrap: wrap;
+    gap: 12px;
+    line-height: 20px;
 
 }
 
 #div_resultado {
 
     display: flex; 
-    flex-direction: column;
+    flex-direction: row;
+    padding: 12px;
+    gap: 12px;
+    background-color: rgb(215, 231, 255);
+    border-radius: 16px;
+ 
+}
 
+#div_resultado p {
+    font-family: "Jaldi", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+}
+
+#div_soma {
+    width: 120px;
 }
 
