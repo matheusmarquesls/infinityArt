@@ -12,9 +12,7 @@
 
     <div class="container">
 
-
         <div class="div_calculadora">
-
 
             <div class="div_orientacoes">
 
@@ -82,29 +80,9 @@
 
             </div>
 
-            <div id="div_recomendado" style="display: none;">
-
-                <b>Tipo de tinta selecionada:</b> Acrílica <br>
-                <b>Nível de umidade relativa recomendada:</b> 40-60% <br>
-                <b>Níveis recomendados de luminosidade:</b> 50 lux no máximo <br>
-                <b>Níveis de temperatura recomendos:</b> 18-21 ºC <br><br>
-
-                <b>Tipo de tinta selecionada:</b>Óleo <br>
-                <b>Nível de umidade relativa recomendada:</b> 40-45% <br>
-                <b>Níveis recomendados de luminosidade:</b> 200 lux no máximo <br>
-                <b>Níveis de temperatura recomendos:</b> 18-21 ºC <br><br>
-
-                <b>Tipo de tinta selecionada:</b> Guache <br>
-                <b>Nível de umidade relativa recomendada:</b> 45-55% <br>
-                <b>Níveis recomendados de luminosidade:</b> 50 lux no máximo <br>
-                <b>Níveis de temperatura recomendos:</b> 20 ºC <br>
-
-            </div>
-
         </div>
 
     </div>
-
 
 </body>
 
@@ -249,7 +227,6 @@
 
             </div>
             
-            
             `;
 
             div_soma.innerHTML = `
@@ -263,8 +240,8 @@
 
                 <p>
 
-                <br> Gasto em restaurações: 
-                <span style="color: green;"> <b> ${economiaEmRestauracao} </b> </span>
+                <br> Perda em restaurações: 
+                <span style="color: red;"> <b> ${economiaEmRestauracao} </b> </span>
                 
                 </p>
 
@@ -275,13 +252,12 @@
 
                 </p>
 
-
         `;
 
-            // select_tipo_tinta.value = `#`;
-            // select_tam_obra.value = `#`;
-            // input_qtd_obras.value = ``;
-            // input_precoObras.value = ``;
+            select_tipo_tinta.value = `#`;
+            select_tam_obra.value = `#`;
+            input_qtd_obras.value = ``;
+            input_precoObras.value = ``;
 
             }}
 
@@ -291,7 +267,7 @@
         div_soma.style.display = "block";
         texto_p.style.display = "none";
         texto_b.style.display = "none";
-        imgText.style.display = "flex";
+        img_tex.style.display = "block";
 
     }
 
