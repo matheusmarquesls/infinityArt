@@ -35,12 +35,11 @@ body {
 .div_calculadora {
     display: flex; 
     flex-direction: row; 
-    /* gap: 60px; */
     width: 1100px;
     height: auto;
     background-color: white;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     border-radius: 15px;
     padding: 22px;
     box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.75);
@@ -54,7 +53,7 @@ body {
     padding: 40px;
     text-align: center;
     align-items: center;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     gap: 4px;
 }
 
@@ -122,10 +121,17 @@ button:hover{
     align-items: center;
     display: flex; 
     flex-direction: column;
-    height: 440px;
+    height: 400px;
     width: 100%;
     padding: 15px;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
+}
+
+.texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
 }
 
 .text-tam-b{
@@ -134,7 +140,7 @@ button:hover{
     font-weight: 700;
     font-style: normal;
     font-size: 28px;
-    line-height: 25px;
+    line-height: 42px;
 
 }
 
@@ -144,6 +150,7 @@ button:hover{
     font-weight: 400;
     font-style: normal;
     font-size: 18px;
+    line-height: 22px;
 
 }
 
@@ -153,16 +160,22 @@ button:hover{
     margin: 0;
 }
 
-
+.img-tex {
+    width: 175px;
+    height: 175px;
+    margin: 0;
+}
 
 .div_view {
 
-    width: 580px;
+    width: 440px;
     justify-content: center;
     display: flex; 
     flex-wrap: wrap;
     gap: 12px;
     line-height: 20px;
+    overflow: hidden;
+    overflow-y: scroll;
 
 }
 
@@ -184,7 +197,14 @@ button:hover{
     font-size: 16px;
 }
 
-#div_soma {
-    width: 120px;
+.div_view_final {
+    width: 440px;
 }
 
+.div_view_final p {
+    font-family: "Jaldi", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 30px;
+}

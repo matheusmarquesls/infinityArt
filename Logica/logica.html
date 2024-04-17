@@ -18,13 +18,17 @@
 
             <div class="div_orientacoes">
 
-                <b class="text-tam-b">
+                <div class="texto">
+
+                    <img id="img_tex" class="img-tex" style="display: none;" src="image/view.png">
+
+                <b class="text-tam-b" id="texto_b">
 
                     Tamanhos de Referência:
 
                 </b>
 
-                <p class="text-tam-p">
+                <p class="text-tam-p" id="texto_p">
 
                     Pequeno = Até 50cm <br>
                     Médio = Entre 50cm e 150cm <br>
@@ -32,13 +36,12 @@
 
                 </p>
 
+                </div>
+
                 <img id="imagem" class="img-ori" src="image/view.png">
 
-                <div class="div_view" id="div_visualizar">
+                <div class="div_view" id="div_visualizar"></div>
                 <div class="div_view_final" id="div_soma" style="display: none;"></div>
-
-
-                </div>
 
             </div>
 
@@ -111,6 +114,7 @@
 
     let precoTotal = 0;
     let valorTotal = 0;
+
     let numero = 0;
 
     function adicionarObra() {
@@ -129,9 +133,13 @@
 
         const validacao = tipoTinta == "#" || tamObra == "#" || precoObras <= 0 || qtdObras <= 0;
 
+        // else if (numero >= 9) {
+        //     alert(`Valor máximo atingido`)
+        // }
+
         if (validacao) {
             alert(`ERRO: Insira os valores validos`)
-        } else {
+        }  else {
 
             botaoCalcular.style.display = "block";
 
@@ -218,7 +226,7 @@
             const perdaPatrimonialFormatada = (precoTotal * 0.25).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
             numero++;
-
+            
             imagem.style.display = "none";
 
             div_visualizar.innerHTML += `
@@ -248,18 +256,25 @@
 
                 <p>
 
-                <br> Preço total do Acervo: 
+                Preço total do Acervo: 
                 <span style="color: blue"> <b> ${precoTotalFormatado} </b> </span>
 
-                <br> Economia em restauração: 
+                </p>
+
+                <p>
+
+                <br> Gasto em restaurações: 
                 <span style="color: green;"> <b> ${economiaEmRestauracao} </b> </span>
+                
+                </p>
 
-                <br> Recomendações: 
+                <p>
 
-                <br> Perda patrimonial: Quando suas obras são reparadas, ela perde cerca de <span style="color: red;"> 25% </span> do seu valor original. Oque é equivalente à 
+                <br> Perda patrimonial: Quando suas obras são reparadas, ela perde cerca de <span style="color: red;"> <b> 25% </b> </span> do seu valor original. Oque é equivalente à 
                 <span style="color: red;"> <b> ${perdaPatrimonialFormatada} </b> </span>
 
                 </p>
+
 
         `;
 
@@ -268,14 +283,15 @@
             // input_qtd_obras.value = ``;
             // input_precoObras.value = ``;
 
-        }
-
-    }
+            }}
 
     function calcPrejuizo() {
 
         div_visualizar.style.display = "none";
         div_soma.style.display = "block";
+        texto_p.style.display = "none";
+        texto_b.style.display = "none";
+        imgText.style.display = "flex";
 
     }
 
