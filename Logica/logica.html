@@ -91,7 +91,7 @@
 <script>
 
     let precoTotal = 0;
-    let valorTotal = 0;
+    let perdaEmRestauracao = 0;
 
     let numero = 0;
 
@@ -110,10 +110,6 @@
         const tamObra = select_tam_obra.value;
 
         const validacao = tipoTinta == "#" || tamObra == "#" || precoObras <= 0 || qtdObras <= 0;
-
-        // else if (numero >= 9) {
-        //     alert(`Valor máximo atingido`)
-        // }
 
         if (validacao) {
             alert(`ERRO: Insira os valores validos`)
@@ -193,9 +189,9 @@
             const preco = precoObras / qtdObras;
             const posRestauracao = precoObras * 0.25
 
-            valorTotal = valorTotal + precoMedioComRestauracao;
+            perdaEmRestauracao = perdaEmRestauracao + precoMedioComRestauracao;
 
-            const economiaEmRestauracao = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            const porcentagemDeGastoEmRestauracao = ((perdaEmRestauracao * 100) / precoTotal).toFixed(1);
 
             const precoObrasFormatado = precoObras.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
@@ -233,31 +229,31 @@
 
                 <p>
 
-                Preço total do Acervo: 
+                <b> Preço total do Acervo: </b> 
                 <span style="color: blue"> <b> ${precoTotalFormatado} </b> </span>
 
                 </p>
 
                 <p>
 
-                <br> Perda em restaurações: 
-                <span style="color: red;"> <b> ${economiaEmRestauracao} </b> </span>
+                <br> <b> Perda em restaurações: </b>
+                <span style="color: red;"> <b> ${porcentagemDeGastoEmRestauracao}% </b> </span> sobre o valor total do acervo
                 
                 </p>
 
                 <p>
 
-                <br> Perda patrimonial: Quando suas obras são reparadas, ela perde cerca de <span style="color: red;"> <b> 25% </b> </span> do seu valor original. Oque é equivalente à 
+                <br> <b> Perda patrimonial: </b> Quando suas obras são reparadas, elas perdem cerca de <span style="color: red;"> <b> 25% </b> </span> do seu valor original. O que é equivalente à 
                 <span style="color: red;"> <b> ${perdaPatrimonialFormatada} </b> </span>
 
                 </p>
 
         `;
 
-            select_tipo_tinta.value = `#`;
-            select_tam_obra.value = `#`;
-            input_qtd_obras.value = ``;
-            input_precoObras.value = ``;
+            // select_tipo_tinta.value = `#`;
+            // select_tam_obra.value = `#`;
+            // input_qtd_obras.value = ``;
+            // input_precoObras.value = ``;
 
             }}
 
