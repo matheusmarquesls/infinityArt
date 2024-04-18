@@ -28,9 +28,9 @@ const serial = async (
             // altere!
             // Credenciais do banco de dados
             host: 'localhost',
-            user: 'USUARIO_DO_BANCO_LOCAL',
-            password: 'SENHA_DO_BANCO_LOCAL',
-            database: 'DATABASE_LOCAL',
+            user: 'root',//USUARIO_DO_BANCO_LOCAL
+            password: '',
+            database: 'teste01', //DATABASE_LOCAL
             port: 3306
         }
     ).promise();
@@ -67,7 +67,6 @@ const serial = async (
         valoresDht11Umidade.push(dht11Umidade);
         valoresDht11Temperatura.push(dht11Temperatura);
         valoresLuminosidade.push(luminosidade);
-        
 
         // Insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
@@ -75,7 +74,7 @@ const serial = async (
             // altere!
             // Este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO medida (dht11_umidade, dht11_temperatura, luminosidade) VALUES (?, ?, ?)',
+                'INSERT INTO teste (dht11_umidade, dht11_temperatura, luminosidade) VALUES (?, ?, ?)',
                 [dht11Umidade, dht11Temperatura, luminosidade]
             );
             console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura + ", " + luminosidade)
@@ -96,7 +95,9 @@ const serial = async (
 const servidor = (
     valoresDht11Umidade,
     valoresDht11Temperatura,
-    valoresLuminosidade
+    valoresLuminosidade,
+    valoresLm35Temperatura,
+    valoresChave
 ) => {
     const app = express();
 
@@ -136,18 +137,24 @@ const servidor = (
     const valoresDht11Umidade = [];
     const valoresDht11Temperatura = [];
     const valoresLuminosidade = [];
-  
+    const valoresLm35Temperatura = [];
+    const valoresChave = [];
+
     // Inicia a comunicação serial
     await serial(
         valoresDht11Umidade,
         valoresDht11Temperatura,
-        valoresLuminosidade
+        valoresLuminosidade,
+        valoresLm35Temperatura,
+        valoresChave
     );
 
     // Inicia o servidor web
     servidor(
         valoresDht11Umidade,
         valoresDht11Temperatura,
-        valoresLuminosidade
+        valoresLuminosidade,
+        valoresLm35Temperatura,
+        valoresChave
     );
 })();

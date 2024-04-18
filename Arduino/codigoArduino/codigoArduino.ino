@@ -11,9 +11,7 @@ int ldr_sensorValue2 = 0;
 int dht_pin = A1;  
 DHT dht_1 = DHT(dht_pin, dht_type); // definindo objeto tipo DHT
 
-float max = 50;
 
-float min = 0;
 
 void setup() {
   Serial.begin(9600); // setar baudRate para 9600
@@ -32,37 +30,22 @@ void loop() {
   } else { 
     
     //AMBIENTE 1
-    
-    Serial.print("Umidade:");
+   
     Serial.print(umidade1); 
 
-    Serial.print(", "); 
-
-    Serial.print("Temperatura:");
+    Serial.print(";"); 
+    
     Serial.print(temperatura1);
 
-    Serial.print(", ");
+    Serial.print(";");
     
     //LDR
     ldr_sensorValue1 = analogRead(ldr_sensorPin); 
-    Serial.print("Luminosidade:") ;
     Serial.println(ldr_sensorValue1);
 
 
-    //LDR
-    ldr_sensorValue2 = analogRead(ldr_sensorPin); 
-    Serial.print("Luminosidade2:") ;
-    Serial.print(ldr_sensorValue2); 
 
-    Serial.print(", ");
-
-    Serial.print("Max:");
-    Serial.print(max);
-
-    Serial.print(", ");
-
-    Serial.print("Min:");
-    Serial.println(min);
+    
 
   }
   delay(1000); // delay 👍
