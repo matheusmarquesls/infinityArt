@@ -17,51 +17,100 @@
   padding: 0;
 }
 
-li .logotipo {
-  padding-right: 160px;
-  width: 125px;
-  height: 125px;
+/* Header CSS */
+
+.header-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #2d1f1fc5;
+  box-shadow: 0px 10px 15px 10px rgba(0, 0, 0, 0.5);
 }
 
-li .login {
-  
+.header-ul {
+  display: flex;
+  align-items: center;
+}
+
+li .logotipo {
+  width: 105px;
+  height: 10S5px;
+}
+
+li button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  font-weight: bold;
-  border: 5px;
-  border-radius: 10px;
-  width: 100%;
-  height: 25px;
-  background-color: rgb(245, 245, 245, 0.5);
+  border: 0.2px solid #ffffff;
+  border-radius: 5px;
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+}
 
+.login {
+  background-color: rgba(79, 30, 30, 0.65);
+}
 
+.login:hover {
+  transition: 0.5s;
+  background-color: rgba(167, 31, 31, 0.62);
+}
+
+.cadastro {
+  background-color: rgba(91, 78, 78, 0.855);
+}
+
+.cadastro:hover {
+  transition: 0.5s;
+  background-color: rgba(176, 175, 163, 0.717);
+}
+
+.nav-button {
+  display: flex;
+  flex-direction: row;
+  padding-left: 100px;
+  gap: 24px;
+  font-weight: 30;
 }
 
 .botaologin {
-  padding-left: 100px;
   color: whitesmoke;
-
 }
 
-
-
 ul {
-  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   list-style: none;
-  font-size: 13px;
+  font-size: 12px;
   width: 70%;
   gap: 60px;
-
 }
 
+.nav-logo {
+  padding-right: 100px;
+}
 
 a {
-  font-weight: bold;
+  font-family: "Jaldi", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 20px;
+  font-size: 18px;
   color: white;
   text-decoration-line: none;
+  text-align: center;
 }
+
+a:hover {
+  transition: 0.4s;
+  color: rgb(255, 200, 0);
+} 
+
+/* Fim Header CSS */
 
 body {
   width: 100%;
@@ -153,7 +202,7 @@ button {
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
 }
 
