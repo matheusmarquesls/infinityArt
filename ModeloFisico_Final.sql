@@ -58,7 +58,7 @@ sequenciaLeitura int auto_increment,
 fkSensor int,
 dht11_temperatura decimal(10,2),
 dtLeitura datetime not null default current_timestamp,
-constraint fk_sensor_let foreign key (fkSensor) references sensor(idSensor),
+constraint fk_sensor_temp foreign key (fkSensor) references sensor(idSensor),
 primary key (sequenciaLeitura, fkSensor)
 );
 
@@ -67,7 +67,7 @@ sequenciaLeitura int auto_increment,
 fkSensor int,
 dht11_umidade decimal(10,2),
 dtLeitura datetime not null default current_timestamp,
-constraint fk_sensor_let foreign key (fkSensor) references sensor(idSensor),
+constraint fk_sensor_umi foreign key (fkSensor) references sensor(idSensor),
 primary key (sequenciaLeitura, fkSensor)
 );
 
@@ -76,7 +76,7 @@ sequenciaLeitura int auto_increment,
 fkSensor int,
 ldr_lux decimal(10,2),
 dtLeitura datetime not null default current_timestamp,
-constraint fk_sensor_let foreign key (fkSensor) references sensor(idSensor),
+constraint fk_sensor_lux foreign key (fkSensor) references sensor(idSensor),
 primary key (sequenciaLeitura, fkSensor)
 );
 
@@ -98,4 +98,5 @@ fkAcervo int,
 constraint fk_pint_acer foreign key (fkAcervo) references acervo(idAcervo),
 primary key (idPintura)
 );
+
 
