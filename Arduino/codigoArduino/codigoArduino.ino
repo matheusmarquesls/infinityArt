@@ -48,5 +48,5 @@ void loop() {
     
 
   }
-  delay(1000); // delay 👍
+  delay(10000); // delay 👍
 }
