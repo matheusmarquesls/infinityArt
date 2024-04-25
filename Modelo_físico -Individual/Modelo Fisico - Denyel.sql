@@ -1,6 +1,7 @@
 CREATE DATABASE InfinityART;
 USE InfinityART;
 
+
 CREATE TABLE cliente (
   idCliente INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(45) NULL,
@@ -44,7 +45,7 @@ CREATE TABLE sensores (
     REFERENCES mydb.ambiente (idAmbiente));
 
 CREATE TABLE leitura_sensores (
-  Sequencia_Leitura INT NOT NULL AUTO_INCREMENT,
+  sequenciaLeitura INT NOT NULL AUTO_INCREMENT,
   fkSensor INT NOT NULL,
   dth11_temperatura DECIMAL(10,2) NULL,
   dht11_umidade DECIMAL(10,2) NULL,

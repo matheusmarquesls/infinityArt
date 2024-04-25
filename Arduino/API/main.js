@@ -29,8 +29,8 @@ const serial = async (
             // Credenciais do banco de dados
             host: 'localhost',
             user: 'root',//USUARIO_DO_BANCO_LOCAL
-            password: '',
-            database: 'teste01', //DATABASE_LOCAL
+            password: 'Neno123321',
+            database: 'infinityArt', //DATABASE_LOCAL
             port: 3306
         }
     ).promise();
@@ -74,7 +74,7 @@ const serial = async (
             // altere!
             // Este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO teste (dht11_umidade, dht11_temperatura, luminosidade) VALUES (?, ?, ?)',
+                'INSERT INTO leitura_sensores (fkSensor, dht11_umidade, dht11_temperatura, luminosidade, dtLeitura) VALUES (1, ?, ?, ?, ?)',
                 [dht11Umidade, dht11Temperatura, luminosidade]
             );
             console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura + ", " + luminosidade)
