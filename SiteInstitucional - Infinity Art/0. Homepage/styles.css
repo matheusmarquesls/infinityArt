@@ -100,46 +100,4 @@ a {
 
 }
 
-.titulo_sobreNos{
 
-/* Sobre nós */
-
-position: absolute;
-width: 245px;
-height: 50px;
-top: 899px;
-
-font-family: 'Lexend';
-font-style: normal;
-
-font-size: 30px;
-line-height: 50px;
-/* identical to box height */
-
-color: #282828;
-
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-
-
-/* Rectangle 29 */
-
-position: absolute;
-width: 180px;
-height: 10px;
-left: 210px;
-top: 695px;
-background: #B8B8B8;
-border-radius: 0px 20px 20px 0px;
-
-}
-
-.balao1{
-/* Group 75 */
-
-position: absolute;
-width: 559px;
-height: 298.5px;
-left: 209px;
-top: 1031px;
-
-}
