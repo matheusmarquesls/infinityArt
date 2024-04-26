@@ -18,7 +18,7 @@
 }
 .conteudos {
    background-color: white;
-   width: 80%;
+   width: 75%;
    height: 60%;
    border-radius: 15px;
    /* display: flex; */
@@ -40,6 +40,8 @@
     width: 40%;
     height: 100%;
     border-radius: 15px 0 0 15px;
+
+    left: 60%;
 }
 .titulo {
     font-size: 28px;
@@ -74,6 +76,7 @@
     width: 150px;
     align-self: center;
     border: none;
+    margin-top: 1rem;
 }
 .btn-1 {
     background-color: transparent;
@@ -107,10 +110,7 @@ color: purple;
     align-items: center;
     width: 60%;
 }
-.conteudo-2 {
-    position: absolute;
-    display: none;
-}
+
 
 .form {
     display: flex;
@@ -121,7 +121,30 @@ color: purple;
 .form input {
     height: 45px;
     border: none;
+    width: 100%;
     background-color: rgb(200, 200, 200);
+   
+}
+.label-input {
+    background-color: rgb(200, 200, 200);
+    display: flex;
+    align-items: center;
     margin: 8px;
 }
+.icon-modify{
+    color: purple;
+    padding: 0px 5px;
+}
+.conteudo-2 {
+    position: absolute;
+    display: flex;
 
+}
+.conteudo-2 .coluna-1{
+    order: 2;
+    
+}
+.conteudo-2 .coluna-2{
+    order: 1;
+    
+}
