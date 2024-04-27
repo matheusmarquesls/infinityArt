@@ -1,6 +1,13 @@
 body{
     background-color: whitesmoke;
 }
+.container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
 .titulo-sobrenos{/* Sobre nós */
 
 position: absolute;

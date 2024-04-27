@@ -5,61 +5,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infinity Art</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../3. src/css/styles.css">
 </head>
 
 <body>
-    <header>
-            <nav>
-                <ul>
-                    <li> 
-                        <img class="logotipo" src="../3. src/img/logoInfinityBrancov2 1.png" alt="">
-                    </li>
 
-                    <li>
-                        <a href="">
-                            Página Inicial
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="">
-                            Sobre Nós
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="">
-                            Simulador<br>Financeiro
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="">
-                            Fale<br>Conosco
-                        </a>
-                    </li>
-                    <li>
-                        <button class="login" onclick="">
-                           
-                        <a target="blank" href="../1. Login e Cadastro/">Login | Cadastro</a>       
-                            
-                        </button>
-                    </li>
-                </ul>
+    <header class="header-center">
+        <div class="container">
+            <nav class="header-nav">
+                    <ul class="header-ul">
+                        <li class="nav-logo">
+                            <img class="logotipo" src="../3. src/img/art-icon.png" alt="">
+                        </li>
+                        <li><a href="#banner">Página Inicial</a></li>
+                        <li><a href="#sobrenos">Sobre Nós</a></li>
+                        <li><a href="#simuleaqui">Simulador<br>Financeiro</a></li>
+                        <li><a href="">Fale<br>Conosco</a></li>
+                        <li class="nav-button">
+                            <a target="blank" href="login.html"><button class="login" onclick=""> Entrar </button></a>
+                            <a target="blank" href="cadastro.html"><button class="cadastro" onclick=""> Cadastro </button> </a>
+                        </li>
+                    </ul>
             </nav>
+        </div>
 
     </header>
 
-    <div class="container_frase">
-        <span class="frase_homepage">
-            COM A INFINITY ART, A SUA ARTE<BR>PODE DURAR MUITO MAIS.
-        </span>
+    <section id="banner" class="banner">
 
-        <p class="frase2_homepage">
-            Nossos sensores de monitoramento te<br> trazem mais facilidade para preservar <br>suas obras de arte
-        </p>
-    </div>
+        <div class="banner-text">
+
+            <div class="title">
+                <h1>COM INFINITY ART, A SUA ARTE PODE DURAR MUITO MAIS.</h1>
+            </div>
+
+            <div class="subtitle">
+                <p>Nossos sensores de monitoramento te trazem mais facilidade
+                para preservar suas obras de arte!</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="sobrenos" class="sobrenos">
+        <div class="container">
+            <div class="title">
+                <h1>sobre nós</h1>
+                <div class="bar-title"></div>
+            </div>
+
+            <div class="info-text info-text-primary">
+                <div class="bubble-primary">
+                    <div class="bubble-text">
+                        <p>Infinity Art é um grupo buscando ajudar colecionadores, artistas e até mesmo
+                        museus, a conservarem suas obras de artes feitas em tela a partir do
+                        monitoramento feito com o nosso sensor.</p>
+                    </div>
+                </div>
+
+                <div class="info-img">
+                    <img class="img-primary" src="../3. src/img/sobrenos-img1.jpg" alt="">
+                </div>
+            </div>
+
+
+            <div class="info-text info-text-secondary">
+                <div class="bubble-secondary">
+                    <div class="bubble-text">
+                        <p>Tenha acesso a informações precisas sobre o ambiente de suas obras mais preciosas,
+                        e melhore suas condições para aumentar a vida útil das telas. Economize,
+                        poupando seu bolso e suas obras da necessidade de restauros e manutenções!</p>
+                    </div>
+                </div>
+
+                <div class="info-img">
+                    <img class="img-secondary" src="../3. src/img/sobrenos-img2.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="info-text info-text-primary">
+                <div class="bubble-primary">
+                    <div class="bubble-text">
+                        <p>A preservação de obras consiste no controle do ambiente em que as obras se encontram inseridas. É de extrema importância que estes ambientes sejam próprios para o armazenamento dessas obras, para que desta forma possam manter sua integridade.</p>
+                        <br>
+                        <p>Fatores essenciais para que as obras se mantenham em boas condições vem do monitoramento  e controle adequado da umidade, luminosidade e temperatura do ambiente no qual a obra a está inserida.</p>
+                    </div>
+                </div>
+
+                <div class="info-img">
+                    <img class="img-primary" src="../3. src/img/sobrenos-img3.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="simuleaqui" class="simuleaqui">
+        <div class="container">
+            <div class="content">
+        
+                <div class="title">
+                    <h1>Simule aqui</h1>
+                    <div class="bar-title"></div>
+                </div>
+        
+                <div class="text">
+                    <p class="description">Faça uso da calculadora financeira para entender melhor como o dinheiro que você investe na InfinityArt se torna um investimento no futuro e na preservação de suas telas!</p>
+                </div>
+        
+                <div class="btn-section">
+                    <button class="btn">
+                        Consultar
+                    </button>
+                </div>
+            </div>
+        
+        </div>
+    </section>
+
+
     
        
 </body>

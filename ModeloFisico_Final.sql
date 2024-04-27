@@ -1,4 +1,4 @@
-create database infinityArt;
+create database if not exists infinityArt;
 use infinityArt;
 
 create table cliente (
@@ -8,6 +8,9 @@ sobrenome varchar(45),
 primary key (idCliente)
 ) auto_increment = 100;
 
+insert into cliente values
+(default, 'Denyel', 'Henry');
+
 create table usuario(
 idCadastro int auto_increment,
 fkCliente int,
@@ -16,6 +19,9 @@ senha varchar(20),
 constraint fk_user_cliente foreign key (fkCliente) references cliente(idCliente),
 primary key (idCadastro, fkCliente)
 );
+
+insert into usuario values
+(default, 100, 'denyel@gmail.com', '0900');
 
 create table endereco (
 idEndereco int auto_increment,
@@ -31,17 +37,21 @@ constraint fk_end_cliente foreign key (fkCliente) references cliente(idCliente),
 primary key (idEndereco, fkCliente)
 );
 
+insert into endereco values
+(default, '100', 'Casa', 'RJ', 'XXX', 'XXX', 'XXX', 'XXX', '123456789');
+
 create table ambiente (
 idAmbiente int auto_increment,
 fkEndereco int,
 nome varchar(45),
 qtdObras int,
-tipoObras varchar(45),
 descricao varchar(150),
 constraint fk_end_amb foreign key (fkEndereco) references endereco(idEndereco),
 primary key (idAmbiente, fkEndereco)
 ) auto_increment = 1000;
 
+insert into ambiente values
+(default, 1, 'Quarto', 34, 'Meu quarto');
 
 create table sensor (
 idSensor int auto_increment,
@@ -52,6 +62,11 @@ fkAmbiente int,
 constraint fk_sensor_amb foreign key (fkAmbiente) references ambiente(idAmbiente),
 primary key (idSensor)
 );
+
+insert into sensor values
+(default, 'DHT11_U', 'Umidade', '2005-01-01', 1000),
+(default, 'DHT11_T', 'Temp', '2005-01-01', 1000),
+(default, 'LDR', 'Lux', '2005-01-01', 1000);
 
 create table leitura_temp (
 sequenciaLeitura int auto_increment,
@@ -97,6 +112,4 @@ descricao varchar(100),
 fkAcervo int,
 constraint fk_pint_acer foreign key (fkAcervo) references acervo(idAcervo),
 primary key (idPintura)
-);
-
-
+)
