@@ -7,6 +7,8 @@
 }
 body {
     background-color: #FAFAFA;
+    font-size: 16px;
+
 }
 .container {
     width: 1140px;
@@ -263,6 +265,8 @@ body {
  .info-img .img-secondary {
     border-radius: 0 50px 50px 0;
  }
+
+ /* SESSAO SIMULE AQUI */
 .simuleaqui {
   background-image: url("../img/bgSimuleaqui.jpg");
   background-position: cover;
@@ -277,8 +281,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-.content {
+.simuleaqui .content {
   border-radius: 20px;
   padding: 50px;
   background-color: rgba(0, 0, 0, 0.35);
@@ -292,17 +295,18 @@ body {
 }
 .simuleaqui .bar-title {
   background-color: black;
-
 }
-.text {
+.simuleaqui .text {
   width: 900px;
   display: flex;
   justify-content: center;
   text-align: center;
 }
-.description {
+.simuleaqui .description {
   font-family: "Poppins", sans-serif;
-  font-size: 36px;
+  font-size: 24px;
+  color: #ffffff;
+  text-shadow: black 1px 1px 1px;
   text-align: justify;
 }
 .btn-section {
@@ -311,7 +315,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 .btn {
   width: 200px;
@@ -329,6 +332,112 @@ body {
   color: white;
 }
  
+/* SESSAO NOSSO NEGOCIO */
+.negocio {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.negocio .title {
+  margin-top: 16px;
+  color: black;
+}
+.negocio .bar-title {
+  background-color: #B8B8B8;
+}
+.negocio .card-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+}
+
+.negocio .cardbox {
+  position: relative;
+  text-align: center;
+  width: 22rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+.negocio .cardbox .image {
+  padding: 2rem;
+  overflow: hidden;
+}
+.negocio .cardbox .image img {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.negocio .cardbox .image h3 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: grey;
+  font-weight: 700;
+  font-size: 2rem;
+}
+.negocio .cardbox .content {
+  position: absolute;
+  bottom: -100%;
+  background: #0e0c0c;
+  padding: 1rem 1.5rem;
+  transition: all .2s linear;
+}
+.negocio .cardbox:hover .content {
+  bottom: 0;
+} 
+
+.negocio .cardbox .content h3 {
+  font-family: "Poppins", sans-serif; 
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: white;
+}
+.negocio .cardbox .content p {
+  font-family: "Poppins", sans-serif; 
+  text-transform: uppercase;
+  text-align: center;
+  font-size: .875rem;
+  padding: .75rem 0;
+  color: white; 
+}
+
+/* SESSAO CONTATOS */
+.contatos {
+  display: flex;
+  justify-content: center;
+}
+.contatos .title {
+  margin-top: 16px;
+}
+.contatos .bar-title {
+  background-color: #B8B8B8;
+}
+
+
+
+
+/* RODAPE */
+.rodape {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #0e0c0c;
+  padding: 20px;
+}
+.rodape .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.rodape p {
+  color: #B8B8B8;
+  font-size: 10px;
+}
+
+
 
 
 
