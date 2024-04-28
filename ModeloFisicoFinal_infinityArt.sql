@@ -50,8 +50,14 @@ constraint fk_end_amb foreign key (fkEndereco) references endereco(idEndereco),
 primary key (idAmbiente, fkEndereco)
 ) auto_increment = 1000;
 
+<<<<<<< HEAD:ModeloFisicoFinal_infinityArt.sql
+insert into ambiente values 
+(default, 1, 'Quarto', 34, 'Meu quarto');
+
+=======
 insert into ambiente values
 (default, 1, 'Quarto', 34, 'Meu quarto');
+>>>>>>> ae68464d27711b4e02a8a48211dea4d406244b51:ModeloFisico_Final.sql
 
 create table sensor (
 idSensor int auto_increment,
@@ -63,30 +69,30 @@ constraint fk_sensor_amb foreign key (fkAmbiente) references ambiente(idAmbiente
 primary key (idSensor)
 );
 
+<<<<<<< HEAD:ModeloFisicoFinal_infinityArt.sql
+insert into sensor values 
+(default, 'DHT11', 'Temperatura & Umidade', '2005-01-01', 1000), 
+(default, 'LDR', 'Luminosidade', '2005-01-01', 1000); 
+
+create table leitura_dht11 (
+=======
 insert into sensor values
 (default, 'DHT11_U', 'Umidade', '2005-01-01', 1000),
 (default, 'DHT11_T', 'Temp', '2005-01-01', 1000),
 (default, 'LDR', 'Lux', '2005-01-01', 1000);
 
 create table leitura_temp (
+>>>>>>> ae68464d27711b4e02a8a48211dea4d406244b51:ModeloFisico_Final.sql
 sequenciaLeitura int auto_increment,
 fkSensor int,
+dht11_umidade decimal(10,2),
 dht11_temperatura decimal(10,2),
 dtLeitura datetime not null default current_timestamp,
 constraint fk_sensor_temp foreign key (fkSensor) references sensor(idSensor),
 primary key (sequenciaLeitura, fkSensor)
 );
 
-create table leitura_umi (
-sequenciaLeitura int auto_increment,
-fkSensor int,
-dht11_umidade decimal(10,2),
-dtLeitura datetime not null default current_timestamp,
-constraint fk_sensor_umi foreign key (fkSensor) references sensor(idSensor),
-primary key (sequenciaLeitura, fkSensor)
-);
-
-create table leitura_lux (
+create table leitura_ldr (
 sequenciaLeitura int auto_increment,
 fkSensor int,
 ldr_lux decimal(10,2),
