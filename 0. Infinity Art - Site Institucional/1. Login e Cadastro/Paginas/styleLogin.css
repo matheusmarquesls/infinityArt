@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Exo:ital,wght@0,100..900;1,100..900&family=Jaldi:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    text-decoration: none;
+    font-family: "Open Sans", sans-serif;
+    color: black;
+}
+
+body {
+    height: 100%;
+    background-image: url("../../3. src/img/bgCadastro.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* LOGIN */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.conteudo {
+  position: relative;
+  
+  background-color: white;
+  width: 80%;
+  height: 80%;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+.conteudo form {
+   display: flex; 
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 50%;
+   height: 100%;
+}
+.chamada {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+  opacity: 1;
+  transition: 1s all ease;
+}
+#cobertura {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background-image: linear-gradient(to right top, #8a2be2, #8026d3, #7621c5, #6d1cb7, #6317a9);
+  z-index: 1;
+  transition: 1s all ease;
+}
+
+.titulo {
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: capitalize; 
+}
+.form .titulo{
+    color: purple;
+}
+.chamada .titulo {
+    color: white;
+}
+.descricao {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 30px;
+}
+.form .descricao{
+  margin: 0 0 24px;
+    color: #7f8c8d;
+}
+.chamada .descricao{
+  margin: 24px 0;
+  color: white;
+}
+button {
+    border-radius: 15px;
+    text-transform: uppercase;
+    color: white;
+    font-size: 12px;
+    padding: 16px 35px;
+    cursor: pointer;
+    font-weight: bold;
+    align-self: center;
+    border: none;
+    margin-top: 1rem;
+}
+.btn-form{
+    background-color: purple;
+    border: 1px solid purple;
+}
+.btn-form:hover{
+    background-color: white;
+    border: 1px solid purple;
+    color: purple;
+}
+
+ .btn-chamada {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+.btn-chamada:hover {
+background-color: white ;
+color: purple;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    text-align: center;
+    
+}
+.form input {
+    position: relative;
+    height: 45px;
+    border: none;
+    width: 100%;
+    background-color: rgb(200, 200, 200);
+    display: block;
+    padding: 0 40px;
+   
+}
+.label-input {
+  position: relative;
+    background-color: rgb(200, 200, 200);
+    display: flex;
+    align-items: center;
+    margin: 0 0 16px;
+    width: 70%;
+}
+.icon-modify{
+    color: purple;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+}
+
+.hide {
+  opacity: 0;
+  transform: translateY(200%);
+ }
+ .right {
+    transform: translateX(100%);
+   }
+   
+.left {
+    transform: translateX(0%);
+   }
+
+   #chamada-cadastrar {
+    left: 0;
+    right: unset;
+  }
+  
+  #chamada-login {
+   left: unset;
+   right: 0;
+  }
+

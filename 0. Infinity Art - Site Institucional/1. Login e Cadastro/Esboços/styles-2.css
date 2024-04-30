@@ -21,7 +21,8 @@ body {
 /* Header CSS */
 .header-nav {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 0px 10px 15px 10px rgba(0, 0, 0, 0.5);
@@ -120,20 +121,21 @@ header a:hover {
 }
 
 .conteudos {
+  position: relative;
    background-color: white;
    width: 80%;
    height: 80%;
    border-radius: 15px;
    justify-content: space-between;
    align-items: center;
-   position: relative;
+   overflow: hidden;
 }
 .conteudos form {
    display: flex; 
    flex-direction: column;
 }
 .conteudo-1 {
-    display: flex;
+    display: none;
 }
 .conteudos::before {
     content: "";
@@ -141,9 +143,9 @@ header a:hover {
     background-color: purple;
     width: 40%;
     height: 100%;
-    border-radius: 15px 0 0 15px;
+    transition: 1s all ease;
+    left: 60%;
 
-    /* left: 60%; */
 }
 .titulo {
     font-size: 28px;
@@ -244,8 +246,8 @@ color: purple;
 }
 .conteudo-2 {
     position: absolute;
-    /* display: flex; */
-    display: none;
+    display: flex;
+    /* display: none; */
 }
 .conteudo-2 .coluna-1{
     order: 2;

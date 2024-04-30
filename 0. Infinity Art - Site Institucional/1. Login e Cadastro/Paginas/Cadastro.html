@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="styleCadastro.css">
+    <script src="https://kit.fontawesome.com/80ec270284.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="conteudo">
+
+            <form class="form" id="cadastrar">
+                <!-- TITULO -->
+                <h2 class="titulo">Criar conta</h2>
+
+                <!-- NOME INPUT -->
+                <label class="label-input" for="">
+                    <i class="fa-regular fa-user icon-modify"></i>
+                    <input type="text" placeholder="nome">
+                </label>
+
+                <!-- SOBRENOME INPUT -->
+                <label class="label-input" for="">
+                    <i class="fa-regular fa-user icon-modify"></i>
+                    <input type="text" placeholder="sobrenome">
+                </label>
+
+                <!-- EMAIL INPUT -->
+                <label class="label-input" for="">
+                    <i class="fa-regular fa-envelope icon-modify"></i>
+                    <input type="email" placeholder="email">
+                </label>
+
+                <!-- SENHA INPUT-->
+                <label class="label-input" for="">
+                    <i class="fa-solid fa-lock icon-modify"></i>
+                    <input type="password" placeholder="senha">
+                </label>
+
+                <!-- BOTAO 2 -->
+                <button class="btn-form">Inscrever</button>
+
+            </form>
+
+            <!-- FORMULARIO LOGIN -->
+            <form class="form" id="login">
+
+                <!-- TITULO-->
+                <h2 class="titulo">Entrar</h2>
+                <p class="descricao">Informe suas credencias para acessar sua área</p>
+
+                <!-- EMAIL INPUT -->
+                <label class="label-input" for="">
+                    <i class="fa-regular fa-envelope icon-modify icon"></i>
+                    <input type="email" placeholder="email">
+                </label>
+
+                <!-- SENHA INPUT-->
+                <label class="label-input" for="">
+                    <i class="fa-solid fa-lock icon-modify icon"></i>
+                    <input type="password" placeholder="senha">
+                </label>
+
+                <a href="">Esqueceu a senha?</a>
+                <button class="btn-form">Entrar</button>
+            </form>
+
+            <!-- CHAMADA LOGIN -->
+            <div class="chamada" id="chamada-login">
+                <h1 class="titulo">Bem vindo de volta!</h1>
+                <p class="descricao">Mantenha-se conectado e tenha acesso a área do usuário</p>
+                <button class="btn-chamada" id="chamada-login-btn">Tenho Cadastro</button>
+            </div>
+
+            <!-- CHAMADA CADASTRO -->
+            <div class="chamada hide" id="chamada-cadastrar">
+                <h1 class="titulo">Boas Vindas a Infinity Art!</h1>
+                <p class="descricao">Insira seus dados cadastrais e faça parte de nós!</p>
+                <button class="btn-chamada" id="chamada-cadastro-btn">Não Tenho Cadastro</button>
+            </div>
+
+            <div id="cobertura"></div>
+        </div>
+    </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+     document.getElementById('chamada-cadastro-btn').addEventListener('click',  function () {
+      const cobertura = document.getElementById('cobertura');
+      cobertura.classList.remove('left');
+      cobertura.classList.add('right');
+      
+      const login = document.getElementById('chamada-login');
+      login.classList.remove('hide');
+  
+      const cadastro = document.getElementById('chamada-cadastrar');
+      cadastro.classList.add('hide');
+    })
+  
+    document.getElementById('chamada-login-btn').addEventListener('click', function () {
+      const cobertura = document.getElementById('cobertura');
+      cobertura.classList.remove('right');
+      cobertura.classList.add('left');
+  
+      const login = document.getElementById('chamada-login');
+      login.classList.add('hide');
+  
+      const cadastro = document.getElementById('chamada-cadastrar');
+      cadastro.classList.remove('hide');
+    })
+</script>
