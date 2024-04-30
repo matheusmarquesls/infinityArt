@@ -28,10 +28,10 @@ const serial = async (
             // altere!
             // Credenciais do banco de dados
             host: 'localhost',
-            user: 'root',//USUARIO_DO_BANCO_LOCAL
-            password: 'Neno123321',
+            user: 'artInsert',//USUARIO_DO_BANCO_LOCAL
+            password: 'urubu100',
             database: 'infinityArt', //DATABASE_LOCAL
-            port: 3306
+            port: 3307
         }
     ).promise();
 
