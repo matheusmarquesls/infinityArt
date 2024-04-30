@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>ambientes</title>
+    <script src="https://kit.fontawesome.com/80ec270284.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -47,15 +48,21 @@
 
             <div class="center">
 
-                <div class="cadEnd">
+                <div class="cover">
 
-                    <div class="inputsCal">
+                    <div class="form">
 
                     <div class="title"> Cadastre seus Ambientes </div>
-
+                    
+                    <label class="label-input" for="">
+                    <i class="fa-solid fa-house-user icon-modify"></i>
                     <input class="input-style" type="text" placeholder="Nome Endereço"> 
+                    </label>
+                    
+                    <label class="label-input" for="">
+                    <i class="fa-solid fa-globe icon-modify"> </i>
 
-                    <select  class="input-style"  id="selectEstado">
+                    <select id="selectEstado"> 
 
                         <option value="#" selected disabled> Estado </option>
                         <option value="AC"> Acre </option>
@@ -87,16 +94,32 @@
                         <option value="TO"> Tocantins </option>
 
                     </select> 
-                    
+                    </label>
+
+                    <label class="label-input" for="">
+                    <i class="fa-solid fa-city icon-modify"></i>
                     <input class="input-style" type="text" placeholder="Cidade"> 
+                    </label>
 
+                    <label class="label-input" for="">
+                    <i class="fa-solid fa-tree icon-modify"></i>
                     <input class="input-style" type="text" placeholder="Bairro"> 
+                    </label>
 
+                    <label class="label-input" for="">
+                    <i class="fa-solid fa-road icon-modify"></i>
                     <input class="input-style" type="text" placeholder="Rua"> 
+                    </label>
 
-                    <input class="input-style" type="text" placeholder="Complemento"> 
+                    <label class="label-input" for="">
+                    <i class="fa-solid fa-circle-plus icon-modify"></i>
+                    <input class="input-style" type="text" placeholder="Complemento (Opicional)"> 
+                    </label>
 
+                    <label class="label-input" for="">
+                    <i class="fa-solid fa-map-location-dot icon-modify"></i>
                     <input class="input-style" type="text" placeholder="CEP">
+                    </label>
 
                     <button class="botao"> Cadastrar </button>
 
