@@ -18,7 +18,10 @@ const HABILITAR_OPERACAO_INSERIR = true;
 const serial = async (
     valoresDht11Umidade,
     valoresDht11Temperatura,
-    valoresLuminosidade
+    valoresLuminosidade,
+    valoresDht11Umidade2,
+    valoresDht11Temperatura2,
+    valoresLuminosidade2
 ) => {
     let poolBancoDados = ''
 
@@ -27,7 +30,7 @@ const serial = async (
         {
             // altere!
             // Credenciais do banco de dados
-            host: 'localhost',
+            host: '10.18.36.191',
             user: 'artInsert',//USUARIO_DO_BANCO_LOCAL
             password: 'urubu100',
             database: 'infinityArt', //DATABASE_LOCAL
@@ -62,11 +65,17 @@ const serial = async (
         const dht11Umidade = parseFloat(valores[0]);
         const dht11Temperatura = parseFloat(valores[1]);
         const luminosidade = parseFloat(valores[2]);
+        const dht11Umidade2 = parseFloat(valores[3]);
+        const dht11Temperatura2 = parseFloat(valores[4]);
+        const luminosidade2 = parseFloat(valores[5]);
 
         // Armazena os valores dos sensores nos arrays correspondentes
         valoresDht11Umidade.push(dht11Umidade);
         valoresDht11Temperatura.push(dht11Temperatura);
         valoresLuminosidade.push(luminosidade);
+        valoresDht11Umidade2.push(dht11Umidade2);
+        valoresDht11Temperatura2.push(dht11Temperatura2);
+        valoresLuminosidade2.push(luminosidade2);
 
         // Insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
@@ -74,12 +83,20 @@ const serial = async (
             // altere!
             // Este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO leitura_umi (fkSensor, dht11_umidade, dht11_temperatura) VALUES (1, ?, ?)',
-                [dht11Umidade]
+                'INSERT INTO leitura_dht11 (fkSensor, dht11_umidade, dht11_temperatura) VALUES (1, 1, 1, ?, ?)',
+                [dht11Umidade, dht11Temperatura]
             );
             await poolBancoDados.execute(
-                'INSERT INTO leitura_ldr (fkSensor, ldr_lux) VALUES (2, ?)',
+                'INSERT INTO leitura_ldr (fkSensor, ldr_lux) VALUES (2, 1, 1, ?)',
                 [luminosidade]
+            );
+            await poolBancoDados.execute(
+                'INSERT INTO leitura_dht11 (fkSensor, dht11_umidade, dht11_temperatura) VALUES (1, 1, 2, ?, ?)',
+                [dht11Umidade2, dht11Temperatura2]
+            );
+            await poolBancoDados.execute(
+                'INSERT INTO leitura_ldr (fkSensor, ldr_lux) VALUES (2, 1, 2, ?)',
+                [luminosidade2]
             );
             console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura + ", " + luminosidade)
         
