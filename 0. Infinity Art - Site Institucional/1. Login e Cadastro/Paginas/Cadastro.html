@@ -50,25 +50,25 @@
                 <!-- NOME INPUT -->
                 <label class="label-input" for="">
                     <i class="fa-regular fa-user icon-modify"></i>
-                    <input type="text" placeholder="nome">
+                    <input type="text" placeholder="nome" id="input_nome">
                 </label>
                 <!-- SOBRENOME INPUT -->
                 <label class="label-input" for="">
                     <i class="fa-regular fa-user icon-modify"></i>
-                    <input type="text" placeholder="sobrenome">
+                    <input type="text" placeholder="sobrenome" id="input_sobrenome">
                 </label>
                 <!-- EMAIL INPUT -->
                 <label class="label-input" for="">
                     <i class="fa-regular fa-envelope icon-modify"></i>
-                    <input type="email" placeholder="email">
+                    <input type="email" placeholder="email" id="input_email">
                 </label>
                 <!-- SENHA INPUT-->
                 <label class="label-input" for="">
                     <i class="fa-solid fa-lock icon-modify"></i>
-                    <input type="password" placeholder="senha">
+                    <input type="password" placeholder="senha" id="input_senha">
                 </label>
                 <!-- BOTAO 2 -->
-                <button class="btn-form">Inscrever</button>
+                <button class="btn-form" onclick="validacao()">Inscrever</button>
             </form>
             <!-- FORMULARIO LOGIN -->
             <form class="form" id="login">
@@ -143,4 +143,37 @@
       const cadastro = document.getElementById('chamada-cadastrar');
       cadastro.classList.remove('hide');
     })
+
+  /*  function transferir(){
+
+        
+        if(!validacao(nome, sobrenome, email, senha)){
+            alert('ERRO: Algum campo vazio')
+                return;
+        
+        }
+    }*/
+ // pegando as inputs e declarando como variaveis "globais" para facilitar a validação
+        let nome = input_nome.value;
+        let sobrenome = input_sobrenome.value;
+        let email = input_email.value;
+        let senha = input_senha.value;
+
+    function validacao(){
+
+        let caracteresEspeciais = '@#$%¨&*!'
+        if(nome == `` || 
+        sobrenome == ``||
+        email == ``||
+        senha == ``){
+            alert('ERRO: CAMPOS VAZIOS')
+        } if(email.indexOf('@') == -1){
+            alert('ERRO: SEM @ NO EMAIL')
+        }
+         if(senha.indexOf(caracteresEspeciais) == -1
+    || senha.length < 5 ){
+            alert('ERRO: SENHA SEM CARACTERES ESPECIAIS OU MUITO CURTA')
+        }
+        
+    }
 </script>
