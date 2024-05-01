@@ -11,14 +11,16 @@
 html {
     --branco: rgb(255, 255, 255);
     --cinza: rgb(211, 207, 208);
-    --vermelho: #831c1a;
-    --marrom: #3b1102;
+    --vermelho: rgb(131, 28, 26);
+    --marrom: rgb(59, 17, 2);
     --preto: rgb(13, 0, 0);
 }
 .container {
     width: 1140px;
 }
+
 /*HEADER*/
+
 
 /* NAV ICON */
 .header-center {
