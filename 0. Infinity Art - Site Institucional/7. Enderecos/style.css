@@ -1,6 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Exo:ital,wght@0,100..900;1,100..900&family=Jaldi:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700;800;900&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 html {
   --branco: rgb(255, 255, 255);
   --cinza: rgb(211, 207, 208);
@@ -9,11 +14,6 @@ html {
   --preto: rgb(13, 0, 0);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 body {
   background-color: #fafafa;
   font-size: 16px;
@@ -129,7 +129,7 @@ header a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 110vh;
+  height: 120vh;
   background-image: url("../3. src/img/bgEndereco.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -144,7 +144,6 @@ header a:hover {
   display: flex;
   background-color: rgb(255, 255, 255);
   width: 100%;
-  /* padding: 42px; */
   border-radius: 24px;
   justify-content: space-between;
 }
@@ -163,7 +162,7 @@ header a:hover {
   justify-content: center;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  margin-bottom: 25px;
+  margin-bottom: 16px;
   font-size: 32px;
   color: var(--marrom);
 }
@@ -172,9 +171,8 @@ header a:hover {
   flex-direction: column;
   width: 50%;
   display: flex;
-  gap: 0.4rem;
   align-items: center;
-  padding: 32px;
+  padding: 8px;
 }
 
 .form input {
@@ -200,7 +198,7 @@ header a:hover {
   background-color: rgb(200, 200, 200);
   display: flex;
   align-items: center;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   width: 90%;
 }
 

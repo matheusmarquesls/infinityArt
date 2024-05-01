@@ -218,7 +218,7 @@ html {
     margin-bottom: 24px;
     color: white;
 }
-button {
+.conteudo button {
     border-radius: 15px;
     text-transform: uppercase;
     color: white;
@@ -227,12 +227,11 @@ button {
     cursor: pointer;
     font-weight: bold;
     align-self: center;
-    border: none;
     margin-top: 1rem;
 }
 .btn-form{
     background-color: var(--marrom);
-    border: 1px solid var(--marrom);
+    border: 1px solid white;
 }
 .btn-form:hover{
     background-color: white;

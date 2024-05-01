@@ -10,7 +10,7 @@
 html {
   --branco: rgb(255, 255, 255); 
   --cinza: rgb(211, 207, 208); 
-  --vermelho: rgb(131, 28, 26);
+  --vermelho: #831c1a;
   --marrom: rgb(59, 17, 2);
   --preto: rgb(13, 0, 0); 
 }
@@ -281,8 +281,9 @@ body {
 
  /* SESSAO SIMULE AQUI */
 .simuleaqui {
-  background-image: url("../img/bgSimuleaqui.jpg");
-  background-position: cover;
+  background-color: var(--cinza);
+  background-image: url("../img/bgSimuleaqui\ -\ V2.png");
+  background-size: 300px;
   
   display: flex;
   justify-content: center;
@@ -295,22 +296,23 @@ body {
   align-items: center;
 }
 .simuleaqui .content {
+  width: 65%;
   border-radius: 20px;
   padding: 50px;
-  background-color: rgba(0, 0, 0, 0.35);
+  background-color: rgba(0, 0, 0, 0.75);
   box-shadow: rgba(0, 0, 0, 0.24) 12px 12px 8px;
 }
 .simuleaqui .title {
+  color: var(--branco);
   font-family: "Poppins", sans-serif;
   font-weight: 900;
   display: block;
   margin-bottom: 60px;
 }
 .simuleaqui .bar-title {
-  background-color: black;
+  background-color: var(--cinza);
 }
 .simuleaqui .text {
-  width: 900px;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -329,20 +331,21 @@ body {
   justify-content: center;
   align-items: center;
 }
-.btn {
+.btn-section .btn {
+  border: solid 1px var(--branco);
   width: 200px;
   height: 60px;
   border-radius: 20px;
   background-color: transparent;
-  color: black;
+  color: white;
   font-size: 25px;
   font-weight: 800;
   cursor: pointer;
-  transition: all 0.5s;
+  transition: all 0.4s ease-in-out;
 }
 .btn:hover {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 }
  
 /* SESSAO NOSSO NEGOCIO */
