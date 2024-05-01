@@ -226,13 +226,14 @@ button {
   align-self: center;
   border: none;
   margin-top: 1rem;
+  border: solid 1px var(--marrom);
+
 }
 
  button:hover {
   transition: all 0.5s;
   background-color: transparent;
   color: var(--marrom);
-  border: solid 1px var(--marrom);
 }
 
 .div_orientacoes {
