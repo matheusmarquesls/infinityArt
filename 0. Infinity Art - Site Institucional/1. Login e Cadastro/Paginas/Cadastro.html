@@ -68,7 +68,7 @@
                     <input type="password" placeholder="senha" id="input_senha">
                 </label>
                 <!-- BOTAO 2 -->
-                <button class="btn-form" onclick="validacao()">Inscrever</button>
+                <button class="btn-form" onclick="cadastrar()">Inscrever</button>
             </form>
             <!-- FORMULARIO LOGIN -->
             <form class="form" id="login">
@@ -144,43 +144,40 @@
       cadastro.classList.remove('hide');
     })
 
-  /*  function transferir(){
 
-        
-        if(!validacao(nome, sobrenome, email, senha)){
-            alert('ERRO: Algum campo vazio')
-                return;
-        
-        }
-    }*/
- // pegando as inputs e declarando como variaveis "globais" para facilitar a validação
-        
 
-    function validacao(){
+
+    function cadastrar(){
 
         let nome = input_nome.value;
         let sobrenome = input_sobrenome.value;
         let email = input_email.value;
         let senha = input_senha.value;
         let caracterEspeciais = "!@#$%&*"
-        
 
                 if(nome == "" || sobrenome == "" || email == "" || senha == ""){
                     alert(`preencha todos os campos`)
-
+                    
                 }
-                if(email.indexOf("@") == - 1){
+                else if(email.indexOf("@") == -1){
                     alert(`coloque o @ no email`)
+                      
                 }
-                if(senha.indexOf(caracterEspeciais) == -1 && senha.length <10 && senha.indexOf(senha.toUpperCase(senha.length <10))){
+               else if(senha.indexOf(caracterEspeciais) == -1 && senha.length <10 && senha.indexOf(senha.toUpperCase(senha.length <10))){
                     alert(`necessario coloca caracter Especias 
                       ter mais de 10 caracter 
                       ter um caracter maiusculo `)
-                }else{
-
-                    
+                      
                 }
+            
+                else{
+                    alert('Cadastro realizado!')
+                    /*
+                    chama função para pagina do login
+                    */
+                }
+       
                 
-
     }
+
 </script>
