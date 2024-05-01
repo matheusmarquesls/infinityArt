@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Exo:ital,wght@0,100..900;1,100..900&family=Jaldi:wght@400;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700;800;900&display=swap');
 
 * {
     margin: 0;
@@ -7,7 +6,7 @@
     box-sizing: border-box;
 
     text-decoration: none;
-    font-family: "Open Sans", sans-serif;
+    font-family: "poppins", sans-serif;
     color: black;
 }
 
@@ -18,6 +17,13 @@ body {
     background-repeat: no-repeat;
 }
 
+html {
+    --branco: rgb(255, 255, 255);
+    --cinza: rgb(211, 207, 208);
+    --vermelho: #831c1a;
+    --marrom: #3b1102;
+    --preto: rgb(13, 0, 0);
+  }
 /* LOGIN */
 .container {
     display: flex;
@@ -65,18 +71,23 @@ body {
   left: 0;
   height: 100%;
   width: 50%;
-  background-image: linear-gradient(to right top, #8a2be2, #8026d3, #7621c5, #6d1cb7, #6317a9);
+  /* background-color: var(--marrom); */
   z-index: 1;
   transition: 1s all ease;
+
+  background: rgb(113, 24, 22);
+background: radial-gradient(circle,rgb(113, 24, 22) 2%, rgba(59,17,2,1) 70%);
 }
 
 .titulo {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     text-transform: capitalize; 
+    margin-bottom: 0px;
+
 }
 .form .titulo{
-    color: purple;
+    color: var(--marrom);
 }
 .chamada .titulo {
     color: white;
@@ -87,12 +98,12 @@ body {
     line-height: 30px;
 }
 .form .descricao{
-  margin: 0 0 24px;
+  margin: 0 0 10px;
     color: #7f8c8d;
 }
 .chamada .descricao{
-  margin: 24px 0;
-  color: white;
+    margin-bottom: 24px;
+    color: white;
 }
 button {
     border-radius: 15px;
@@ -107,13 +118,13 @@ button {
     margin-top: 1rem;
 }
 .btn-form{
-    background-color: purple;
-    border: 1px solid purple;
+    background-color: var(--marrom);
+    border: 1px solid var(--marrom);
 }
 .btn-form:hover{
     background-color: white;
-    border: 1px solid purple;
-    color: purple;
+    border: 1px solid --marrom;
+    color: var(--marrom);
 }
 
  .btn-chamada {
@@ -123,7 +134,7 @@ button {
 
 .btn-chamada:hover {
 background-color: white ;
-color: purple;
+color: var(--marrom);
 }
 
 .form {
@@ -152,7 +163,7 @@ color: purple;
     width: 70%;
 }
 .icon-modify{
-    color: purple;
+    color: var(--marrom);
     padding: 10px;
     position: absolute;
     z-index: 1;
