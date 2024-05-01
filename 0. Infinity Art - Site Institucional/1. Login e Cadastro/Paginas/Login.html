@@ -10,86 +10,108 @@
 </head>
 
 <body>
+    <header class="header-center">
+        <div class="container">
+            <nav class="header-nav">
 
-    <div class="container">
-        <div class="conteudo">
+                <!-- NAV LOGO -->
+                <div class="nav-logo">
+                    <img class="logotipo" src="../../3. src/img/art-icon.png" alt="">
+                </div>
 
-            <form class="form" id="cadastrar">
-                <!-- TITULO -->
-                <h2 class="titulo">Criar conta</h2>
-                <p class="descricao">Informe seus dados cadastrais e faça parte de nós! </p>
-                <!-- NOME INPUT -->
-                <label class="label-input" for="">
-                    <i class="fa-regular fa-user icon-modify"></i>
-                    <input type="text" placeholder="nome">
-                </label>
-
-                <!-- SOBRENOME INPUT -->
-                <label class="label-input" for="">
-                    <i class="fa-regular fa-user icon-modify"></i>
-                    <input type="text" placeholder="sobrenome">
-                </label>
-
-                <!-- EMAIL INPUT -->
-                <label class="label-input" for="">
-                    <i class="fa-regular fa-envelope icon-modify"></i>
-                    <input type="email" placeholder="email">
-                </label>
-
-                <!-- SENHA INPUT-->
-                <label class="label-input" for="">
-                    <i class="fa-solid fa-lock icon-modify"></i>
-                    <input type="password" placeholder="senha">
-                </label>
-
-                <!-- BOTAO 2 -->
-                <button class="btn-form">Inscrever</button>
-
-            </form>
-
-            <!-- FORMULARIO LOGIN -->
-            <form class="form" id="login">
-
-                <!-- TITULO-->
-                <h2 class="titulo">Entrar</h2>
-                <p class="descricao">Informe suas credencias para acessar sua área</p>
-
-                <!-- EMAIL INPUT -->
-                <label class="label-input" for="">
-                    <i class="fa-regular fa-envelope icon-modify icon"></i>
-                    <input type="email" placeholder="email">
-                </label>
-
-                <!-- SENHA INPUT-->
-                <label class="label-input" for="">
-                    <i class="fa-solid fa-lock icon-modify icon"></i>
-                    <input type="password" placeholder="senha">
-                </label>
-
-                <a href="">Esqueceu a senha?</a>
-                <button class="btn-form">Entrar</button>
-            </form>
-
-            <!-- CHAMADA LOGIN -->
-            <div class="chamada hide" id="chamada-login">
-                <h1 class="titulo">Bem vindo de volta!</h1>
-                <p class="descricao">Mantenha-se conectado e tenha acesso a área do usuário</p>
-                <button class="btn-chamada" id="chamada-login-btn">Tenho Cadastro</button>
-            </div>
-
-            <!-- CHAMADA CADASTRO -->
-            <div class="chamada" id="chamada-cadastrar">
-                <h1 class="titulo">Boas Vindas a Infinity Art!</h1>
-                <p class="descricao">Insira seus dados cadastrais e faça parte de nós!</p>
-                <button class="btn-chamada" id="chamada-cadastro-btn">Não Tenho Cadastro</button>
-            </div>
-
-            <div id="cobertura"></div>
+                    <!-- NAV LIST -->
+                    <ul class="header-ul">
+                        <li><a href="#banner">Página Inicial</a></li>
+                        <li><a href="#sobrenos">Sobre Nós</a></li>
+                        <li><a href="#simuleaqui">Simulador<br>Financeiro</a></li>
+                        <li><a href="#negocio">Nosso<br>Negócio</a></li>
+                        <li><a href="#contatos">Fale<br>Conosco</a></li>
+                    </ul>
+                
+                    <!-- NAV BUTTON -->
+                    <div class="nav-button">
+                        <a target="blank" href="../1. Login e Cadastro/Paginas/Login.html"><button class="login" onclick=""> Entrar </button></a>
+                        <a target="blank" href="../1. Login e Cadastro/Paginas/Cadastro.html"><button class="cadastro" onclick=""> Cadastro </button> </a>
+                    </div>
+            </nav>
         </div>
-    </div>
+
+    </header>
 
 
-    </div>
+    <section class="formulario">
+        <div class="container">
+            <div class="conteudo">
+                <form class="form" id="cadastrar">
+                    <!-- TITULO -->
+                    <h2 class="titulo">Criar conta</h2>
+                    <p class="descricao">Informe seus dados cadastrais e faça parte de nós! </p>
+
+                    <!-- NOME INPUT -->
+                    <label class="label-input" for="">
+                        <i class="fa-regular fa-user icon-modify"></i>
+                        <input type="text" placeholder="nome">
+                    </label>
+                    <!-- SOBRENOME INPUT -->
+                    <label class="label-input" for="">
+                        <i class="fa-regular fa-user icon-modify"></i>
+                        <input type="text" placeholder="sobrenome">
+                    </label>
+                    <!-- EMAIL INPUT -->
+                    <label class="label-input" for="">
+                        <i class="fa-regular fa-envelope icon-modify"></i>
+                        <input type="email" placeholder="email">
+                    </label>
+                    <!-- SENHA INPUT-->
+                    <label class="label-input" for="">
+                        <i class="fa-solid fa-lock icon-modify"></i>
+                        <input type="password" placeholder="senha">
+                    </label>
+                    <!-- BOTAO 2 -->
+                    <button class="btn-form">Inscrever</button>
+                </form>
+                <!-- FORMULARIO LOGIN -->
+                <form class="form" id="login">
+                    <!-- TITULO-->
+                    <h2 class="titulo">Entrar</h2>
+                    <p class="descricao">Informe suas credencias para acessar sua área</p>
+                    <!-- EMAIL INPUT -->
+                    <label class="label-input" for="">
+                        <i class="fa-regular fa-envelope icon-modify icon"></i>
+                        <input type="email" placeholder="email">
+                    </label>
+                    <!-- SENHA INPUT-->
+                    <label class="label-input" for="">
+                        <i class="fa-solid fa-lock icon-modify icon"></i>
+                        <input type="password" placeholder="senha">
+                    </label>
+                    <a href="">Esqueceu a senha?</a>
+                    <button class="btn-form">Entrar</button>
+                </form>
+                <!-- CHAMADA LOGIN -->
+                <div class="chamada hide" id="chamada-login">
+                    <h1 class="titulo">Bem vindo de volta!</h1>
+                    <p class="descricao">Mantenha-se conectado e tenha acesso a área do usuário</p>
+                    <button class="btn-chamada" id="chamada-login-btn">Tenho Cadastro</button>
+                </div>
+                <!-- CHAMADA CADASTRO -->
+                <div class="chamada" id="chamada-cadastrar">
+                    <h1 class="titulo">Boas vindas a Infinity Art!</h1>
+                    <p class="descricao">Insira seus dados cadastrais e faça parte de nós!</p>
+                    <button class="btn-chamada" id="chamada-cadastro-btn">Não Tenho Cadastro</button>
+                </div>
+                <div id="cobertura"></div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <footer class="rodape">
+        <div class="container">
+            <p>Infinity Art</p>
+            <p>Todos os direitos reservados </p>
+            <p>©2024</p>
+        </div>
+       </footer>
 
 
 </body>
@@ -99,6 +121,7 @@
 <script>
      document.getElementById('chamada-cadastro-btn').addEventListener('click',  function () {
       const cobertura = document.getElementById('cobertura');
+
       cobertura.classList.add('right');
       cobertura.classList.remove('left');
       
