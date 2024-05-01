@@ -154,26 +154,33 @@
         }
     }*/
  // pegando as inputs e declarando como variaveis "globais" para facilitar a validação
+        
+
+    function validacao(){
+
         let nome = input_nome.value;
         let sobrenome = input_sobrenome.value;
         let email = input_email.value;
         let senha = input_senha.value;
-
-    function validacao(){
-
-        let caracteresEspeciais = '@#$%¨&*!'
-        if(nome == `` || 
-        sobrenome == ``||
-        email == ``||
-        senha == ``){
-            alert('ERRO: CAMPOS VAZIOS')
-        } if(email.indexOf('@') == -1){
-            alert('ERRO: SEM @ NO EMAIL')
-        }
-         if(senha.indexOf(caracteresEspeciais) == -1
-    || senha.length < 5 ){
-            alert('ERRO: SENHA SEM CARACTERES ESPECIAIS OU MUITO CURTA')
-        }
+        let caracterEspeciais = "!@#$%&*"
         
+
+                if(nome == "" || sobrenome == "" || email == "" || senha == ""){
+                    alert(`preencha todos os campos`)
+
+                }
+                if(email.indexOf("@") == - 1){
+                    alert(`coloque o @ no email`)
+                }
+                if(senha.indexOf(caracterEspeciais) == -1 && senha.length <10 && senha.indexOf(senha.toUpperCase(senha.length <10))){
+                    alert(`necessario coloca caracter Especias 
+                      ter mais de 10 caracter 
+                      ter um caracter maiusculo `)
+                }else{
+
+                    
+                }
+                
+
     }
 </script>
