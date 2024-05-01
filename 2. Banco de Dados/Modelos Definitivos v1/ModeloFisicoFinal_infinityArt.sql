@@ -1,8 +1,6 @@
 create database infinityArt;
 use infinityArt;
 
-drop database infinityArt;
-
 create table cliente (
 idCliente int auto_increment,
 nome varchar(45) not null,
@@ -11,7 +9,7 @@ primary key (idCliente)
 ) auto_increment = 100;
 
 insert into cliente values
-(default, 'Denyel', 'Henry');
+(default, 'Clauido', 'Frizzarini');
 
 create table usuario(
 idCadastro int auto_increment,
@@ -23,7 +21,7 @@ primary key (idCadastro, fkCliente)
 );
 
 insert into usuario values
-(default, 100, 'denyel@gmail.com', '0900');
+(default, 100, 'frizza@sptech.school', '1234');
 
 create table endereco (
 idEndereco int auto_increment,
@@ -40,7 +38,8 @@ primary key (idEndereco, fkCliente)
 );
 
 insert into endereco values
-(default, '100', 'Casa', 'RJ', 'XXX', 'XXX', 'XXX', 'XXX', '123456789');
+(default, '100', 'Casa', 'RJ', 'XXX', 'XXX', 'XXX', 'XXX', '123456789'),
+(default, '100', 'Galpao', 'SP', 'XXX', 'XXX', 'XXX', 'XXX', '987654321');
 
 create table ambiente (
 idAmbiente int auto_increment,
@@ -53,39 +52,54 @@ primary key (idAmbiente, fkEndereco)
 ) auto_increment = 1000;
 
 insert into ambiente values
-(default, 1, 'Quarto', 34, 'Meu quarto');
+(default, 1, 'Quarto', 34, 'Meu quarto'),
+(default, 2, 'Galpão 1', 12, 'Galpão das Obras');
 
 create table sensor (
 idSensor int auto_increment,
+fkAmbiente int,
+fkEndereco int,
 nome varchar(45) not null,
 tipo varchar(45) not null,
 dtInstalacao date,
-fkAmbiente int,
 constraint fk_sensor_amb foreign key (fkAmbiente) references ambiente(idAmbiente),
-primary key (idSensor)
+constraint fk_sensor_end foreign key (fkEndereco) references endereco(idEndereco),
+primary key (idSensor, fkAmbiente, fkEndereco)
 );
 
 insert into sensor values
-(default, 'DHT11', 'Temperatura & Umidade', '2005-01-01', 1000),
-(default, 'LDR', 'Luminosidade', '2005-01-01', 1000);
+(1, 1000, 1, 'DHT11', 'Temperatura & Umidade', '2005-01-01'),
+(2, 1000, 1, 'LDR', 'Luminosidade', '2005-01-01'),
+(1, 1001, 2, 'DHT11', 'Temperatura & Umidade', '2005-01-01'),
+(2, 1001, 2, 'LDR', 'Luminosidade', '2005-01-01');
 
 create table leitura_dht11 (
-sequenciaLeitura int auto_increment,
 fkSensor int,
+fkAmbiente int,
+fkEndereco int,
+sequenciaLeitura int auto_increment,
 dht11_umidade decimal(10,2) not null,
 dht11_temperatura decimal(10,2) not null,
 dtLeitura datetime not null default current_timestamp,
-constraint fk_sensor_temp foreign key (fkSensor) references sensor(idSensor),
-primary key (sequenciaLeitura, fkSensor)
+constraint fk_sensor_dht11 foreign key (fkSensor) references sensor(idSensor),
+constraint fk_sensor_dht11_amb foreign key (fkAmbiente) references ambiente(idAmbiente),
+constraint fk_sensor_dht11_end foreign key (fkEndereco) references endereco(idEndereco),
+primary key (sequenciaLeitura),
+unique key (fkSensor, fkAmbiente, fkEndereco, sequenciaLeitura)
 );
 
 create table leitura_ldr (
-sequenciaLeitura int auto_increment,
 fkSensor int,
+fkAmbiente int,
+fkEndereco int,
+sequenciaLeitura int auto_increment,
 ldr_lux decimal(10,2) not null,
 dtLeitura datetime not null default current_timestamp,
-constraint fk_sensor_lux foreign key (fkSensor) references sensor(idSensor),
-primary key (sequenciaLeitura, fkSensor)
+constraint fk_sensor_ldr foreign key (fkSensor) references sensor(idSensor),
+constraint fk_sensor_ldr_amb foreign key (fkAmbiente) references ambiente(idAmbiente),
+constraint fk_sensor_ldr_end foreign key (fkEndereco) references endereco(idEndereco),
+primary key (sequenciaLeitura),
+unique key (fkSensor, fkAmbiente, fkEndereco, sequenciaLeitura)
 );
 
 create table acervo (

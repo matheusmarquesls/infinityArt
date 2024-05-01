@@ -19,6 +19,7 @@ const serial = async (
     valoresDht11Umidade,
     valoresDht11Temperatura,
     valoresLuminosidade,
+
     valoresDht11Umidade2,
     valoresDht11Temperatura2,
     valoresLuminosidade2
@@ -62,9 +63,11 @@ const serial = async (
     arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
         console.log(data);
         const valores = data.split(';');
+
         const dht11Umidade = parseFloat(valores[0]);
         const dht11Temperatura = parseFloat(valores[1]);
         const luminosidade = parseFloat(valores[2]);
+
         const dht11Umidade2 = parseFloat(valores[3]);
         const dht11Temperatura2 = parseFloat(valores[4]);
         const luminosidade2 = parseFloat(valores[5]);
@@ -73,9 +76,10 @@ const serial = async (
         valoresDht11Umidade.push(dht11Umidade);
         valoresDht11Temperatura.push(dht11Temperatura);
         valoresLuminosidade.push(luminosidade);
-        valoresDht11Umidade2.push(dht11Umidade2);
-        valoresDht11Temperatura2.push(dht11Temperatura2);
-        valoresLuminosidade2.push(luminosidade2);
+
+        valoresDht11Umidade.push(dht11Umidade2);
+        valoresDht11Temperatura.push(dht11Temperatura2);
+        valoresLuminosidade.push(luminosidade2);
 
         // Insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
@@ -99,6 +103,7 @@ const serial = async (
                 [luminosidade2]
             );
             console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura + ", " + luminosidade)
+            console.log("valores simulação inseridos no banco: ", dht11Umidade2 + ", " + dht11Temperatura2 + ", " + luminosidade2)
         
         }
         
