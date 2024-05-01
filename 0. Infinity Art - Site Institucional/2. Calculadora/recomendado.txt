@@ -1,0 +1,18 @@
+     <!-- <div id="div_recomendado" style="display: none;">
+
+                <b>Tipo de tinta selecionada:</b> Acrílica <br>
+                <b>Nível de umidade relativa recomendada:</b> 40-60% <br>
+                <b>Níveis recomendados de luminosidade:</b> 50 lux no máximo <br>
+                <b>Níveis de temperatura recomendos:</b> 18-21 ºC <br><br>
+
+                <b>Tipo de tinta selecionada:</b>Óleo <br>
+                <b>Nível de umidade relativa recomendada:</b> 40-45% <br>
+                <b>Níveis recomendados de luminosidade:</b> 200 lux no máximo <br>
+                <b>Níveis de temperatura recomendos:</b> 18-21 ºC <br><br>
+
+                <b>Tipo de tinta selecionada:</b> Guache <br>
+                <b>Nível de umidade relativa recomendada:</b> 45-55% <br>
+                <b>Níveis recomendados de luminosidade:</b> 50 lux no máximo <br>
+                <b>Níveis de temperatura recomendos:</b> 20 ºC <br>
+
+            </div> -->
