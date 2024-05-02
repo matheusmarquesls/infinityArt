@@ -20,9 +20,9 @@ const serial = async (
     valoresDht11Temperatura,
     valoresLuminosidade,
 
-    valoresDht11Umidade2,
-    valoresDht11Temperatura2,
-    valoresLuminosidade2
+    valoresDht11UmidadeDois,
+    valoresDht11TemperaturaDois,
+    valoresLuminosidadeDois
 ) => {
     let poolBancoDados = ''
 
@@ -68,18 +68,18 @@ const serial = async (
         const dht11Temperatura = parseFloat(valores[1]);
         const luminosidade = parseFloat(valores[2]);
 
-        const dht11Umidade2 = parseFloat(valores[3]);
-        const dht11Temperatura2 = parseFloat(valores[4]);
-        const luminosidade2 = parseFloat(valores[5]);
+        const fkdh11Umidade2 = parseFloat(valores[3]);
+        const fkdht11Temperatura2 = parseFloat(valores[4]);
+        const fkluminosidade2 = parseFloat(valores[5]);
 
         // Armazena os valores dos sensores nos arrays correspondentes
         valoresDht11Umidade.push(dht11Umidade);
         valoresDht11Temperatura.push(dht11Temperatura);
         valoresLuminosidade.push(luminosidade);
 
-        valoresDht11Umidade2.push(dht11Umidade2);
-        valoresDht11Temperatura2.push(dht11Temperatura2);
-        valoresLuminosidade2.push(luminosidade2);
+        valoresDht11UmidadeDois.push(fkdh11Umidade2);
+        valoresDht11TemperaturaDois.push(fkdht11Temperatura2);
+        valoresLuminosidadeDois.push(fkluminosidade2);
 
         // Insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
@@ -87,26 +87,24 @@ const serial = async (
             // altere!
             // Este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO leitura_dht11 (fkSensor, dht11_umidade, dht11_temperatura) VALUES (1, 1, 1, ?, ?)',
-                [dht11Umidade, dht11Temperatura]
+
+                'INSERT INTO leitura_dht11 (fkSensor, fkAmbiente, fkEndereco, dht11_umidade, dht11_temperatura) VALUES (1, 1000, 1, ?, ?)',
+                [dht11Umidade, dht11Temperatura],
+                'INSERT INTO leitura_ldr (fkSensor, fkAmbiente, fkEndereco, ldr_lux) VALUES (2, 1000, 1, ?)',
+                [luminosidade],
+                
             );
             await poolBancoDados.execute(
-                'INSERT INTO leitura_ldr (fkSensor, ldr_lux) VALUES (2, 1, 1, ?)',
-                [luminosidade]
-            );
-            await poolBancoDados.execute(
-                'INSERT INTO leitura_dht11 (fkSensor, dht11_umidade, dht11_temperatura) VALUES (1, 1, 2, ?, ?)',
-                [dht11Umidade2, dht11Temperatura2]
-            );
-            await poolBancoDados.execute(
-                'INSERT INTO leitura_ldr (fkSensor, ldr_lux) VALUES (2, 1, 2, ?)',
-                [luminosidade2]
+
+                'INSERT INTO leitura_dht11 (fkSensor, fkAmbiente, fkEndereco, dht11_umidade, dht11_temperatura) VALUES (1, 1001, 2, ?, ?)',
+                [fkdh11Umidade2, fkdht11Temperatura2],
+                'INSERT INTO leitura_ldr (fkSensor, fkAmbiente, fkEndereco, ldr_lux) VALUES (2, 1001, 2, ?)',
+                [fkluminosidade2]
+
             );
             console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura + ", " + luminosidade)
-            console.log("valores simulação inseridos no banco: ", dht11Umidade2 + ", " + dht11Temperatura2 + ", " + luminosidade2)
-        
+            console.log("valores simulação inseridos no banco: ", fkdh11Umidade2 + ", " + fkdht11Temperatura2 + ", " + fkluminosidade2)
         }
-        
     });
 
     // Evento para lidar com erros na comunicação serial
@@ -122,9 +120,9 @@ const servidor = (
     valoresDht11Umidade,
     valoresDht11Temperatura,
     valoresLuminosidade,
-    valoresDht11Umidade2,
-    valoresDht11Temperatura2,
-    valoresLuminosidade2
+    valoresDht11UmidadeDois,
+    valoresDht11TemperaturaDois,
+    valoresLuminosidadeDois
 ) => {
     const app = express();
 
@@ -151,13 +149,13 @@ const servidor = (
         return response.json(valoresLuminosidade);
     });
     app.get('/sensores/dht11/umidade', (_, response) => {
-        return response.json(valoresDht11Umidade2);
+        return response.json(valoresDht11UmidadeDois);
     });
     app.get('/sensores/dht11/temperatura', (_, response) => {
-        return response.json(valoresDht11Temperatura2);
+        return response.json(valoresDht11TemperaturaDois);
     });
     app.get('/sensores/luminosidade', (_, response) => {
-        return response.json(valoresLuminosidade2);
+        return response.json(valoresLuminosidadeDois);
     });
   
 }
@@ -169,9 +167,9 @@ const servidor = (
     const valoresDht11Temperatura = [];
     const valoresLuminosidade = [];
 
-    const valoresDht11Umidade2 = [];
-    const valoresDht11Temperatura2 = [];
-    const valoresLuminosidade2 = [];
+    const valoresDht11UmidadeDois = [];
+    const valoresDht11TemperaturaDois = [];
+    const valoresLuminosidadeDois = [];
     
 
     // Inicia a comunicação serial
@@ -180,9 +178,9 @@ const servidor = (
         valoresDht11Temperatura,
         valoresLuminosidade,
 
-        valoresDht11Umidade2,
-        valoresDht11Temperatura2,
-        valoresLuminosidade2
+        valoresDht11UmidadeDois,
+        valoresDht11TemperaturaDois,
+        valoresLuminosidadeDois
        
     );
 
@@ -192,9 +190,9 @@ const servidor = (
         valoresDht11Temperatura,
         valoresLuminosidade,
         
-        valoresDht11Umidade2,
-        valoresDht11Temperatura2,
-        valoresLuminosidade2
+        valoresDht11UmidadeDois,
+        valoresDht11TemperaturaDois,
+        valoresLuminosidadeDois
        
     );
 })();

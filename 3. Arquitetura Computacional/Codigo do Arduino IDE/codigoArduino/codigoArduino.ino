@@ -1,3 +1,4 @@
+
 #include "DHT.h" //importar biblioteca do DHT
 #define dht_type DHT11 // definir tipo 
 
@@ -45,8 +46,16 @@ void loop() {
     //LDR
     ldr_sensorValue1 = analogRead(ldr_sensorPin); 
     Serial.println(ldr_sensorValue1);
+    
+  }
 
-    //AMBIENTE 2
+   if (isnan(temperatura2) or isnan(umidade2)) { // checando se o valor for inváliado 
+
+    Serial.println("Erro ao ler");
+  
+  } else { 
+    
+    //AMBIENTE 1
    
     Serial.print(umidade2); 
 
@@ -59,11 +68,7 @@ void loop() {
     //LDR
     ldr_sensorValue2 = analogRead(ldr_sensorPin) * 1.2; 
     Serial.println(ldr_sensorValue2);
-
-
-
     
-
   }
-  delay(2000); // delay 👍
+  delay(10000); // delay 👍
 }
