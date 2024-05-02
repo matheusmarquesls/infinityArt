@@ -60,7 +60,7 @@
                 <!-- EMAIL INPUT -->
                 <label class="label-input" for="">
                     <i class="fa-regular fa-envelope icon-modify"></i>
-                    <input type="email" placeholder="email" id="input_email">
+                    <input type="text" placeholder="email" id="input_email">
                 </label>
                 <!-- SENHA INPUT-->
                 <label class="label-input" for="">
@@ -100,6 +100,7 @@
                 <p class="descricao">Insira seus dados cadastrais e faça parte de nós!</p>
                 <button class="btn-chamada" id="chamada-cadastro-btn">Não Tenho Cadastro</button>
             </div>
+            
             <div id="cobertura"></div>
         </div>
     </div>
@@ -154,30 +155,52 @@
         let email = input_email.value;
         let senha = input_senha.value;
         let caracterEspeciais = "!@#$%&*"
+        
+        let validar_nome = nome.length >3
+        let validar_sobrenome = sobrenome.length > 3 && sobrenome.length <=20
+        let validar_email = email.indexOf("@") >= 0
+        let validar_senhaCaraterEspeciais = senha.indexOf(caracterEspeciais) >= 0 
+        let validar_senhaQtdCarater =  senha.length <15  
+        let validar_senhaLetraMaiuscula  = senha.indexOf(senha.toUpperCase(senha.length <20))
+        let validacaoTotal = nome == "" || sobrenome == "" || senha == "" || email == ""
 
-                if(nome == "" || sobrenome == "" || email == "" || senha == ""){
+        if((validacaoTotal || validar_nome || validar_sobrenome || validar_email == false) || validar_senhaCaraterEspeciais ||
+        validar_senhaQtdCarater || validar_senhaLetraMaiuscula == -1 ){
+                if(validacaoTotal == true){
+
                     alert(`preencha todos os campos`)
+
+                   
+                } 
+                if(validar_nome == false){
+                     alert(  `digite o seu nome corretamente`)
+                    }
+                    if(validar_sobrenome == false){
+                       alert(  `digite o seu sobrenome corretamente`)
+                    }
+                    if(validar_email == false){
+                       alert (`digite o seu email corretamente`)
+                    }
                     
+                       if(validar_senhaCaraterEspeciais == -1){
+                        alert (`necessario colocar um caracter especial`)
+                       }
+                       if(validar_senhaQtdCarater == -1){
+                       alert (`necessario colocar nao pode passar de 15 caracter`)
+                    }
+                    if(validar_senhaLetraMaiuscula == -1){
+                        alert (`necessario colocar 1 caracter com a letra maiuscula`)
+                    
+                    }
                 }
-                else if(email.indexOf("@") == -1){
-                    alert(`coloque o @ no email`)
-                      
-                }
-               else if(senha.indexOf(caracterEspeciais) == -1 && senha.length <10 && senha.indexOf(senha.toUpperCase(senha.length <10))){
-                    alert(`necessario coloca caracter Especias 
-                      ter mais de 10 caracter 
-                      ter um caracter maiusculo `)
+                 else{
+                    window.location = "Login.html"
+                 }
                       
                 }
             
-                else{
-                    alert('Cadastro realizado!')
-                    /*
-                    chama função para pagina do login
-                    */
-                }
+        
        
                 
-    }
-
+    
 </script>
