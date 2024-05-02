@@ -160,7 +160,7 @@
         let validar_sobrenome = sobrenome.length > 3 && sobrenome.length <=20
         let validar_email = email.indexOf("@") >= 0
         let validar_senhaCaraterEspeciais = senha.indexOf(caracterEspeciais) >= 0 
-        let validar_senhaQtdCarater =  senha.length <15  
+        let validar_senhaQtdCarater =  senha.length <20
         let validar_senhaLetraMaiuscula  = senha.indexOf(senha.toUpperCase(senha.length <20))
         let validacaoTotal = nome == "" || sobrenome == "" || senha == "" || email == ""
 
@@ -185,16 +185,16 @@
                        if(validar_senhaCaraterEspeciais == -1){
                         alert (`necessario colocar um caracter especial`)
                        }
-                       if(validar_senhaQtdCarater == -1){
-                       alert (`necessario colocar nao pode passar de 15 caracter`)
+                       if(validar_senhaQtdCarater == false){
+                       alert (`necessario colocar nao pode passar de 20 caracter`)
                     }
-                    if(validar_senhaLetraMaiuscula == -1){
+                    if(validar_senhaLetraMaiuscula == false){
                         alert (`necessario colocar 1 caracter com a letra maiuscula`)
                     
                     }
                 }
                  else{
-                    window.location = "Login.html"
+                    window.location.replace("Login.html");
                  }
                       
                 }
