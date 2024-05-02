@@ -77,9 +77,9 @@ const serial = async (
         valoresDht11Temperatura.push(dht11Temperatura);
         valoresLuminosidade.push(luminosidade);
 
-        valoresDht11Umidade.push(dht11Umidade2);
-        valoresDht11Temperatura.push(dht11Temperatura2);
-        valoresLuminosidade.push(luminosidade2);
+        valoresDht11Umidade2.push(dht11Umidade2);
+        valoresDht11Temperatura2.push(dht11Temperatura2);
+        valoresLuminosidade2.push(luminosidade2);
 
         // Insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
@@ -122,8 +122,9 @@ const servidor = (
     valoresDht11Umidade,
     valoresDht11Temperatura,
     valoresLuminosidade,
-    valoresLm35Temperatura,
-    valoresChave
+    valoresDht11Umidade2,
+    valoresDht11Temperatura2,
+    valoresLuminosidade2
 ) => {
     const app = express();
 
@@ -149,12 +150,16 @@ const servidor = (
     app.get('/sensores/luminosidade', (_, response) => {
         return response.json(valoresLuminosidade);
     });
-    app.get('/sensores/lm35/temperatura', (_, response) => {
-        return response.json(valoresLm35Temperatura);
+    app.get('/sensores/dht11/umidade', (_, response) => {
+        return response.json(valoresDht11Umidade2);
     });
-    app.get('/sensores/chave', (_, response) => {
-        return response.json(valoresChave);
+    app.get('/sensores/dht11/temperatura', (_, response) => {
+        return response.json(valoresDht11Temperatura2);
     });
+    app.get('/sensores/luminosidade', (_, response) => {
+        return response.json(valoresLuminosidade2);
+    });
+  
 }
 
 // Função principal assíncrona para iniciar a comunicação serial e o servidor web
@@ -163,16 +168,22 @@ const servidor = (
     const valoresDht11Umidade = [];
     const valoresDht11Temperatura = [];
     const valoresLuminosidade = [];
-    const valoresLm35Temperatura = [];
-    const valoresChave = [];
+
+    const valoresDht11Umidade2 = [];
+    const valoresDht11Temperatura2 = [];
+    const valoresLuminosidade2 = [];
+    
 
     // Inicia a comunicação serial
     await serial(
         valoresDht11Umidade,
         valoresDht11Temperatura,
         valoresLuminosidade,
-        valoresLm35Temperatura,
-        valoresChave
+
+        valoresDht11Umidade2,
+        valoresDht11Temperatura2,
+        valoresLuminosidade2
+       
     );
 
     // Inicia o servidor web
@@ -180,7 +191,10 @@ const servidor = (
         valoresDht11Umidade,
         valoresDht11Temperatura,
         valoresLuminosidade,
-        valoresLm35Temperatura,
-        valoresChave
+        
+        valoresDht11Umidade2,
+        valoresDht11Temperatura2,
+        valoresLuminosidade2
+       
     );
 })();
