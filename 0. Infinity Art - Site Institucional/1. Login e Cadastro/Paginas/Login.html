@@ -50,25 +50,25 @@
                     <!-- NOME INPUT -->
                     <label class="label-input" for="">
                         <i class="fa-regular fa-user icon-modify"></i>
-                        <input type="text" placeholder="nome">
+                        <input type="text" placeholder="nome" id="input_nome">
                     </label>
                     <!-- SOBRENOME INPUT -->
                     <label class="label-input" for="">
                         <i class="fa-regular fa-user icon-modify"></i>
-                        <input type="text" placeholder="sobrenome">
+                        <input type="text" placeholder="sobrenome" id="input_sobrenome">
                     </label>
                     <!-- EMAIL INPUT -->
                     <label class="label-input" for="">
                         <i class="fa-regular fa-envelope icon-modify"></i>
-                        <input type="email" placeholder="email">
+                        <input type="email" placeholder="email" id="input_email">
                     </label>
                     <!-- SENHA INPUT-->
                     <label class="label-input" for="">
                         <i class="fa-solid fa-lock icon-modify"></i>
-                        <input type="password" placeholder="senha">
+                        <input type="password" placeholder="senha" id="input_senha">
                     </label>
                     <!-- BOTAO 2 -->
-                    <button class="btn-form">Inscrever</button>
+                    <button class="btn-form" onclick="cadastrar()">Inscrever</button>
                 </form>
                 <!-- FORMULARIO LOGIN -->
                 <form class="form" id="login">
@@ -119,7 +119,7 @@
 </html>
 
 <script>
-     document.getElementById('chamada-cadastro-btn').addEventListener('click',  function () {
+     document.getElementById('chamada-cadastro-btn').addEventListener('click', function () {
       const cobertura = document.getElementById('cobertura');
 
       cobertura.classList.add('right');
@@ -143,4 +143,59 @@
       const cadastro = document.getElementById('chamada-cadastrar');
       cadastro.classList.remove('hide');
     })
+    
+    function cadastrar() {
+
+let nome = input_nome.value;
+let sobrenome = input_sobrenome.value;
+let email = input_email.value;
+let senha = input_senha.value;
+let caracterEspeciais = "!@#$%&*"
+
+let validar_nome = nome.length > 3;
+let validar_sobrenome = sobrenome.length > 3 && sobrenome.length <= 20;
+let validar_email = email.indexOf("@") >= 0 && email.indexOf(".") >= 0;
+let validar_senhaCaraterEspeciais = senha.indexOf(caracterEspeciais) >= 0;
+let validar_senhaQtdCarater = senha.length >= 8;
+let validar_senhaLetraMaiuscula = senha.indexOf(senha.toUpperCase(senha.length < 20));
+
+let validacaoTotal = nome == "" || sobrenome == "" || senha == "" || email == "";
+
+if (
+    (validacaoTotal == true
+        || validar_nome == false
+        || validar_sobrenome == false
+        || validar_senhaQtdCarater == false
+        || validar_senhaLetraMaiuscula == false
+        || validar_email == false)
+
+    || validar_senhaCaraterEspeciais == -1) {
+
+    if (validacaoTotal == true) {
+        alert(`preencha todos os campos`)
+    }
+    if (validar_nome == false) {
+        alert(`digite o seu nome corretamente`)
+    }
+    if (validar_sobrenome == false) {
+        alert(`digite o seu sobrenome corretamente`)
+    }
+    if (validar_email == false) {
+        alert(`digite o seu email corretamente`)
+    }
+    if (validar_senhaCaraterEspeciais == -1) {
+        alert(`necessario colocar um caracter especial`)
+    }
+    if (validar_senhaQtdCarater == false) {
+        alert(`necessario colocar nao pode passar de 20 caracter`)
+    }
+    if (validar_senhaLetraMaiuscula == false) {
+        alert(`necessario colocar 1 caracter com a letra maiuscula`)
+    }
+}
+else {
+    window.open("../../0. Homepage/Homepage - Logged in/index.html");
+}
+
+}
 </script>

@@ -47,7 +47,7 @@
                 <form class="form" id="cadastrar">
                     <!-- TITULO -->
                     <h2 class="titulo">Criar conta</h2>
-                    <p class="descricao">Insira seus dados cadastrais e faça parte de nós!</p>
+                    <p class="descricao">Informe seus dados cadastrais e faça parte de nós! </p>
 
                     <!-- NOME INPUT -->
                     <label class="label-input" for="">
@@ -62,7 +62,7 @@
                     <!-- EMAIL INPUT -->
                     <label class="label-input" for="">
                         <i class="fa-regular fa-envelope icon-modify"></i>
-                        <input type="text" placeholder="email" id="input_email">
+                        <input type="email" placeholder="email" id="input_email">
                     </label>
                     <!-- SENHA INPUT-->
                     <label class="label-input" for="">
@@ -102,7 +102,6 @@
                     <p class="descricao">Insira seus dados cadastrais e faça parte de nós!</p>
                     <button class="btn-chamada" id="chamada-cadastro-btn">Não Tenho Cadastro</button>
                 </div>
-
                 <div id="cobertura"></div>
             </div>
         </div>
@@ -147,9 +146,6 @@
         cadastro.classList.remove('hide');
     })
 
-
-
-
     function cadastrar() {
 
         let nome = input_nome.value;
@@ -160,10 +156,10 @@
 
         let validar_nome = nome.length > 3;
         let validar_sobrenome = sobrenome.length > 3 && sobrenome.length <= 20;
-        let validar_email = email.indexOf("@") >= 0;
-        let validar_senhaCaraterEspeciais = senha.indexOf(caracterEspeciais) >= 0
-        let validar_senhaQtdCarater = senha.length < 20;
-        let validar_senhaLetraMaiuscula = senha.indexOf(senha.toUpperCase(senha.length < 20))
+        let validar_email = email.indexOf("@") >= 0 && email.indexOf(".") >= 0;
+        let validar_senhaCaraterEspeciais = senha.indexOf(caracterEspeciais) >= 0;
+        let validar_senhaQtdCarater = senha.length >= 8;
+        let validar_senhaLetraMaiuscula = senha.indexOf(senha.toUpperCase(senha.length < 20));
 
         let validacaoTotal = nome == "" || sobrenome == "" || senha == "" || email == "";
 
@@ -178,11 +174,8 @@
             || validar_senhaCaraterEspeciais == -1) {
 
             if (validacaoTotal == true) {
-
                 alert(`preencha todos os campos`)
-
             }
-
             if (validar_nome == false) {
                 alert(`digite o seu nome corretamente`)
             }
@@ -192,7 +185,6 @@
             if (validar_email == false) {
                 alert(`digite o seu email corretamente`)
             }
-
             if (validar_senhaCaraterEspeciais == -1) {
                 alert(`necessario colocar um caracter especial`)
             }
@@ -201,7 +193,6 @@
             }
             if (validar_senhaLetraMaiuscula == false) {
                 alert(`necessario colocar 1 caracter com a letra maiuscula`)
-
             }
         }
         else {
@@ -209,9 +200,4 @@
         }
 
     }
-
-
-
-
-
 </script>
