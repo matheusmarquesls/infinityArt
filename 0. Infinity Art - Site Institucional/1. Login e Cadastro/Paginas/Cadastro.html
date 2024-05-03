@@ -19,20 +19,22 @@
                     <img class="logotipo" src="../../3. src/img/art-icon.png" alt="">
                 </div>
 
-                    <!-- NAV LIST -->
-                    <ul class="header-ul">
-                        <li><a href="#banner">Página Inicial</a></li>
-                        <li><a href="#sobrenos">Sobre Nós</a></li>
-                        <li><a href="#simuleaqui">Simulador<br>Financeiro</a></li>
-                        <li><a href="#negocio">Nosso<br>Negócio</a></li>
-                        <li><a href="#contatos">Fale<br>Conosco</a></li>
-                    </ul>
-                
-                    <!-- NAV BUTTON -->
-                    <div class="nav-button">
-                        <a target="blank" href="../1. Login e Cadastro/Paginas/Login.html"><button class="login" onclick=""> Entrar </button></a>
-                        <a target="blank" href="../1. Login e Cadastro/Paginas/Cadastro.html"><button class="cadastro" onclick=""> Cadastro </button> </a>
-                    </div>
+                <!-- NAV LIST -->
+                <ul class="header-ul">
+                    <li><a href="#banner">Página Inicial</a></li>
+                    <li><a href="#sobrenos">Sobre Nós</a></li>
+                    <li><a href="#simuleaqui">Simulador<br>Financeiro</a></li>
+                    <li><a href="#negocio">Nosso<br>Negócio</a></li>
+                    <li><a href="#contatos">Fale<br>Conosco</a></li>
+                </ul>
+
+                <!-- NAV BUTTON -->
+                <div class="nav-button">
+                    <a target="blank" href="../1. Login e Cadastro/Paginas/Login.html"><button class="login" onclick="">
+                            Entrar </button></a>
+                    <a target="blank" href="../1. Login e Cadastro/Paginas/Cadastro.html"><button class="cadastro"
+                            onclick=""> Cadastro </button> </a>
+                </div>
             </nav>
         </div>
 
@@ -40,79 +42,79 @@
 
 
     <section class="formulario">
-    <div class="container">
-        <div class="conteudo">
-            <form class="form" id="cadastrar">
-                <!-- TITULO -->
-                <h2 class="titulo">Criar conta</h2>
-                <p class="descricao">Insira seus dados cadastrais e faça parte de nós!</p>
+        <div class="container">
+            <div class="conteudo">
+                <form class="form" id="cadastrar">
+                    <!-- TITULO -->
+                    <h2 class="titulo">Criar conta</h2>
+                    <p class="descricao">Insira seus dados cadastrais e faça parte de nós!</p>
 
-                <!-- NOME INPUT -->
-                <label class="label-input" for="">
-                    <i class="fa-regular fa-user icon-modify"></i>
-                    <input type="text" placeholder="nome" id="input_nome">
-                </label>
-                <!-- SOBRENOME INPUT -->
-                <label class="label-input" for="">
-                    <i class="fa-regular fa-user icon-modify"></i>
-                    <input type="text" placeholder="sobrenome" id="input_sobrenome">
-                </label>
-                <!-- EMAIL INPUT -->
-                <label class="label-input" for="">
-                    <i class="fa-regular fa-envelope icon-modify"></i>
-                    <input type="text" placeholder="email" id="input_email">
-                </label>
-                <!-- SENHA INPUT-->
-                <label class="label-input" for="">
-                    <i class="fa-solid fa-lock icon-modify"></i>
-                    <input type="password" placeholder="senha" id="input_senha">
-                </label>
-                <!-- BOTAO 2 -->
-                <button class="btn-form" onclick="cadastrar()">Inscrever</button>
-            </form>
-            <!-- FORMULARIO LOGIN -->
-            <form class="form" id="login">
-                <!-- TITULO-->
-                <h2 class="titulo">Entrar</h2>
-                <p class="descricao">Informe suas credencias para acessar sua área</p>
-                <!-- EMAIL INPUT -->
-                <label class="label-input" for="">
-                    <i class="fa-regular fa-envelope icon-modify icon"></i>
-                    <input type="email" placeholder="email">
-                </label>
-                <!-- SENHA INPUT-->
-                <label class="label-input" for="">
-                    <i class="fa-solid fa-lock icon-modify icon"></i>
-                    <input type="password" placeholder="senha">
-                </label>
-                <a href="">Esqueceu a senha?</a>
-                <button class="btn-form">Entrar</button>
-            </form>
-            <!-- CHAMADA LOGIN -->
-            <div class="chamada" id="chamada-login">
-                <h1 class="titulo">Bem vindo de volta!</h1>
-                <p class="descricao">Mantenha-se conectado e tenha acesso a área do usuário</p>
-                <button class="btn-chamada" id="chamada-login-btn">Tenho Cadastro</button>
+                    <!-- NOME INPUT -->
+                    <label class="label-input" for="">
+                        <i class="fa-regular fa-user icon-modify"></i>
+                        <input type="text" placeholder="nome" id="input_nome">
+                    </label>
+                    <!-- SOBRENOME INPUT -->
+                    <label class="label-input" for="">
+                        <i class="fa-regular fa-user icon-modify"></i>
+                        <input type="text" placeholder="sobrenome" id="input_sobrenome">
+                    </label>
+                    <!-- EMAIL INPUT -->
+                    <label class="label-input" for="">
+                        <i class="fa-regular fa-envelope icon-modify"></i>
+                        <input type="text" placeholder="email" id="input_email">
+                    </label>
+                    <!-- SENHA INPUT-->
+                    <label class="label-input" for="">
+                        <i class="fa-solid fa-lock icon-modify"></i>
+                        <input type="password" placeholder="senha" id="input_senha">
+                    </label>
+                    <!-- BOTAO 2 -->
+                    <button class="btn-form" onclick="cadastrar()">Inscrever</button>
+                </form>
+                <!-- FORMULARIO LOGIN -->
+                <form class="form" id="login">
+                    <!-- TITULO-->
+                    <h2 class="titulo">Entrar</h2>
+                    <p class="descricao">Informe suas credencias para acessar sua área</p>
+                    <!-- EMAIL INPUT -->
+                    <label class="label-input" for="">
+                        <i class="fa-regular fa-envelope icon-modify icon"></i>
+                        <input type="email" placeholder="email">
+                    </label>
+                    <!-- SENHA INPUT-->
+                    <label class="label-input" for="">
+                        <i class="fa-solid fa-lock icon-modify icon"></i>
+                        <input type="password" placeholder="senha">
+                    </label>
+                    <a href="">Esqueceu a senha?</a>
+                    <button class="btn-form">Entrar</button>
+                </form>
+                <!-- CHAMADA LOGIN -->
+                <div class="chamada" id="chamada-login">
+                    <h1 class="titulo">Bem vindo de volta!</h1>
+                    <p class="descricao">Mantenha-se conectado e tenha acesso a área do usuário</p>
+                    <button class="btn-chamada" id="chamada-login-btn">Tenho Cadastro</button>
+                </div>
+                <!-- CHAMADA CADASTRO -->
+                <div class="chamada hide" id="chamada-cadastrar">
+                    <h1 class="titulo">Boas vindas a Infinity Art!</h1>
+                    <p class="descricao">Insira seus dados cadastrais e faça parte de nós!</p>
+                    <button class="btn-chamada" id="chamada-cadastro-btn">Não Tenho Cadastro</button>
+                </div>
+
+                <div id="cobertura"></div>
             </div>
-            <!-- CHAMADA CADASTRO -->
-            <div class="chamada hide" id="chamada-cadastrar">
-                <h1 class="titulo">Boas vindas a Infinity Art!</h1>
-                <p class="descricao">Insira seus dados cadastrais e faça parte de nós!</p>
-                <button class="btn-chamada" id="chamada-cadastro-btn">Não Tenho Cadastro</button>
-            </div>
-            
-            <div id="cobertura"></div>
         </div>
-    </div>
-    </div>
-</section>
-<footer class="rodape">
-    <div class="container">
-        <p>Infinity Art</p>
-        <p>Todos os direitos reservados </p>
-        <p>©2024</p>
-    </div>
-   </footer>
+        </div>
+    </section>
+    <footer class="rodape">
+        <div class="container">
+            <p>Infinity Art</p>
+            <p>Todos os direitos reservados </p>
+            <p>©2024</p>
+        </div>
+    </footer>
 
 
 </body>
@@ -120,87 +122,96 @@
 </html>
 
 <script>
-     document.getElementById('chamada-cadastro-btn').addEventListener('click',  function () {
-      const cobertura = document.getElementById('cobertura');
+    document.getElementById('chamada-cadastro-btn').addEventListener('click', function () {
+        const cobertura = document.getElementById('cobertura');
 
-      cobertura.classList.remove('left');
-      cobertura.classList.add('right');
-      
-      const login = document.getElementById('chamada-login');
-      login.classList.remove('hide');
-  
-      const cadastro = document.getElementById('chamada-cadastrar');
-      cadastro.classList.add('hide');
+        cobertura.classList.remove('left');
+        cobertura.classList.add('right');
+
+        const login = document.getElementById('chamada-login');
+        login.classList.remove('hide');
+
+        const cadastro = document.getElementById('chamada-cadastrar');
+        cadastro.classList.add('hide');
     })
-  
+
     document.getElementById('chamada-login-btn').addEventListener('click', function () {
-      const cobertura = document.getElementById('cobertura');
-      cobertura.classList.remove('right');
-      cobertura.classList.add('left');
-  
-      const login = document.getElementById('chamada-login');
-      login.classList.add('hide');
-  
-      const cadastro = document.getElementById('chamada-cadastrar');
-      cadastro.classList.remove('hide');
+        const cobertura = document.getElementById('cobertura');
+        cobertura.classList.remove('right');
+        cobertura.classList.add('left');
+
+        const login = document.getElementById('chamada-login');
+        login.classList.add('hide');
+
+        const cadastro = document.getElementById('chamada-cadastrar');
+        cadastro.classList.remove('hide');
     })
 
 
 
 
-    function cadastrar(){
+    function cadastrar() {
 
         let nome = input_nome.value;
         let sobrenome = input_sobrenome.value;
         let email = input_email.value;
         let senha = input_senha.value;
         let caracterEspeciais = "!@#$%&*"
-        
-        let validar_nome = nome.length >3
-        let validar_sobrenome = sobrenome.length > 3 && sobrenome.length <=20
-        let validar_email = email.indexOf("@") >= 0
-        let validar_senhaCaraterEspeciais = senha.indexOf(caracterEspeciais) >= 0 
-        let validar_senhaQtdCarater =  senha.length <20
-        let validar_senhaLetraMaiuscula  = senha.indexOf(senha.toUpperCase(senha.length <20))
-        let validacaoTotal = nome == "" || sobrenome == "" || senha == "" || email == ""
 
-        if((validacaoTotal || validar_nome || validar_sobrenome || validar_email == false) || validar_senhaCaraterEspeciais ||
-        validar_senhaQtdCarater || validar_senhaLetraMaiuscula == -1 ){
-                if(validacaoTotal == true){
+        let validar_nome = nome.length > 3;
+        let validar_sobrenome = sobrenome.length > 3 && sobrenome.length <= 20;
+        let validar_email = email.indexOf("@") >= 0;
+        let validar_senhaCaraterEspeciais = senha.indexOf(caracterEspeciais) >= 0
+        let validar_senhaQtdCarater = senha.length < 20;
+        let validar_senhaLetraMaiuscula = senha.indexOf(senha.toUpperCase(senha.length < 20))
 
-                    alert(`preencha todos os campos`)
+        let validacaoTotal = nome == "" || sobrenome == "" || senha == "" || email == "";
 
-                   
-                } 
-                if(validar_nome == false){
-                     alert(  `digite o seu nome corretamente`)
-                    }
-                    if(validar_sobrenome == false){
-                       alert(  `digite o seu sobrenome corretamente`)
-                    }
-                    if(validar_email == false){
-                       alert (`digite o seu email corretamente`)
-                    }
-                    
-                       if(validar_senhaCaraterEspeciais == -1){
-                        alert (`necessario colocar um caracter especial`)
-                       }
-                       if(validar_senhaQtdCarater == false){
-                       alert (`necessario colocar nao pode passar de 20 caracter`)
-                    }
-                    if(validar_senhaLetraMaiuscula == false){
-                        alert (`necessario colocar 1 caracter com a letra maiuscula`)
-                    
-                    }
-                }
-                 else{
-                    window.location.replace("Login.html");
-                 }
-                      
-                }
-            
-        
-       
-                
-    
+        if (
+            (validacaoTotal == true
+                || validar_nome == false
+                || validar_sobrenome == false
+                || validar_senhaQtdCarater == false
+                || validar_senhaLetraMaiuscula == false
+                || validar_email == false)
+
+            || validar_senhaCaraterEspeciais == -1) {
+
+            if (validacaoTotal == true) {
+
+                alert(`preencha todos os campos`)
+
+            }
+
+            if (validar_nome == false) {
+                alert(`digite o seu nome corretamente`)
+            }
+            if (validar_sobrenome == false) {
+                alert(`digite o seu sobrenome corretamente`)
+            }
+            if (validar_email == false) {
+                alert(`digite o seu email corretamente`)
+            }
+
+            if (validar_senhaCaraterEspeciais == -1) {
+                alert(`necessario colocar um caracter especial`)
+            }
+            if (validar_senhaQtdCarater == false) {
+                alert(`necessario colocar nao pode passar de 20 caracter`)
+            }
+            if (validar_senhaLetraMaiuscula == false) {
+                alert(`necessario colocar 1 caracter com a letra maiuscula`)
+
+            }
+        }
+        else {
+            window.open("../../0. Homepage/Homepage - Logged in/index.html");
+        }
+
+    }
+
+
+
+
+
 </script>
