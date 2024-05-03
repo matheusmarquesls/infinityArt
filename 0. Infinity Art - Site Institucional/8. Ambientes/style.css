@@ -4,13 +4,30 @@ body{
     background-image: url(image/fundo.jpg);
     
 }
-.conteiner {
+.container .titulo{
+   
+position: absolute;
+width: 421px;
+height: 63px;
+left: calc(50% - 421px/2 - 0.5px);
+top: 0px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 35px;
+line-height: 79px;
+
+color: #FFFFFF;
+text-shadow: 0px 5px 5px #000000;   
+}
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
-    margin-top: 10%;
+    margin-top: 15%;
 
 }
 
@@ -24,35 +41,46 @@ width: 70vw;
 height: 70vh;
 /* left: 367px;
 top: 199px; */
-padding-block-end: 2%;
+
 background: #F1EFEB;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 5px;
+
 }
-.card{
+
+.retangulo .ambiente{
+
+display: flex;
+flex-direction: column;
+
+
+}
+
+.ambiente .card{
    
 display: flex;
 /* flex-direction: column;
 justify-content: start;
 align-items: start; */
 background-color: red;
-width: 100px;
-height: 100px;
-
+width: 225px;
+height: 110px;
+position:relative;
 
 
 }
 
 .retangulo .button-ambiente{
    display: flex;
-   flex-direction: column;
+   flex-direction: row;
    justify-content: center;
    align-items: center;
+   
 border-radius: 10px;    
 font-family: 'Poppins';
 color:white;
 background-color: black;
-position: absolute;
+position: relative;
 width: 280px;
 height: 40px;
 
