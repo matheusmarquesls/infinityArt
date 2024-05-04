@@ -21,7 +21,6 @@ html {
 
 /*HEADER*/
 
-
 /* NAV ICON */
 .header-center {
     position: absolute;
@@ -269,14 +268,50 @@ html {
     background-color: rgb(200, 200, 200);
     display: flex;
     align-items: center;
-    margin: 0 0 16px;
-    width: 70%;
+    margin: 0 0 18px;
+    width: 100%;
 }
+.label-input-senha {
+  margin: 0;
+}
+
 .icon-modify{
     color: var(--marrom);
     padding: 10px;
     position: absolute;
     z-index: 1;
+}
+.input_section {
+  position: relative;
+  width: 70%;
+}
+.mensagemErro {
+  display: none;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+.mensagemErro p {
+  font-size: 10px;
+  font-weight: 400;
+  color: red;
+}
+.erroSenha {
+  position: relative;
+  bottom: 0;
+}
+.mensagemErro-text {
+  font-size: 10px;
+  font-weight: 400;
+  color: red;
+}
+#erroSenha1, #erroSenha2,
+#erroSenha3, #erroSenha4,
+#erroSenha5 {
+  display: none;
 }
 
 .hide {
@@ -295,9 +330,11 @@ html {
 }
 
 #chamada-login {
-    left: unset;
-    right: 0;
+  right: 0;
+  left: unset;
 }
+
+  /* RODAPE */
 .rodape {
     display: flex;
     justify-content: center;

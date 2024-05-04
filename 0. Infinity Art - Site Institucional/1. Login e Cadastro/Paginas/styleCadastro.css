@@ -4,18 +4,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
     text-decoration: none;
     font-family: "Poppins", sans-serif;
     color: black;
 }
-
-
 html {
     --branco: rgb(255, 255, 255); 
     --cinza: rgb(211, 207, 208); 
-    --vermelho: #831c1a;
-    --marrom: #3b1102;
+    --vermelho: rgb(131, 28, 26);
+    --marrom: rgb(59, 17, 2);
     --preto: rgb(13, 0, 0); 
   }
   .container {
@@ -54,7 +51,6 @@ html {
     transform: scale(1.1);
   }
 
-
   /* NAV LIST */
   .header-ul {
     width: 450px;
@@ -87,7 +83,6 @@ html {
     color: rgb(198, 106, 105);
   }
 
-  
   /* NAV BUTTON */
   .nav-button {
     display: flex;
@@ -97,16 +92,16 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    color: white;
     border: 0.2px solid #ffffff;
     border-radius: 5px;
     width: 100px;
     height: 40px;
     font-size: 16px;
-    color: white;
     font-weight: 400;
     text-transform: capitalize;
   }
+
   .login {
     cursor: pointer;
     background-color: rgba(79, 30, 30, 0.65);
@@ -116,10 +111,12 @@ html {
     transition: 0.5s;
     background-color: rgba(167, 31, 31, 0.62);
   }
+
   .cadastro {
     cursor: pointer;
     background-color: rgba(91, 78, 78, 0.855);
   }
+
   .cadastro:hover {
     transition: 0.5s;
     background-color: rgba(176, 175, 163, 0.717);
@@ -231,7 +228,7 @@ html {
 }
 .btn-form{
     background-color: var(--marrom);
-    border: 1px solid white;
+    border: 1px solid var(--marrom);
 }
 .btn-form:hover{
     background-color: white;
@@ -271,38 +268,73 @@ color: var(--marrom);
     background-color: rgb(200, 200, 200);
     display: flex;
     align-items: center;
-    margin: 0 0 16px;
-    width: 70%;
+    margin: 0 0 18px;
+    width: 100%;
 }
+.label-input-senha {
+  margin: 0;
+}
+
 .icon-modify{
     color: var(--marrom);
     padding: 10px;
     position: absolute;
     z-index: 1;
 }
+.input_section {
+  position: relative;
+  width: 70%;
+}
+.mensagemErro {
+  display: none;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+.mensagemErro p {
+  font-size: 10px;
+  font-weight: 400;
+  color: red;
+}
+.erroSenha {
+  position: relative;
+  bottom: 0;
+}
+.mensagemErro-text {
+  font-size: 10px;
+  font-weight: 400;
+  color: red;
+}
+#erroSenha1, #erroSenha2,
+#erroSenha3, #erroSenha4,
+#erroSenha5 {
+  display: none;
+}
 
 .hide {
   opacity: 0;
   transform: translateY(200%);
  }
-
  .left {
     transform: translateX(-100%);
    }
-   
 .right {
     transform: translateX(0%);
    }
-
    #chamada-login {
     right: 0;
     left: unset;
   }
   
   #chamada-cadastrar {
-   right: unset;
-   left: 0;
+    left: 0;
+    right: unset;
   }
+
+  /* RODAPE */
   .rodape {
     display: flex;
     justify-content: center;
@@ -320,4 +352,3 @@ color: var(--marrom);
     color: #B8B8B8;
     font-size: 10px;
   }
-

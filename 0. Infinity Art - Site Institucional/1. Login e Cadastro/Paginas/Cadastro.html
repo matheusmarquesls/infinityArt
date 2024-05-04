@@ -39,54 +39,89 @@
         </div>
 
     </header>
-
-
+    
     <section class="formulario">
         <div class="container">
             <div class="conteudo">
                 <form class="form" id="cadastrar">
+
                     <!-- TITULO -->
                     <h2 class="titulo">Criar conta</h2>
                     <p class="descricao">Informe seus dados cadastrais e faça parte de nós! </p>
 
                     <!-- NOME INPUT -->
-                    <label class="label-input" for="">
-                        <i class="fa-regular fa-user icon-modify"></i>
-                        <input type="text" placeholder="nome" id="input_nome">
-                    </label>
+                    <div class="input_section">
+                        <label class="label-input" for="">
+                            <i class="fa-regular fa-user icon-modify"></i>
+                            <input type="text" placeholder="nome" id="input_nome">
+                        </label>
+                        <div class="mensagemErro" id="erro_inputNome">
+                            <p>(Nome deve haver mais de 3 caracteres)</p>
+                        </div>
+                    </div>
+
                     <!-- SOBRENOME INPUT -->
-                    <label class="label-input" for="">
-                        <i class="fa-regular fa-user icon-modify"></i>
-                        <input type="text" placeholder="sobrenome" id="input_sobrenome">
-                    </label>
+                    <div class="input_section">
+                        <label class="label-input" for="">
+                            <i class="fa-regular fa-user icon-modify"></i>
+                            <input type="text" placeholder="sobrenome" id="input_sobrenome">
+                        </label>
+                        <div class="mensagemErro" id="erro_inputSobrenome">
+                            <p>(Sobrenome deve haver mais de 3 caracteres)</p>
+                        </div>
+                    </div>
+
                     <!-- EMAIL INPUT -->
-                    <label class="label-input" for="">
-                        <i class="fa-regular fa-envelope icon-modify"></i>
-                        <input type="email" placeholder="email" id="input_email">
-                    </label>
+                    <div class="input_section">
+                        <label class="label-input" for="">
+                            <i class="fa-regular fa-envelope icon-modify"></i>
+                            <input type="email" placeholder="email" id="input_email">
+                        </label>
+                        <div class="mensagemErro" id="erro_inputEmail">
+                            <p>(Email deve haver um '.' e um '@')</p>
+                        </div>
+                    </div>
+
                     <!-- SENHA INPUT-->
-                    <label class="label-input" for="">
-                        <i class="fa-solid fa-lock icon-modify"></i>
-                        <input type="password" placeholder="senha" id="input_senha">
-                    </label>
-                    <!-- BOTAO 2 -->
+                    <div class="input_section">
+                        <label class="label-input label-input-senha" for="">
+                            <i class="fa-solid fa-lock icon-modify"></i>
+                            <input type="text" placeholder="senha" id="input_senha">
+                        </label>
+                        <div class="mensagemErro erroSenha" id="erro_inputSenha">
+                            <p class="mensagemErro-text" id="erroSenha1">Necessário 1 Caracter Especial.</p>
+                            <p class="mensagemErro-text" id="erroSenha2">Necessário ao menos 8 Caracteres.</p>
+                            <p class="mensagemErro-text" id="erroSenha3">Necessário 1 Letra Maiuscula.</p>
+                            <p class="mensagemErro-text" id="erroSenha4">Necessário 1 Letra Minuscula.</p>
+                            <p class="mensagemErro-text" id="erroSenha5">Necessário 1 Número.</p>
+                        </div>
+                    </div>
+
+                    <!-- BOTAO CADASTRO -->
                     <button class="btn-form" onclick="cadastrar()">Inscrever</button>
                 </form>
+
                 <!-- FORMULARIO LOGIN -->
                 <form class="form" id="login">
                     <!-- TITULO-->
                     <h2 class="titulo">Entrar</h2>
                     <p class="descricao">Informe suas credencias para acessar sua área</p>
                     <!-- EMAIL INPUT -->
-                    <label class="label-input" for="">
-                        <i class="fa-regular fa-envelope icon-modify icon"></i>
-                        <input type="email" placeholder="email">
-                    </label>
+                    <div class="input_section">
+                        <label class="label-input" for="">
+                            <i class="fa-regular fa-envelope icon-modify icon"></i>
+                            <input type="email" placeholder="email">
+                        </label>
+                    </div>
                     <!-- SENHA INPUT-->
-                    <label class="label-input" for="">
-                        <i class="fa-solid fa-lock icon-modify icon"></i>
-                        <input type="password" placeholder="senha">
-                    </label>
+                    <div class="input_section">
+                        <label class="label-input" for="">
+                            <i class="fa-solid fa-lock icon-modify icon"></i>
+                            <input type="password" placeholder="senha">
+                        </label>
+                    </div>
+                    
+                    <!-- BOTAO CADASTRO -->
                     <a href="">Esqueceu a senha?</a>
                     <button class="btn-form">Entrar</button>
                 </form>
@@ -148,52 +183,142 @@
 
     function cadastrar() {
 
-        let nome = input_nome.value;
-        let sobrenome = input_sobrenome.value;
-        let email = input_email.value;
-        let senha = input_senha.value;
-        let caracterEspeciais = "!@#$%&*"
+        // ESSE COMANDO IMPEDE A PAGINA DE BUGAR QUANDO O BOTAO DO FORMULARIO FOR APERTADO
+        // ESSE COMANDO PREVINE QUE A PAGINA PROCURE UMA SAIDA.
+        event.preventDefault()
 
+        // DECLARANDO INPUTS - OBVIO.
+        const nome = input_nome.value;
+        const sobrenome = input_sobrenome.value;
+        const email = input_email.value;
+        const senha = input_senha.value;
+
+        // DESCLARANDO VALIDAÇÕES BASICAS
         let validar_nome = nome.length > 3;
         let validar_sobrenome = sobrenome.length > 3 && sobrenome.length <= 20;
         let validar_email = email.indexOf("@") >= 0 && email.indexOf(".") >= 0;
-        let validar_senhaCaraterEspeciais = senha.indexOf(caracterEspeciais) >= 0;
-        let validar_senhaQtdCarater = senha.length >= 8;
-        let validar_senhaLetraMaiuscula = senha.indexOf(senha.toUpperCase(senha.length < 20));
-
         let validacaoTotal = nome == "" || sobrenome == "" || senha == "" || email == "";
 
-        if (
-            (validacaoTotal == true
-                || validar_nome == false
-                || validar_sobrenome == false
-                || validar_senhaQtdCarater == false
-                || validar_senhaLetraMaiuscula == false
-                || validar_email == false)
+        // PARAMETROS DA VALIDAÇÃO DA SENHA
+        const caracterMaiusculo = "QWERTYUIOPASDFGHJKLZXCVBNM";
+        const caracterMinusculo = "qwertyuiopasdfghjklzxcvbnm";
+        const caracterNum = "1234567890";
+        const caracterEspecial = "!#$%&*?@_";
 
-            || validar_senhaCaraterEspeciais == -1) {
+        // VALIDAÇÃO COMPOSTA DA SENHA
+        let tamanhoSenha = senha.length >= 8;
+        let qtdMaiusculo = 0;
+        let qtdMinisculo = 0;
+        let qtdNum = 0;
+        let qtdCarecterEspecial = 0;
 
+        // LAÇO QUE VAI PASSAR EM CADA CARACTER DA SENHA [contador] E,
+        // CONFORME CADA VERIFICAÇÃO, CASO SEJA ECONTRADO UMA POSIÇÃO
+        // VALIDA (=! -1), O PARAMETRO INCREMENTA MAIS UM.
+        for (let contador = 0; contador <= senha.length; contador++) {
+
+            if (caracterMaiusculo.indexOf(senha[contador]) != -1) {
+                qtdMaiusculo++;
+            }
+            if (caracterMinusculo.indexOf(senha[contador]) != -1) {
+                qtdMinisculo++;
+            }
+            if (caracterNum.indexOf(senha[contador]) != -1) {
+                qtdNum++;
+            }
+            if (caracterEspecial.indexOf(senha[contador]) != -1) {
+                qtdCarecterEspecial++
+            }
+        }
+
+        // CASO UMA DAS VALIDAÇÕES SEJA FALSA 
+        // É RETORNADO QUAL CAMPO ESTÁ INCORRETO
+        // CASO CONTRARIO, O SISTEMA FINALIZA O CADASTRO
+        if (validacaoTotal == true
+            || validar_nome == false
+            || validar_sobrenome == false
+            || validar_email == false
+            || tamanhoSenha == false
+            || qtdMaiusculo == 0
+            || qtdMinisculo == 0
+            || qtdNum == 0
+            || qtdCarecterEspecial == 0) {
+
+            // VALIDA SE HÁ ALGUM CAMPO VAZIO
             if (validacaoTotal == true) {
                 alert(`preencha todos os campos`)
             }
+
+            // VALIDA SE O NOME TEM MAIS DE 3 CARACTERES
+            // SE FOR FALSO, É EXIBIDO UMA MENSAGEM COM DISPLAY FLEX
+            // CASO CONTRARIO É REMOVIDO O FLEX PARA NONE
             if (validar_nome == false) {
-                alert(`digite o seu nome corretamente`)
+                document.getElementById("erro_inputNome").style.display = "flex";
+            } else {
+                document.getElementById("erro_inputNome").style.display = "none";
             }
+
+            // VALIDA SE O SOBRENOME TEM MAIS DE 3 CARACTERES
             if (validar_sobrenome == false) {
-                alert(`digite o seu sobrenome corretamente`)
+                document.getElementById("erro_inputSobrenome").style.display = "flex";
+            } else {
+                document.getElementById("erro_inputSobrenome").style.display = "none";
             }
+
+            // VALIDA SE O EMAIL TEM @ E PONTO-FINAL
             if (validar_email == false) {
-                alert(`digite o seu email corretamente`)
+                document.getElementById("erro_inputEmail").style.display = "flex";
+            } else {
+                document.getElementById("erro_inputEmail").style.display = "none";
             }
-            if (validar_senhaCaraterEspeciais == -1) {
-                alert(`necessario colocar um caracter especial`)
+
+            // VALIDAÇÃO DE SENHA COMPOSTA:
+            // CASO SENHA ESTEJA INCORRETA A MENSAGEM DE ERRO FICA DISPLAY FLEX
+            // CASO CONTRARIO FICA DISPLAY NONE (ORIGINAL)
+            if (tamanhoSenha == false
+                || qtdMaiusculo == 0
+                || qtdMinisculo == 0
+                || qtdNum == 0
+                || qtdCarecterEspecial == 0) {
+
+                document.getElementById("erro_inputSenha").style.display = "flex";
+
+
+                // TAMBEM QUANDO A SENHA ESTIVER INCORRETA,
+                // SERA FEITA UMA VALIDAÇÃO DE QUAL PARTE DA SENHA ESTA FALTANDO.
+                // QUANDO UMA PARTE DA SENHA FALTAR
+                // UM PARAGRAFO (P) DA DIV ERRO_INPUT É SETADO COMO BLOCK
+                // CASO CONTRARIO ELE É REMOVIDO 
+                if (qtdCarecterEspecial == 0) {
+                    document.getElementById("erroSenha1").style.display = "block";
+                } else {
+                    document.getElementById("erroSenha1").style.display = null;
+                }
+                if (tamanhoSenha == false) {
+                    document.getElementById("erroSenha2").style.display = "block";
+                } else {
+                    document.getElementById("erroSenha2").style.display = null;
+                }
+                if (qtdMaiusculo == 0) {
+                    document.getElementById("erroSenha3").style.display = "block";
+                } else {
+                    document.getElementById("erroSenha3").style.display = null
+                }
+                if (qtdMinisculo == 0) {
+                    document.getElementById("erroSenha4").style.display = "block";
+                } else {
+                    document.getElementById("erroSenha4").style.display = null
+                }
+                if (qtdNum == 0) {
+                    document.getElementById("erroSenha5").style.display = "block";
+                } else {
+                    document.getElementById("erroSenha5").style.display = null;
+                }
+
+            } else {
+                document.getElementById("erro_inputSenha").style.removeProperty("display");
             }
-            if (validar_senhaQtdCarater == false) {
-                alert(`necessario colocar nao pode passar de 20 caracter`)
-            }
-            if (validar_senhaLetraMaiuscula == false) {
-                alert(`necessario colocar 1 caracter com a letra maiuscula`)
-            }
+
         }
         else {
             window.open("../../0. Homepage/Homepage - Logged in/index.html");
