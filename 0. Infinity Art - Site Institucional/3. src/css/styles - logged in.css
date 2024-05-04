@@ -237,6 +237,11 @@ body {
     color: var(--preto);
     font-weight: bold;
   }
+  .submenu .submenu-option:nth-last-of-type(1):hover p,
+  .submenu .submenu-option:nth-last-of-type(1):hover .icon-modify,
+  .submenu .submenu-option:nth-last-of-type(1):hover span  {
+    color: var(--vermelho);
+  }
 
 /*HOMEPAGE BANNER*/
 .banner {
