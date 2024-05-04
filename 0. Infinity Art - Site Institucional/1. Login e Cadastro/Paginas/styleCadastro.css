@@ -274,6 +274,9 @@ color: var(--marrom);
 .label-input-senha {
   margin: 0;
 }
+.label-input-confirma {
+  margin-top: 16px;
+}
 
 .icon-modify{
     color: var(--marrom);
@@ -284,6 +287,9 @@ color: var(--marrom);
 .input_section {
   position: relative;
   width: 70%;
+}
+.section-2 {
+  display: none;
 }
 .mensagemErro {
   display: none;

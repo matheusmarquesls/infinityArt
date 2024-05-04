@@ -39,7 +39,7 @@
         </div>
 
     </header>
-    
+
     <section class="formulario">
         <div class="container">
             <div class="conteudo">
@@ -50,7 +50,7 @@
                     <p class="descricao">Informe seus dados cadastrais e faça parte de nós! </p>
 
                     <!-- NOME INPUT -->
-                    <div class="input_section">
+                    <div class="input_section section-1">
                         <label class="label-input" for="">
                             <i class="fa-regular fa-user icon-modify"></i>
                             <input type="text" placeholder="nome" id="input_nome">
@@ -61,7 +61,7 @@
                     </div>
 
                     <!-- SOBRENOME INPUT -->
-                    <div class="input_section">
+                    <div class="input_section section-1">
                         <label class="label-input" for="">
                             <i class="fa-regular fa-user icon-modify"></i>
                             <input type="text" placeholder="sobrenome" id="input_sobrenome">
@@ -71,8 +71,10 @@
                         </div>
                     </div>
 
+                    <button class="btn-form section-1" onclick="proximoPasso()">Seguir</button>
+
                     <!-- EMAIL INPUT -->
-                    <div class="input_section">
+                    <div class="input_section section-2">
                         <label class="label-input" for="">
                             <i class="fa-regular fa-envelope icon-modify"></i>
                             <input type="email" placeholder="email" id="input_email">
@@ -83,7 +85,7 @@
                     </div>
 
                     <!-- SENHA INPUT-->
-                    <div class="input_section">
+                    <div class="input_section section-2">
                         <label class="label-input label-input-senha" for="">
                             <i class="fa-solid fa-lock icon-modify"></i>
                             <input type="text" placeholder="senha" id="input_senha">
@@ -97,8 +99,20 @@
                         </div>
                     </div>
 
+                    <!-- CONFIRMAR SENHA INPUT -->
+                    <div class="input_section section-2">
+                        <label class="label-input label-input-confirma" for="">
+                            <i class="fa-solid fa-lock icon-modify"></i>
+                            <input type="text" placeholder="confirmar senha" id="input_confirmaSenha">
+                        </label>
+                        <div class="mensagemErro" id="erro_inputConfirmarSenha">
+                            <p>As senhas não conferem</p>
+                        </div>
+
+                    </div>
+
                     <!-- BOTAO CADASTRO -->
-                    <button class="btn-form" onclick="cadastrar()">Inscrever</button>
+                    <button class="btn-form section-2" onclick="cadastrar()">Inscrever</button>
                 </form>
 
                 <!-- FORMULARIO LOGIN -->
@@ -120,7 +134,7 @@
                             <input type="password" placeholder="senha">
                         </label>
                     </div>
-                    
+
                     <!-- BOTAO CADASTRO -->
                     <a href="">Esqueceu a senha?</a>
                     <button class="btn-form">Entrar</button>
@@ -156,35 +170,18 @@
 </html>
 
 <script>
-    document.getElementById('chamada-cadastro-btn').addEventListener('click', function () {
-        const cobertura = document.getElementById('cobertura');
+    // ESCOPO GLOBAL
 
-        cobertura.classList.remove('left');
-        cobertura.classList.add('right');
+    const caracterMaiusculo = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    const caracterMinusculo = "qwertyuiopasdfghjklzxcvbnm";
+    const caracterNum = "1234567890";
+    const caracterEspecial = "!#$%&*?@_";
 
-        const login = document.getElementById('chamada-login');
-        login.classList.remove('hide');
 
-        const cadastro = document.getElementById('chamada-cadastrar');
-        cadastro.classList.add('hide');
-    })
+    // FUNÇÃO QUE VAI APAGAR O NOME E SOBRENOME PARA EMAIL, SENHA E CONFIRMAR SENHA...
+    // SE CASO OS INPUTS ESTIVEREM CERTOS
+    function proximoPasso() {
 
-    document.getElementById('chamada-login-btn').addEventListener('click', function () {
-        const cobertura = document.getElementById('cobertura');
-        cobertura.classList.remove('right');
-        cobertura.classList.add('left');
-
-        const login = document.getElementById('chamada-login');
-        login.classList.add('hide');
-
-        const cadastro = document.getElementById('chamada-cadastrar');
-        cadastro.classList.remove('hide');
-    })
-
-    function cadastrar() {
-
-        // ESSE COMANDO IMPEDE A PAGINA DE BUGAR QUANDO O BOTAO DO FORMULARIO FOR APERTADO
-        // ESSE COMANDO PREVINE QUE A PAGINA PROCURE UMA SAIDA.
         event.preventDefault()
 
         // DECLARANDO INPUTS - OBVIO.
@@ -196,14 +193,63 @@
         // DESCLARANDO VALIDAÇÕES BASICAS
         let validar_nome = nome.length > 3;
         let validar_sobrenome = sobrenome.length > 3 && sobrenome.length <= 20;
+
+        let validacaoTotal = nome == "" || sobrenome == "";
+
+        if (validacaoTotal == true
+            || validar_nome == false
+            || validar_sobrenome == false) {
+
+            if (validacaoTotal == true) {
+                alert(`preencha todos os campos`)
+            }
+            // VALIDA SE O NOME TEM MAIS DE 3 CARACTERES
+            // SE FOR FALSO, É EXIBIDO UMA MENSAGEM COM DISPLAY FLEX
+            // CASO CONTRARIO É REMOVIDO O FLEX PARA NONE
+            if (validar_nome == false) {
+                document.getElementById("erro_inputNome").style.display = "flex";
+            } else {
+                document.getElementById("erro_inputNome").style.display = "none";
+            }
+
+            // VALIDA SE O SOBRENOME TEM MAIS DE 3 CARACTERES
+            if (validar_sobrenome == false) {
+                document.getElementById("erro_inputSobrenome").style.display = "flex";
+            } else {
+                document.getElementById("erro_inputSobrenome").style.display = "none";
+            }
+
+        } else {
+            document.getElementById("erro_inputNome").style.display = "none";
+            document.getElementById("erro_inputSobrenome").style.display = "none";
+
+            document.querySelectorAll('.section-1').forEach(function (elemento) {
+                elemento.style.display = "none";
+            });
+
+            document.querySelectorAll('.section-2').forEach(function (elemento) {
+                elemento.style.display = "block";
+            });
+        }
+
+    }
+    function cadastrar() {
+
+        // ESSE COMANDO IMPEDE A PAGINA DE BUGAR QUANDO O BOTAO DO FORMULARIO FOR APERTADO
+        // ESSE COMANDO PREVINE QUE A PAGINA PROCURE UMA SAIDA.
+        event.preventDefault()
+
+        // DECLARANDO INPUTS - OBVIO.
+        const nome = input_nome.value;
+        const sobrenome = input_sobrenome.value;
+        const email = input_email.value;
+        const senha = input_senha.value;
+        const confirmar = input_confirmaSenha.value;
+
+
+        // DESCLARANDO VALIDAÇÕES BASICAS
         let validar_email = email.indexOf("@") >= 0 && email.indexOf(".") >= 0;
         let validacaoTotal = nome == "" || sobrenome == "" || senha == "" || email == "";
-
-        // PARAMETROS DA VALIDAÇÃO DA SENHA
-        const caracterMaiusculo = "QWERTYUIOPASDFGHJKLZXCVBNM";
-        const caracterMinusculo = "qwertyuiopasdfghjklzxcvbnm";
-        const caracterNum = "1234567890";
-        const caracterEspecial = "!#$%&*?@_";
 
         // VALIDAÇÃO COMPOSTA DA SENHA
         let tamanhoSenha = senha.length >= 8;
@@ -211,6 +257,7 @@
         let qtdMinisculo = 0;
         let qtdNum = 0;
         let qtdCarecterEspecial = 0;
+        let validarConfirmar = senha === confirmar;
 
         // LAÇO QUE VAI PASSAR EM CADA CARACTER DA SENHA [contador] E,
         // CONFORME CADA VERIFICAÇÃO, CASO SEJA ECONTRADO UMA POSIÇÃO
@@ -235,34 +282,17 @@
         // É RETORNADO QUAL CAMPO ESTÁ INCORRETO
         // CASO CONTRARIO, O SISTEMA FINALIZA O CADASTRO
         if (validacaoTotal == true
-            || validar_nome == false
-            || validar_sobrenome == false
             || validar_email == false
             || tamanhoSenha == false
             || qtdMaiusculo == 0
             || qtdMinisculo == 0
             || qtdNum == 0
-            || qtdCarecterEspecial == 0) {
+            || qtdCarecterEspecial == 0
+            || validarConfirmar == false) {
 
             // VALIDA SE HÁ ALGUM CAMPO VAZIO
             if (validacaoTotal == true) {
                 alert(`preencha todos os campos`)
-            }
-
-            // VALIDA SE O NOME TEM MAIS DE 3 CARACTERES
-            // SE FOR FALSO, É EXIBIDO UMA MENSAGEM COM DISPLAY FLEX
-            // CASO CONTRARIO É REMOVIDO O FLEX PARA NONE
-            if (validar_nome == false) {
-                document.getElementById("erro_inputNome").style.display = "flex";
-            } else {
-                document.getElementById("erro_inputNome").style.display = "none";
-            }
-
-            // VALIDA SE O SOBRENOME TEM MAIS DE 3 CARACTERES
-            if (validar_sobrenome == false) {
-                document.getElementById("erro_inputSobrenome").style.display = "flex";
-            } else {
-                document.getElementById("erro_inputSobrenome").style.display = "none";
             }
 
             // VALIDA SE O EMAIL TEM @ E PONTO-FINAL
@@ -318,11 +348,43 @@
             } else {
                 document.getElementById("erro_inputSenha").style.removeProperty("display");
             }
+            if (validarConfirmar == false) {
+                document.getElementById("erro_inputConfirmarSenha").style.display = "flex";
+            } else {
+                document.getElementById("erro_inputConfirmarSenha").style.display = "none";
+            }
 
         }
         else {
-            window.open("../../0. Homepage/Homepage - Logged in/index.html");
+            window.open("../../0. Homepage/Homepage - Logged in/index.html ", "_self");
         }
 
     }
+
+    // FUNÇÂO ANIMAÇÂO DO CADASTRO E LOGIN
+    document.getElementById('chamada-cadastro-btn').addEventListener('click', function () {
+        const cobertura = document.getElementById('cobertura');
+
+        cobertura.classList.remove('left');
+        cobertura.classList.add('right');
+
+        const login = document.getElementById('chamada-login');
+        login.classList.remove('hide');
+
+        const cadastro = document.getElementById('chamada-cadastrar');
+        cadastro.classList.add('hide');
+    })
+
+    document.getElementById('chamada-login-btn').addEventListener('click', function () {
+        const cobertura = document.getElementById('cobertura');
+        cobertura.classList.remove('right');
+        cobertura.classList.add('left');
+
+        const login = document.getElementById('chamada-login');
+        login.classList.add('hide');
+
+        const cadastro = document.getElementById('chamada-cadastrar');
+        cadastro.classList.remove('hide');
+    })
+
 </script>
