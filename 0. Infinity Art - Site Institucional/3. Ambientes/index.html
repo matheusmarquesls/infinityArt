@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinity Art - Cadastrado</title>
+    <title>Infinity Art - Ambientes</title>
 
     <link rel="shortcut icon" href="../src/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../src/css/styles - ambientes.css">
@@ -173,7 +173,7 @@
 
                 <h1 class="titulo-card">Galeria</h1> 
                 <a onclick="chamarModal()"><i class="fa-solid fa-circle-plus icon-modify-mais"> </i></a> 
-
+    
             </label> 
 
           <div class="cards">
@@ -204,74 +204,71 @@
 
 </div>
 
-<!-- Modal -->
-
-<div id="modal" class="modal">
+    <div id="modal" class="modal">
         
-    <div class="janela-modal"> 
-
-        <!-- Header -->
-
-        <div class="header-modal">
-
-            <h1> Ambientes </h1>
-
-            <button class="btn" onclick="fecharModal()"> Fechar </button>
-
+        <div class="janela-modal"> 
+    
+            <!-- Header -->
+    
+            <div class="header-modal">
+    
+                <h1> Ambientes </h1>
+    
+                <button class="btn" onclick="fecharModal()"> Fechar </button>
+    
+            </div>
+    
+            <hr>
+    
+            <!-- Container -->
+    
+            <div class="container-modal">
+    
+                <label class="label-input">
+                    <i class="fa-solid fa-earth-americas icon-modify"></i>
+                    <input class="input-text" type="text" placeholder="Nome ambiente">
+                </label>
+    
+                <label class="label-input">
+                    <i class="fa-regular fa-image icon-modify"></i>
+                    <input class="input-text" type="text" placeholder="Quantidade de Obras">
+                </label>
+    
+                    <h3>
+                        Tipo de tinta:
+                    </h3>
+    
+                    <section class="checked-section"> 
+    
+                    <div class="input-tinta">
+                        <input type="checkbox"> <p>Acrílica</p>  
+                    </div>
+    
+                    <div class="input-tinta">
+                        <input type="checkbox"> <p>Óleo</p> 
+                    </div>
+    
+                    <div class="input-tinta">
+                        <input type="checkbox"> <p>Guache</p> 
+                    </div>
+    
+                    </section>
+    
+                <label class="label-input">
+                    <i class="fa-solid fa-message icon-modify"></i>
+                    <input class="input-text" type="text" placeholder="Descrição">
+                </label>
+    
+                <button class="btn"> Cadastrar </button>
+    
+            </div>
+    
         </div>
-
-        <hr>
-
-        <!-- Container -->
-
-        <div class="container-modal">
-
-            <label class="label-input">
-                <i class="fa-solid fa-earth-americas icon-modify"></i>
-                <input class="input-text" type="text" placeholder="Nome ambiente">
-            </label>
-
-            <label class="label-input">
-                <i class="fa-regular fa-image icon-modify"></i>
-                <input class="input-text" type="text" placeholder="Quantidade de Obras">
-            </label>
-
-            <label class="header-checked">
-
-                Tipo de tinta:
-
-                <section class="container-checked"> 
-
-                <label class="input-tinta">
-                    Acrílica  <input type="checkbox">
-                </label>
-
-                <label class="">
-                    Óleo <input type="checkbox">
-                </label>
-
-                <label class="">
-                    Guache <input type="checkbox">
-                </label>
-
-                </section>
-                
-            </label>
-
-            <label class="label-input">
-                <i class="fa-solid fa-message icon-modify"></i>
-                <input class="input-text" type="text" placeholder="Descrição">
-            </label>
-
-            <button class="btn"> Cadastrar </button>
-
-        </div>
-
+    
     </div>
 
-</div>
-
 </section>
+
 
 </body>
 </html>
