@@ -1,214 +1,343 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-  </head>
-  <body>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Art - Cadastrado</title>
+
+    <link rel="shortcut icon" href="../3. src/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/80ec270284.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
     <header class="header-center">
-      <div class="container1">
-          <nav class="header-nav">
+        <div class="container">
+            <nav class="header-nav">
 
-              <!-- NAV LOGO -->
-              <div class="nav-logo">
-                  <img class="logotipo" src="../3. src/img/art-icon.png" alt="">
-              </div>
+                <!-- NAV LOGO -->
+                <div class="nav-logo">
+                    <img class="logotipo" src="../3. src/img/art-icon.png" alt="">
+                </div>
 
-              <!-- NAV LIST -->
-              <ul class="header-ul">
-                  <li><a href="#banner">Página Inicial</a></li>
-                  <li><a href="#sobrenos">Sobre Nós</a></li>
-                  <li><a href="#simuleaqui">Simulador<br>Financeiro</a></li>
-                  <li><a href="#negocio">Nosso<br>Negócio</a></li>
-                  <li><a href="#contatos">Fale<br>Conosco</a></li>
-              </ul>
+                <!-- NAV LIST -->
+                <ul class="header-ul">
+                    <li><a href="#banner">Página Inicial</a></li>
+                    <li><a href="#sobrenos">Sobre Nós</a></li>
+                    <li><a href="#simuleaqui">Simulador<br>Financeiro</a></li>
+                    <li><a href="#negocio">Nosso<br>Negócio</a></li>
+                    <li><a href="#contatos">Fale<br>Conosco</a></li>
+                </ul>
 
-              <!-- NAV BUTTON -->
-              <div class="nav-button">
-                  <a target="blank" href="../../1. Login e Cadastro/Paginas/Login.html"><button class="login"
-                          onclick=""> Entrar </button></a>
-                  <a target="blank" href="../../1. Login e Cadastro/Paginas/Cadastro.html"><button class="cadastro"
-                          onclick=""> Cadastro </button> </a>
-              </div>
+                <!-- NAV BUTTON -->
+                <div class="nav-button">
+                    <a target="blank" href="../../1. Login e Cadastro/Paginas/Login.html"><button class="login"
+                            onclick=""> Entrar </button></a>
+                    <a target="blank" href="../../1. Login e Cadastro/Paginas/Cadastro.html"><button class="cadastro"
+                            onclick=""> Cadastro </button> </a>
+                </div>
 
-              <!-- NAV PROFILE BUTTON -->
-              <div class="nav-profile" onclick="toggleMenu()">
-                  <div class="user-profile-button" id="user_profile-image">
-                      <i class="fa-solid fa-user icon-modify"></i>
-                      <p>perfil</p>
-                  </div>
+                <!-- NAV PROFILE BUTTON -->
+                <div class="nav-profile" onclick="toggleMenu()">
+                    <div class="user-profile-button" id="user_profile-image">
+                        <i class="fa-solid fa-user icon-modify"></i>
+                        <p>perfil</p>
+                    </div>
 
-                  <!-- CONTAINER DO MENU -->
-                  <div class="sub-menu-wrap" id="sub-menu-wrap">
+                    <!-- CONTAINER DO MENU -->
+                    <div class="sub-menu-wrap" id="sub-menu-wrap">
 
-                      <!-- SUBMENU -->
-                      <div class="submenu">
+                        <!-- SUBMENU -->
+                        <div class="submenu">
 
-                          <!-- INFORMAÇÕES DO USUARIO -->
-                          <div class="user-info">
-                              <i class="fa-solid fa-user icon-modify"></i>
-                              <h3 class="username">
-                                  S. Mordon
-                              </h3>
-                          </div>
+                            <!-- INFORMAÇÕES DO USUARIO -->
+                            <div class="user-info">
+                                <i class="fa-solid fa-user icon-modify"></i>
+                                <h3 class="username">
+                                    S. Mordon
+                                </h3>
+                            </div>
 
-                          <!-- OPTION DASHBOARD -->
-                          <a href="#" class="submenu-option">
-                              <i class="fa-solid fa-chart-line icon-modify"></i>
-                              <p>Dashboard</p>
-                              <span>
-                                  >
-                              </span>
-                          </a>
+                            <!-- OPTION DASHBOARD -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-chart-line icon-modify"></i>
+                                <p>Dashboard</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
 
-                          <!-- OPTION ENDEREÇOS -->
-                          <a href="#" class="submenu-option">
-                              <i class="fa-solid fa-location-crosshairs icon-modify"></i>
-                              <p>Endereços</p>
-                              <span>
-                                  >
-                              </span>
-                          </a>
+                            <!-- OPTION ENDEREÇOS -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-location-crosshairs icon-modify"></i>
+                                <p>Endereços</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
 
-                          <!-- OPTION AMBIENTES -->
-                          <a href="#" class="submenu-option">
-                              <i class="fa-solid fa-house-chimney icon-modify"></i>
-                              <p>Ambientes</p>
-                              <span>
-                                  >
-                              </span>
-                          </a>
+                            <!-- OPTION AMBIENTES -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-house-chimney icon-modify"></i>
+                                <p>Ambientes</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
 
-                          <!-- OPTION EDITAR PERFIL -->
-                          <a href="#" class="submenu-option">
-                              <i class="fa-solid fa-gear icon-modify"></i>
-                              <p>Editar Perfil</p>
-                              <span>
-                                  >
-                              </span>
-                          </a>
+                            <!-- OPTION EDITAR PERFIL -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-gear icon-modify"></i>
+                                <p>Editar Perfil</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
 
-                          <!-- OPTION AJUDA E SUPORTE -->
-                          <a href="#" class="submenu-option">
-                              <i class="fa-solid fa-circle-question icon-modify"></i>
-                              <p>Ajuda & Suporte</p>
-                              <span>
-                                  >
-                              </span>
-                          </a>
+                            <!-- OPTION AJUDA E SUPORTE -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-circle-question icon-modify"></i>
+                                <p>Ajuda & Suporte</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
 
-                          <!-- OPTION SAIR -->
-                          <a href="../Homepage - Not Logged in/index.html" class="submenu-option">
-                              <i class="fa-solid fa-door-open icon-modify"></i>
-                              <p>Sair</p>
-                              <span>
-                                  >
-                              </span>
-                          </a>
-
-
-                      </div>
-                  </div>
-              </div>
+                            <!-- OPTION SAIR -->
+                            <a href="../Homepage - Not Logged in/index.html" class="submenu-option">
+                                <i class="fa-solid fa-door-open icon-modify"></i>
+                                <p>Sair</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
 
 
-          </nav>
-      </div>
+                        </div>
+                    </div>
+                </div>
 
-  </header>
+
+            </nav>
+        </div>
+
+    </header>
+
+    <section class="background-ambiente">
 
     <div class="container">
-      <div class="titulo"><h1>Infinity Art</h1>
-    </div>
+
+    <!-- Div de Centralização -->
+
+    <div class="center">
+
+        <!-- <div class="titulo"> 
+
+            <h1>Infinity Art</h1> 
+    
+            </div> -->
 
       <div class="retangulo">
+
+        <div class="banner"></div>
+
         <div class="ambiente">
-          <h1 class="titulo-card">Armazem Térreo 1 - Pinturas com tinta Óleo</h1>
+
+            <label class="label-add">
+
+                <h1 class="titulo-card">Casa</h1>
+                <a onclick="chamarModal()"><i class="fa-solid fa-circle-plus icon-modify-mais"> </i></a> 
+
+            </label> 
+
+          <div class="cards">
+
+            <div class="card">
+
+                <div class="conteudo-card">
+                Armazem Térreo 1 
+                Sala 1
+                </div> 
+
+                <hr>
+
+                <div class="info"></div>
+
+            </div>
+        </div>
+
+            <label class="label-add">
+
+                <h1 class="titulo-card">Galeria</h1> 
+                <a onclick="chamarModal()"><i class="fa-solid fa-circle-plus icon-modify-mais"> </i></a> 
+
+            </label> 
+
           <div class="cards">
             <div class="card">
-            <span class="conteudo-card">
-                Armazem Térreo 1 <br>
+
+                <div class="conteudo-card">
+                    Armazem Térreo 1 
                     Sala 1
-                    <div class="info">
-                    umi: 25% <br> temp: 25° <br> Lumi: 275 
-                </div>
-            </span>    
-            </div>
-            <div class="card">
-                <span class="conteudo-card">
-                    Armazem Térreo 2 <br>
-                    Sala 2
-                    <div class="info">
-                        umi: 25% <br> temp: 25° <br> Lumi: 275 
-                    </div>
-                </span>    
-            </div>
-          </div>
-          
-          <h1 class="titulo-card">Armazem Subsolo 1 - Pinturas com tinta Acrílica</h1>
-          <div class="cards">
-            <div class="card-amarelo">
-                <span class="conteudo-card">
-                    Armazem Subsolo 1 <br>
-                    Sala 1 - Direita
-                    <div class="info">
-                        umi: 25% <br> temp: 25° <br> Lumi: 275 
-                    </div>
-                </span>   
-            </div>
-            <div class="card-amarelo">
-                <span class="conteudo-card">
-                    Armazem Subsolo 1 <br>
-                    Sala 1 - Esquerda
-                    <div class="info">
-                        umi: 25% <br> temp: 25° <br> Lumi: 275 
-                    </div>
-                </span>   
-            </div>
-            <div class="card-verde">
-                <span class="conteudo-card">
-                    Armazem Subsolo 1 <br>
-                    Sala 1 - Direita
-                    <div class="info">
-                        umi: 25% <br> temp: 25° <br> Lumi: 275 
-                    </div>
-                </span>   
-            </div>
-            <div class="card-verde">
-                <span class="conteudo-card">
-                    Armazem Subsolo 1 <br>
-                    Sala 1 - Direita
-                    <div class="info">
-                        umi: 25% <br> temp: 25° <br> Lumi: 275 
-                    </div>
-                </span>   
-            </div>
-            <div class="card-verde">
-                <span class="conteudo-card">
-                    Armazem Subsolo 1 <br>
-                    Sala 1 - Direita
-                    <div class="info">
-                        umi: 25% <br> temp: 25° <br> Lumi: 275 
-                    </div>
-                </span>   
+                </div>   
+
+                <hr>
+
+                <div class="info"></div>
+
             </div>
 
         </div>
 
-          <!-- <h1>Ambiente 3 - Cozinha</h1>
-          <div class="cards">
-            <div class="card"></div>
-          </div> -->
-          
-        </div>
-        
-        <button class="button-ambiente">Cadastrar novo ambiente</button>
-      </div>
     </div>
-  </body>
+
+        <a href="">
+        <button class="btn"> Cadastrar novo enderço </button>
+        </a>
+
+    </div>
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+
+<div id="modal" class="modal">
+        
+    <div class="janela-modal"> 
+
+        <!-- Header -->
+
+        <div class="header-modal">
+
+            <h1> Ambientes </h1>
+
+            <button class="btn" onclick="fecharModal()"> Fechar </button>
+
+        </div>
+
+        <hr>
+
+        <!-- Container -->
+
+        <div class="container-modal">
+
+            <label class="label-input">
+                <i class="fa-solid fa-earth-americas icon-modify"></i>
+                <input class="input-text" type="text" placeholder="Nome ambiente">
+            </label>
+
+            <label class="label-input">
+                <i class="fa-regular fa-image icon-modify"></i>
+                <input class="input-text" type="text" placeholder="Quantidade de Obras">
+            </label>
+
+            <label class="header-checked">
+
+                Tipo de tinta:
+
+                <section class="container-checked"> 
+
+                <label class="input-tinta">
+                    Acrílica  <input type="checkbox">
+                </label>
+
+                <label class="">
+                    Óleo <input type="checkbox">
+                </label>
+
+                <label class="">
+                    Guache <input type="checkbox">
+                </label>
+
+                </section>
+                
+            </label>
+
+            <label class="label-input">
+                <i class="fa-solid fa-message icon-modify"></i>
+                <input class="input-text" type="text" placeholder="Descrição">
+            </label>
+
+            <button class="btn"> Cadastrar </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+</body>
 </html>
+
+<script>
+    
+// Criando a coleção e cardsColoridos
+let colecao = document.getElementsByClassName("card"); 
+
+// Cria uma contador que começa do zero
+// Começa do 0 porque é o PRIMEIRO card!
+
+for (let contador = 0; contador < colecao.length; contador++) {
+
+    // Variavel de mudança de cor baseada no card equivalente ao contador
+    let cardAtual = colecao[contador]; 
+    
+    // Gera números aleatórios para umidade, temperatura e luminosidade
+    let umidade = (Math.random() * 100).toFixed(1);
+    let temp = (Math.random() * 32 + 12).toFixed(1);
+    let lux = (Math.random() * 400 + 50).toFixed(1);
+
+    // Calcula as médias
+    let mediaUmi = umidade >= 40 && umidade <= 60;
+    let mediaTemp = temp >= 18 && temp <= 21;
+    let mediaLux = lux >= 50 && lux <= 200;
+
+    // Define a cor do card com base nas condições
+
+    // Verde
+    if (mediaUmi && mediaTemp && mediaLux) {
+        cardAtual.style.backgroundColor = "#18a924"; 
+    } 
+    // Vermelho
+    else if (!mediaUmi && !mediaTemp && !mediaLux) {
+        cardAtual.style.backgroundColor = "#db4b4b";
+    } 
+    // Laranja   
+    else if ((!mediaUmi && !mediaTemp) || (!mediaUmi && !mediaLux) || (!mediaTemp && !mediaLux)) {
+        cardAtual.style.backgroundColor = "#df960f";
+    } 
+    // Amarelo  
+    else if (!mediaUmi || !mediaTemp || !mediaLux) {
+        cardAtual.style.backgroundColor = "#e2c834";
+    }
+
+    // Atualiza o conteúdo das divs "info"
+    cardAtual.querySelector(".info").innerHTML = `Umi: ${umidade}% <br> Temp: ${temp}°c <br> Lumi: ${lux}`;
+    };
+
+    function toggleMenu() {
+        let subMenu = document.getElementById("sub-menu-wrap");
+        subMenu.classList.toggle("open-menu");
+    };
+
+    function chamarModal() {
+        const modal = document.getElementById('modal');
+        modal.classList.add('chamada')
+    };
+
+    function fecharModal() {
+        const modal = document.getElementById('modal'); 
+        modal.classList.remove('chamada')
+    };
+    
+</script>
 
 
 
