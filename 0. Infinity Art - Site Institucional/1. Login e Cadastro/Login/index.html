@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styleLogin.css">
+    <link rel="stylesheet" href="../../src/css/styles - login.css">
     <script src="https://kit.fontawesome.com/80ec270284.js" crossorigin="anonymous"></script>
 </head>
 
@@ -16,25 +16,107 @@
 
                 <!-- NAV LOGO -->
                 <div class="nav-logo">
-                    <img class="logotipo" src="../../3. src/img/art-icon.png" alt="">
+                    <img class="logotipo" src="../../src/img/art-icon.png" alt="">
                 </div>
 
                 <!-- NAV LIST -->
                 <ul class="header-ul">
-                    <li><a href="#banner">Página Inicial</a></li>
-                    <li><a href="#sobrenos">Sobre Nós</a></li>
-                    <li><a href="#simuleaqui">Simulador<br>Financeiro</a></li>
-                    <li><a href="#negocio">Nosso<br>Negócio</a></li>
-                    <li><a href="#contatos">Fale<br>Conosco</a></li>
+                    <li><a href="../../0. Homepage/Homepage - Logged in/index.html">Página Inicial</a></li>
+                    <li><a href="../../0. Homepage/Homepage - Logged in/index.html#sobrenos">Sobre Nós</a></li>
+                    <li><a href="../../0. Homepage/Homepage - Logged in/index.html#simuleaqui">Simulador<br>Financeiro</a></li>
+                    <li><a href="../../0. Homepage/Homepage - Logged in/index.html#negocio">Nosso<br>Negócio</a></li>
+                    <li><a href="../../0. Homepage/Homepage - Logged in/index.html#contatos">Fale<br>Conosco</a></li>
                 </ul>
 
                 <!-- NAV BUTTON -->
                 <div class="nav-button">
-                    <a target="blank" href="../1. Login e Cadastro/Paginas/Login.html"><button class="login" onclick="">
-                            Entrar </button></a>
-                    <a target="blank" href="../1. Login e Cadastro/Paginas/Cadastro.html"><button class="cadastro"
+                    <a target="blank" href="../../1. Login e Cadastro/Login/index.html"><button class="login"
+                            onclick=""> Entrar </button></a>
+                    <a target="blank" href="../Cadastro/index.html"><button class="cadastro"
                             onclick=""> Cadastro </button> </a>
                 </div>
+
+                <!-- NAV PROFILE BUTTON -->
+                <div class="nav-profile" onclick="toggleMenu()">
+                    <div class="user-profile-button" id="user_profile-image">
+                        <i class="fa-solid fa-user icon-modify"></i>
+                        <p>perfil</p>
+                    </div>
+
+                    <!-- CONTAINER DO MENU -->
+                    <div class="sub-menu-wrap" id="sub-menu-wrap">
+
+                        <!-- SUBMENU -->
+                        <div class="submenu">
+
+                            <!-- INFORMAÇÕES DO USUARIO -->
+                            <div class="user-info">
+                                <i class="fa-solid fa-user icon-modify"></i>
+                                <h3 class="username">
+                                    S. Mordon
+                                </h3>
+                            </div>
+
+                            <!-- OPTION DASHBOARD -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-chart-line icon-modify"></i>
+                                <p>Dashboard</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
+
+                            <!-- OPTION ENDEREÇOS -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-location-crosshairs icon-modify"></i>
+                                <p>Endereços</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
+
+                            <!-- OPTION AMBIENTES -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-house-chimney icon-modify"></i>
+                                <p>Ambientes</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
+
+                            <!-- OPTION EDITAR PERFIL -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-gear icon-modify"></i>
+                                <p>Editar Perfil</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
+
+                            <!-- OPTION AJUDA E SUPORTE -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-circle-question icon-modify"></i>
+                                <p>Ajuda & Suporte</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
+
+                            <!-- OPTION SAIR -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-door-open icon-modify"></i>
+                                <p>Sair</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
             </nav>
         </div>
 
