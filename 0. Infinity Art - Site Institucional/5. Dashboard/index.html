@@ -8,7 +8,11 @@
 
     <link rel="shortcut icon" href="../src/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../src/css/styles - dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
     <script src="https://kit.fontawesome.com/80ec270284.js" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -27,7 +31,8 @@
                 <ul class="header-ul">
                     <li><a href="../0. Homepage/Homepage - Logged in/index.html">Página Inicial</a></li>
                     <li><a href="../0. Homepage/Homepage - Logged in/index.html#sobrenos">Sobre Nós</a></li>
-                    <li><a href="../0. Homepage/Homepage - Logged in/index.html#simuleaqui">Simulador<br>Financeiro</a></li>
+                    <li><a href="../0. Homepage/Homepage - Logged in/index.html#simuleaqui">Simulador<br>Financeiro</a>
+                    </li>
                     <li><a href="../0. Homepage/Homepage - Logged in/index.html#negocio">Nosso<br>Negócio</a></li>
                 </ul>
 
@@ -127,68 +132,240 @@
 
     <section class="background">
 
-    <div class="container">
+        <div class="container">
 
-        <div class="center">
+            <div class="center">
 
-        <section class="bg-dashboard">
+                <section class="bg-dashboard">
 
-            <div class="dash"> 
+                    <div class="dash">
 
-                <div class="ambiente-atual"></div>
+                        <div class="ambiente-atual"></div>
 
-                <div class="distribuicao-elementos">
+                        <div class="distribuicao-elementos">
 
-                <div class="info-kpi">
+                            <div class="info-kpi">
 
-                    <div class="kpi"> 
-                        <h1> 100 </h1>
-                        <img src="../src/img/alertG.png">
+                                <div class="kpi">
+                                    <h1> 100 </h1>
+                                    <img src="../src/img/alertG.png">
+                                </div>
+
+                                <div class="kpi">
+                                    <h1> 100 </h1>
+                                    <img src="../src/img/alertY.png">
+                                </div>
+
+                                <div class="kpi">
+                                    <h1> 100 </h1>
+                                    <img src="../src/img/alertR.png">
+                                </div>
+
+                                <div class="local">
+                                    <h1>Casa</h1>
+                                    <hr>
+                                    <h1>Sala</h1>
+                                </div>
+
+                            </div>
+
+                            <div class="graficos-dash">
+
+                                <div class="grafico g-sensor">
+                                    <canvas id="dht11"></canvas>
+                                </div>
+
+                                <div class="grafico g-pizza"></div>
+
+                                <div class="grafico g-sensor">
+                                    <canvas id="luminosidade"></canvas>
+                                </div>
+
+                                <div class="grafico g-barra">
+                                    <canvas id="myChartBar"></canvas>
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
-                    <div class="kpi">
-                        <h1> 100 </h1> 
-                        <img src="../src/img/alertY.png">
-                    </div>
+                </section>
 
-                    <div class="kpi">
-                        <h1> 100 </h1> 
-                        <img src="../src/img/alertR.png">
-                    </div>
+                <script>
 
-                    <div class="local">
-                    <h1>Casa</h1>
-                    <hr>
-                    <h1>Sala</h1>    
-                    </div>
+                    function toggleMenu() {
+                        let subMenu = document.getElementById("sub-menu-wrap");
+                        subMenu.classList.toggle("open-menu");
+                    };
 
-                </div>
+                    /* -- dht11Umidade -- */
+                    var contextoDht11 = document.getElementById('dht11').getContext('2d');
+                    contextoDht11.canvas.width = 550.54;
+                    contextoDht11.canvas.height = 225.84;
+                    var dht11Umidade = new Chart(
+                        contextoDht11,
+                        {
+                            type: 'line',
+                            data: {
+                                datasets: [{
+                                    label: 'Umidade',
+                                    data: [123, 123, 123],
+                                    type: 'line',
+                                    borderColor: ['#45b3e7'],
+                                    backgroundColor: ['transparent'],
+                                    borderWidth: 2
 
-                <div class="graficos-dash">
+                                },
+                                {
+                                    label: 'Temperatura',
+                                    data: [12, 20, 40],
+                                    type: 'line',
+                                    borderColor: ['#fa2e30'],
+                                    backgroundColor: ['transparent'],
+                                    borderWidth: 2
 
-                    <div class="grafico g-sensor">
-                        
-                    </div>
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        distribution: 'series',
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Umidade'
+                                        },
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                },
+                                animation: {
+                                    duration: 0
+                                }
+                            }
+                        }
+                    );
+                    /* -- luminosidade -- */
+                    var contextoLuminosidade = document.getElementById('luminosidade').getContext('2d');
+                    contextoLuminosidade.canvas.width = 550.54;
+                    contextoLuminosidade.canvas.height = 225.84;
+                    var luminosidade = new Chart(
+                        contextoLuminosidade,
+                        {
+                            type: 'line',
+                            data: {
+                                datasets: [{
+                                    label: 'Luminosidade',
+                                    type: 'line',
+                                    borderColor: ['#ffd902'],
+                                    backgroundColor: ['#ffe135']
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        distribution: 'series',
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Luminosidade'
+                                        },
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                },
+                                animation: {
+                                    duration: 0
+                                }
+                            }
+                        }
+                    );
+                    // gráfico média 
+                    var ctxBar = document.getElementById('myChartBar');
+                   
+                    var media = 
+                    new Chart(ctxBar, {
+                        type: 'bar',
+                        data: {
+                           
+                            datasets: [{
+                                label: 'Temperatura Média',
+                                data: [22, 24, 27, 23, 20, 18],
+                                borderWidth: 2,
+                                borderColor: 'rgb(255, 1, 1)',
+                                backgroundColor: 'rgb(255, 1, 1)'
+                            },
+                            {
+                                label: 'Umidade Média',
+                                data: [90, 89, 93, 87, 88, 82],
+                                borderWidth: 2,
+                                borderColor: 'rgb(30, 150, 255)',
+                                backgroundColor: 'rgb(30, 150, 255)'
+                            },
+                            {
+                                label: 'Lux Média',
+                                data: [167, 124, 211, 113, 174, 124],
+                                borderWidth: 2,
+                                borderColor: ['#FACB10'],
+                                backgroundColor: ['#FAE799']
+                            }
+                            ]
+                        },
+                        options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 
-                    <div class="grafico g-pizza"></div>
+                    // var paginacao = {};
+                    // var tempo = {};
+                    // function obterDados(grafico, endpoint) {
+                    //     var http = new XMLHttpRequest();
+                    //     http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
+                    //     http.send(null);
+                    //     var valores = JSON.parse(http.responseText);
+                    //     if (paginacao[endpoint] == null) {
+                    //         paginacao[endpoint] = 0;
+                    //     }
+                    //     if (tempo[endpoint] == null) {
+                    //         tempo[endpoint] = 0;
+                    //     }
+                    //     // Exibir à partir do último elemento exibido anteriormente
+                    //     var ultimaPaginacao = paginacao[endpoint];
+                    //     paginacao[endpoint] = valores.length;
+                    //     var valores = valores.slice(ultimaPaginacao);
+                    //     valores.forEach((valor) => {
+                    //         //Máximo de 60 itens exibidos no gráfico
+                    //         if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                    //             grafico.data.labels.shift();
+                    //             grafico.data.datasets[0].data.shift();
+                    //         }
 
-                    <div class="grafico g-sensor"></div>
+                    //         grafico.data.labels.push(tempo[endpoint]++);
+                    //         grafico.data.datasets[0].data.push(parseFloat(valor));
+                    //         grafico.update();
+                    //     })
+                    // }
 
-                    <div class="grafico g-barra"></div>
-                
-                </div>
+                    // setInterval(() => {
+                    //     obterDados(Umidade, 'dht11/umidade');
+                    //     obterDados(Temperatura, 'dht11/temperatura');
+                    //     obterDados(luminosidade, 'luminosidade');
+                    // }, 1000);
 
-            </div>
-
-            </div>
-
-        </section>
-
-<script>
-
-    function toggleMenu() {
-        let subMenu = document.getElementById("sub-menu-wrap");
-        subMenu.classList.toggle("open-menu");
-    };
-
-</script>
+                </script>
