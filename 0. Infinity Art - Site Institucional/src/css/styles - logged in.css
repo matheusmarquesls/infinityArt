@@ -654,6 +654,11 @@ header .header-ul a:hover {
 
 }
 
+.contato_rodape:hover{
+  color: rgb(198, 106, 105);
+  font-weight: bold;
+}
+
 .icon_rodape {
   display: flex;
   flex-direction: row;
