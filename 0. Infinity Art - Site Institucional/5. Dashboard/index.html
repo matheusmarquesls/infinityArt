@@ -13,136 +13,15 @@
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
     <script src="https://kit.fontawesome.com/80ec270284.js" crossorigin="anonymous"></script>
 
-
 </head>
 
 <body>
 
-     <!-- 
+                <section class="fundo">
 
-    <header class="header-center">
-        <div class="container">
-            <nav class="header-nav">
+                    <div class="dashboard">
 
-                NAV LOGO
-                <div class="nav-logo">
-                    <img class="logotipo" src="../src/img/art-icon.png" alt="">
-                </div>
-
-                NAV LIST
-                <ul class="header-ul">
-                    <li><a href="../0. Homepage/Homepage - Logged in/index.html">Página Inicial</a></li>
-                    <li><a href="../0. Homepage/Homepage - Logged in/index.html#sobrenos">Sobre Nós</a></li>
-                    <li><a href="../0. Homepage/Homepage - Logged in/index.html#simuleaqui">Simulador<br>Financeiro</a>
-                    </li>
-                    <li><a href="../0. Homepage/Homepage - Logged in/index.html#negocio">Nosso<br>Negócio</a></li>
-                </ul>
-
-                NAV BUTTON
-                <div class="nav-button">
-                    <a target="blank" href="../../1. Login e Cadastro/Paginas/Login.html"><button class="login"
-                            onclick=""> Entrar </button></a>
-                    <a target="blank" href="../../1. Login e Cadastro/Paginas/Cadastro.html"><button class="cadastro"
-                            onclick=""> Cadastro </button> </a>
-                </div>
-
-                NAV PROFILE BUTTON
-                <div class="nav-profile" onclick="toggleMenu()">
-                    <div class="user-profile-button" id="user_profile-image">
-                        <i class="fa-solid fa-user icon-modify"></i>
-                        <p>perfil</p>
-                    </div>
-
-                    CONTAINER DO MENU
-                    <div class="sub-menu-wrap" id="sub-menu-wrap">
-
-                        SUBMENU
-                        <div class="submenu">
-
-                            INFORMAÇÕES DO USUARIO
-                            <div class="user-info">
-                                <i class="fa-solid fa-user icon-modify"></i>
-                                <h3 class="username">
-                                    S. Mordon
-                                </h3>
-                            </div>
-
-                            OPTION DASHBOARD
-                            <a href="#" class="submenu-option">
-                                <i class="fa-solid fa-chart-line icon-modify"></i>
-                                <p>Dashboard</p>
-                                <span>
-                                    >
-                                </span>
-                            </a>
-
-                            OPTION ENDEREÇOS
-                            <a href="#" class="submenu-option">
-                                <i class="fa-solid fa-location-crosshairs icon-modify"></i>
-                                <p>Endereços</p>
-                                <span>
-                                    >
-                                </span>
-                            </a>
-
-                            OPTION AMBIENTES
-                            <a href="#" class="submenu-option">
-                                <i class="fa-solid fa-house-chimney icon-modify"></i>
-                                <p>Ambientes</p>
-                                <span>
-                                    >
-                                </span>
-                            </a>
-
-                            OPTION EDITAR PERFIL
-                            <a href="#" class="submenu-option">
-                                <i class="fa-solid fa-gear icon-modify"></i>
-                                <p>Editar Perfil</p>
-                                <span>
-                                    >
-                                </span>
-                            </a>
-
-                            OPTION AJUDA E SUPORTE
-                            <a href="#" class="submenu-option">
-                                <i class="fa-solid fa-circle-question icon-modify"></i>
-                                <p>Ajuda & Suporte</p>
-                                <span>
-                                    >
-                                </span>
-                            </a>
-
-                            OPTION SAIR
-                            <a href="../Homepage - Not Logged in/index.html" class="submenu-option">
-                                <i class="fa-solid fa-door-open icon-modify"></i>
-                                <p>Sair</p>
-                                <span>
-                                    >
-                                </span>
-                            </a>
-
-
-                        </div>
-                    </div>
-                </div>
-
-
-            </nav>
-        </div>
-
-    </header>
-
- -->
-
-    <section class="background">
-
-        <div class="container">
-
-            <div class="center">
-
-                <section class="bg-dashboard">
-
-                    <div class="dash">
+                        <div class="dash">
 
                         <div class="ambiente-atual">
 
@@ -213,6 +92,8 @@
 
                     </div>
 
+                    </div>
+
                 </section>
 
                 <script>
@@ -224,8 +105,7 @@
 
                    /* -- dht11Umidade -- */
                    var contextoDht11 = document.getElementById('dht11').getContext('2d');
-                    contextoDht11.canvas.width = 600;
-                    contextoDht11.canvas.height = 300;
+                    
                     var dht11Umidade = new Chart(
                         contextoDht11,
                         {
@@ -251,23 +131,7 @@
                                 }]
                             },
                             options: {
-                                scales: {
-                                    xAxes: [{
-                                        distribution: 'series',
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
-                                    }],
-                                    yAxes: [{
-                                        scaleLabel: {
-                                            display: true,
-                                            labelString: 'Umidade'
-                                        },
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
-                                    }]
-                                },
+                                responsive: true,
                                 animation: {
                                     duration: 0
                                 }
@@ -276,8 +140,7 @@
                     );
                     /* -- luminosidade -- */
                     var contextoLuminosidade = document.getElementById('luminosidade').getContext('2d');
-                    contextoLuminosidade.canvas.width = 600;
-                    contextoLuminosidade.canvas.height = 300;
+        
                     var luminosidade = new Chart(
                         contextoLuminosidade,
                         {
@@ -293,23 +156,7 @@
                                 }]
                             },
                             options: {
-                                scales: {
-                                    xAxes: [{
-                                        distribution: 'series',
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
-                                    }],
-                                    yAxes: [{
-                                        scaleLabel: {
-                                            display: true,
-                                            labelString: 'Luminosidade'
-                                        },
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
-                                    }]
-                                },
+                                responsive: true,
                                 animation: {
                                     duration: 0
                                 }
@@ -318,8 +165,6 @@
                     );
                     // gráfico média 
                     var contextoMedia = document.getElementById('myChartBar').getContext('2d');
-                    contextoMedia.canvas.width = 600;
-                    contextoMedia.canvas.height = 300;
                     var media = new Chart(
                         contextoMedia,
                         {
@@ -346,23 +191,7 @@
                                 }
                             ]},
                             options: {
-                                scales: {
-                                    xAxes: [{
-                                        distribution: 'series',
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
-                                    }],
-                                    yAxes: [{
-                                        scaleLabel: {
-                                            display: true,
-                                            labelString: 'Luminosidade'
-                                        },
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
-                                    }]
-                                },
+                                responsive: true,
                                 animation: {
                                     duration: 0
                                 }
@@ -372,8 +201,6 @@
                     // gráfico pizza 
                     /* -- luminosidade -- */
                     var contextoPizza = document.getElementById('myChartPizza').getContext('2d');
-                    contextoPizza.canvas.width = 600;
-                    contextoPizza.canvas.height = 300;
                     var media = new Chart(
                         contextoPizza,
                         {
@@ -390,23 +217,7 @@
                             ]},
                             hoverOffset: 4,
                             options: {
-                                scales: {
-                                    xAxes: [{
-                                        distribution: 'series',
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
-                                    }],
-                                    yAxes: [{
-                                        scaleLabel: {
-                                            display: true,
-                                            labelString: 'Luminosidade'
-                                        },
-                                        ticks: {
-                                            beginAtZero: true
-                                        }
-                                    }]
-                                },
+                                responsive: true,
                                 animation: {
                                     duration: 0
                                 }
