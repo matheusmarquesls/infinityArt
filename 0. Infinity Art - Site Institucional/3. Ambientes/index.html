@@ -287,9 +287,9 @@ for (let contador = 0; contador < colecao.length; contador++) {
     let cardAtual = colecao[contador]; 
     
     // Gera números aleatórios para umidade, temperatura e luminosidade
-    let umidade = (Math.random() * 100).toFixed(1);
-    let temp = (Math.random() * 32 + 12).toFixed(1);
-    let lux = (Math.random() * 400 + 50).toFixed(1);
+    let umidade = (Math.random() * (100 - 40 + 1) + 40).toFixed(1);
+    let temp = (Math.random() * (32 - 12 + 1) + 12).toFixed(1);
+    let lux = (Math.random() * (400 - 50 + 1) + 50).toFixed(1);
 
     // Calcula as médias
     let mediaUmi = umidade >= 40 && umidade <= 60;
