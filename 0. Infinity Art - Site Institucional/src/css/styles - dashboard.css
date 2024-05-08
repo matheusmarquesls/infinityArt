@@ -258,7 +258,7 @@ header .header-ul a:hover {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #74a9ee; 
+  background-color: var(--marrom); 
 }
 
 .dashboard {
@@ -380,7 +380,7 @@ canvas {
 }
 
 .kpi h1 {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .kpi p {
@@ -426,7 +426,7 @@ canvas {
 }
 
 .local h1 {
-  font-size: 32px;
+  font-size: 25px;
 }
 
 .local hr {

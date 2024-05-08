@@ -354,6 +354,8 @@ header .header-ul a:hover {
 
 .conteudo-card{
   width: 60%;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .card hr {
@@ -541,3 +543,5 @@ header .header-ul a:hover {
   padding: 10px;
   position: absolute;
 }
+
+

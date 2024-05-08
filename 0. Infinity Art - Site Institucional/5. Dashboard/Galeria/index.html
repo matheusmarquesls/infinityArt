@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infinity Art - Dashboard</title>
 
-    <link rel="shortcut icon" href="../src/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../src/css/styles - dashboard.css">
+    <link rel="shortcut icon" href="../../src/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../src/css/styles - dashboard.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
@@ -49,7 +49,7 @@
                                 <div class="kpi">
                                     <div class="legend" style="color: rgb(73, 209, 73);">
                                     <h1> 20ºC </h1>
-                                    <img src="../src/img/alertG.png">
+                                    <img src="../../src/img/alertG.png">
                                     </div>
                                     <p> Temperatura Média </p>
                                 </div>
@@ -57,7 +57,7 @@
                                 <div class="kpi">
                                     <div class="legend" style="color: rgb(219, 198, 35);">
                                     <h1> 84% </h1>
-                                    <img src="../src/img/alertY.png">
+                                    <img src="../../src/img/alertY.png">
                                     </div>
                                     <p> Umidade Média </p>
                                 </div>
@@ -65,15 +65,15 @@
                                 <div class="kpi">
                                     <div class="legend" style="color: rgb(237, 83, 72);">
                                     <h1> 255x </h1>
-                                    <img src="../src/img/alertR.png">
+                                    <img src="../../src/img/alertR.png">
                                     </div>
                                     <p> Lux Média </p>
                                 </div>
 
                                 <div class="local">
-                                    <h1>Casa</h1>
+                                    <h1>Galeria</h1>
                                     <hr>
-                                    <h1>Sala</h1>
+                                    <h1>Sessão 1</h1>
                                 </div>
 
                                 <a class="fechar-dash" href="../../3. Ambientes/index.html">
@@ -137,17 +137,17 @@
                         subMenu.classList.toggle("open-menu");
                     };
 
-                   /* -- dht11Umidade -- */
-                   var contextoDht11 = document.getElementById('dht11').getContext('2d');
+                   /* -- dht11 -- */
+                   var contextoDht11Umidade = document.getElementById('dht11').getContext('2d');
+                   var contextoDht11Temp = document.getElementById('dht11').getContext('2d');
                     
-                    var dht11Umidade = new Chart(
-                        contextoDht11,
+                    var dht11Medidas = new Chart(
+                        contextoDht11Umidade, contextoDht11Temp,
                         {
                             type: 'line',
                             data: {
                                 datasets: [{
                                     label: 'Umidade',
-                                    data: [123, 123, 123],
                                     type: 'line',
                                     borderColor: ['#45b3e7'],
                                     backgroundColor: ['transparent'],
@@ -156,7 +156,6 @@
                                 },
                                 {
                                     label: 'Temperatura',
-                                    data: [12, 20, 40],
                                     type: 'line',
                                     borderColor: ['#fa2e30'],
                                     backgroundColor: ['transparent'],
@@ -183,7 +182,6 @@
                             data: {
                                 datasets: [{
                                     label: 'Luminosidade',
-                                    data: [12, 20, 40],
                                     type: 'line',
                                     borderColor: ['#ffd902'],
                                     backgroundColor: ['transparent'],
@@ -208,19 +206,16 @@
                             data: {
                                 datasets: [{
                                     label: 'Media Umi',
-                                    data: [78],
                                     type: 'bar',
                                     borderColor: ['#45b3e7'],
                                     backgroundColor: ['#45b3e7'],
                                 }, {
                                     label: 'Media Temp',
                                     type: 'bar',
-                                    data: [24],
                                     borderColor: ['#fa2e30'],
                                     backgroundColor: ['#fa2e30']
                                 }, {
                                     label: 'Media Lux',
-                                    data: [123],
                                     type: 'bar',
                                     borderColor: ['#ffd902'],
                                     backgroundColor: ['#ffd902']
@@ -265,40 +260,40 @@
                     
                     
 
-                    // var paginacao = {};
-                    // var tempo = {};
-                    // function obterDados(grafico, endpoint) {
-                    //     var http = new XMLHttpRequest();
-                    //     http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
-                    //     http.send(null);
-                    //     var valores = JSON.parse(http.responseText);
-                    //     if (paginacao[endpoint] == null) {
-                    //         paginacao[endpoint] = 0;
-                    //     }
-                    //     if (tempo[endpoint] == null) {
-                    //         tempo[endpoint] = 0;
-                    //     }
-                    //     // Exibir à partir do último elemento exibido anteriormente
-                    //     var ultimaPaginacao = paginacao[endpoint];
-                    //     paginacao[endpoint] = valores.length;
-                    //     var valores = valores.slice(ultimaPaginacao);
-                    //     valores.forEach((valor) => {
-                    //         //Máximo de 60 itens exibidos no gráfico
-                    //         if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
-                    //             grafico.data.labels.shift();
-                    //             grafico.data.datasets[0].data.shift();
-                    //         }
+                    var paginacao = {};
+                    var tempo = {};
+                    function obterDados(grafico, endpoint) {
+                        var http = new XMLHttpRequest();
+                        http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
+                        http.send(null);
+                        var valores = JSON.parse(http.responseText);
+                        if (paginacao[endpoint] == null) {
+                            paginacao[endpoint] = 0;
+                        }
+                        if (tempo[endpoint] == null) {
+                            tempo[endpoint] = 0;
+                        }
+                        // Exibir à partir do último elemento exibido anteriormente
+                        var ultimaPaginacao = paginacao[endpoint];
+                        paginacao[endpoint] = valores.length;
+                        var valores = valores.slice(ultimaPaginacao);
+                        valores.forEach((valor) => {
+                            //Máximo de 60 itens exibidos no gráfico
+                            if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                                grafico.data.labels.shift();
+                                grafico.data.datasets[0].data.shift();
+                            }
 
-                    //         grafico.data.labels.push(tempo[endpoint]++);
-                    //         grafico.data.datasets[0].data.push(parseFloat(valor));
-                    //         grafico.update();
-                    //     })
-                    // }
+                            grafico.data.labels.push(tempo[endpoint]++);
+                            grafico.data.datasets[0].data.push(parseFloat(valor));
+                            grafico.update();
+                        })
+                    }
 
-                    // setInterval(() => {
-                    //     obterDados(Umidade, 'dht11/umidade');
-                    //     obterDados(Temperatura, 'dht11/temperatura');
-                    //     obterDados(luminosidade, 'luminosidade');
-                    // }, 1000);
+                    setInterval(() => {
+                        obterDados(Umidade, 'dht11/umidade');
+                        obterDados(Temperatura, 'dht11/temperatura');
+                        obterDados(luminosidade, 'luminosidade');
+                    }, 1000);
 
                 </script>
