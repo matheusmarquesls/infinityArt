@@ -303,6 +303,10 @@ header .header-ul a:hover {
   border-radius: 12px;
 }
 
+.title-grafico{
+  color: #fff;
+}
+
 canvas {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -355,15 +359,23 @@ canvas {
   gap: 1rem;
 }
 
-.kpi {
+.legend {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
   width: 10%;
   height: 100%;
   background-color: var(--branco);
   border-radius: 12px;
   padding: 6px;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -371,7 +383,11 @@ canvas {
   font-size: 30px;
 }
 
-.kpi img {
+.kpi p {
+  font-size: 10px;
+}
+
+.legend img {
   height: 25px; 
   width: 25px;
 }
@@ -384,8 +400,16 @@ canvas {
   background-color: var(--branco);
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 42px;
+  font-weight: 800;
   border-radius: 32px;
+  color: var(--preto);
+  transition: 0.5s;
+}
+
+.fechar-dash:hover {
+  color: var(--branco);
+  background-color: #6084f0;
 }
 
 .local {

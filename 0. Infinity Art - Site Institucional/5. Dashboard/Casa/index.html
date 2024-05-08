@@ -47,18 +47,27 @@
                             <div class="info-kpi">
 
                                 <div class="kpi">
-                                    <h1> 100 </h1>
+                                    <div class="legend" style="color: rgb(73, 209, 73);">
+                                    <h1> 20ºC </h1>
                                     <img src="../src/img/alertG.png">
+                                    </div>
+                                    <p> Temperatura Média </p>
                                 </div>
 
                                 <div class="kpi">
-                                    <h1> 100 </h1>
+                                    <div class="legend" style="color: rgb(219, 198, 35);">
+                                    <h1> 84% </h1>
                                     <img src="../src/img/alertY.png">
+                                    </div>
+                                    <p> Umidade Média </p>
                                 </div>
 
                                 <div class="kpi">
-                                    <h1> 100 </h1>
+                                    <div class="legend" style="color: rgb(237, 83, 72);">
+                                    <h1> 255x </h1>
                                     <img src="../src/img/alertR.png">
+                                    </div>
+                                    <p> Lux Média </p>
                                 </div>
 
                                 <div class="local">
@@ -67,7 +76,7 @@
                                     <h1>Sala</h1>
                                 </div>
 
-                                <a class="fechar-dash" href="../3. Ambientes/index.html">
+                                <a class="fechar-dash" href="../../3. Ambientes/index.html">
                                 <div> X </div>
                                 </a>
 
@@ -75,20 +84,40 @@
 
                             <div class="graficos-dash">
 
+                                <div class="title-grafico">
+
+                                <h1> Temperatura e Umidade </h1>
                                 <div class="grafico g-sensor">
                                     <canvas id="dht11"></canvas>
                                 </div>
 
+                                </div>
+
+                                <div class="title-grafico">
+
+                                <h1> Estado atual </h1>
                                 <div class="grafico g-pizza">
                                     <canvas id="myChartPizza"></canvas>
                                 </div>
 
+                                </div>
+
+                                <div class="title-grafico">
+
+                                <h1> Luminosidade do ambiente </h1>
                                 <div class="grafico g-sensor">
                                     <canvas id="luminosidade"></canvas>
                                 </div>
 
+                                </div>
+
+                                <div class="title-grafico">
+
+                                <h1> Média </h1>
                                 <div class="grafico g-barra">
                                     <canvas id="myChartBar"></canvas>
+                                </div>
+
                                 </div>
 
                             </div>
