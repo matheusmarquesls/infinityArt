@@ -303,6 +303,33 @@ header .header-ul a:hover {
   border-radius: 12px;
 }
 
+.select-estado-css {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.select-estado-css select {
+  width: 40px;
+  height: 30px;
+  font-size: 18px;
+}
+
+.gp-lux {
+  display: flex;
+  flex-direction: column;
+}
+
+.gp-temp {
+  display: none;
+  flex-direction: column;
+}
+
+.gp-umi {
+  display: none;
+  flex-direction: column;
+}
+
 .title-grafico{
   color: #fff;
 }
@@ -355,6 +382,7 @@ canvas {
 .info-kpi {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   width: 100%;
   gap: 1rem;
 }
@@ -367,11 +395,21 @@ canvas {
   gap: 1rem;
 }
 
+.title-kpi {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-kpi h2 {
+  color: #fff;
+  font-size: 18px;
+}
+
 .kpi {
   display: flex;
   flex-direction: column;
-  width: 10%;
-  height: 100%;
+  width: 200px;
+  height: 70%;
   background-color: var(--branco);
   border-radius: 12px;
   padding: 6px;
@@ -380,11 +418,12 @@ canvas {
 }
 
 .kpi h1 {
-  font-size: 25px;
+  font-size: 32px;
 }
 
 .kpi p {
   font-size: 10px;
+  text-align: center;
 }
 
 .legend img {
@@ -395,21 +434,21 @@ canvas {
 .fechar-dash {
   display: flex;
   flex-direction: row;
-  width: 10%;
-  height: 100%;
+  width: 80px;
+  height: 80px;
   background-color: var(--branco);
   align-items: center;
   justify-content: center;
-  font-size: 42px;
+  font-size: 32px;
   font-weight: 800;
-  border-radius: 32px;
+  border-radius: 100%;
   color: var(--preto);
   transition: 0.5s;
 }
 
 .fechar-dash:hover {
   color: var(--branco);
-  background-color: #6084f0;
+  background-color: var(--vermelho);
 }
 
 .local {
@@ -419,7 +458,7 @@ canvas {
   justify-content: space-evenly;
   gap: 1rem;
   width: 300px;
-  height: 100%;
+  height: 70%;
   background-color: var(--branco);
   border-radius: 12px;
   padding: 5px;

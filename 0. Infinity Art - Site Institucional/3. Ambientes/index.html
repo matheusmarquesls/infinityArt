@@ -127,6 +127,8 @@
 
         <div class="ambiente">
 
+            <div class="layout-card">
+
             <label class="label-add">
 
                 <h1 class="titulo-card">Casa</h1>
@@ -149,7 +151,11 @@
 
             </div>
         </a>
+
         </div>
+        </div>
+
+        <div class="layout-card">
 
             <label class="label-add">
 
@@ -174,6 +180,7 @@
         </a>
 
         </div>
+    </div>
 
     </div>
 
@@ -270,14 +277,34 @@ for (let contador = 0; contador < colecao.length; contador++) {
     let cardAtual = colecao[contador]; 
     
     // Gera números aleatórios para umidade, temperatura e luminosidade
-    let umidade = (Math.random() * (100 - 40 + 1) + 40).toFixed(1);
-    let temp = (Math.random() * (32 - 12 + 1) + 12).toFixed(1);
-    let lux = (Math.random() * (400 - 50 + 1) + 50).toFixed(1);
+
+    // let umidade = (Math.random() * (100 - 40 + 1) + 40).toFixed(1);
+    // let temp = (Math.random() * (32 - 12 + 1) + 12).toFixed(1);
+    // let lux = (Math.random() * (400 - 50 + 1) + 50).toFixed(1);
+
+    let umidade = 56;
+    let temp = 20;
+    let lux = 168;
+
+    let tipoTinta;
+    let multiplo;
+
+    if (contador == 0) {
+        tipoTinta = 'guache'
+        multiplo = 1
+    } else {
+        tipoTinta = 'oleo'
+        multiplo = 1.3
+    }
+
+    let umidadeAtual = umidade * multiplo;
+    let tempAtual = temp * multiplo;
+    let luxAtual = lux * multiplo;
 
     // Calcula as médias
-    let mediaUmi = umidade >= 40 && umidade <= 60;
-    let mediaTemp = temp >= 18 && temp <= 21;
-    let mediaLux = lux >= 50 && lux <= 200;
+    let mediaUmi = umidadeAtual >= 40 && umidadeAtual <= 60;
+    let mediaTemp = tempAtual >= 18 && tempAtual <= 21;
+    let mediaLux = luxAtual >= 50 && luxAtual <= 200;
 
     // Define a cor do card com base nas condições
 
@@ -299,7 +326,7 @@ for (let contador = 0; contador < colecao.length; contador++) {
     }
 
     // Atualiza o conteúdo das divs "info"
-    cardAtual.querySelector(".info").innerHTML = `Umi: ${umidade}% <br> Temp: ${temp}°c <br> Lumi: ${lux}`;
+    cardAtual.querySelector(".info").innerHTML = `Umi: ${umidadeAtual}% <br> Temp: ${tempAtual}°c <br> Lumi: ${luxAtual}`;
     };
 
     function toggleMenu() {

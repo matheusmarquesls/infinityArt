@@ -318,13 +318,20 @@ header .header-ul a:hover {
 
 .ambiente {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   flex-wrap: wrap;
   width: 95%;
   align-items: flex-start;
   font-family: 'Poppins';
   gap: 1rem;
-} 
+}
+
+.layout-card {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .cards {
   display: flex;
