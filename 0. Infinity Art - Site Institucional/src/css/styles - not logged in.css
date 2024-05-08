@@ -534,38 +534,116 @@ body {
   color: white; 
 }
 
-/* SESSAO CONTATOS */
-.contatos {
-  display: flex;
-  justify-content: center;
-}
-.contatos .title {
-  margin-top: 16px;
-}
-.contatos .bar-title {
-  background-color: #B8B8B8;
-}
-
-
-
-
 /* RODAPE */
 .rodape {
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: #0e0c0c;
+  height: 300px;
+  background-color: #080808;
   padding: 20px;
 }
+
 .rodape .container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.rodape p {
+
+
+.titulo_rodape {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+
+}
+
+.text_rodape {
+  display: flex;
+  flex-direction: column;
   color: #B8B8B8;
-  font-size: 10px;
+  gap: 13px;
+  width: 500px;
+  font-size: 13px;
+  padding: 20px;
+  text-align: center;
+
+}
+
+.contato_rodape:hover{
+  color: rgb(198, 106, 105);
+  font-weight: bold;
+}
+
+.icon_rodape {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  list-style-type: none;
+  gap: 20px;
+}
+
+.rodape {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  background-color: #080808;
+  padding: 20px;
+}
+
+.rodape .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.titulo_rodape {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+
+}
+
+.text_rodape {
+  display: flex;
+  flex-direction: column;
+  color: #B8B8B8;
+  gap: 13px;
+  width: 500px;
+  font-size: 13px;
+  padding: 20px;
+  text-align: center;
+
+}
+
+.contato_rodape:hover{
+  color: rgb(198, 106, 105);
+  font-weight: bold;
+}
+
+.icon_rodape {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  list-style-type: none;
+  gap: 20px;
+
+
+}
+
+.autorais {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #B8B8B8;
+  background-color: black;
+  width: 100%;
+  height: 50px;
+  font-size: 13px;
 }
 
 

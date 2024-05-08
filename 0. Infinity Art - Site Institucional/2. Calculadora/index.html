@@ -12,7 +12,98 @@
 
 <body>
 
+  <header class="header-center">
+    <div class="container">
+        <nav class="header-nav">
 
+            <!-- NAV LOGO -->
+            <div class="nav-logo">
+                <img class="logotipo" src="../src/img/art-icon.png" alt="">
+            </div>
+
+            <!-- NAV LIST -->
+            <ul class="header-ul">
+                <li><a href="#banner">Página Inicial</a></li>
+                <li><a href="#sobrenos">Sobre Nós</a></li>
+                <li><a href="#simuleaqui">Simulador<br>Financeiro</a></li>
+                <li><a href="#negocio">Nosso<br>Negócio</a></li>
+            </ul>
+
+            <!-- NAV BUTTON -->
+            <div class="nav-button">
+                <a target="blank" href="../1. Login e Cadastro/Paginas/Login.html"><button class="login"
+                        onclick=""> Entrar </button></a>
+                <a target="blank" href="../1. Login e Cadastro/Paginas/Cadastro.html"><button class="cadastro"
+                        onclick=""> Cadastro </button> </a>
+            </div>
+
+            <!-- NAV PROFILE BUTTON -->
+            <div class="nav-profile" onclick="toggleMenu()">
+                <div class="user-profile-button" id="user_profile-image">
+                    <i class="fa-solid fa-user icon-modify"></i>
+                    <p>perfil</p>
+                </div>
+
+                <!-- CONTAINER DO MENU -->
+                <div class="sub-menu-wrap" id="sub-menu-wrap">
+
+                    <!-- SUBMENU -->
+                    <div class="submenu">
+
+                        <!-- INFORMAÇÕES DO USUARIO -->
+                        <div class="user-info">
+                            <i class="fa-solid fa-user icon-modify"></i>
+                            <h3 class="username">
+                                C. Frizza
+                            </h3>
+                        </div>
+
+                        <!-- OPTION AMBIENTES -->
+                        <a href="../3. Ambientes/index.html" class="submenu-option">
+                            <i class="fa-solid fa-house-chimney icon-modify"></i>
+                            <p>Ambientes</p>
+                            <span>
+                                >
+                            </span>
+                        </a>
+
+                        <!-- OPTION EDITAR PERFIL -->
+                        <a href="#" class="submenu-option">
+                            <i class="fa-solid fa-gear icon-modify"></i>
+                            <p>Editar Perfil</p>
+                            <span>
+                                >
+                            </span>
+                        </a>
+
+                        <!-- OPTION AJUDA E SUPORTE -->
+                        <a href="#" class="submenu-option">
+                            <i class="fa-solid fa-circle-question icon-modify"></i>
+                            <p>Ajuda & Suporte</p>
+                            <span>
+                                >
+                            </span>
+                        </a>
+
+                        <!-- OPTION SAIR -->
+                        <a href="#" class="submenu-option">
+                            <i class="fa-solid fa-door-open icon-modify"></i>
+                            <p>Sair</p>
+                            <span>
+                                >
+                            </span>
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </nav>
+    </div>
+
+</header>
 
   <section class="calculadora">
 
@@ -30,21 +121,21 @@
 
             <div id="texto_p">
               <div class="label">
-                <span class="teste">P</span>
+                <span class="tam-view">P</span>
                 <p class="text-tam-p">
-                  = Até 50cm.
+                  = Até 40cm.
                 </p>
               </div>
               <div class="label">
-                <span class="teste">M</span>
+                <span class="tam-view">M</span>
                 <p class="text-tam-p">
-                  = +50cm a 150cm
+                  = +40cm a 100cm
                 </p>
               </div>
               <div class="label">
-                <span class="teste">G</span>
+                <span class="tam-view">G</span>
                 <p class="text-tam-p">
-                  = +150cm
+                  = +100cm
                 </p>
               </div>
             </div>

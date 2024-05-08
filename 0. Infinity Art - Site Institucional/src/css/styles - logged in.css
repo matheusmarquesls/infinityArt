@@ -600,24 +600,56 @@ header .header-ul a:hover {
   color: white;
 }
 
-/* SESSAO CONTATOS */
-.contatos {
+/* RODAPE */
+.rodape {
   display: flex;
   justify-content: center;
+  width: 100%;
+  height: 300px;
+  background-color: #080808;
+  padding: 20px;
 }
 
-.contatos .title {
-  margin-top: 16px;
+.rodape .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.contatos .bar-title {
-  background-color: #B8B8B8;
+
+.titulo_rodape {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+
 }
 
+.text_rodape {
+  display: flex;
+  flex-direction: column;
+  color: #B8B8B8;
+  gap: 13px;
+  width: 500px;
+  font-size: 13px;
+  padding: 20px;
+  text-align: center;
 
+}
 
+.contato_rodape:hover{
+  color: rgb(198, 106, 105);
+  font-weight: bold;
+}
 
-/* RODAPE */
+.icon_rodape {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  list-style-type: none;
+  gap: 20px;
+}
+
 .rodape {
   display: flex;
   justify-content: center;
@@ -678,9 +710,4 @@ header .header-ul a:hover {
   width: 100%;
   height: 50px;
   font-size: 13px;
- 
-  
- 
-  
-
 }
