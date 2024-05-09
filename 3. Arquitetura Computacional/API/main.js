@@ -68,18 +68,18 @@ const serial = async (
         const dht11Temperatura = parseFloat(valores[1]);
         const luminosidade = parseFloat(valores[2]);
 
-        const fkdh11Umidade2 = parseFloat(valores[3]);
-        const fkdht11Temperatura2 = parseFloat(valores[4]);
-        const fkluminosidade2 = parseFloat(valores[5]);
+        const dht11Umidade2 = parseFloat(valores[3]);
+        const dht11Temperatura2 = parseFloat(valores[4]);
+        const luminosidade2 = parseFloat(valores[5]);
 
         // Armazena os valores dos sensores nos arrays correspondentes
         valoresDht11Umidade.push(dht11Umidade);
         valoresDht11Temperatura.push(dht11Temperatura);
         valoresLuminosidade.push(luminosidade);
 
-        valoresDht11UmidadeDois.push(fkdh11Umidade2);
-        valoresDht11TemperaturaDois.push(fkdht11Temperatura2);
-        valoresLuminosidadeDois.push(fkluminosidade2);
+        valoresDht11UmidadeDois.push(dht11Umidade2);
+        valoresDht11TemperaturaDois.push(dht11Temperatura2);
+        valoresLuminosidadeDois.push(luminosidade2);
 
         // Insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
@@ -97,13 +97,13 @@ const serial = async (
             await poolBancoDados.execute(
 
                 'INSERT INTO leitura_dht11 (fkSensor, fkAmbiente, fkEndereco, dht11_umidade, dht11_temperatura) VALUES (1, 1001, 2, ?, ?)',
-                [fkdh11Umidade2, fkdht11Temperatura2],
+                [dht11Umidade2, dht11Temperatura2],
                 'INSERT INTO leitura_ldr (fkSensor, fkAmbiente, fkEndereco, ldr_lux) VALUES (2, 1001, 2, ?)',
-                [fkluminosidade2]
+                [luminosidade2]
 
             );
             console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura + ", " + luminosidade)
-            console.log("valores simulação inseridos no banco: ", fkdh11Umidade2 + ", " + fkdht11Temperatura2 + ", " + fkluminosidade2)
+            console.log("valores simulação inseridos no banco: ", dht11Umidade2 + ", " + dht11Temperatura2 + ", " + luminosidade2)
         }
     });
 
