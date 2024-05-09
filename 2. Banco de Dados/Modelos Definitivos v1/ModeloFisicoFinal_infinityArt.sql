@@ -9,7 +9,7 @@ primary key (idCliente)
 ) auto_increment = 100;
 
 insert into cliente values
-(default, 'Clauido', 'Frizzarini');
+(default, 'Claudio', 'Frizzarini');
 
 create table usuario(
 idCadastro int auto_increment,
@@ -39,21 +39,22 @@ primary key (idEndereco, fkCliente)
 
 insert into endereco values
 (default, '100', 'Casa', 'RJ', 'XXX', 'XXX', 'XXX', 'XXX', '123456789'),
-(default, '100', 'Galpao', 'SP', 'XXX', 'XXX', 'XXX', 'XXX', '987654321');
+(default, '100', 'Galeria', 'SP', 'XXX', 'XXX', 'XXX', 'XXX', '987654321');
 
 create table ambiente (
 idAmbiente int auto_increment,
 fkEndereco int,
 nome varchar(45) not null,
 qtdObras int,
+tipoTinta varchar(45),
 descricao varchar(150),
 constraint fk_end_amb foreign key (fkEndereco) references endereco(idEndereco),
 primary key (idAmbiente, fkEndereco)
 ) auto_increment = 1000;
 
 insert into ambiente values
-(default, 1, 'Quarto', 34, 'Meu quarto'),
-(default, 2, 'Galpão 1', 12, 'Galpão das Obras');
+(default, 1, 'Sala', 12, 'Acrilíca, Guache', 'Sala de Jantar'),
+(default, 2, 'Sessão 1', 34, 'Óleo', 'Exposição contemporânea');
 
 create table sensor (
 idSensor int auto_increment,
@@ -100,23 +101,4 @@ constraint fk_sensor_ldr_amb foreign key (fkAmbiente) references ambiente(idAmbi
 constraint fk_sensor_ldr_end foreign key (fkEndereco) references endereco(idEndereco),
 primary key (sequenciaLeitura),
 unique key (fkSensor, fkAmbiente, fkEndereco, sequenciaLeitura)
-);
-
-create table acervo (
-idAcervo int auto_increment,
-nome varchar(45) not null,
-descricao varchar(200),
-fkAmbiente int,
-constraint fk_acervo_amb foreign key (fkAmbiente) references ambiente(idAmbiente),
-primary key (idAcervo)
-) auto_increment = 10;
-
-create table pintura (
-idPintura int auto_increment,
-nome varchar(45) not null,
-tipoTinta varchar(45) not null,
-descricao varchar(100),
-fkAcervo int,
-constraint fk_pint_acer foreign key (fkAcervo) references acervo(idAcervo),
-primary key (idPintura)
 );
