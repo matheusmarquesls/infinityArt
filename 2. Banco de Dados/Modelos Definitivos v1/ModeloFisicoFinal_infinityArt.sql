@@ -69,8 +69,14 @@ primary key (idSensor, fkAmbiente, fkEndereco)
 );
 
 insert into sensor values
+
+-- Sensores do endereco 1 ambiente 1
+
 (1, 1000, 1, 'DHT11', 'Temperatura & Umidade', '2005-01-01'),
 (2, 1000, 1, 'LDR', 'Luminosidade', '2005-01-01'),
+
+-- Sensores do endereco 2 ambiente 1
+
 (1, 1001, 2, 'DHT11', 'Temperatura & Umidade', '2005-01-01'),
 (2, 1001, 2, 'LDR', 'Luminosidade', '2005-01-01');
 

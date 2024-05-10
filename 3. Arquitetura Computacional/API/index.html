@@ -63,21 +63,6 @@
         </section>
     </div>
 
-    <div class="simulacao2">
-        <h1>Sensor DHT 11 - Umidade2</h1>
-        <section style="width:100%; background-color: white; border-radius: 16px; padding: 12px;">
-            <canvas id="dht11Umidade2"></canvas>
-        </section>
-        <h1>Sensor DHT 11 - Temperatura2</h1>
-        <section style="width:100%; background-color: white; border-radius: 16px; padding: 12px;">
-            <canvas id="dht11Temperatura2"></canvas>
-        </section>
-        <h1>Sensor Luminosidade2</h1>
-        <section style="width:100%; background-color: white; border-radius: 16px; padding: 12px;">
-            <canvas id="luminosidade2"></canvas>
-        </section>
-    </div>
-
 </div>
 
 </body>
@@ -206,127 +191,6 @@
         }
     );
 
-     /* -- dht11Umidade -- */
-     var contextoDht11Umidade2 = document.getElementById('dht11Umidade2').getContext('2d');
-    contextoDht11Umidade2.canvas.width = 600;
-    contextoDht11Umidade2.canvas.height = 200;
-    var dht11Umidade2 = new Chart(
-        contextoDht11Umidade2,
-        {
-            type: 'line',
-            data: {
-                datasets: [{
-                    label: 'Umidade',
-                    type: 'line',
-                    borderColor: ['#45b3e7'],
-                    backgroundColor: ['#89cff0']
-                }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        distribution: 'series',
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Umidade'
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                animation: {
-                    duration: 0
-                }
-            }
-        }
-    );
-    /* -- dht11Temperatura -- */
-    var contextoDht11Temperatura2 = document.getElementById('dht11Temperatura2').getContext('2d');
-    contextoDht11Temperatura2.canvas.width = 600;
-    contextoDht11Temperatura2.canvas.height = 200;
-    var dht11Temperatura2 = new Chart(
-        contextoDht11Temperatura2,
-        {
-            type: 'line',
-            data: {
-                datasets: [{
-                    label: "Temperatura",
-                    type: 'line',
-                    borderColor: ['#ff3232'],
-                    backgroundColor: ['#ff7f7f']
-                }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        distribution: 'series',
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Luminosidade'
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                animation: {
-                    duration: 0
-                }
-            }
-        }
-    );
-    /* -- luminosidade -- */
-    var contextoLuminosidade2 = document.getElementById('luminosidade2').getContext('2d');
-    contextoLuminosidade2.canvas.width = 600;
-    contextoLuminosidade2.canvas.height = 200;
-    var luminosidade2 = new Chart(
-        contextoLuminosidade2,
-        {
-            type: 'line',
-            data: {
-                datasets: [{
-                    label: 'Luminosidade',
-                    type: 'line',
-                    borderColor: ['#ffd902'],
-                    backgroundColor: ['#ffe135']
-                }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        distribution: 'series',
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Luminosidade'
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                animation: {
-                    duration: 0
-                }
-            }
-        }
-    );
-
     var paginacao = {};
     var tempo = {};
     function obterDados(grafico, endpoint) {
@@ -362,9 +226,6 @@
         obterDados(dht11Temperatura, 'dht11/temperatura');
         obterDados(luminosidade, 'luminosidade');
 
-        obterDados(dht11Umidade2, 'dht11/umidade');
-        obterDados(dht11Temperatura2, 'dht11/temperatura');
-        obterDados(luminosidade2, 'luminosidade');
     }, 1000);
 
 </script>
