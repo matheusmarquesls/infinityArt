@@ -19,6 +19,7 @@ header {
     height: 100vh;
     display: flex;
     flex-direction: row;
+    background-color: #F2F2F2;
 }
 
 .menu-lateral {
@@ -72,7 +73,6 @@ li:active {
 .grid-kpi {
     width: 100%;
     height: 20%;
-    background-color: rgb(22, 44, 187);
 }
 
 .grid {
@@ -83,23 +83,24 @@ li:active {
     height: 100%;
     gap: 1rem;
     padding: 0.6rem;
-   
+
 }
 
 .kpi {
- background-color: white;
- width: 100%;
- height: 100%;
- border-radius: 15px;
+    box-shadow: 0px 0px 24px -15px rgba(66, 68, 90, 1);
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
 
 }
 
-.informacoes{
+.informacoes {
     width: 100%;
     height: 15%;
-    background-color: green;
 }
-.info-obras{
+
+.info-obras {
     width: 100%;
     height: 100%;
     display: flex;
@@ -107,31 +108,78 @@ li:active {
     justify-content: space-between;
     padding: 2rem;
 }
-.obras{
+
+.info-obras h1 {
+
+}
+
+.info-obras h4 {
+
+}
+
+.botao {
+
+}
+
+.botao button {
+    
+}
+
+.obras {
     display: flex;
     flex-direction: row;
     width: 30%;
     justify-content: space-between;
 }
 
-.monitoramento{
+.monitoramento {
     width: 100%;
     height: 65%;
-    background-color: pink;
     padding-top: 1.2rem;
     padding-right: 1.2rem;
     padding-left: 1.2rem;
 }
 
 .monitoramento-card {
+    box-shadow: 0px 0px 24px -10px rgba(66, 68, 90, 1);
     width: 100%;
     height: 100%;
     background-color: rgb(255, 255, 255);
     padding: 1rem;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    
+
 }
+
+.dataTables_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+tr {
+    text-align: center;
+}
+
+/* table {
+    box-shadow: 0px 0px 14px -6px rgba(66, 68, 90, 1);
+} */
+
+thead {
+    color: white;
+    background-color: rgb(172, 76, 76);
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.perigo {
+    color: rgb(255, 47, 47);
+}
+
+.seguro {
+    color: rgb(150, 226, 36);
+}
+
 
 /* table {
     width: 100%;
