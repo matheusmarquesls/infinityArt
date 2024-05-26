@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,155 +23,168 @@
 
             <div class="user"></div>
 
-        </div>    
-       
+        </div>
+
     </header>
 
     <section class="ambientes">
 
-    <section class="menu-lateral">
-        
-        <div class="menu">
+        <section class="menu-lateral">
 
-            <ul>
+            <div class="menu">
 
-                <a href=""><li class="active">Dashboard</li></a>
-                <a href=""><li>Homepage</li></a>
-                <a href=""><li>Ajuda & Suporte</li></a>
-                <a href=""><li>Sair</li></a>
+                <ul>
 
-            </ul>
+                    <a href="">
+                        <li class="active">Dashboard</li>
+                    </a>
+                    <a href="">
+                        <li>Homepage</li>
+                    </a>
+                    <a href="">
+                        <li>Ajuda & Suporte</li>
+                    </a>
+                    <a href="">
+                        <li>Sair</li>
+                    </a>
 
-        </div>
+                </ul>
+
+            </div>
+
+        </section>
+
+        <section class="dashboard">
+
+            <div class="grid-kpi">
+                <div class="grid">
+
+                    <div class="kpi qtd-obras">
+                        <div class="title-kpi">
+                            <h1>OBRAS</h1>
+                        </div>
+
+                        <div>
+                            <h1 class="kpi-num" id="h1_quantidade_obras"></h1>
+                        </div>
+
+                    </div>
+
+                    <div class="kpi critico">
+
+                        <div class="title-kpi">
+                            <h1>Obras em perigo</h1>
+                            <h2>agora</h2>
+                        </div>
+
+                        <div>
+                            <h1 class="kpi-num" id="h1_obras_totais_perigo"></h1>
+                        </div>
+
+                        <div class="kpi-info" id="div_quantidade_obras_perigo"></div>
+
+                    </div>
+
+
+                    <div class="kpi critico">
+
+                        <div class="title-kpi">
+
+                            <h1>Obras em perigo</h1>
+
+                        </div>
+
+                        <div>
+                            <h1 class="kpi-num" id="h1_obras_5horas_perigo"></h1>
+                        </div>
+
+                        <div class="kpi-info">há mais de 5 horas</div>
+
+                    </div>
+
+                    <div class="kpi critico">
+
+                        <div class="title-kpi">
+                            <h1>Obras em perigo</h1>
+                        </div>
+
+                        <div>
+                            <h1 class="kpi-num" id="h1_obras_1hora_perigo"></h1>
+                        </div>
+
+                        <div class="kpi-info">há mais de 1 hora</div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="informacoes">
+                <div class="info-obras">
+                    <div class="obras">
+                        <div class="titulo">
+                            <h1>OBRAS</h1>
+                        </div>
+                        <div class="botao">
+                            <button onclick="">
+                                <h5>ADICIONAR</h5>
+                                <i class="fa-solid fa-caret-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="local">
+                        <h4>Endereço: Casa</h4>
+                        <h4>Ambiente: Sala</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="monitoramento">
+                <div class="monitoramento-card">
+                    <div class="info-monit">
+                        <table id="minhaTabela" class="display">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Tipo</th>
+                                    <th>Situação atual</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>01</td>
+                                    <td>Pintura 1</td>
+                                    <td>Óleo</td>
+                                    <td class="perigo">Perigo</td>
+                                </tr>
+                                <tr>
+                                    <td>02</td>
+                                    <td>Pintura 2</td>
+                                    <td>Acrílico</td>
+                                    <td class="seguro">Seguro</td>
+                                </tr>
+                                <tr>
+                                    <td>03</td>
+                                    <td>Pintura 3</td>
+                                    <td>Aquarela</td>
+                                    <td class="perigo">Perigo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Adicionando o jQuery -->
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+            <!-- Adicionando o JS do DataTables -->
+            <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+            <!-- Seu JS -->
+            <script src="script.js"></script>
+
+        </section>
 
     </section>
 
-    <section class="dashboard">
-
-        <div class="grid-kpi">
-            <div class="grid">
-
-            <div class="kpi qtd-obras">
-                <div class="title-kpi">
-                    <h1>OBRAS</h1>
-                </div>
-
-                <div id="div_quantidade_obras">
-                    <h1 class="kpi-num">20</h1>
-                </div>
-
-            </div>
-
-            <div class="kpi critico">
-
-                <div class="title-kpi">
-                    <h1>Obras em perigo</h1>
-                    <h2>agora</h2>
-                </div>
-
-                <div id="div_obras_totais_perigo">
-                    <h1 class="kpi-num">10</h1>
-                </div>
-
-                <div class="kpi-info">50% do total de obras</div>
-
-            </div>
-
-
-            <div class="kpi">
-
-                <div class="title-kpi">
-
-                    <h1>Obras em perigo</h1>
-                    
-                </div>
-
-                <h1 class="kpi-num">0</h1>
-
-                <div class="kpi-info">há mais de 5 horas</div>
-
-            </div>
-
-            <div class="kpi">
-
-                <div class="title-kpi">
-                    <h1>Obras em perigo</h1>
-                </div>
-
-                <h1 class="kpi-num">0</h1>
-
-                <div class="kpi-info">há mais de 1 hora</div>
-
-            </div>
-            </div>
-        </div>
-
-        <div class="informacoes">
-            <div class="info-obras">
-            <div class="obras">
-                <div class="titulo">
-                    <h1>OBRAS</h1>
-                </div>
-                   <div class="botao"> 
-                    <button onclick="" > <h5>ADICIONAR</h5> 
-                        <i class="fa-solid fa-caret-down"></i>
-                    </button>
-                   </div> 
-            </div>
-            <div class="local">
-                <h4>Endereço: Casa</h4>
-                <h4>Ambiente: Sala</h4>
-            </div>
-            </div>
-        </div>
-
-        <div class="monitoramento">
-            <div class="monitoramento-card">
-                <div class="info-monit">
-                    <table id="minhaTabela" class="display">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Tipo</th>
-                                <th>Situação atual</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>Pintura 1</td>
-                                <td>Óleo</td>
-                                <td class="perigo">Perigo</td>
-                            </tr>
-                            <tr>
-                                <td>02</td>
-                                <td>Pintura 2</td>
-                                <td>Acrílico</td>
-                                <td class="seguro">Seguro</td>
-                            </tr>
-                            <tr>
-                                <td>03</td>
-                                <td>Pintura 3</td>
-                                <td>Aquarela</td>
-                                <td class="perigo">Perigo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <!-- Adicionando o jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <!-- Adicionando o JS do DataTables -->
-        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-        <!-- Seu JS -->
-        <script src="script.js"></script>
-
-    </section>
-
-</section>
-    
 </body>
 
 </html>

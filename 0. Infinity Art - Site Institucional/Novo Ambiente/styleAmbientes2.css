@@ -127,6 +127,13 @@ li:active {
     font-size: 20px;
 }
 
+.critico.alerta{
+    background-color: red;
+    color: white;
+}
+
+
+
 .title-kpi {
     display: flex;
     flex-direction: row;
