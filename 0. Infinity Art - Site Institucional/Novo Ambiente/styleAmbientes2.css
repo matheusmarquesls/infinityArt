@@ -132,8 +132,6 @@ li:active {
     color: white;
 }
 
-
-
 .title-kpi {
     display: flex;
     flex-direction: row;
@@ -232,7 +230,12 @@ li:active {
     padding: 1rem;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    overflow: hidden;
+    overflow-y: auto;
+}
 
+.monitoramento-card::-webkit-scrollbar {
+    display: none;
 }
 
 .dataTables_wrapper {
@@ -261,7 +264,7 @@ thead {
 }
 
 .seguro {
-    color: rgb(150, 226, 36);
+    color: rgb(53, 195, 32);
 }
 
 

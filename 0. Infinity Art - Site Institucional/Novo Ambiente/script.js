@@ -1,12 +1,13 @@
 
 const kpis = document.getElementsByClassName('critico');
 
-let qtdObras = 20; 
-let obrasPerigo = 10;
-let obras5HorasPerigo = 0;
-let obras1HoraPerigo = 0;
-let porcentagemTotalObrasPerigo = (obrasPerigo * 100) / qtdObras ;
-let porcentagemTotalObrasPerigoFormatada = porcentagemTotalObrasPerigo.toFixed(1);
+const qtdObras = 15; 
+const obrasPerigo = 11;
+const obras5HorasPerigo = 0;
+const obras1HoraPerigo = 0;
+
+const porcentagemTotalObrasPerigo = (obrasPerigo * 100) / qtdObras ;
+const porcentagemTotalObrasPerigoFormatada = porcentagemTotalObrasPerigo.toFixed(1);
 
 for(posicao = 0; posicao < kpis.length ; posicao++){
     let kpiAtual = kpis[posicao];
@@ -31,6 +32,72 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
     }
 }
 
+    let id = 0;
+    let pintura = "Pintura";
+    let tipoTinta = ["Oléo", "Acrílica", "Guache"];
+    let situacao = ["Seguro", "Perigo"];
+
+    let qtdObrasPerigoRestante = obrasPerigo;
+
+    const bodyTabela = document.getElementById('tbody_corpo_tabela')
+
+    bodyTabela.innerHTML = "";
+
+    for(let obrasEmLinha = 1; obrasEmLinha <= qtdObras; obrasEmLinha++) {
+
+        const tintaVariavel = Math.floor(Math.random() * 3);
+    
+        if (qtdObrasPerigoRestante > 0) {
+            
+            let linha = document.createElement('tr');
+            bodyTabela.appendChild(linha)
+    
+            let celId = document.createElement('td');
+            celId.textContent = id + 1
+            linha.appendChild(celId);
+    
+            let celPintura = document.createElement('td');
+            celPintura.textContent = `${pintura} ${id + 1}`
+            linha.appendChild(celPintura);
+    
+            let celTipoTinta = document.createElement('td');
+            celTipoTinta.textContent = `${tipoTinta[tintaVariavel]}`
+            linha.appendChild(celTipoTinta);
+    
+            let celSituacao = document.createElement('td');
+            celSituacao.textContent = `${situacao[1]}`
+            celSituacao.classList.add('perigo')
+            linha.appendChild(celSituacao);
+
+        } else {
+
+            let linha = document.createElement('tr');
+            bodyTabela.appendChild(linha)
+    
+            let celId = document.createElement('td');
+            celId.textContent = id + 1
+            linha.appendChild(celId);
+    
+            let celPintura = document.createElement('td');
+            celPintura.textContent = `${pintura} ${id + 1}`
+            linha.appendChild(celPintura);
+    
+            let celTipoTinta = document.createElement('td');
+            celTipoTinta.textContent = `${tipoTinta[tintaVariavel]}`
+            linha.appendChild(celTipoTinta);
+            
+            let celSituacao = document.createElement('td');
+            celSituacao.textContent = `${situacao[0]}`
+            celSituacao.classList.add('seguro')
+            linha.appendChild(celSituacao);
+
+        }
+
+        qtdObrasPerigoRestante--
+        id++
+
+    }
+
 
 h1_quantidade_obras.innerHTML = qtdObras;
 h1_obras_totais_perigo.innerHTML = obrasPerigo;
@@ -42,6 +109,8 @@ div_quantidade_obras_perigo.innerHTML = `${porcentagemTotalObrasPerigoFormatada}
 $(document).ready(function () {
     $('#minhaTabela').DataTable({
         dom: '<"custom-header"lf>rt<"custom-footer"ip>',
+        pageLength: 5,
+        lengthMenu: [5, 10, 25, 50, 100],
         language: {
             info: 'Páginas _PAGE_ de _PAGES_',
             infoEmpty: 'Nenhum registro disponível',
