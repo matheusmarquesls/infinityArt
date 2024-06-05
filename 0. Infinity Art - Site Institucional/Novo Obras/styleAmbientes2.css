@@ -246,7 +246,31 @@ li:active {
 
 tr {
     text-align: center;
+    cursor: pointer;
 }
+
+/* Estilo para :hover */
+table.dataTable tbody tr:hover {
+    background-color: rgb(212, 171, 171) !important;
+}
+
+/* Estilo para :active e :focus */
+table.dataTable tbody tr:active,
+table.dataTable tbody tr:focus {
+    background-color: #adc1b8 !important;
+}
+
+/* Força o estilo na primeira coluna */
+table.dataTable tbody tr:hover td:first-child {
+    background-color: rgb(212, 171, 171) !important;
+}
+
+table.dataTable tbody tr:active td:first-child,
+table.dataTable tbody tr:focus td:first-child {
+    background-color: #adc1b8 !important;
+}
+
+
 
 /* table {
     box-shadow: 0px 0px 14px -6px rgba(66, 68, 90, 1);

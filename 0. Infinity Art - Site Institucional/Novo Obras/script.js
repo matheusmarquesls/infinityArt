@@ -1,8 +1,8 @@
 
 const kpis = document.getElementsByClassName('critico');
 
-const qtdObras = 15; 
-const obrasPerigo = 11;
+const qtdObras = 44; 
+const obrasPerigo = 34;
 const obras5HorasPerigo = 0;
 const obras1HoraPerigo = 0;
 
@@ -16,6 +16,8 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
         
     if(obrasPerigo >= 1){
         kpiAtual.classList.add('alerta') 
+    } else {
+        kpiAtual.classList.remove('alerta')
     }
     }
     else if(posicao == 1){
@@ -23,11 +25,17 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
         if(obras5HorasPerigo >= 1 ){
             kpiAtual.classList.add('alerta') 
         }
+        else {
+            kpiAtual.classList.remove('alerta')
+        }
     }
     else if(posicao == 2){
         
     if(obras1HoraPerigo >= 1){
         kpiAtual.classList.add('alerta') 
+    }
+    else {
+        kpiAtual.classList.remove('alerta')
     }
     }
 }
@@ -50,8 +58,11 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
         if (qtdObrasPerigoRestante > 0) {
             
             let linha = document.createElement('tr');
+            linha.addEventListener('click', function() {
+                window.open('https://www.w3schools.com', '_blank'); // Abre o link em uma nova aba
+            });
             bodyTabela.appendChild(linha)
-    
+            
             let celId = document.createElement('td');
             celId.textContent = id + 1
             linha.appendChild(celId);
@@ -72,6 +83,7 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
         } else {
 
             let linha = document.createElement('tr');
+            linha.setAttribute('data-href', '')
             bodyTabela.appendChild(linha)
     
             let celId = document.createElement('td');
@@ -92,6 +104,10 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
             linha.appendChild(celSituacao);
 
         }
+
+        // linha.addEventListener('click', function() {
+        //     window.location.href = this.getAttribute('data-href');
+        // });
 
         qtdObrasPerigoRestante--
         id++
