@@ -54,11 +54,7 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
 
     bodyTabela.innerHTML = "";
 
-    function gerarTempoAleatorio() {
-        const horas = Math.floor(Math.random() * 24);
-        const minutos = Math.floor(Math.random() * 60);
-        return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
-    }
+   
 
     for(let obrasEmLinha = 1; obrasEmLinha <= qtdObras; obrasEmLinha++) {
 
@@ -103,9 +99,7 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
             celSituacao.classList.add('perigo')
             linha.appendChild(celSituacao);
 
-            let celTempo = document.createElement('td');
-            celTempo.textContent = gerarTempoAleatorio();
-            linha.appendChild(celTempo);
+           
     
 
         } else {
@@ -127,9 +121,7 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
             celSituacao.classList.add('seguro')
             linha.appendChild(celSituacao);
 
-            let celTempo = document.createElement('td');
-            celTempo.textContent = gerarTempoAleatorio();
-            linha.appendChild(celTempo);
+            
 
         }
 
