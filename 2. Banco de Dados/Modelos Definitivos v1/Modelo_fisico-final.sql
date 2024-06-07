@@ -1,14 +1,17 @@
-CREATE DATABASE infinity_art;
+drop database if exists infinity_art;
+CREATE DATABASE if not exists infinity_art;
+
+use infinity_art;
 
 -- Criando a tabela usuario
 CREATE TABLE usuario (
-    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(45) NOT NULL,
     sobrenome VARCHAR(45) NOT NULL,
     email VARCHAR(90) NOT NULL UNIQUE,
     senha VARCHAR(45) NOT NULL,
-    fkFuncionario INT NOT NULL,
-    FOREIGN KEY (fkFuncionario) REFERENCES usuario(idUsuario)
+    fkFuncionario INT null,
+    FOREIGN KEY (fkFuncionario) REFERENCES usuario(id)
 );
 
 -- Criaando a tabela endereco
@@ -22,7 +25,7 @@ CREATE TABLE endereco (
     complemento VARCHAR(45),
     cep CHAR(9) NOT NULL,
     fkUsuario INT,
-    FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(id)
 );
 
 -- Criando a tabela ambiente
@@ -44,6 +47,14 @@ CREATE TABLE obras (
     FOREIGN KEY (ambiente) REFERENCES ambiente(idAmbiente)
 );
 
+-- Criando a tabela sensor
+CREATE TABLE sensor (
+    idSensor INT AUTO_INCREMENT PRIMARY KEY,
+    estado VARCHAR(45) NOT NULL,
+    obras INT NOT NULL,
+    FOREIGN KEY (obras) REFERENCES obras(idObras)
+);
+
 -- Criando a tabela leituras
 CREATE TABLE leituras (
     sequenciaLeitura INT AUTO_INCREMENT PRIMARY KEY,
@@ -55,10 +66,4 @@ CREATE TABLE leituras (
     FOREIGN KEY (sensor) REFERENCES sensor(idSensor)
 );
 
--- Criando a tabela sensor
-CREATE TABLE sensor (
-    idSensor INT AUTO_INCREMENT PRIMARY KEY,
-    estado VARCHAR(45) NOT NULL,
-    obras INT NOT NULL,
-    FOREIGN KEY (obras) REFERENCES obras(idObras)
-);
+select * from usuario;
