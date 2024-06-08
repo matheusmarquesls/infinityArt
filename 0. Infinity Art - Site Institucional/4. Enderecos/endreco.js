@@ -44,8 +44,7 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
     let id = 0;
     let quantidadeObras = qtdObras 
     let quantidadeObrasPerigo = obrasPerigo 
-    let ambientes = ["Sala" , "Quarto" ,"sub-solo"];
-
+    let endereco = ["Casa" , "Galpão" ,"Galeria"];
     let situacao = ["Seguro", "Perigo"];
     
 
@@ -55,16 +54,11 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
 
     bodyTabela.innerHTML = "";
 
-    function gerarTempoAleatorio() {
-        const horas = Math.floor(Math.random() * 24);
-        const minutos = Math.floor(Math.random() * 60);
-        return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
-    }
 
     for(let obrasEmLinha = 1; obrasEmLinha <= qtdObras; obrasEmLinha++) {
 
         
-        const ambientesVariaveis = Math.floor(Math.random() * 3);
+        const enderecoVariaveis = Math.floor(Math.random() * 3);
 
         if (qtdObrasPerigoRestante > 0) {
             
@@ -78,9 +72,9 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
             celId.textContent = id + 1
             linha.appendChild(celId);
     
-            let celambientes = document.createElement('td');
-            celambientes.textContent = `${ambientes[ambientesVariaveis]}`
-            linha.appendChild(celambientes);
+            let celendereco = document.createElement('td');
+            celendereco.textContent = `${endereco[enderecoVariaveis]}`
+            linha.appendChild(celendereco);
 
 
 
@@ -104,9 +98,7 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
             celSituacao.classList.add('perigo')
             linha.appendChild(celSituacao);
 
-            let celTempo = document.createElement('td');
-            celTempo.textContent = gerarTempoAleatorio();
-            linha.appendChild(celTempo);
+          
     
 
         } else {
@@ -119,18 +111,16 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
             celId.textContent = id + 1
             linha.appendChild(celId);
     
-            let celambientes = document.createElement('td');
-            celambientes.textContent = `${ambientes} ${id + 1}`
-            linha.appendChild(celambientes);
+            let celendereco = document.createElement('td');
+            celendereco.textContent = `${endereco} ${id + 1}`
+            linha.appendChild(celendereco);
             
             let celSituacao = document.createElement('td');
             celSituacao.textContent = `${situacao[0]}`
             celSituacao.classList.add('seguro')
             linha.appendChild(celSituacao);
 
-            let celTempo = document.createElement('td');
-            celTempo.textContent = gerarTempoAleatorio();
-            linha.appendChild(celTempo);
+       
 
         }
 
@@ -146,8 +136,8 @@ for(posicao = 0; posicao < kpis.length ; posicao++){
 
 h1_quantidade_obras.innerHTML = qtdObras;
 h1_obras_totais_perigo.innerHTML = obrasPerigo;
-h1_obras_5horas_perigo.innerHTML = obras5HorasPerigo;
-h1_obras_1hora_perigo.innerHTML = obras1HoraPerigo; 
+
+
 div_quantidade_obras_perigo.innerHTML = `${porcentagemTotalObrasPerigoFormatada}% do total de obras`  ;
 
 // script do objeto 
