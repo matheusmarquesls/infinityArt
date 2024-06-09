@@ -98,7 +98,7 @@
                             </h1>
                         </div>
                         <div class="botao">
-                            <button onclick="">
+                            <button onclick="" id="openModal">
                                 <h5>ADICIONAR</h5>
                                 <i class="fa-solid fa-caret-down"></i>
                             </button>
@@ -133,6 +133,42 @@
         </section>
 
     </section>
+
+    <div id="fadeModal" class="hideModal"></div>
+
+    <div id="modalAmbiente" class="hideModal">
+
+        <div class="modal_content">
+
+        <!-- Cad Ambiente -->
+  
+        <div class="container">
+          <div class="center">
+            <div class="cover">
+              <div class="imgCad">
+                  
+              </div>
+              <div class="form">
+                <div class="title">Cadastrar meus ambientes</div>
+  
+                <label class="label-input" for="">
+                  <i class="fa-solid fa-house-user icon-modify"></i>
+                  <input
+                    class="input-style"
+                    type="text"
+                    placeholder="Nome Ambiente"
+                  />
+                </label>
+  
+                <button class="btn-form">Cadastrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+    </div>
     
 </body>
 
@@ -144,4 +180,22 @@
   <script src="js/ambiente.js"></script>
 
 </html>
+
+
+<script>
+    
+    const btnOpenModal = document.querySelector("#openModal");
+    const modalAmbiente = document.querySelector("#modalAmbiente");
+    const fadeModal = document.querySelector("#fadeModal");
+
+    const togglemodalAmbiente = () => {
+        modalAmbiente.classList.toggle("hideModal");
+        fadeModal.classList.toggle("hideModal");
+    };
+
+    [btnOpenModal, fadeModal].forEach((el) => {
+        el.addEventListener("click", () => togglemodalAmbiente());
+    });
+
+</script>
 

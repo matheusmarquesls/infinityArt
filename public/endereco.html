@@ -98,7 +98,7 @@
                             </h1>
                         </div>
                         <div class="botao">
-                            <button onclick="">
+                            <button onclick="" id="openModal">
                                 <h5>ADICIONAR</h5>
                                 <i class="fa-solid fa-caret-down"></i>
                             </button>
@@ -120,7 +120,7 @@
                                     <th>Ambientes</th>
                                     <th>Obras</th>
                                     <th>Situação</th>
-                                 
+
                                 </tr>
                             </thead>
                             <tbody id="tbody_corpo_tabela">
@@ -133,15 +133,102 @@
         </section>
 
     </section>
-    
+
+    <div id="fadeModal" class="hideModal"></div>
+
+    <div id="modalEndereco" class="hideModal">
+
+        <div class="modal_content">
+
+        <!-- Cad Ambiente -->
+  
+        <div class="container">
+          <div class="center">
+            <div class="cover">
+              <div class="imgCad">
+                  
+              </div>
+              <div class="form">
+                <div class="title">Cadastrar meus endereços</div>
+  
+                <label class="label-input" for="">
+                  <i class="fa-solid fa-house-user icon-modify"></i>
+                  <input
+                    class="input-style"
+                    type="text"
+                    placeholder="Nome Endereço"
+                  />
+                </label>
+  
+                <label class="label-input" for="">
+                  <i class="fa-solid fa-globe icon-modify"> </i>
+                  <input class="input-style" type="text" placeholder="Estado"/>
+                </label>
+  
+                <label class="label-input" for="">
+                  <i class="fa-solid fa-city icon-modify"></i>
+                  <input class="input-style" type="text" placeholder="Cidade" />
+                </label>
+  
+                <label class="label-input" for="">
+                  <i class="fa-solid fa-tree icon-modify"></i>
+                  <input class="input-style" type="text" placeholder="Bairro" />
+                </label>
+  
+                <label class="label-input" for="">
+                  <i class="fa-solid fa-road icon-modify"></i>
+                  <input class="input-style" type="text" placeholder="Rua" />
+                </label>
+  
+                <label class="label-input" for="">
+                  <i class="fa-solid fa-circle-plus icon-modify"></i>
+                  <input
+                    class="input-style"
+                    type="text"
+                    placeholder="Complemento (Opicional)"
+                  />
+                </label>
+  
+                <label class="label-input" for="">
+                  <i class="fa-solid fa-map-location-dot icon-modify"></i>
+                  <input class="input-style" type="text" placeholder="CEP" />
+                </label>
+  
+                <button class="btn-form">Cadastrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+    </div>
+
+
 </body>
 
-    <!-- Adicionando o jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <!-- Adicionando o JS do DataTables -->
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <!-- Seu JS -->
-    <script src="js/endereco.js"></script>
+<!-- Adicionando o jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Adicionando o JS do DataTables -->
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<!-- Seu JS -->
+<script src="js/endereco.js"></script>
 
 </html>
 
+<script>
+    
+    const btnOpenModal = document.querySelector("#openModal");
+    const modalEndereco = document.querySelector("#modalEndereco");
+    const fadeModal = document.querySelector("#fadeModal");
+
+    const toggleModalEndereco = () => {
+        modalEndereco.classList.toggle("hideModal");
+        fadeModal.classList.toggle("hideModal");
+    };
+
+    [btnOpenModal, fadeModal].forEach((el) => {
+        el.addEventListener("click", () => toggleModalEndereco());
+    });
+
+</script>

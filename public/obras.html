@@ -127,7 +127,7 @@
                             </h1>
                         </div>
                         <div class="botao">
-                            <button onclick="">
+                            <button onclick="" id="openModal">
                                 <h5>ADICIONAR</h5>
                                 <i class="fa-solid fa-caret-down"></i>
                             </button>
@@ -167,8 +167,68 @@
         </section>
 
     </section>
+
+    
+    <div id="fadeModal" class="hideModal"></div>
+
+    <div id="modalObra" class="hideModal">
+
+        <div class="modal_content">
+
+        <!-- Cad Ambiente -->
+  
+        <div class="container">
+          <div class="center">
+            <div class="cover">
+              <div class="imgCad">
+                  
+              </div>
+              <div class="form">
+                <div class="title">Cadastrar minhas obras</div>
+  
+                <label class="label-input" for="">
+                  <i class="fa-solid fa-house-user icon-modify"></i>
+                  <input
+                    class="input-style"
+                    type="text"
+                    placeholder="Nome da Obra"
+                  />
+                </label>
+  
+                <label class="label-input" for="">
+                  <i class="fa-solid fa-brush icon-modify"> </i>
+                  <input class="input-style" type="text" placeholder="Tipo de Tinta"/>
+                </label>
+  
+                <button class="btn-form">Cadastrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+    </div>
     
 </body>
 
 </html>
+
+
+<script>
+    
+    const btnOpenModal = document.querySelector("#openModal");
+    const modalObra = document.querySelector("#modalObra");
+    const fadeModal = document.querySelector("#fadeModal");
+
+    const togglemodalObra = () => {
+        modalObra.classList.toggle("hideModal");
+        fadeModal.classList.toggle("hideModal");
+    };
+
+    [btnOpenModal, fadeModal].forEach((el) => {
+        el.addEventListener("click", () => togglemodalObra());
+    });
+
+</script>
 
