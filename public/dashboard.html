@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinity Art</title>
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<body>
+
+  <header></header>
+
+  <div class="dashboard">
+
+    <section class="menu-lateral">
+
+      <div class="menu">
+
+        <ul>
+
+          <a href="">
+            <li class="active">Dashboard</li>
+          </a>
+          <a href="">
+            <li>Homepage</li>
+          </a>
+          <a href="">
+            <li>Ajuda & Suporte</li>
+          </a>
+          <a href="">
+            <li>Sair</li>
+          </a>
+
+        </ul>
+
+      </div>
+
+    </section>
+
+    <section class="graficos">
+
+      <div class="grid-kpi">
+
+        <div class="kpis">
+
+          <div class="kpi"></div>
+          <div class="kpi"></div>
+          <div class="kpi"></div>
+          <div class="kpi"></div>
+          <div class="kpi"></div>
+          <div class="kpi"></div>
+
+        </div>
+
+      </div>
+
+      <div class="metricas-graficos">
+
+        <div class="grid-metricas-graficos">
+
+          <div class="metricas">
+            <div class="infoMetricas"></div>
+          </div>
+
+          <div class="graficos-dash">
+            <div class="graficoMedidas">
+              <canvas id="graficos-dash"></canvas>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="graficos-semana-estado">
+
+        <div class="grid-semana-estado">
+
+          <div class="grafico-semana">
+
+            <div class="graficoSemana">
+              <canvas id="grafico-semana"></canvas>
+            </div>
+          </div>
+
+          <div class="grafico-estado">
+            <div class="graficoEstado">
+              <canvas id="graficoEstado"></canvas>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- <main class="mainContainer"></main>
+
+          <aside class="containerMetricas">
+            <span class="titulo_metrica"> Métricas </span>
+          </aside>
+        </section>
+
+        <section class="section_MinMax">
+          <span class="fraseIndicadora_minMax"
+            >Limites Atingidos - Mín e Max</span
+          >
+
+          <div class="container_GraficosMinMax">
+            <div class="container_tituloGrafico">
+              <span class="titulo_grafico">Temperatura</span>
+              <div class="grafico_minMax"></div>
+            </div>
+
+            <div class="container_tituloGrafico">
+              <span class="titulo_grafico">Umidade</span>
+              <div class="grafico_minMax"></div>
+            </div>
+
+            <div class="container_tituloGrafico">
+              <span class="titulo_grafico">Luminosidade</span>
+              <div class="grafico_minMax"></div>
+            </div>
+          </div>
+        </section> -->
+
+    </section>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+  const graficoDash = document.getElementById('graficos-dash');
+
+  new Chart(graficoDash, {
+    type: 'line',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const graficoSemana = document.getElementById('grafico-semana');
+
+  new Chart(graficoSemana, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const graficoEstado = document.getElementById('graficoEstado');
+
+  new Chart(graficoEstado, {
+    type: 'bar',
+    data: {
+      labels: ['Luminosidade', 'Umidade', 'Temperatura'],
+      datasets: [
+        {
+          label: 'Qtd Limites',
+          data: [12, 19, 3],
+        borderWidth: 1,
+        borderColor: 'darkbrown',
+        backgroundColor: 'brown',
+        },
+      ]
+    },
+    options: {
+      indexAxis: 'y',
+      elements: {
+        bar: {
+          borderWidth: 2,
+        }
+      },
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'right',
+        },
+        title: {
+          display: true,
+          text: 'Quantidade de Vezes Que Atingiu o Limite'
+        }
+      }
+    },
+  });
+</script>

@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700;800;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    background-color: black;
+}
+
+.dashboard{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+}
+
+.menu-lateral {
+    height: 160%;
+    width: 20vw;
+    background-color: rgb(122, 43, 43);
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    list-style: none;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 1rem;
+    width: 20vw;
+    height: 100%;
+    border-left: 8px solid rgba(255, 255, 255, 0);
+}
+
+a {
+    text-decoration: none;
+}
+
+li:hover {
+    background-color: rgb(212, 171, 171);
+    border-left: 8px solid rgb(255, 255, 255);
+}
+
+li:active {
+    background-color: rgb(172, 76, 76);
+}
+
+.active {
+    border-left: 8px solid rgb(255, 255, 255);
+    background-color: rgb(212, 171, 171);
+}
+
+.graficos {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+}
+
+.grid-kpi {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    grid-template-rows: auto;
+    width: 100%;
+    height: 15%;
+    background-color: yellowgreen;
+} 
+
+.metricas-graficos {
+    width: 100%;
+    height: 85%;
+    background-color: blue;
+}
+
+.grid-metricas-graficos {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.4rem;
+    padding: 1rem;
+}
+
+.metricas{
+    width: 100%;
+    height: 100%;
+    background-color: purple;
+}
+
+.graficos-dash{
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+}
+
+.graficos-semana-estado {
+    width: 100%;
+    height: 60%;
+    background-color: blueviolet;
+}
+
+.grid-semana-estado {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+    padding: 1rem;
+}
+
+.grafico-semana {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(61, 130, 250);
+}
+
+.grafico-estado {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(200, 255, 192);
+}
+
+/* 
+.alertas_kpi {
+    width: 20px;
+    height: 20px;
+
+
+}
+
+.sectionObras {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+    height: 400px;
+
+
+}
+
+.containerDescObra {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+
+    padding-top: 10px;
+    width: 250px;
+    height: 340px;
+
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.25);
+
+}
+
+.containerMetricas {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+
+    padding-top: 10px;
+    width: 250px;
+    height: 340px;
+
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.25);
+}
+
+.titulo_metrica{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+
+.Obras {
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 5px;
+}
+
+.mainContainer {
+    background-color: white;
+    display: flex;
+    width: 700px;
+    height: 350px;
+
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.25);
+
+
+}
+
+.section_MinMax {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    height: 350px;
+}
+
+.container_GraficosMinMax {
+    display: flex;
+    flex-direction: row;
+    gap: 180px;
+
+}
+
+.fraseIndicadora_minMax {
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container_tituloGrafico {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.titulo_grafico {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.grafico_minMax {
+    background-color: white;
+    width: 300px;
+    height: 250px;
+
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.25);
+
+} */

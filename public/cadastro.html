@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link
+    rel="shortcut icon"
+    href="assets/icon/favicon.ico"
+    type="image/x-icon"
+  />
+    <script src="https://kit.fontawesome.com/80ec270284.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="header-center">
+        <div class="container">
+            <nav class="header-nav">
+
+                <!-- NAV LOGO -->
+                <div class="nav-logo">
+                    <img class="logotipo" src="assets/icon/art-icon.png" alt="">
+                </div>
+
+                <!-- NAV LIST -->
+                <ul class="header-ul">
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="index.html#sobrenos">Sobre Nós</a></li>
+                    <li><a href="index.html#simuleaqui">Simulador<br>Financeiro</a></li>
+                    <li><a href="index.html#negocio">Nosso<br>Negócio</a></li>
+                </ul>
+
+                <!-- NAV BUTTON -->
+                <div class="nav-button">
+                    <a target="blank" href="cadastro.html"><button class="login" onclick=""> Entrar </button></a>
+                    <a target="blank" href="cadastro.html"><button class="cadastro" onclick=""> Cadastro </button> </a>
+                </div>
+
+                <!-- NAV PROFILE BUTTON -->
+                <div class="nav-profile" onclick="toggleMenu()">
+                    <div class="user-profile-button" id="user_profile-image">
+                        <i class="fa-solid fa-user icon-modify"></i>
+                        <p>perfil</p>
+                    </div>
+
+                    <!-- CONTAINER DO MENU -->
+                    <div class="sub-menu-wrap" id="sub-menu-wrap">
+
+                        <!-- SUBMENU -->
+                        <div class="submenu">
+
+                            <!-- INFORMAÇÕES DO USUARIO -->
+                            <div class="user-info">
+                                <i class="fa-solid fa-user icon-modify"></i>
+                                <h3 class="username">
+                                    C. Frizza
+                                </h3>
+                            </div>
+
+                            <!-- OPTION AMBIENTES -->
+                            <a href="../../3. Ambientes/index.html" class="submenu-option">
+                                <i class="fa-solid fa-house-chimney icon-modify"></i>
+                                <p>Ambientes</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
+
+                            <!-- OPTION EDITAR PERFIL -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-gear icon-modify"></i>
+                                <p>Editar Perfil</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
+
+                            <!-- OPTION AJUDA E SUPORTE -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-circle-question icon-modify"></i>
+                                <p>Ajuda & Suporte</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
+
+                            <!-- OPTION SAIR -->
+                            <a href="#" class="submenu-option">
+                                <i class="fa-solid fa-door-open icon-modify"></i>
+                                <p>Sair</p>
+                                <span>
+                                    >
+                                </span>
+                            </a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </nav>
+        </div>
+
+    </header>
+
+    <section class="formulario">
+        <div class="container">
+            <div class="conteudo">
+                <div class="form" id="cadastrar">
+
+                    <!-- TITULO -->
+                    <h2 class="titulo">Criar conta</h2>
+                    <p class="descricao">Informe seus dados cadastrais e faça parte de nós! </p>
+
+                    <!-- NOME INPUT -->
+                    <div class="input_section section-1">
+                        <label class="label-input" for="">
+                            <i class="fa-regular fa-user icon-modify"></i>
+                            <input type="text" placeholder="nome" id="input_nome">
+                        </label>
+                        <div class="mensagemErro" id="erro_inputNome">
+                            <p>(Nome deve haver mais de 3 caracteres)</p>
+                        </div>
+                    </div>
+
+                    <!-- SOBRENOME INPUT -->
+                    <div class="input_section section-1">
+                        <label class="label-input" for="">
+                            <i class="fa-regular fa-user icon-modify"></i>
+                            <input type="text" placeholder="sobrenome" id="input_sobrenome">
+                        </label>
+                        <div class="mensagemErro" id="erro_inputSobrenome">
+                            <p>(Sobrenome deve haver mais de 3 caracteres)</p>
+                        </div>
+                    </div>
+
+                    <button class="btn-form section-1" onclick="proximoPasso()">Seguir</button>
+
+                    <!-- EMAIL INPUT -->
+                    <div class="input_section section-2">
+                        <label class="label-input" for="">
+                            <i class="fa-regular fa-envelope icon-modify"></i>
+                            <input type="email" placeholder="email" id="input_email">
+                        </label>
+                        <div class="mensagemErro" id="erro_inputEmail">
+                            <p>(Email deve haver um '.' e um '@')</p>
+                        </div>
+                    </div>
+
+                    <!-- SENHA INPUT-->
+                    <div class="input_section section-2">
+                        <label class="label-input label-input-senha" for="">
+                            <i class="fa-solid fa-lock icon-modify"></i>
+                            <input type="text" placeholder="senha" id="input_senha">
+                        </label>
+                        <div class="mensagemErro erroSenha" id="erro_inputSenha">
+                            <p class="mensagemErro-text" id="erroSenha1">Necessário 1 Caracter Especial.</p>
+                            <p class="mensagemErro-text" id="erroSenha2">Necessário ao menos 8 Caracteres.</p>
+                            <p class="mensagemErro-text" id="erroSenha3">Necessário 1 Letra Maiuscula.</p>
+                            <p class="mensagemErro-text" id="erroSenha4">Necessário 1 Letra Minuscula.</p>
+                            <p class="mensagemErro-text" id="erroSenha5">Necessário 1 Número.</p>
+                        </div>
+                    </div>
+
+                    <!-- CONFIRMAR SENHA INPUT -->
+                    <div class="input_section section-2">
+                        <label class="label-input label-input-confirma" for="">
+                            <i class="fa-solid fa-lock icon-modify"></i>
+                            <input type="text" placeholder="confirmar senha" id="input_confirmaSenha">
+                        </label>
+                        <div class="mensagemErro" id="erro_inputConfirmarSenha">
+                            <p>As senhas não conferem</p>
+                        </div>
+
+                    </div>
+
+                    <!-- BOTAO CADASTRO -->
+                    <button class="btn-form section-2" onclick="cadastrar()">Inscrever</button>
+                </div>
+
+                <!-- FORMULARIO LOGIN -->
+                <div class="form" id="login">
+                    <!-- TITULO-->
+                    <h2 class="titulo">Entrar</h2>
+                    <p class="descricao">Informe suas credencias para acessar sua área</p>
+                    <!-- EMAIL INPUT -->
+                    <div class="input_section">
+                        <label class="label-input" for="">
+                            <i class="fa-regular fa-envelope icon-modify icon"></i>
+                            <input type="email" placeholder="email" id="inputEmailLogin">
+                        </label>
+                    </div>
+                    <!-- SENHA INPUT-->
+                    <div class="input_section">
+                        <label class="label-input" for="">
+                            <i class="fa-solid fa-lock icon-modify icon"></i>
+                            <input type="password" placeholder="senha" id="inputSenhaLogin">
+                        </label>
+                    </div>
+
+                    <!-- BOTAO CADASTRO -->
+                    <a href="">Esqueceu a senha?</a>
+                    <button class="btn-form" onclick="entrar()">Entrar</button>
+                </div>
+                <!-- CHAMADA LOGIN -->
+                <div class="chamada" id="chamada-login">
+                    <h1 class="titulo">Bem vindo de volta!</h1>
+                    <p class="descricao">Mantenha-se conectado e tenha acesso a área do usuário</p>
+                    <button class="btn-chamada" id="chamada-login-btn">Tenho Cadastro</button>
+                </div>
+                <!-- CHAMADA CADASTRO -->
+                <div class="chamada hide" id="chamada-cadastrar">
+                    <h1 class="titulo">Boas vindas a Infinity Art!</h1>
+                    <p class="descricao">Insira seus dados cadastrais e faça parte de nós!</p>
+                    <button class="btn-chamada" id="chamada-cadastro-btn">Não Tenho Cadastro</button>
+                </div>
+                <div id="cobertura"></div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <footer class="rodape">
+        <div class="container">
+            <p>Infinity Art</p>
+            <p>Todos os direitos reservados </p>
+            <p>©2024</p>
+        </div>
+    </footer>
+
+</body>
+
+    <script src="js/cadastro.js"></script>
+
+</html>

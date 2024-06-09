@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/cadastroEndereco.css" />
+    <title>Endereço</title>
+    <script
+      src="https://kit.fontawesome.com/80ec270284.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header-center">
+      <div class="container">
+          <nav class="header-nav">
+
+              <!-- NAV LOGO -->
+              <div class="nav-logo">
+                  <img class="logotipo" src="assets/icon/art-icon.png" alt="">
+              </div>
+
+              <!-- NAV LIST -->
+              <ul class="header-ul">
+                  <li><a href="index.html">Página Inicial</a></li>
+                  <li><a href="index.html#sobrenos">Sobre Nós</a></li>
+                  <li><a href="index.html#simuleaqui">Simulador<br>Financeiro</a></li>
+                  <li><a href="index.html#negocio">Nosso<br>Negócio</a></li>
+              </ul>
+
+              <!-- NAV BUTTON -->
+              <div class="nav-button">
+                  <a target="blank" href="../1. Login e Cadastro/Paginas/Login.html"><button class="login"
+                          onclick=""> Entrar </button></a>
+                  <a target="blank" href="../1. Login e Cadastro/Paginas/Cadastro.html"><button class="cadastro"
+                          onclick=""> Cadastro </button> </a>
+              </div>
+
+              <!-- NAV PROFILE BUTTON -->
+              <div class="nav-profile" onclick="toggleMenu()">
+                  <div class="user-profile-button" id="user_profile-image">
+                      <i class="fa-solid fa-user icon-modify"></i>
+                      <p>perfil</p>
+                  </div>
+
+                  <!-- CONTAINER DO MENU -->
+                  <div class="sub-menu-wrap" id="sub-menu-wrap">
+
+                      <!-- SUBMENU -->
+                      <div class="submenu">
+
+                          <!-- INFORMAÇÕES DO USUARIO -->
+                          <div class="user-info">
+                              <i class="fa-solid fa-user icon-modify"></i>
+                              <h3 class="username">
+                                  C. Frizza
+                              </h3>
+                          </div>
+
+                          <!-- OPTION AMBIENTES -->
+                          <a href="endereco.html" class="submenu-option">
+                              <i class="fa-solid fa-house-chimney icon-modify"></i>
+                              <p>Endereços</p>
+                              <span>
+                                  >
+                              </span>
+                          </a>
+
+                          <!-- OPTION EDITAR PERFIL -->
+                          <a href="#" class="submenu-option">
+                              <i class="fa-solid fa-gear icon-modify"></i>
+                              <p>Editar Perfil</p>
+                              <span>
+                                  >
+                              </span>
+                          </a>
+
+                          <!-- OPTION AJUDA E SUPORTE -->
+                          <a href="#" class="submenu-option">
+                              <i class="fa-solid fa-circle-question icon-modify"></i>
+                              <p>Ajuda & Suporte</p>
+                              <span>
+                                  >
+                              </span>
+                          </a>
+
+                          <!-- OPTION SAIR -->
+                          <a href="../0. Homepage/Homepage - Not Logged in/index.html" class="submenu-option">
+                              <i class="fa-solid fa-door-open icon-modify"></i>
+                              <p>Sair</p>
+                              <span>
+                                  >
+                              </span>
+                          </a>
+
+
+                      </div>
+                  </div>
+              </div>
+
+
+          </nav>
+      </div>
+
+  </header>
+
+    <section class="banner">
+      <!-- Cad Ambiente -->
+
+      <div class="container">
+        <div class="center">
+          <div class="cover">
+            <div class="imgCad">
+                
+            </div>
+            <div class="form">
+              <div class="title">Cadastrar meus endereços</div>
+
+              <label class="label-input" for="">
+                <i class="fa-solid fa-house-user icon-modify"></i>
+                <input
+                  class="input-style"
+                  type="text"
+                  placeholder="Nome Endereço"
+                />
+              </label>
+
+              <label class="label-input" for="">
+                <i class="fa-solid fa-globe icon-modify"> </i>
+
+                <select id="selectEstado">
+                  <option value="#" selected disabled>Estado</option>
+                  <option value="AC">Acre</option>
+                  <option value="AL">Alagoas</option>
+                  <option value="AP">Amapá</option>
+                  <option value="AM">Amazonas</option>
+                  <option value="BA">Bahia</option>
+                  <option value="CE">Ceará</option>
+                  <option value="DF">Distrito Federal</option>
+                  <option value="ES">Espírito Santo</option>
+                  <option value="GO">Goiás</option>
+                  <option value="MA">Maranhão</option>
+                  <option value="MT">Mato Grosso</option>
+                  <option value="MS">Mato Grosso do Sul</option>
+                  <option value="MG">Minas Gerais</option>
+                  <option value="PA">Pará</option>
+                  <option value="PB">Paraíba</option>
+                  <option value="PR">Paraná</option>
+                  <option value="PE">Pernambuco</option>
+                  <option value="PI">Piauí</option>
+                  <option value="RJ">Rio de Janeiro</option>
+                  <option value="RN">Rio Grande do Norte</option>
+                  <option value="RS">Rio Grande do Sul</option>
+                  <option value="RO">Rondônia</option>
+                  <option value="RR">Roraima</option>
+                  <option value="SC">Santa Catarina</option>
+                  <option value="SP">São Paulo</option>
+                  <option value="SE">Sergipe</option>
+                  <option value="TO">Tocantins</option>
+                </select>
+                
+              </label>
+
+              <label class="label-input" for="">
+                <i class="fa-solid fa-city icon-modify"></i>
+                <input class="input-style" type="text" placeholder="Cidade" />
+              </label>
+
+              <label class="label-input" for="">
+                <i class="fa-solid fa-tree icon-modify"></i>
+                <input class="input-style" type="text" placeholder="Bairro" />
+              </label>
+
+              <label class="label-input" for="">
+                <i class="fa-solid fa-road icon-modify"></i>
+                <input class="input-style" type="text" placeholder="Rua" />
+              </label>
+
+              <label class="label-input" for="">
+                <i class="fa-solid fa-circle-plus icon-modify"></i>
+                <input
+                  class="input-style"
+                  type="text"
+                  placeholder="Complemento (Opicional)"
+                />
+              </label>
+
+              <label class="label-input" for="">
+                <i class="fa-solid fa-map-location-dot icon-modify"></i>
+                <input class="input-style" type="text" placeholder="CEP" />
+              </label>
+
+              <button class="btn-form">Cadastrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+
+
+<script>
+  let subMenu = document.getElementById("sub-menu-wrap");
+
+  function toggleMenu() {
+      subMenu.classList.toggle("open-menu");
+  }
+</script>
