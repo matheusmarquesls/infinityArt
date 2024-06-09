@@ -15,7 +15,8 @@ CREATE TABLE usuario (
 )AUTO_INCREMENT = 1000;
 
 INSERT INTO usuario (nome, sobrenome, email, senha) values 
-('Sid', 'Pimentinha', 'sid@gmail.com', 'JP2005ma');
+('Sid', 'Pimentinha', 'sid@gmail.com', 'JP2005ma'),
+('Fernandão', 'Brandão', 'brandao@gmail.com', 'JP2005ma');
 
 -- Criaando a tabela endereco
 CREATE TABLE endereco (
@@ -34,7 +35,8 @@ CREATE TABLE endereco (
 INSERT INTO endereco (nome, estado, cidade, bairro, logradouro, complemento, cep, fkUsuario)
 VALUES 
 ('Casa das Flores', 'FH', 'Cidade Felicidade', 'Bairro Primavera', 'Rua das Flores', NULL, '12345-678', 1000),
-('Residência Estrela', 'SE', 'Cidade Aurora', 'Bairro Luz Celestial', 'Avenida dos Sonhos', 'Bloco B, Apto 302', '98765-432', 1000);
+('Residência Estrela', 'SE', 'Cidade Aurora', 'Bairro Luz Celestial', 'Avenida dos Sonhos', 'Bloco B, Apto 302', '98765-432', 1000),
+('Atibaia', 'MG', 'Terra do Morango', 'Vida de Morango', 'Rua do Mel', NULL, '12345-678', 1001);
 
 select * from endereco;
 
@@ -49,7 +51,8 @@ CREATE TABLE ambiente (
 INSERT INTO ambiente (nome, fkEndereco) values
 ('Cozinha das Flores', 1),
 ('Sala das Flores', 1),
-('Quarto Patrick', 2);
+('Quarto Patrick', 2),
+('Pé de Morango', 3);
 
 select * from ambiente;
 
@@ -64,6 +67,7 @@ CREATE TABLE obras (
 );
 
 INSERT INTO obras (nome, tipoTinta, descricao, fkAmbiente) values
+-- Sid
 ('Belissima', 'Oleo', 'Bonita demias', 1),
 ('Monalisa', 'Oleo', 'Bonita demias', 1),
 ('Monalisa', 'Oleo', 'Bonita demias', 3),
@@ -72,7 +76,11 @@ INSERT INTO obras (nome, tipoTinta, descricao, fkAmbiente) values
 ('Noite Estrelada', 'Acrilica', 'Ta noited demais', 2),
 ('O grito', 'Guache', 'Gritod emais', 2),
 ('Ecce Mocho', 'Oleo', 'Ta feio edmais', 1),
-('Sapo Cururu', 'Guache', 'Vish amria', 1);
+('Sapo Cururu', 'Guache', 'Vish amria', 1),
+-- Brandão
+('Morango de Gala', 'Guache', 'A vida não é um morango', 4),
+('Suco de Morango', 'Oleo', 'A vida não é um morango', 4),
+('Morangão', 'Guache', 'A vida não é um morango', 4);
 
 select * from obras
 order by idObras;
@@ -94,7 +102,10 @@ INSERT INTO sensor (estado, fkObras) values
 ('Ativo', 6),
 ('Ativo', 7),
 ('Ativo', 8),
-('Ativo', 9);
+('Ativo', 9),
+('Ativo', 10),
+('Ativo', 11),
+('Ativo', 12);
 
 select * from sensor;
 
@@ -121,12 +132,16 @@ VALUES
 (61.00, 21.85, 465.75, 6),
 (56.80, 23.40, 455.60, 7),
 (59.10, 22.50, 472.80, 8),
-(57.50, 23.20, 460.00, 9);
+(57.50, 23.20, 460.00, 9),
+(56.80, 23.40, 455.60, 10),
+(44, 20, 50, 11),
+(57.50, 23.20, 460.00, 12);
 
 select dht11_temperatura from leituras
 order by 1 desc; 
 
 	-- Criando view para aumentar a velocidade de resposta do endereço
+    
 	create view vw_select_enderecos as
 	select 
     e.fkUsuario as idUsuario,
@@ -184,7 +199,7 @@ order by 1 desc;
 
 	-- Criando view para aumentar a velocidade de resposta do ambientes
     
-	create view vw_select_ambiente as
+	create view vw_select_ambientes as
 	select e.fkUsuario as idUsuario,
     e.idEndereco as endereco,
     a.idAmbiente as id,
@@ -255,7 +270,7 @@ order by 1 desc;
     
     -- View 
     select id, nome, qtd_obras, qtd_obras_perigo, situacao
-    from vw_select_ambiente
+    from vw_select_ambientes
     where idUsuario = 1000 and endereco = 1;
     
     
@@ -303,18 +318,17 @@ o.tipoTinta as tipo_tinta,
 -- view obras
 select * from vw_select_obras;
 
-
-select 
-count(id) kpis
+select
+count(distinct(id)) as kpi
 from vw_select_obras 
-where id_ambiente = 1
+where id_ambiente = 4
 union
 select 
-count(situacao) kpis 
+count(situacao)
 from vw_select_obras 
-where situacao = 1 and id_ambiente = 1;
+where situacao = 1 and id_ambiente = 4;
 
 select id, nome, tipo_tinta, situacao 
-from vw_select_obras
-order by situacao
-desc;
+from vw_select_obras 
+where id_ambiente = 4
+order by situacao desc;

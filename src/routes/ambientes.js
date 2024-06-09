@@ -3,7 +3,7 @@ var router = express.Router();
 
 var ambientesController = require("../controllers/ambientesController");
 
-router.get("/listarAmbientes/:idUsuario/:idEndereco", function (req, res) {
+router.post("/listarAmbientes/:idUsuario", function (req, res) {
     ambientesController.listarAmbientes(req, res);
 });
 

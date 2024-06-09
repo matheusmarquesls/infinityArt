@@ -6,6 +6,8 @@ function obrasLinha() {
     // let idUsuario = sessionStorage.getItem('ID_USUARIO');
     let idAmbiente = sessionStorage.getItem('ID_AMBIENTE');
 
+    let id = 1
+
     fetch(`/obras/listarObras/${idAmbiente}`).then(function (resposta) {
 
         if (resposta.ok) {
@@ -22,13 +24,11 @@ function obrasLinha() {
 
                     let linha = document.createElement('tr');
                     linha.addEventListener('click', function () {
-                        window.open('obras.html', '_blank'); // Abre o link em uma nova aba
+                        window.open('dashboard.html', '_blank'); // Abre o link em uma nova aba
                     });
                     bodyTabela.appendChild(linha)
 
                     var obraAtual = resposta[i];
-
-                    let id = obraAtual.id;
 
                     let celId = document.createElement('td');
                     celId.textContent = id
@@ -60,9 +60,9 @@ function obrasLinha() {
                     celSituacao.classList.add(situacaoCor)
                     linha.appendChild(celSituacao);
 
+                    id++
+
                 }
-
-
 
 
                 let localEndereco = document.querySelector('.local_endereco');

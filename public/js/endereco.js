@@ -2,6 +2,8 @@ function enderecoLinhas() {
 
     let idUsuario = sessionStorage.getItem('ID_USUARIO')
 
+    let id = 1
+
     fetch(`/enderecos/listarEnderecos/${idUsuario}`).then(function (resposta) {
 
         if (resposta.ok) {
@@ -34,8 +36,6 @@ function enderecoLinhas() {
                     bodyTabela.appendChild(linha)
                         
                     var enderecoAtual = resposta[i];
-
-                    let id = enderecoAtual.id;
                     
                     let celId = document.createElement('td');
                     celId.textContent = id
@@ -85,6 +85,8 @@ function enderecoLinhas() {
                     celSituacao.textContent = `${situacao}`
                     celSituacao.classList.add(situacaoCor)
                     linha.appendChild(celSituacao);
+
+                    id++
     
                 }
 
