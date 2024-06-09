@@ -3,7 +3,17 @@ function ambienteLinha() {
     let idUsuario = sessionStorage.getItem('ID_USUARIO');
     let idEndereco = sessionStorage.getItem('ID_ENDERECO');
 
-    fetch(`/ambientes/listarAmbientes/${idUsuario}/${idEndereco}`).then(function (resposta) {
+    let id = 1
+
+    fetch(`/ambientes/listarAmbientes/${idUsuario}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idEndereco: idEndereco
+        })
+    }).then(function (resposta) {
 
         if (resposta.ok) {
             if (resposta.status == 204) {
@@ -22,7 +32,6 @@ function ambienteLinha() {
                     let linha = document.createElement('tr');
                     linha.dataset.idAmbiente = resposta[i].id;
                     linha.dataset.nomeAmbiente = resposta[i].nome;
-                    
 
                     linha.addEventListener('click', function() {
                         let idAmbiente = this.dataset.idAmbiente;
@@ -36,8 +45,6 @@ function ambienteLinha() {
                     bodyTabela.appendChild(linha)
                         
                     var ambienteAtual = resposta[i];
-
-                    let id = ambienteAtual.id
 
                     let celId = document.createElement('td');
                     celId.textContent = id
@@ -75,6 +82,8 @@ function ambienteLinha() {
                     celSituacao.textContent = `${situacao}`
                     celSituacao.classList.add(situacaoCor)
                     linha.appendChild(celSituacao);
+
+                    id++
     
                 }
 

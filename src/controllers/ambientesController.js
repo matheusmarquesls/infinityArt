@@ -1,8 +1,18 @@
 var ambientesModel = require("../models/ambientesModel");
 
 function listarAmbientes(req, res) {
+
     var idUsuario = req.params.idUsuario;
-    var idEndereco = req.params.idEndereco;
+    var idEndereco = req.body.idEndereco;
+
+    if (!idUsuario) {
+        return res.status(400).send("ID do usuário não fornecido");
+    }
+    if (!idEndereco) {
+        return res.status(400).send("ID do endereço não fornecido");
+    }
+
+    console.log(`Console idEndereco no Controller: ${idEndereco}`);
 
     ambientesModel.listarAmbientes(idUsuario, idEndereco)
         .then(

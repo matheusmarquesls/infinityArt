@@ -7,8 +7,7 @@ function listarObras(idAmbiente) {
     select id, nome, tipo_tinta, situacao 
     from vw_select_obras 
     where id_ambiente = ${idAmbiente}
-    order by situacao
-    desc;
+    order by situacao desc;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -23,7 +22,7 @@ function listarKpis(idAmbiente) {
     where id_ambiente = ${idAmbiente}
     union
     select 
-    count(situacao) kpis 
+    count(situacao) 
     from vw_select_obras 
     where situacao = 1 and id_ambiente = ${idAmbiente};
     `;
