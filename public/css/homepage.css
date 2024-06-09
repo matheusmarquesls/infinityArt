@@ -26,7 +26,7 @@ body {
 
 /* NAV ICON */
 .header-center {
-  position: fixed;
+  position: absolute;
   z-index: 99;
 
   display: flex;
@@ -458,75 +458,29 @@ header .header-ul a:hover {
 
 /* SESSAO NOSSO NEGOCIO */
 .negocio {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-}
-.negocio .title {
-  margin-top: 16px;
-  color: black;
-}
-.negocio .bar-title {
-  background-color: #b8b8b8;
-}
-.negocio .card-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  justify-content: space-between;
-  /* display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap; */
+  width: 100vw;
+  height: 110vh;
+  background-color: #F2F2F2;
 }
 
-.negocio .cardbox {
-  position: relative;
-  text-align: center;
-  width: 22rem;
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-.negocio .cardbox .image {
-  padding: 2rem;
-  overflow: hidden;
-}
-.negocio .cardbox .image img {
+.diagram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  margin-bottom: 1rem;
-}
-.negocio .cardbox .image h3 {
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  color: grey;
-  font-weight: 700;
-  font-size: 2rem;
-}
-.negocio .cardbox .content {
-  position: absolute;
-  bottom: -100%;
-  background: #0e0c0c;
-  padding: 1rem 1.5rem;
-  transition: all 0.2s linear;
-}
-.negocio .cardbox:hover .content {
-  bottom: 0;
+  height: 100%;
 }
 
-.negocio .cardbox .content h3 {
-  font-family: "Poppins", sans-serif;
-  font-size: 2rem;
-  text-transform: uppercase;
-  color: white;
-}
-.negocio .cardbox .content p {
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 0.875rem;
-  padding: 0.75rem 0;
-  color: white;
+.diagram-img {
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/img/negocio.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* RODAPE */
