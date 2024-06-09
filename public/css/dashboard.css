@@ -16,13 +16,12 @@ header {
 
 .dashboard{
     display: flex;
-    flex-direction: row;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .menu-lateral {
-    height: 160%;
+    height: auto;
     width: 20vw;
     background-color: rgb(122, 43, 43);
 }
@@ -67,7 +66,7 @@ li:active {
 .graficos {
     width: 100%;
     height: 100%;
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4; */
 }
 
 .grid-kpi {
@@ -75,41 +74,103 @@ li:active {
     grid-template-columns: auto auto auto auto auto auto;
     grid-template-rows: auto;
     width: 100%;
-    height: 15%;
-    background-color: yellowgreen;
+    height: 120px;
+    column-gap: 8px;
+    margin-top: 1rem;
+    padding: 0 1rem 0 1rem;
+    justify-content: space-between;
 } 
+.graficos .chart-title {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+.graficos .chart-title i{
+    font-size: 24px;
+    color: #808080;
+}
+.chart-title .icon {
+    display: flex;
+    gap: 20px;
+}
+.grid-kpi .kpi {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 190px;
+    height: 100%;
+    padding: 15px;
+    background: #fafafafa;
+    border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;    
+    overflow: hidden;
+}
+.grid-kpi .kpi .title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #808080;
+}
+.grid-kpi .kpi .title h2 {
+    font-size: 16px;
+}
+.grid-kpi .kpi .title i {
+    font-size: 24px;
+    color: black;
+}
+.grid-kpi .kpi .value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+}
 
 .metricas-graficos {
     width: 100%;
     height: 85%;
-    background-color: blue;
 }
 
 .grid-metricas-graficos {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 1.4rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
     padding: 1rem;
+}
+
+.dashboard .card-template {
+    padding: 15px;
+    background: #fafafafa;
+    border-radius: 15px;
+    box-shadow: 0px 0px 24px -10px;
+    overflow: hidden;
 }
 
 .metricas{
     width: 100%;
     height: 100%;
-    background-color: purple;
+    padding: 15px;
+    background: #fafafafa;
+    border-radius: 15px;
+    box-shadow: 0px 0px 24px -10px 
 }
 
 .graficos-dash{
     width: 100%;
     height: 100%;
-    background-color: pink;
+
 }
 
 .graficos-semana-estado {
     width: 100%;
     height: 60%;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 }
 
 .grid-semana-estado {
@@ -117,14 +178,13 @@ li:active {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.4rem;
+    gap: .5rem;
     padding: 1rem;
 }
 
 .grafico-semana {
     width: 100%;
     height: 100%;
-    background-color: rgb(61, 130, 250);
 }
 
 .grafico-estado {
@@ -132,129 +192,5 @@ li:active {
     height: 100%;
     justify-content: center;
     align-items: center;
-    background-color: rgb(200, 255, 192);
+    /* background-color: rgb(200, 255, 192); */
 }
-
-/* 
-.alertas_kpi {
-    width: 20px;
-    height: 20px;
-
-
-}
-
-.sectionObras {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    width: 100%;
-    height: 400px;
-
-
-}
-
-.containerDescObra {
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-
-    padding-top: 10px;
-    width: 250px;
-    height: 340px;
-
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.25);
-
-}
-
-.containerMetricas {
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-
-    padding-top: 10px;
-    width: 250px;
-    height: 340px;
-
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.25);
-}
-
-.titulo_metrica{
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-
-}
-
-
-.Obras {
-
-    width: 180px;
-    height: 180px;
-
-    border-radius: 5px;
-}
-
-.mainContainer {
-    background-color: white;
-    display: flex;
-    width: 700px;
-    height: 350px;
-
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.25);
-
-
-}
-
-.section_MinMax {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    width: 100%;
-    height: 350px;
-}
-
-.container_GraficosMinMax {
-    display: flex;
-    flex-direction: row;
-    gap: 180px;
-
-}
-
-.fraseIndicadora_minMax {
-    color: black;
-    font-size: 25px;
-    font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.container_tituloGrafico {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.titulo_grafico {
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.grafico_minMax {
-    background-color: white;
-    width: 300px;
-    height: 250px;
-
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.25);
-
-} */
