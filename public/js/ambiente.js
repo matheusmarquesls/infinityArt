@@ -20,8 +20,18 @@ function ambienteLinha() {
                 for (let i = 0; i < resposta.length; i++) {
                     
                     let linha = document.createElement('tr');
+                    linha.dataset.idAmbiente = resposta[i].id;
+                    linha.dataset.nomeAmbiente = resposta[i].nome;
+                    
+
                     linha.addEventListener('click', function() {
-                    window.open('ambiente.html', '_blank'); // Abre o link em uma nova aba
+                        let idAmbiente = this.dataset.idAmbiente;
+                        let nomeAmbiente = this.dataset.nomeAmbiente;
+
+                        sessionStorage.ID_AMBIENTE = idAmbiente;
+                        sessionStorage.NOME_AMBIENTE = nomeAmbiente;
+
+                    window.open('obras.html', '_blank'); // Abre o link em uma nova aba
                     });
                     bodyTabela.appendChild(linha)
                         

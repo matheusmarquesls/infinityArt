@@ -179,15 +179,17 @@ order by 1 desc;
     from vw_select_enderecos
     where idUsuario = 1000;
     
+    select * from obras;
 -- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	-- Criando view para aumentar a velocidade de resposta do ambientes
     
 	create view vw_select_ambiente as
 	select e.fkUsuario as idUsuario,
+    e.idEndereco as endereco,
     a.idAmbiente as id,
 	a.nome,
-	count(o.idObras) as qtd_obras,
+	count(distinct(o.idObras)) as qtd_obras,
 	sum(case 
 				when o.tipoTinta = 'Acrilica' then 
 				case 
@@ -254,10 +256,65 @@ order by 1 desc;
     -- View 
     select id, nome, qtd_obras, qtd_obras_perigo, situacao
     from vw_select_ambiente
-    where idUsuario = 1000;
+    where idUsuario = 1000 and endereco = 1;
     
+    
+    -- ------------------------------------------------------------
+create view vw_select_obras
+as
+select a.idAmbiente as id_ambiente,
+o.idObras as id,
+o.nome,
+o.tipoTinta as tipo_tinta, 
+		max(case 
+				when o.tipoTinta = 'Acrilica' then 
+				case 
+					when 
+						(l.dht11_temperatura >= 18 and l.dht11_temperatura <= 21) 
+						or (l.dht11_umidade >= 40 and l.dht11_umidade <= 60) 
+						or (l.ldr_lux <= 50) 
+				then 0 else 1 end
+				-- -----------------------------------------------------
+			   when o.tipoTinta = 'Oleo' 
+			   then 
+					case 
+						when
+							(l.dht11_temperatura >= 18 and l.dht11_temperatura <= 21) 
+							or (l.dht11_umidade >= 40 and l.dht11_umidade <= 45) 
+							or (l.ldr_lux <= 200) 
+				then 0 else 1 end
+				-- -----------------------------------------------------
+				else 
+					case 
+						when 
+							(l.dht11_temperatura >= 19 and l.dht11_temperatura <= 21) 
+							or (l.dht11_umidade >= 45 and l.dht11_umidade <= 55) 
+							or (l.ldr_lux <= 50) 
+				then 0 else 1 end
+		end) as situacao from obras o
+        join ambiente as a
+	on a.idAmbiente = o.fkAmbiente
+	join sensor as s 
+	on s.fkObras = o.idObras
+	join leituras as l 
+	on l.fkSensor = s.idSensor
+	group by a.idAmbiente, o.idObras;
+
+-- view obras
+select * from vw_select_obras;
 
 
+select 
+count(id) kpis
+from vw_select_obras 
+where id_ambiente = 1
+union
+select 
+count(situacao) kpis 
+from vw_select_obras 
+where situacao = 1 and id_ambiente = 1;
 
-
-
+select id, nome, tipo_tinta, situacao 
+from vw_select_obras
+order by situacao
+desc;
