@@ -139,6 +139,57 @@ function enderecoLinhas() {
     });
 }
 
+function cadastrarEnderecos(){
+
+    var nome = input_nome.value
+    var estado = input_estado.value
+    var cidade = input_cidade.value
+    var bairro = input_bairro.value
+    var rua = input_rua.value
+    var complemento = input_complemento.value
+    var cep = input_cep.value
+
+    fetch(`/local/cadastrarEndereco/${sessionStorage.getItem("ID_USUARIO")}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+
+
+            nomeServer: nome,
+            estadoServer: estado,
+            cidadeServer: cidade,
+            bairroServer: bairro,
+            logradouroServer: rua,
+            complementoServer: complemento,
+            cepServer: cep
+           
+    
+        }),
+    })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+    
+            if (resposta.ok) {
+                
+            alert("cadastro realizado")
+    
+            } else {
+                alert('Houve um erro ao tentar realizar o cadastro!')
+                throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+    
+        });
+    
+    return false;
+    }
+
 function limparSessao() {
     sessionStorage.clear();
     window.location = "index.html";
