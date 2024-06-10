@@ -158,7 +158,7 @@
   
                 <label class="label-input" for="">
                   <i class="fa-solid fa-house-user icon-modify"></i>
-                  <input
+                  <input id="input_nome"
                     class="input-style"
                     type="text"
                     placeholder="Nome Endereço"
@@ -167,27 +167,31 @@
   
                 <label class="label-input" for="">
                   <i class="fa-solid fa-globe icon-modify"> </i>
-                  <input class="input-style" type="text" placeholder="Estado"/>
+                  <input id="input_estado"
+                  class="input-style" type="text" placeholder="Estado"/>
                 </label>
   
                 <label class="label-input" for="">
                   <i class="fa-solid fa-city icon-modify"></i>
-                  <input class="input-style" type="text" placeholder="Cidade" />
+                  <input id="input_cidade"
+                   class="input-style" type="text" placeholder="Cidade" />
                 </label>
   
                 <label class="label-input" for="">
                   <i class="fa-solid fa-tree icon-modify"></i>
-                  <input class="input-style" type="text" placeholder="Bairro" />
+                  <input id="input_bairro"
+                  class="input-style" type="text" placeholder="Bairro" />
                 </label>
   
                 <label class="label-input" for="">
                   <i class="fa-solid fa-road icon-modify"></i>
-                  <input class="input-style" type="text" placeholder="Rua" />
+                  <input id="input_rua"
+                  class="input-style" type="text" placeholder="Rua" />
                 </label>
   
                 <label class="label-input" for="">
                   <i class="fa-solid fa-circle-plus icon-modify"></i>
-                  <input
+                  <input id="input_complemento"
                     class="input-style"
                     type="text"
                     placeholder="Complemento (Opicional)"
@@ -196,10 +200,11 @@
   
                 <label class="label-input" for="">
                   <i class="fa-solid fa-map-location-dot icon-modify"></i>
-                  <input class="input-style" type="text" placeholder="CEP" />
+                  <input id="input_cep"
+                   class="input-style" type="text" placeholder="CEP" />
                 </label>
   
-                <button class="btn-form">Cadastrar</button>
+                <button class="btn-form" onclick="cadastrarEnderecos()">Cadastrar</button>
               </div>
             </div>
           </div>
