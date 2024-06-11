@@ -12,7 +12,7 @@
 <script src="https://kit.fontawesome.com/64ceb195cd.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<body>
+<body onload="dadosGraficoEstado(), dadosGraficoDht(), dadosGraficoLdr(), dadosGraficoSemana(), listarKpis(), atualizarGraficos()">
 
   <header></header>
 
@@ -62,7 +62,7 @@
             <i class="fa-solid fa-sun"></i>
           </div>
           <div class="value">
-            <h2><span id="lux">0</span> Vezes</h2>
+            <h2><span id="kpi_lux"></span> Vezes</h2>
           </div>
         </div>
 
@@ -73,7 +73,7 @@
             <i class="fa-solid fa-temperature-three-quarters"></i>
           </div>
           <div class="value">
-            <h2><span id="lux">0</span> Vezes</h2>
+            <h2><span id="kpi_temp"></span> Vezes</h2>
           </div>
         </div>
 
@@ -84,7 +84,7 @@
             <i class="fa-solid fa-droplet"></i>
           </div>
           <div class="value">
-            <h2><span id="lux">0</span> Vezes</h2>
+            <h2><span id="kpi_umid"></span> Vezes</h2>
           </div>
         </div>
 
@@ -134,7 +134,7 @@
           <!-- Grafico Luz -->
           <div class="card-template graficos-dash">
             <div class="chart-title">
-              <h2>Luminosidade</h2>
+              <h2>Luminosidade Atual</h2>
               <i class="fa-solid fa-sun"></i>
             </div>
             <div class="graficoMedidas">
@@ -145,7 +145,7 @@
           <!-- Grafico Temperatura e Umidade -->
           <div class="card-template graficos-dash">
             <div class="chart-title">
-              <h2>Temperatura e Umidade</h2>
+              <h2>Temperatura e Umidade Atual</h2>
               <div class="icon">
                 <i class="fa-solid fa-temperature-three-quarters"></i>
                 <i class="fa-solid fa-droplet"></i>
@@ -163,14 +163,14 @@
           <div class="grafico-semana">
             <div class="card-template graficoSemana">
               <div class="chart-title">
-                <h2>Grafico Semana</h2>
+                <h2>Grafico de Limites Semanais</h2>
               </div>
               <canvas id="grafico-semana"></canvas>
             </div>
           </div>
           <div class="card-template grafico-estado">
             <div class="chart-title">
-              <h2>Limites minimos e maximos</h2>
+              <h2>Limites minímos e maximos</h2>
             </div>
             <div class=" graficoEstado">
               <canvas id="graficoEstado"></canvas>
@@ -185,135 +185,8 @@
 
 </body>
 
+  <script src="js/dashboard.js"></script>
+
 </html>
 
-<script>
-  const graficoDHT = document.getElementById('graficoDHT');
-  const graficoLDR = document.getElementById('graficoLDR');
-
-  new Chart(graficoDHT, {
-    type: 'line',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [
-        {
-          label: 'Temperatura',
-          data: [20, 22, 23, 25, 24, 25],
-          borderColor: 'rgba(54, 162, 235, 1)',
-          borderWidth: 2,
-          fill: false,
-        },
-        {
-          label: 'Umidade',
-          data: [60, 65, 63, 70, 75, 72],
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 2,
-          fill: false,
-        }
-      ]
-    },
-    options: {
-      plugins: {
-        legend: {
-          position: 'bottom'
-        },
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-        }
-      }
-    }
-  });
-
-  new Chart(graficoLDR, {
-    type: 'line',
-    data: {
-      labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
-      datasets: [{
-        label: 'Luminosidade',
-        data: [200, 220, 210, 230, 240, 250], // Valores de luminosidade
-        borderColor: 'rgba(255, 206, 86, 1)', // Cor da linha
-        borderWidth: 2,
-        fill: false // Sem preenchimento
-      }]
-    },
-    options: {
-      plugins: {
-        legend: {
-          position: 'bottom',
-        },
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    }
-  });
-
-  const graficoSemana = document.getElementById('grafico-semana');
-
-  new Chart(graficoSemana, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      plugins: {
-        legend: {
-          position: 'bottom',
-        },
-      },
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-  const graficoEstado = document.getElementById('graficoEstado');
-
-  new Chart(graficoEstado, {
-    type: 'bar',
-    data: {
-      labels: ['Luminosidade', 'Umidade', 'Temperatura'],
-      datasets: [
-        {
-          label: 'Min',
-          data: [1, 2, 3],
-          borderWidth: 1,
-          // borderColor: 'black',
-          backgroundColor: '#007bff',
-        },
-        {
-          label: 'Max',
-          data: [5, 10, 4],
-          borderWidth: 1,
-          // borderColor: 'black',
-          backgroundColor: '#dc3545',
-        },
-      ]
-    },
-    options: {
-      indexAxis: 'y',
-      elements: {
-        bar: {
-          borderWidth: 2,
-        }
-      },
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'bottom',
-        },
-      }
-    },
-  });
-</script>
+  

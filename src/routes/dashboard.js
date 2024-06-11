@@ -3,12 +3,24 @@ var router = express.Router();
 
 var dashboardController = require("../controllers/dashboardController");
 
-router.get("/graficoDht/:idObras", function (req, res) {
-    dashboardController.graficoDht(req, res);
+router.get("/dadosGraficoDht/:idObras", function (req, res) {
+    dashboardController.dadosGraficoDht(req, res);
 });
 
-router.get("/graficoLdr/:idObras", function (req, res) {
-    dashboardController.graficoLdr(req, res);
+router.get("/dadosGraficoLdr/:idObras", function (req, res) {
+    dashboardController.dadosGraficoLdr(req, res);
+});
+
+router.get("/dadosGraficoSemana/:idObras", function (req, res) {
+    dashboardController.dadosGraficoSemana(req, res);
+});
+
+router.get("/dadosGraficoEstado/:idObras", function (req, res) {
+    dashboardController.dadosGraficoEstado(req, res);
+});
+
+router.get("/listarKpis/:idObras", function (req, res) {
+    dashboardController.listarKpis(req, res);
 });
 
 module.exports = router;

@@ -31,7 +31,7 @@ function enderecoLinhas() {
                             sessionStorage.ID_ENDERECO = idEndereco;
                             sessionStorage.NOME_ENDERECO = nomeEndereco;
 
-                       window.open('ambiente.html', '_blank'); // Abre o link em uma nova aba  
+                       window.open('ambiente.html'); // Abre o link em uma nova aba  
                     });
                     bodyTabela.appendChild(linha)
                         

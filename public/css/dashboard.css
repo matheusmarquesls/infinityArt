@@ -99,7 +99,7 @@ li:active {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 190px;
+    width: 160px;
     height: 100%;
     padding: 15px;
     background: #fafafafa;
@@ -115,17 +115,17 @@ li:active {
     color: #808080;
 }
 .grid-kpi .kpi .title h2 {
-    font-size: 16px;
+    font-size: 15px;
 }
 .grid-kpi .kpi .title i {
-    font-size: 24px;
+    font-size: 20px;
     color: black;
 }
 .grid-kpi .kpi .value {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 16px;
+    font-size: 12px;
     color: black;
     text-align: center;
 }

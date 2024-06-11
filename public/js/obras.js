@@ -21,10 +21,16 @@ function obrasLinha() {
                 const bodyTabela = document.getElementById('tbody_corpo_tabela')
 
                 for (let i = 0; i < resposta.length; i++) {
-
+                    
                     let linha = document.createElement('tr');
-                    linha.addEventListener('click', function () {
-                        window.open('dashboard.html', '_blank'); // Abre o link em uma nova aba
+                    linha.dataset.idObras = resposta[i].id;
+
+                    linha.addEventListener('click', function() {
+                        let idObras = this.dataset.idObras;
+
+                        sessionStorage.ID_OBRAS = idObras;
+
+                    window.open('dashboard.html'); // Abre o link em uma nova aba
                     });
                     bodyTabela.appendChild(linha)
 

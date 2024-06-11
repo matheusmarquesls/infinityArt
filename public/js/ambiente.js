@@ -40,7 +40,7 @@ function ambienteLinha() {
                         sessionStorage.ID_AMBIENTE = idAmbiente;
                         sessionStorage.NOME_AMBIENTE = nomeAmbiente;
 
-                    window.open('obras.html', '_blank'); // Abre o link em uma nova aba
+                    window.open('obras.html'); // Abre o link em uma nova aba
                     });
                     bodyTabela.appendChild(linha)
                         

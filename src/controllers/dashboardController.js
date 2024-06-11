@@ -1,9 +1,9 @@
 var dashboardModel = require("../models/dashboardModel");
 
-function graficoDht(req, res) {
+function dadosGraficoDht(req, res) {
     var idObras = req.params.idObras;
 
-    dashboardModel.listarObras(idObras)
+    dashboardModel.dadosGraficoDht(idObras)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -25,7 +25,82 @@ function graficoDht(req, res) {
         );
 }
 
-function graficoLdr(req, res) {
+function dadosGraficoLdr(req, res) {
+    var idObras = req.params.idObras;
+
+    dashboardModel.dadosGraficoLdr(idObras)
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!");
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "Houve um erro ao buscar os avisos: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function dadosGraficoSemana(req, res) {
+    var idObras = req.params.idObras;
+
+    dashboardModel.dadosGraficoSemana(idObras)
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!");
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "Houve um erro ao buscar os avisos: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function dadosGraficoEstado(req, res) {
+    var idObras = req.params.idObras;
+
+    dashboardModel.dadosGraficoEstado(idObras)
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!");
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "Houve um erro ao buscar os avisos: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function listarKpis(req, res) {
     var idObras = req.params.idObras;
 
     dashboardModel.listarKpis(idObras)
@@ -52,6 +127,9 @@ function graficoLdr(req, res) {
 
 
 module.exports = {
-    graficoDht,
-    graficoLdr
+    dadosGraficoDht,
+    dadosGraficoLdr,
+    dadosGraficoSemana,
+    dadosGraficoEstado,
+    listarKpis
 }
