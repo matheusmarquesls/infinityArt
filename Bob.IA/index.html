@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inteligencia Artificial</title>
+
+    <link rel="shortcut icon" href="../public/assets/icon/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://kit.fontawesome.com/80ec270284.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <section class="main">
+        <div id="chat-box">
+            <div class="head-chat">
+                <h1>Infinity I.A</h1>
+            </div>
+
+            <div class="message-area" id="msg_area">
+
+                <div class="message-chat">
+                    <div class="field-item">
+                        <div class="icon"><i class="fa-solid fa-robot"></i></div>
+                        <div class="msg">Olá, eu sou carlinhos</div>
+                    </div>
+                </div>
+                <!-- <div class="message-chat secondary">
+                    <div class="field-item">
+                        <div class="msg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod corporis impedit
+                            illum adipisci, sapiente iste temporibus cumque ab alias maxime a? Vel autem aliquid amet
+                            aliquam delectus, odio rerum! Quidem?Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Alias fugiat earum ipsam sed repellat consectetur accusantium ea tempore veritatis eum
+                            vitae facilis aperiam, eius non iusto itaque explicabo, reiciendis dolor. Lorem ipsum dolor
+                            sit amet, consectetur adipisicing elit. Ipsam dolorem, dolorum itaque maxime laudantium
+                            iusto nulla eaque reprehenderit obcaecati, suscipit, veritatis vel quis! Cum rerum nemo
+                            dolor dolorum ex distinctio! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Asperiores odio exercitationem odit necessitatibus, iusto ad illo sed? Quidem dolorem dicta
+                            quaerat ut laborum hic nobis, alias ab quibusdam officiis! Illo.</div>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="input-area">
+                <div class="input-field">
+                    <input type="text" placeholder="Digite sua pergunta" id="input_msg" required>
+                    <button type="button" onclick="enviarMensagem()" id="send-msg">enviar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    </div>
+</body>
+
+</html>
+<script>
+    document.getElementById('input_msg').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            enviarMensagem();
+        }
+    });
+
+    function enviarMensagem() {
+        const input = document.getElementById('input_msg');
+        const mensagem = input.value;
+        const msgArea = document.getElementById('msg_area');
+
+        if (mensagem.trim() !== "") {
+            msgArea.innerHTML += `
+                <div class="message-chat secondary">
+                    <div class="field-item">
+                        <div class="msg">${mensagem}</div>
+                    </div>
+                </div>`;
+            input.value = ""; // Limpar o campo de entrada após enviar a mensagem
+            msgArea.scrollTop = msgArea.scrollHeight; // Rolar para a última mensagem
+        }
+    }
+</script>
