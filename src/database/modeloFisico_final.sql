@@ -182,7 +182,7 @@ order by 1 desc;
 							end
 		end) as situacao
 	from endereco as e
-	left join ambiente as a on a.fkEndereco = e.idEndereco
+	left left join ambiente as a on a.fkEndereco = e.idEndereco
 	left join obras as o on o.fkAmbiente = a.idAmbiente
 	left join sensor as s on s.fkObras = o.idObras
 	left join leituras as l on l.fkSensor = s.idSensor 

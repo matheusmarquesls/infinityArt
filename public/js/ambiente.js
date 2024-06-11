@@ -19,7 +19,7 @@ function ambienteLinha() {
             if (resposta.status == 204) {
                 throw "Nenhum resultado encontrado!!";
             }
-
+            
             resposta.json().then(function (resposta) {
             console.log("Dados recebidos: ", JSON.stringify(resposta));
 
@@ -138,6 +138,40 @@ function ambienteLinha() {
         console.error(resposta);
         // finalizarAguardar();
     });
+}
+
+function cadastrarAmbientes(){
+
+    let idEndereco = sessionStorage.getItem('ID_ENDERECO');
+    var nome = input_nome.value
+
+    fetch(`/local/cadastrarAmbientes/${idEndereco}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            nome: nome
+        }),
+    })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+    
+            if (resposta.ok) {
+                
+            alert("cadastro realizado")
+    
+            } else {
+                alert('Houve um erro ao tentar realizar o cadastro!')
+                throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+    
+        });
+    
+    return false;
 }
 
 function limparSessao() {
