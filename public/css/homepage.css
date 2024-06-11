@@ -461,8 +461,8 @@ header .header-ul a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 110vh;
+  width: 100%;
+  height: 100vh;
   background-color: #F2F2F2;
 }
 

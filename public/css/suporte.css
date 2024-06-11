@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700;800;900&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    background-color: black;
+    margin-bottom: 2rem;
+}
+
+html {
+    --branco: rgb(255, 255, 255);
+    --cinza: rgb(211, 207, 208);
+    --vermelho: #831c1a;
+    --marrom: rgb(59, 17, 2);
+    --preto: rgb(13, 0, 0);
+}
+
+.container {
+    width: 1140px;
+}
+
+.nav-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem
+}
+
+.nav-header img {
+    width: 100px;
+    height: 100px;
+}
+
+.nav-header .header-title {
+    position: absolute;
+    display: flex;
+    color: white;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+
+.title {
+    font-family: "Popins", sans-serif;
+    font-weight: 900;
+    display: block;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.bar-title {
+    width: 180px;
+    height: 8px;
+    margin-top: 5px;
+    border-radius: 0 20px 20px 0;
+}
+
+.main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.main .duvidas {
+    width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+}
+.main .duvidas .title {
+    margin-bottom: 2rem;
+}
+.duvidas .bar-title {
+    background-color: #3b3b3b;
+}
+
+.duvidas .content {
+    width: 100%;
+    min-height: auto;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.duvidas .content details {
+    height: min-content;
+}
+
+.duvidas .content details summary {
+    background-color: var(--vermelho);
+    color: #fff;
+    padding: 24px 16px;
+    width: 100%;
+    height: auto;
+}
+
+.duvidas .content details p {
+    padding: 20px;
+    background-color: var(--branco);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.main .atendimento {
+    width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+
+}
+
+.atendimento .bar-title {
+    background-color: #3b3b3b;
+}
+
+.atendimento .content {
+    width: 100%;
+    min-height: 70vh;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+}
+
+.atendimento .content .img-section {
+    width: 100%;
+    height: 100%;
+}
+
+.content .img-section img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.atendimento .content .interaction-section {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 0 32px 32px 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .interaction-section .title {
+    margin: 24px 0;
+    text-align: center;
+    font-size: 24px;
+}
+
+.content .interaction-section .description {
+    font-size: 18px;
+    text-align: justify;
+}
+
+.content .interaction-section .button-section {
+    width: 100%;
+    margin-top: auto;
+}
+
+.interaction-section .button-section a {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    padding: 15px 8px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #000;
+    background-color: transparent;
+    border: 2px solid black;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.interaction-section .button-section a:hover {
+    border-color: transparent;
+    background-color: var(--vermelho);
+    color: #fff;
+}

@@ -332,3 +332,169 @@ select id, nome, tipo_tinta, situacao
 from vw_select_obras 
 where id_ambiente = 4
 order by situacao desc;
+
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- DASHBOARD
+
+select * from leituras
+where fkSensor = 1
+order by dataLeitura desc;
+
+-- Grafico DHT11
+
+select l.dht11_umidade as umid,
+l.dht11_temperatura as temp
+from leituras as l 
+join sensor as s
+on s.idSensor = l.fkSensor
+join obras as o
+on s.fkObras = o.idObras
+where o.idObras = 1
+order by dataLeitura desc
+limit 7;
+
+
+-- Grafico LDR
+
+select l.ldr_lux as lux
+from leituras as l 
+join sensor as s
+on s.idSensor = l.fkSensor
+join obras as o
+on s.fkObras = o.idObras
+where o.idObras = 1
+order by l.dataLeitura desc
+limit 7;
+
+-- Grafico Semana
+
+select * from leituras;
+
+INSERT INTO leituras (dht11_umidade, dht11_temperatura, ldr_lux, dataLeitura, fkSensor)
+VALUES 
+(55.30, 21, 450.00, '2024-06-02 13:22:49', 1);
+
+SELECT
+    dataLeitura,
+    CASE
+        WHEN WEEKDAY(dataLeitura) = 0 THEN 'Dado para Segunda-feira'
+        WHEN WEEKDAY(dataLeitura) = 1 THEN 'Dado para Terça-feira'
+        WHEN WEEKDAY(dataLeitura) = 2 THEN 'Dado para Quarta-feira'
+        WHEN WEEKDAY(dataLeitura) = 3 THEN 'Dado para Quintaa-feira'
+        WHEN WEEKDAY(dataLeitura) = 4 THEN 'Dado para Sexta-feira'
+        WHEN WEEKDAY(dataLeitura) = 5 THEN 'Dado para Sábado'
+        WHEN WEEKDAY(dataLeitura) = 6 THEN 'Dado para Domingo'
+    END AS dado_do_dia
+FROM leituras
+WHERE dataLeitura >= CURDATE() - INTERVAL WEEKDAY(CURDATE()) DAY
+  AND dataLeitura < CURDATE() - INTERVAL WEEKDAY(CURDATE()) - 6 DAY + INTERVAL 7 DAY;
+
+-- Grafico Limite
+
+INSERT INTO leituras (dht11_umidade, dht11_temperatura, ldr_lux, fkSensor)
+VALUES (87.30, 18, 500.00, 1),
+	   (90.30, 16, 530.00, 1),
+	   (25.30, 24, 450.00, 1),
+	   (100.30, 27, 600.00, 1),
+	   (15.30, 28, 450.00, 1),
+	   (87.30, 11, 500.00, 1),
+	   (87.30, 11, 500.00, 1),
+	   (90.30, 11, 530.00, 1);
+       
+-- Limite Temp
+
+select sum(case when o.tipoTinta = 'Guache' 
+			   then 
+					case when
+							l.dht11_temperatura < 19
+				then 1 else 0 end
+				-- -----------------------------------------------------
+				else 
+					case when 
+							l.dht11_temperatura < 18
+				then 1 else 0 end
+		end) AS qtd_min_temp,
+        sum(case when 
+				l.dht11_temperatura > 21
+			then 1 else 0 end) 
+		as qtd_max_temp
+        from leituras as l 
+		join sensor as s
+		on s.idSensor = l.fkSensor
+		join obras as o
+		on s.fkObras = o.idObras
+		where o.idObras = 1;
+
+-- Limite Umid
+
+select  sum(case when o.tipoTinta = 'Guache' 
+			   then 
+					case when
+							l.dht11_umidade < 45
+				then 1 else 0 end
+				-- -----------------------------------------------------
+				else 
+					case when 
+							l.dht11_umidade < 40
+				then 1 else 0 end
+		end) as qtd_min_umid,
+        sum(case 
+				when o.tipoTinta = 'Acrilica' then 
+					case when 
+						l.dht11_umidade > 60
+				then 1 else 0 end
+				-- -----------------------------------------------------
+			   when o.tipoTinta = 'Oleo' 
+			   then 
+					case when 
+						l.dht11_umidade > 45
+				then 1 else 0 end
+				-- -----------------------------------------------------
+				else 
+					case when 
+						l.dht11_umidade > 55
+				then 1 else 0 end
+		end) AS qtd_max_umid
+        from leituras as l 
+		join sensor as s
+		on s.idSensor = l.fkSensor
+		join obras as o
+		on s.fkObras = o.idObras
+		where o.idObras = 1;
+        
+-- Lux
+
+select  sum(case when o.tipoTinta = 'Oleo' 
+			   then 
+					case when
+							l.ldr_lux > 200
+				then 1 else 0 end
+				-- -----------------------------------------------------
+				else 
+					case when 
+							l.ldr_lux > 50
+				then 1 else 0 end
+		end) as qtd_max_lux
+        from leituras as l 
+		join sensor as s
+		on s.idSensor = l.fkSensor
+		join obras as o
+		on s.fkObras = o.idObras
+		where o.idObras = 1;
+
+/*
+SELECT
+    dataLeitura,
+    CASE
+        WHEN WEEKDAY(dataLeitura) = 0 THEN 'Dado para Segunda-feira'
+        WHEN WEEKDAY(dataLeitura) = 1 THEN 'Dado para Terça-feira'
+        WHEN WEEKDAY(dataLeitura) = 2 THEN 'Dado para Quarta-feira'
+        WHEN WEEKDAY(dataLeitura) = 3 THEN 'Dado para Quinta-feira'
+        WHEN WEEKDAY(dataLeitura) = 4 THEN 'Dado para Sexta-feira'
+        WHEN WEEKDAY(dataLeitura) = 5 THEN 'Dado para Sábado'
+        WHEN WEEKDAY(dataLeitura) = 6 THEN 'Dado para Domingo'
+    END AS dado_do_dia
+FROM leituras
+WHERE DATE(dataLeitura) BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 6 DAY);
+*/
