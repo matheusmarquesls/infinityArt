@@ -59,25 +59,46 @@
 
 </html>
 <script>
-    document.getElementById('input_msg').addEventListener('keypress', function(event) {
+    document.getElementById('input_msg').addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
             enviarMensagem();
         }
     });
 
-    function enviarMensagem() {
+    async function enviarMensagem() {
         const input = document.getElementById('input_msg');
-        const mensagem = input.value;
+        const mensagem = input.value.trim();
         const msgArea = document.getElementById('msg_area');
 
-        if (mensagem.trim() !== "") {
+        if (mensagem !== "") {
             msgArea.innerHTML += `
-                <div class="message-chat secondary">
-                    <div class="field-item">
-                        <div class="msg">${mensagem}</div>
-                    </div>
-                </div>`;
+                    <div class="message-chat secondary">
+                        <div class="field-item">
+                            <div class="msg">${mensagem}</div>
+                        </div>
+                    </div>`;
+
             input.value = ""; // Limpar o campo de entrada após enviar a mensagem
+            msgArea.scrollTop = msgArea.scrollHeight; // Rolar para a última mensagem
+
+            const response = await fetch('/perguntar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pergunta: mensagem })
+            });
+
+            const data = await response.json();
+
+            msgArea.innerHTML += `
+                    <div class="message-chat">
+                        <div class="field-item">
+                            <div class="icon"><i class="fa-solid fa-robot"></i></div>
+                            <div class="msg">${data.resultado}</div>
+                        </div>
+                    </div>`;
+
             msgArea.scrollTop = msgArea.scrollHeight; // Rolar para a última mensagem
         }
     }
