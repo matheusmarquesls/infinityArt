@@ -147,6 +147,42 @@ function obrasKpi() {
 
 
 
+function cadastrarObras(){
+
+    let idAmbiente = sessionStorage.getItem('ID_AMBIENTE');
+    var nome = input_nome.value
+    var tinta = input_tinta.value
+
+    fetch(`/local/cadastrarObras/${idAmbiente}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            nome: nome,
+            tinta: tinta
+        }),
+    })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+    
+            if (resposta.ok) {
+                
+            alert("cadastro realizado")
+    
+            } else {
+                alert('Houve um erro ao tentar realizar o cadastro!')
+                throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+    
+        });
+    
+    return false;
+}
+
 function limparSessao() {
     sessionStorage.clear();
     window.location = "index.html";

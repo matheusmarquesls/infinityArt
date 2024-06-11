@@ -178,7 +178,7 @@ order by 1 desc;
             then 0 else 1 end
 	end) as situacao
 	from endereco as e
-	join ambiente as a on 
+	left join ambiente as a on 
 	a.fkEndereco = e.idEndereco
 	join obras as o 
 	on o.fkAmbiente = a.idAmbiente

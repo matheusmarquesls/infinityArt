@@ -170,7 +170,7 @@
   
                 <label class="label-input" for="">
                   <i class="fa-solid fa-house-user icon-modify"></i>
-                  <input
+                  <input id="input_nome"
                     class="input-style"
                     type="text"
                     placeholder="Nome da Obra"
@@ -179,10 +179,13 @@
   
                 <label class="label-input" for="">
                   <i class="fa-solid fa-brush icon-modify"> </i>
-                  <input class="input-style" type="text" placeholder="Tipo de Tinta"/>
+                  <input  id="input_tinta"
+                  class="input-style" 
+                  type="text" 
+                  placeholder="Tipo de Tinta"/>
                 </label>
   
-                <button class="btn-form">Cadastrar</button>
+                <button class="btn-form" onclick="cadastrarObras()">Cadastrar</button>
               </div>
             </div>
           </div>
@@ -196,7 +199,7 @@
 
 </html>
 
-
+<script src="./js/obras.js"></script>
 <script>
     
     const btnOpenModal = document.querySelector("#openModal");

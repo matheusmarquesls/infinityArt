@@ -5,14 +5,12 @@ function listarAmbientes(req, res) {
     var idUsuario = req.params.idUsuario;
     var idEndereco = req.body.idEndereco;
 
-    if (!idUsuario) {
-        return res.status(400).send("ID do usuário não fornecido");
-    }
-    if (!idEndereco) {
-        return res.status(400).send("ID do endereço não fornecido");
-    }
-
-    console.log(`Console idEndereco no Controller: ${idEndereco}`);
+    // if (!idUsuario) {
+    //     return res.status(400).send("ID do usuário não fornecido");
+    // }
+    // if (!idEndereco) {
+    //     return res.status(400).send("ID do endereço não fornecido");
+    // }
 
     ambientesModel.listarAmbientes(idUsuario, idEndereco)
         .then(
@@ -37,5 +35,5 @@ function listarAmbientes(req, res) {
 }
 
 module.exports = {
-    listarAmbientes
+    listarAmbientes,
 }
