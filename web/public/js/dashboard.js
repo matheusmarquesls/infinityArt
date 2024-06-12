@@ -48,14 +48,16 @@ let findGraficoDHT = new Chart(graficoDHT, {
       {
         label: 'Temperatura',
         data: [],
-        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: '#EB5344',
+        borderColor: '#EB6344',
         borderWidth: 2,
         fill: false,
       },
       {
         label: 'Umidade',
         data: [],
-        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: '#23B3D8',
+        borderColor: '#26C5EB',
         borderWidth: 2,
         fill: false,
       }
@@ -144,6 +146,7 @@ let findGrafioLDR = new Chart(graficoLDR, {
     datasets: [{
       label: 'Luminosidade',
       data: [], // Valores de luminosidade
+      backgroundColor: '#EBB831',
       borderColor: 'rgba(255, 206, 86, 1)', // Cor da linha
       borderWidth: 2,
       fill: false // Sem preenchimento
@@ -159,7 +162,7 @@ let findGrafioLDR = new Chart(graficoLDR, {
       y: {
         beginAtZero: true,
         min: 0,
-        max: 700,
+        max: 800,
       },
     },
   }
@@ -411,3 +414,7 @@ function listarKpis() {
   });
 }
 
+function limparSessao() {
+  sessionStorage.clear();
+  window.location = "index.html";
+}
