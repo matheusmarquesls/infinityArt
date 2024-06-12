@@ -181,7 +181,7 @@ order by 1 desc;
 	from endereco as e
 	left join ambiente as a on a.fkEndereco = e.idEndereco
 	left join obras as o on o.fkAmbiente = a.idAmbiente
-	left join sensor as s on s.fkObras = o.idObras
+	left join sensor as s on s.idSensor = o.idObras
 	left join leituras as l on l.fkSensor = s.idSensor 
 	group by e.idEndereco, e.nome, e.logradouro, e.cep
 	order by situacao desc;
@@ -235,7 +235,7 @@ order by 1 desc;
 	from ambiente as a
 	left join obras as o on a.idAmbiente = o.fkAmbiente
     left join endereco as e on a.fkEndereco = e.idEndereco
-	left join sensor as s on s.fkObras = o.idObras
+	left join sensor as s on s.idSensor = o.idObras
 	left join leituras as l on l.fkSensor = s.idSensor
 	group by a.idAmbiente;
     
@@ -287,7 +287,7 @@ o.tipoTinta as tipo_tinta,
 		end) as situacao 
 		from obras o
         left join ambiente as a on a.idAmbiente = o.fkAmbiente
-		left join sensor as s on s.fkObras = o.idObras
+		left join sensor as s on s.idSensor = o.idObras
 		left join leituras as l on l.fkSensor = s.idSensor
 		group by a.idAmbiente, o.idObras;
 
@@ -380,7 +380,7 @@ select 	o.tipoTinta as tipo_tinta,
 		as qtd_max_temp
         from leituras as l 
 		join sensor as s on s.idSensor = l.fkSensor
-		join obras as o on s.fkObras = o.idObras
+		join obras as o on s.idSensor = o.idObras
         group by o.idObras, l.dataLeitura;
 
 -- Limite Umid
@@ -423,7 +423,7 @@ select 	o.tipoTinta as tipo_tinta,
 		end) as qtd_max_umid
         from leituras as l 
 		join sensor as s on s.idSensor = l.fkSensor
-		join obras as o on s.fkObras = o.idObras
+		join obras as o on s.idSensor = o.idObras
 		group by o.idObras, l.dataLeitura;
         
 -- Lux
@@ -446,7 +446,7 @@ select 	o.tipoTinta as tipo_tinta,
 		end) as qtd_max_lux
         from leituras as l 
 		join sensor as s on s.idSensor = l.fkSensor
-		join obras as o on s.fkObras = o.idObras
+		join obras as o on s.idSensor = o.idObras
         group by o.idObras, l.dataLeitura;
         
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -473,7 +473,7 @@ select 	l.fkSensor as id,
 		as qtd_max_temp
         from leituras as l 
 		join sensor as s on s.idSensor = l.fkSensor
-		join obras as o on s.fkObras = o.idObras
+		join obras as o on s.idSensor = o.idObras
         group by l.fkSensor, weekday(dataLeitura);
 
 create view vw_umid as
@@ -513,7 +513,7 @@ select 	l.fkSensor as id,
 		end) as qtd_max_umid
         from leituras as l 
 		join sensor as s on s.idSensor = l.fkSensor
-		join obras as o on s.fkObras = o.idObras
+		join obras as o on s.idSensor = o.idObras
          group by l.fkSensor, weekday(dataLeitura);
 
 create view vw_lux as
@@ -533,7 +533,7 @@ select 	l.fkSensor as id,
 		end) as qtd_max_lux
         from leituras as l 
 		join sensor as s on s.idSensor = l.fkSensor
-		join obras as o on s.fkObras = o.idObras
+		join obras as o on s.idSensor = o.idObras
         group by l.fkSensor, weekday(dataLeitura);
 
 create view vw_semana as
