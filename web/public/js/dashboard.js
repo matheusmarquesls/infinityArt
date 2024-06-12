@@ -1,5 +1,33 @@
 // let obrasPerigo = 0;
 
+let metricas = [];
+
+if (metricas.length == 0) {
+
+  let lux = document.getElementById('ideal_lux');
+  let temp = document.getElementById('ideal_temp');
+  let umid = document.getElementById('ideal_umid');
+  
+  if (sessionStorage.getItem('ID_TINTA') == 'Oleo') {
+      metricas.push('Até 200Lx')
+      metricas.push('18°C - 21°C')
+      metricas.push('40% - 45%')
+  } else if (sessionStorage.getItem('ID_TINTA') == 'Guache') {
+      metricas.push('Até 50Lx')
+      metricas.push('19°C - 21°C')
+      metricas.push('45% - 55%')
+  } else {
+      metricas.push('Até 50Lx')
+      metricas.push('18°C - 21°C')
+      metricas.push('40% - 60%')
+  }
+
+  lux.innerHTML = metricas[0];
+  temp.innerHTML = metricas[1];
+  umid.innerHTML = metricas[2];
+
+}
+
 function atualizarGraficos() {
   dadosGraficoDht();
   dadosGraficoLdr();
@@ -7,7 +35,7 @@ function atualizarGraficos() {
   dadosGraficoSemana();
   listarKpis();
 
-  setTimeout(atualizarGraficos, 5000); // Chama novamente a função após 5 segundos
+  setTimeout(atualizarGraficos, 3000); // Chama novamente a função após 5 segundos
 }
 
 const graficoDHT = document.getElementById('graficoDHT');
@@ -93,9 +121,9 @@ function dadosGraficoDht() {
           findGraficoDHT.data.datasets[0].data.push(tempAtual);
           findGraficoDHT.data.datasets[1].data.push(umidAtual);
 
-        }
+          findGraficoDHT.update()
 
-        findGraficoDHT.update()
+        }
 
       });
     } else {
@@ -178,9 +206,9 @@ function dadosGraficoLdr() {
 
           findGrafioLDR.data.datasets[0].data.push(medidaAtual);
 
-        }
+          findGrafioLDR.update()
 
-        findGrafioLDR.update()
+        }
 
       });
 
@@ -245,7 +273,7 @@ function dadosGraficoEstado() {
         throw "Nenhum resultado encontrado!!";
       }
 
-      resposta.json().then(function (resposta) {
+        resposta.json().then(function (resposta) {
         console.log("Dados recebidos: ", JSON.stringify(resposta));
 
         let minLux = resposta[0].minimo;

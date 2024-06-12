@@ -72,13 +72,17 @@ function enderecoLinhas() {
                     linha.appendChild(celQtdObras);
     
                     let situacaoAtual = enderecoAtual.situacao
-                    let situacao = 'Seguro'
-                    let situacaoCor = 'seguro'
-    
-                    if (situacaoAtual == 1) {
+                    
+                    if (situacaoAtual == 0) {
+                        situacao = 'Seguro'
+                        situacaoCor = 'seguro'
+                    } else if (situacaoAtual == 1) {
                         situacao = 'Perigo'
                         situacaoCor = 'perigo'
                         enderecoPerigo++
+                    } else if (situacaoAtual == -1) {
+                        situacao = 'Sem dados'
+                        situacaoCor = 'black'
                     }
                     
                     let celSituacao = document.createElement('td');

@@ -122,21 +122,18 @@ CREATE TABLE leituras (
     FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
 );
 
-INSERT INTO leituras (dht11_umidade, dht11_temperatura, ldr_lux, fkSensor)
-VALUES 
-(55.30, 21, 450.00, 1),
-(55.30, 23.75, 450.00, 1),
-(44, 20, 50, 2),
-(44, 20, 50, 3),
-(44, 20, 50, 4),
-(44, 20, 50, 5),
-(61.00, 21.85, 465.75, 6),
-(56.80, 23.40, 455.60, 7),
-(59.10, 22.50, 472.80, 8),
-(57.50, 23.20, 460.00, 9),
-(56.80, 23.40, 455.60, 10),
-(44, 20, 50, 11),
-(57.50, 23.20, 460.00, 12);
+INSERT INTO leituras (dht11_umidade, dht11_temperatura, ldr_lux, fkSensor, dataLeitura) VALUES
+(80.3, 25.5, 220, 1, '2024-06-10 08:00:00'),
+(65.8, 25.2, 280, 1, '2024-06-10 08:05:00'),
+(92.1, 14.8, 260, 1, '2024-06-10 08:10:00'),
+(38.7, 23.1, 270, 1, '2024-06-10 08:15:00'),
+(38.6, 21.3, 290, 1, '2024-06-10 08:20:00'),
+(45.2, 14.9, 220, 2, '2024-06-12 08:00:00'),
+(88.9, 11.7, 250, 2, '2024-06-12 08:05:00'),
+(72.4, 12.2, 230, 2, '2024-06-13 08:10:00'),
+(86.3, 15.5, 210, 2, '2024-06-13 08:15:00'),
+(70.0, 16.0, 240, 2, '2024-06-13 08:20:00');
+
 
 select dht11_temperatura from leituras
 order by 1 desc; 
@@ -151,10 +148,11 @@ order by 1 desc;
     e.logradouro as rua,
     e.cep,
     count(distinct a.idAmbiente) as qtd_ambientes,
-    count(o.idObras) as qtd_obras,
+    count(distinct o.idObras) as qtd_obras,
     max(case when o.tipoTinta = 'Acrilica' 
 				then 
-				case when 
+				case when l.dht11_temperatura is null or l.dht11_umidade is null or l.ldr_lux is null then -1 
+							when
 						(l.dht11_temperatura >= 18 and l.dht11_temperatura <= 21) or 
 						(l.dht11_umidade >= 40 and l.dht11_umidade <= 60) or 
 						(l.ldr_lux <= 50) 
@@ -164,7 +162,8 @@ order by 1 desc;
 				-- -----------------------------------------------------
 			when o.tipoTinta = 'Oleo' 
 			   	then 
-				case when
+				case when l.dht11_temperatura is null or l.dht11_umidade is null or l.ldr_lux is null then -1
+							when
 						(l.dht11_temperatura >= 18 and l.dht11_temperatura <= 21) or 
 						(l.dht11_umidade >= 40 and l.dht11_umidade <= 45) or 
 						(l.ldr_lux <= 200) 
@@ -173,7 +172,8 @@ order by 1 desc;
 							end
 				-- -----------------------------------------------------
 			else 
-				case when 
+				case when l.dht11_temperatura is null or l.dht11_umidade is null or l.ldr_lux is null then -1 
+							when
 						(l.dht11_temperatura >= 19 and l.dht11_temperatura <= 21) or 
 						(l.dht11_umidade >= 45 and l.dht11_umidade <= 55) or 
 						(l.ldr_lux <= 50) 
@@ -182,19 +182,17 @@ order by 1 desc;
 							end
 		end) as situacao
 	from endereco as e
-	left left join ambiente as a on a.fkEndereco = e.idEndereco
+	left join ambiente as a on a.fkEndereco = e.idEndereco
 	left join obras as o on o.fkAmbiente = a.idAmbiente
 	left join sensor as s on s.fkObras = o.idObras
 	left join leituras as l on l.fkSensor = s.idSensor 
 	group by e.idEndereco, e.nome, e.logradouro, e.cep
 	order by situacao desc;
     
-	-- View 
     select id, nome, rua, cep, qtd_ambientes, qtd_obras, situacao 
     from vw_select_enderecos
     where idUsuario = 1000;
     
-    select * from obras;
 -- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	-- Criando view para aumentar a velocidade de resposta do ambientes
@@ -204,39 +202,11 @@ order by 1 desc;
     e.idEndereco as endereco,
     a.idAmbiente as id,
 	a.nome,
-	count(distinct(o.idObras)) as qtd_obras,
-	sum(case when o.tipoTinta = 'Acrilica' 
-				then 
-				case when 
-						(l.dht11_temperatura >= 18 and l.dht11_temperatura <= 21) or 
-						(l.dht11_umidade >= 40 and l.dht11_umidade <= 60) or 
-						(l.ldr_lux <= 50) 
-							then 0 
-							else 1 
-							end
-				-- -----------------------------------------------------
-			when o.tipoTinta = 'Oleo' 
-			   	then 
-				case when
-						(l.dht11_temperatura >= 18 and l.dht11_temperatura <= 21) or 
-						(l.dht11_umidade >= 40 and l.dht11_umidade <= 45) or 
-						(l.ldr_lux <= 200) 
-							then 0 
-							else 1
-							end
-				-- -----------------------------------------------------
-			else 
-				case when 
-						(l.dht11_temperatura >= 19 and l.dht11_temperatura <= 21) or 
-						(l.dht11_umidade >= 45 and l.dht11_umidade <= 55) or 
-						(l.ldr_lux <= 50) 
-							then 0 
-							else 1 
-							end
-		end) as qtd_obras_perigo,
+	count(distinct o.idObras) as qtd_obras,
 		max(case when o.tipoTinta = 'Acrilica' 
 				then 
-				case when 
+				case when l.dht11_temperatura is null or l.dht11_umidade is null or l.ldr_lux is null then -1 
+							when
 						(l.dht11_temperatura >= 18 and l.dht11_temperatura <= 21) or 
 						(l.dht11_umidade >= 40 and l.dht11_umidade <= 60) or 
 						(l.ldr_lux <= 50) 
@@ -246,7 +216,8 @@ order by 1 desc;
 				-- -----------------------------------------------------
 			when o.tipoTinta = 'Oleo' 
 			   	then 
-				case when
+				case when l.dht11_temperatura is null or l.dht11_umidade is null or l.ldr_lux is null then -1
+							when
 						(l.dht11_temperatura >= 18 and l.dht11_temperatura <= 21) or 
 						(l.dht11_umidade >= 40 and l.dht11_umidade <= 45) or 
 						(l.ldr_lux <= 200) 
@@ -255,7 +226,8 @@ order by 1 desc;
 							end
 				-- -----------------------------------------------------
 			else 
-				case when 
+				case when l.dht11_temperatura is null or l.dht11_umidade is null or l.ldr_lux is null then -1 
+							when
 						(l.dht11_temperatura >= 19 and l.dht11_temperatura <= 21) or 
 						(l.dht11_umidade >= 45 and l.dht11_umidade <= 55) or 
 						(l.ldr_lux <= 50) 
@@ -270,14 +242,11 @@ order by 1 desc;
 	left join leituras as l on l.fkSensor = s.idSensor
 	group by a.idAmbiente;
     
-    -- View 
-    select id, nome, qtd_obras, qtd_obras_perigo, situacao
+    select id, nome, qtd_obras, situacao
     from vw_select_ambientes
     where idUsuario = 1000 and endereco = 1;
     
-    
 -- ------------------------------------------------------------
-
 
 -- View Obras
 
@@ -289,26 +258,29 @@ o.nome,
 o.tipoTinta as tipo_tinta, 
 		max(case when o.tipoTinta = 'Acrilica' 
 				then 
-				case when 
-						(l.dht11_temperatura >= 18 and l.dht11_temperatura <= 21) or 
-						(l.dht11_umidade >= 40 and l.dht11_umidade <= 60) or 
-						(l.ldr_lux <= 50) 
-							then 0 
+				case when l.dht11_temperatura is null or l.dht11_umidade is null or l.ldr_lux is null then -1
+							when
+							(l.dht11_temperatura >= 18 and l.dht11_temperatura <= 21) or 
+							(l.dht11_umidade >= 40 and l.dht11_umidade <= 60) or 
+							(l.ldr_lux <= 50) 
+							then 0
 							else 1 
 							end
 				-- -----------------------------------------------------
 			when o.tipoTinta = 'Oleo' 
 			   	then 
-				case when
+				case when l.dht11_temperatura is null or l.dht11_umidade is null or l.ldr_lux is null then -1
+							when
 						(l.dht11_temperatura >= 18 and l.dht11_temperatura <= 21) or 
 						(l.dht11_umidade >= 40 and l.dht11_umidade <= 45) or 
 						(l.ldr_lux <= 200) 
-							then 0 
+							then 0
 							else 1
 							end
 				-- -----------------------------------------------------
 			else 
-				case when 
+				case when l.dht11_temperatura is null or l.dht11_umidade is null or l.ldr_lux is null then -1
+							when
 						(l.dht11_temperatura >= 19 and l.dht11_temperatura <= 21) or 
 						(l.dht11_umidade >= 45 and l.dht11_umidade <= 55) or 
 						(l.ldr_lux <= 50) 
@@ -322,19 +294,20 @@ o.tipoTinta as tipo_tinta,
 		left join leituras as l on l.fkSensor = s.idSensor
 		group by a.idAmbiente, o.idObras;
 
-select * from vw_select_obras;
+select * from vw_select_obras
+order by situacao;
 
 select
-count(distinct(id)) as kpi
+count(distinct id) as kpi
 from vw_select_obras 
-where id_ambiente = 4
+where id_ambiente = 1
 
-union
+union all
 
 select 
 count(situacao) as kpi
 from vw_select_obras 
-where situacao = 1 and id_ambiente = 4;
+where situacao = 1 and id_ambiente = 1;
 
 select id, nome, tipo_tinta, situacao 
 from vw_select_obras 
@@ -352,56 +325,44 @@ order by dataLeitura desc;
 -- Grafico DHT11
 
 create view vw_grafico_dht as 
-select o.idObras as id,
+select l.dataLeitura as leitura,
+l.fkSensor as id,
 l.dht11_umidade as umid,
 l.dht11_temperatura as temp
 from leituras as l 
-join sensor as s on s.idSensor = l.fkSensor
-join obras as o on s.fkObras = o.idObras
-order by dataLeitura desc
+order by l.dataLeitura desc
 limit 7;
 
-select * from vw_grafico_dht
+select leitura, umid, temp
+from vw_grafico_dht
 where id = 1;
 
 -- Grafico LDR
 
 create view vw_grafico_ldr as 
-select l.dataLeitura,
-o.idObras as id,
+select l.dataLeitura as leitura,
+l.fkSensor as id,
 l.ldr_lux as lux
 from leituras as l 
-join sensor as s on s.idSensor = l.fkSensor
-join obras as o on s.fkObras = o.idObras
 order by l.dataLeitura desc
 limit 7;
 
-select lux from vw_grafico_ldr
+select * from vw_grafico_ldr
 where id = 1;
 
--- Grafico Semana
-
-select curdate();
-
-/*
-INSERT INTO leituras (dht11_umidade, dht11_temperatura, ldr_lux, dataLeitura, fkSensor)
-VALUES 
-(75.30, 20, 301.00, '2024-06-02 13:22:49', 1),
-(45.30, 26, 205.00, '2024-06-10 13:22:49', 1),
-(65.30, 16, 219.00, '2024-06-10 13:22:49', 1),
-(64.30, 21, 245.00, '2024-06-09 13:22:49', 1),
-(55.30, 28, 215.00, '2024-06-04 13:22:49', 1),
-(95.30, 23, 186.00, '2024-06-05 13:22:49', 1),
-(75.30, 20, 194.00, '2024-06-14 13:22:49', 1);
-*/
+select l.dataLeitura as leitura,
+l.fkSensor as id,
+l.ldr_lux as lux
+from leituras as l 
+where l.fkSensor = 1
+order by l.dataLeitura desc
+limit 7;
 
 -- Grafico Limite
 
-INSERT INTO leituras (dht11_umidade, dht11_temperatura, ldr_lux, fkSensor)
-VALUES (81.30, 28, 200.00, 1);
-
 create view vw_temp_dia_atual as
-select 	l.dataLeitura as dataL,
+select 	o.tipoTinta as tipo_tinta,
+		l.dataLeitura as dataL,
 		o.idObras as id,
 		sum(case when o.tipoTinta = 'Guache' 
 			   then 
@@ -428,7 +389,8 @@ select 	l.dataLeitura as dataL,
 -- Limite Umid
 
 create view vw_umid_dia_atual as
-select l.dataLeitura as dataL,
+select 	o.tipoTinta as tipo_tinta,
+		l.dataLeitura as dataL,
 		o.idObras as id,
 		sum(case when o.tipoTinta = 'Guache' 
 			   	then 
@@ -470,7 +432,8 @@ select l.dataLeitura as dataL,
 -- Lux
 
 create view vw_lux_dia_atual as
-select 	l.dataLeitura as dataL,
+select 	o.tipoTinta as tipo_tinta,
+		l.dataLeitura as dataL,
 		o.idObras as id,
 		0 as qtd_min_lux,
 		sum(case when o.tipoTinta = 'Oleo' 
@@ -492,7 +455,8 @@ select 	l.dataLeitura as dataL,
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 create view vw_temp as
-select 	weekday(dataLeitura) as dia_da_semana,
+select 	l.fkSensor as id,
+		weekday(dataLeitura) as dia_da_semana,
 		sum(case when o.tipoTinta = 'Guache' 
 			   then 
 					case when l.dht11_temperatura < 19
@@ -513,11 +477,12 @@ select 	weekday(dataLeitura) as dia_da_semana,
         from leituras as l 
 		join sensor as s on s.idSensor = l.fkSensor
 		join obras as o on s.fkObras = o.idObras
-        group by weekday(dataLeitura);
+        group by l.fkSensor, weekday(dataLeitura);
 
 create view vw_umid as
-select  	weekday(dataLeitura) as dia_da_semana,
-			sum(case when o.tipoTinta = 'Guache' 
+select 	l.fkSensor as id,	
+		weekday(dataLeitura) as dia_da_semana,
+		sum(case when o.tipoTinta = 'Guache' 
 			   	then 
 					case when l.dht11_umidade < 45
 						then 1 
@@ -552,10 +517,11 @@ select  	weekday(dataLeitura) as dia_da_semana,
         from leituras as l 
 		join sensor as s on s.idSensor = l.fkSensor
 		join obras as o on s.fkObras = o.idObras
-        group by weekday(dataLeitura);
+         group by l.fkSensor, weekday(dataLeitura);
 
 create view vw_lux as
-select 	weekday(dataLeitura) as dia_da_semana,
+select 	l.fkSensor as id,
+		weekday(dataLeitura) as dia_da_semana,
 		0 as qtd_min_lux,
 		sum(case when o.tipoTinta = 'Oleo' 
 			   then 
@@ -571,63 +537,64 @@ select 	weekday(dataLeitura) as dia_da_semana,
         from leituras as l 
 		join sensor as s on s.idSensor = l.fkSensor
 		join obras as o on s.fkObras = o.idObras
-        group by weekday(dataLeitura);
+        group by l.fkSensor, weekday(dataLeitura);
 
 create view vw_semana as
 select 
 
     'Segunda-feira' as dia_da_semana,
-    (select (vw_temp.qtd_min_temp + vw_temp.qtd_max_temp) from vw_temp where vw_temp.dia_da_semana = 0) +
-    (select (vw_umid.qtd_min_umid + vw_umid.qtd_max_umid) from vw_umid where vw_umid.dia_da_semana = 0) +
-    (select (vw_lux.qtd_max_lux) from vw_lux where vw_lux.dia_da_semana = 0) as limites_atingidos
+    (select (sum(vw_temp.qtd_min_temp) + sum(vw_temp.qtd_max_temp)) from vw_temp where vw_temp.dia_da_semana = 0 and id = 1) +
+    (select (sum(vw_umid.qtd_min_umid) + sum(vw_umid.qtd_max_umid)) from vw_umid where vw_umid.dia_da_semana = 0 and id = 1) +
+    (select (sum(vw_lux.qtd_max_lux)) from vw_lux where vw_lux.dia_da_semana = 0 and id = 1) as limites_atingidos
 
 union all
 
 select 
     'Terça-feira' as dia_da_semana,
-    (select (vw_temp.qtd_min_temp + vw_temp.qtd_max_temp) from vw_temp where vw_temp.dia_da_semana = 1) +
-    (select (vw_umid.qtd_min_umid + vw_umid.qtd_max_umid) from vw_umid where vw_umid.dia_da_semana = 1) +
-    (select (vw_lux.qtd_max_lux) from vw_lux where vw_lux.dia_da_semana = 1) as limites_atingidos
+    (select (sum(vw_temp.qtd_min_temp) + sum(vw_temp.qtd_max_temp)) from vw_temp where vw_temp.dia_da_semana = 1 and id = 1) +
+    (select (sum(vw_umid.qtd_min_umid) + sum(vw_umid.qtd_max_umid)) from vw_umid where vw_umid.dia_da_semana = 1 and id = 1) +
+    (select (sum(vw_lux.qtd_max_lux)) from vw_lux where vw_lux.dia_da_semana = 1 and id = 1) as limites_atingidos
 
 union all
 
 select 
     'Quarta-feira' as dia_da_semana,
-    (select (vw_temp.qtd_min_temp + vw_temp.qtd_max_temp) from vw_temp where vw_temp.dia_da_semana = 2) +
-    (select (vw_umid.qtd_min_umid + vw_umid.qtd_max_umid) from vw_umid where vw_umid.dia_da_semana = 2) +
-    (select (vw_lux.qtd_max_lux) from vw_lux where vw_lux.dia_da_semana = 2) as limites_atingidos
+    (select (sum(vw_temp.qtd_min_temp) + sum(vw_temp.qtd_max_temp)) from vw_temp where vw_temp.dia_da_semana = 2 and id = 1) +
+    (select (sum(vw_umid.qtd_min_umid) + sum(vw_umid.qtd_max_umid)) from vw_umid where vw_umid.dia_da_semana = 2 and id = 1) +
+    (select (sum(vw_lux.qtd_max_lux)) from vw_lux where vw_lux.dia_da_semana = 2 and id = 1) as limites_atingidos
 
 union all
 
 select 
     'Quinta-feira' as dia_da_semana,
-    (select (vw_temp.qtd_min_temp + vw_temp.qtd_max_temp) from vw_temp where vw_temp.dia_da_semana = 3) +
-    (select (vw_umid.qtd_min_umid + vw_umid.qtd_max_umid) from vw_umid where vw_umid.dia_da_semana = 3) +
-    (select (vw_lux.qtd_max_lux) from vw_lux where vw_lux.dia_da_semana = 3) as limites_atingidos
+    (select (sum(vw_temp.qtd_min_temp) + sum(vw_temp.qtd_max_temp)) from vw_temp where vw_temp.dia_da_semana = 3 and id = 1) +
+    (select (sum(vw_umid.qtd_min_umid) + sum(vw_umid.qtd_max_umid)) from vw_umid where vw_umid.dia_da_semana = 3 and id = 1) +
+    (select (sum(vw_lux.qtd_max_lux)) from vw_lux where vw_lux.dia_da_semana = 3 and id = 1) as limites_atingidos
 
 union all
 
 select 
+	
     'Sexta-feira' as dia_da_semana,
-    (select (vw_temp.qtd_min_temp + vw_temp.qtd_max_temp) from vw_temp where vw_temp.dia_da_semana = 4) +
-    (select (vw_umid.qtd_min_umid + vw_umid.qtd_max_umid) from vw_umid where vw_umid.dia_da_semana = 4) +
-    (select (vw_lux.qtd_max_lux) from vw_lux where vw_lux.dia_da_semana = 4) as limites_atingidos
+    (select (sum(vw_temp.qtd_min_temp) + sum(vw_temp.qtd_max_temp)) from vw_temp where vw_temp.dia_da_semana = 4 and id = 1) +
+    (select (sum(vw_umid.qtd_min_umid) + sum(vw_umid.qtd_max_umid)) from vw_umid where vw_umid.dia_da_semana = 4 and id = 1) +
+    (select (sum(vw_lux.qtd_max_lux)) from vw_lux where vw_lux.dia_da_semana = 4 and id = 1) as limites_atingidos
 
 union all
 
 select 
     'Sábado' as dia_da_semana,
-    (select (vw_temp.qtd_min_temp + vw_temp.qtd_max_temp) from vw_temp where vw_temp.dia_da_semana = 5) +
-    (select (vw_umid.qtd_min_umid + vw_umid.qtd_max_umid) from vw_umid where vw_umid.dia_da_semana = 5) +
-    (select (vw_lux.qtd_max_lux) from vw_lux where vw_lux.dia_da_semana = 5) as limites_atingidos
+    (select (sum(vw_temp.qtd_min_temp) + sum(vw_temp.qtd_max_temp)) from vw_temp where vw_temp.dia_da_semana = 5 and id = 1) +
+    (select (sum(vw_umid.qtd_min_umid) + sum(vw_umid.qtd_max_umid)) from vw_umid where vw_umid.dia_da_semana = 5 and id = 1) +
+    (select (sum(vw_lux.qtd_max_lux)) from vw_lux where vw_lux.dia_da_semana = 5 and id = 1) as limites_atingidos
 
 union all
 
 select 
     'Domingo' as dia_da_semana,
-    (select (vw_temp.qtd_min_temp + vw_temp.qtd_max_temp) from vw_temp where vw_temp.dia_da_semana = 6) +
-    (select (vw_umid.qtd_min_umid + vw_umid.qtd_max_umid) from vw_umid where vw_umid.dia_da_semana = 6) +
-    (select (vw_lux.qtd_max_lux) from vw_lux where vw_lux.dia_da_semana = 6) as limites_atingidos;
+    (select (sum(vw_temp.qtd_min_temp) + sum(vw_temp.qtd_max_temp)) from vw_temp where vw_temp.dia_da_semana = 6 and id = 1) +
+    (select (sum(vw_umid.qtd_min_umid) + sum(vw_umid.qtd_max_umid)) from vw_umid where vw_umid.dia_da_semana = 6 and id = 1) +
+    (select (sum(vw_lux.qtd_max_lux)) from vw_lux where vw_lux.dia_da_semana = 6 and id = 1) as limites_atingidos;
 
 select 
 sum(qtd_min_lux) as minimo,
@@ -647,4 +614,25 @@ sum(qtd_max_temp) as maximo
 from vw_temp_dia_atual
 where id = 1 and date(dataL) = current_date();
 
-select * from vw_semana;
+
+select sum(qtd_min_lux) + sum(qtd_max_lux) 
+        as limite from vw_lux_dia_atual
+        where id = 1 and date(dataL) = current_date()
+    union all
+        select sum(qtd_min_temp) + sum(qtd_max_temp) 
+        as limite from vw_temp_dia_atual
+        where id = 1 and date(dataL) = current_date()
+    union all
+        select sum(qtd_min_umid) + sum(qtd_max_umid) 
+        as limite from vw_umid_dia_atual
+        where id = 1 and date(dataL) = current_date();
+        
+        select l.dataLeitura as leitura,
+        l.fkSensor as id,
+        l.dht11_umidade as umid,
+        l.dht11_temperatura as temp
+        from leituras as l 
+        where l.fkSensor = 1
+        order by l.dataLeitura desc
+        limit 7;
+        

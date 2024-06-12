@@ -62,22 +62,20 @@ function ambienteLinha() {
                     obrasTotal.textContent = `${qtdObras}`
                     linha.appendChild(obrasTotal);
 
-                    let qtdObrasPerigo = ambienteAtual.qtd_obras_perigo
-
-                    let obrasPerigo = document.createElement('td');
-                    obrasPerigo.textContent = `${qtdObrasPerigo}`
-                    linha.appendChild(obrasPerigo);
-
                     let situacaoAtual = ambienteAtual.situacao
-                    let situacao = 'Seguro'
-                    let situacaoCor = 'seguro'
-    
-                    if (situacaoAtual == 1) {
+                    
+                    if (situacaoAtual == 0) {
+                        situacao = 'Seguro'
+                        situacaoCor = 'seguro'
+                    } else if (situacaoAtual == 1) {
                         situacao = 'Perigo'
                         situacaoCor = 'perigo'
                         ambientePerigo++
+                    } else if (situacaoAtual == -1) {
+                        situacao = 'Sem dados'
+                        situacaoCor = 'black'
                     }
-                    
+
                     let celSituacao = document.createElement('td');
                     celSituacao.textContent = `${situacao}`
                     celSituacao.classList.add(situacaoCor)

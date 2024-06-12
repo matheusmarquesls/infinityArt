@@ -24,11 +24,14 @@ function obrasLinha() {
                     
                     let linha = document.createElement('tr');
                     linha.dataset.idObras = resposta[i].id;
+                    linha.dataset.tipo_tinta = resposta[i].tipo_tinta;
 
                     linha.addEventListener('click', function() {
                         let idObras = this.dataset.idObras;
+                        let tipo_tinta = this.dataset.tipo_tinta;
 
                         sessionStorage.ID_OBRAS = idObras;
+                        sessionStorage.ID_TINTA = tipo_tinta;
 
                     window.open('dashboard.html'); // Abre o link em uma nova aba
                     });
@@ -53,12 +56,19 @@ function obrasLinha() {
                     linha.appendChild(celTipoTinta);
 
                     let situacaoAtual = obraAtual.situacao
-                    let situacao = 'Seguro'
-                    let situacaoCor = 'seguro'
 
-                    if (situacaoAtual == 1) {
+                    let situacao = ''
+                    let situacaoCor = ''
+
+                    if (situacaoAtual == 0) {
+                        situacao = 'Seguro'
+                        situacaoCor = 'seguro'
+                    } else if (situacaoAtual == 1) {
                         situacao = 'Perigo'
                         situacaoCor = 'perigo'
+                    } else if (situacaoAtual == -1) {
+                        situacao = 'Sem dados'
+                        situacaoCor = 'black'
                     }
 
                     let celSituacao = document.createElement('td');
@@ -122,8 +132,8 @@ function obrasKpi() {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                const qtdObras = resposta[0].kpis;
-                const obrasPerigo = resposta[1].kpis;
+                const qtdObras = resposta[0].kpi;
+                const obrasPerigo = resposta[1].kpi;
                
                 const porcentagemTotalObrasPerigo = (obrasPerigo * 100) / qtdObras;
                 const porcentagemTotalObrasPerigoFormatada = porcentagemTotalObrasPerigo.toFixed(1);
@@ -134,7 +144,7 @@ function obrasKpi() {
                     kpis.classList.add('alerta')
                 } else {
                     kpis.classList.remove('alerta')
-                }
+                } 
 
                 h1_quantidade_obras.innerHTML = qtdObras;
                 h1_obras_totais_perigo.innerHTML = obrasPerigo;

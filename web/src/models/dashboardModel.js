@@ -4,8 +4,14 @@ var database = require("../database/config");
 function dadosGraficoDht(idObras) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function dadosGraficoDht()");
     var instrucaoSql = `
-        select * from vw_grafico_dht
-        where id = ${idObras};   
+        select l.dataLeitura as leitura,
+        l.fkSensor as id,
+        l.dht11_umidade as umid,
+        l.dht11_temperatura as temp
+        from leituras as l 
+        where l.fkSensor = ${idObras}
+        order by l.dataLeitura desc
+        limit 7;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -14,8 +20,13 @@ function dadosGraficoDht(idObras) {
 function dadosGraficoLdr(idObras) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function dadosGraficoLdr()");
     var instrucaoSql = `
-        select * from vw_grafico_ldr
-        where id = ${idObras};
+        select l.dataLeitura as leitura,
+        l.fkSensor as id,
+        l.ldr_lux as lux
+        from leituras as l 
+        where l.fkSensor = ${idObras}
+        order by l.dataLeitura desc
+        limit 7;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -112,23 +123,17 @@ function dadosGraficoEstado(idObras) {
 function listarKpis(idObras) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarKpis()");
     var instrucaoSql = `
-        select 
-            sum(qtd_min_lux) as minimo,
-            sum(qtd_max_lux) as maximo
-            from vw_lux_dia_atual
-            where id = ${idObras} and date(dataL) = current_date()
-        union all
-        select 
-            sum(qtd_min_umid) as minimo,
-            sum(qtd_max_umid) as maximo
-            from vw_umid_dia_atual
-            where id = ${idObras} and date(dataL) = current_date()
-        union all
-            select 
-            sum(qtd_min_temp) as minimo,
-            sum(qtd_max_temp) as maximo
-            from vw_temp_dia_atual
-            where id = ${idObras} and date(dataL) = current_date();
+        select sum(qtd_min_lux) + sum(qtd_max_lux) 
+        as limite from vw_lux_dia_atual
+        where id = ${idObras} and date(dataL) = current_date()
+    union all
+        select sum(qtd_min_temp) + sum(qtd_max_temp) 
+        as limite from vw_temp_dia_atual
+        where id = ${idObras} and date(dataL) = current_date()
+    union all
+        select sum(qtd_min_umid) + sum(qtd_max_umid) 
+        as limite from vw_umid_dia_atual
+        where id = ${idObras} and date(dataL) = current_date();
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
