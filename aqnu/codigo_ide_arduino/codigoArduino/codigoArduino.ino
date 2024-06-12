@@ -72,5 +72,5 @@ void loop() {
     Serial.println(ldr_sensorValue2);
     
   }
-  delay(60000); // delay 👍
+  delay(5000); // delay 👍
 }

@@ -9,9 +9,7 @@ CREATE TABLE usuario (
     nome VARCHAR(45) NOT NULL,
     sobrenome VARCHAR(45) NOT NULL,
     email VARCHAR(90) NOT NULL UNIQUE,
-    senha VARCHAR(45) NOT NULL,
-    fkFuncionario INT NULL,
-    FOREIGN KEY (fkFuncionario) REFERENCES usuario(idUsuario)
+    senha VARCHAR(45) NOT NULL
 )AUTO_INCREMENT = 1000;
 
 INSERT INTO usuario (nome, sobrenome, email, senha) values 
@@ -88,13 +86,12 @@ order by idObras;
 
 -- Criando a tabela sensor
 CREATE TABLE sensor (
-    idSensor INT AUTO_INCREMENT PRIMARY KEY,
+    idSensor INT PRIMARY KEY,
     estado VARCHAR(45) NULL,
-    fkObras INT NOT NULL,
-    FOREIGN KEY (fkObras) REFERENCES obras(idObras)
+    FOREIGN KEY (idSensor) REFERENCES obras(idObras)
 );
 
-INSERT INTO sensor (estado, fkObras) values 
+INSERT INTO sensor (estado, idSensor) values 
 ('Ativo', 1),
 ('Ativo', 2),
 ('Ativo', 3),

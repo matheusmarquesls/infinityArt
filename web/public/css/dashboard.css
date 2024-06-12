@@ -102,7 +102,7 @@ li:active {
     width: 160px;
     height: 100%;
     padding: 15px;
-    background: #fafafafa;
+    background-color: #fafafafa;
     border-radius: 15px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;    
     overflow: hidden;
@@ -193,4 +193,52 @@ li:active {
     justify-content: center;
     align-items: center;
     /* background-color: rgb(200, 255, 192); */
+}
+
+.grid-kpi .kpi.kpi-verde {
+    background-color: rgb(30, 186, 30);
+}
+
+.grid-kpi .kpi.kpi-vermelho {
+    background-color: rgb(255, 61, 61);
+}
+
+.grid-kpi .kpi.kpi-amarelo {
+    background-color: rgb(255, 234, 1);
+}
+
+.grid-kpi .kpi.kpi-verde .title {
+    color: #ffffff;
+}
+
+.grid-kpi .kpi.kpi-vermelho .title {
+    color: #ffffff;
+}
+
+.grid-kpi .kpi.kpi-amarelo .title {
+    color: #ffffff;
+}
+
+.grid-kpi .kpi.kpi-verde .title i {
+    color: rgb(255, 255, 255);
+}
+
+.grid-kpi .kpi.kpi-vermelho .title i {
+    color: rgb(255, 255, 255);
+}
+
+.grid-kpi .kpi.kpi-amarelo .title i {
+    color: rgb(255, 255, 255);
+}
+
+.grid-kpi .kpi.kpi-verde .value {
+    color: rgb(255, 255, 255);
+}
+
+.grid-kpi .kpi.kpi-vermelho .value {
+    color: rgb(255, 255, 255);
+}
+
+.grid-kpi .kpi.kpi-amarelo .value {
+    color: rgb(255, 255, 255);
 }

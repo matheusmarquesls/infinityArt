@@ -35,7 +35,10 @@ function atualizarGraficos() {
   dadosGraficoSemana();
   listarKpis();
 
-  setTimeout(atualizarGraficos, 3000); // Chama novamente a função após 5 segundos
+  findGraficoSemana.update()
+  findGraficoEstado.update()
+
+  setTimeout(atualizarGraficos, 10000); // Chama novamente a função após 5 segundos
 }
 
 const graficoDHT = document.getElementById('graficoDHT');
@@ -279,6 +282,9 @@ function dadosGraficoEstado() {
         resposta.json().then(function (resposta) {
         console.log("Dados recebidos: ", JSON.stringify(resposta));
 
+        findGraficoEstado.data.datasets[0].data = [];
+        findGraficoEstado.data.datasets[1].data = [];
+
         let minLux = resposta[0].minimo;
         let maxLux = resposta[0].maximo;
 
@@ -403,6 +409,26 @@ function listarKpis() {
         lux.innerHTML = resposta[0].limite;
         temp.innerHTML = resposta[1].limite;
         umid.innerHTML = resposta[2].limite;
+
+        let kpis = document.querySelectorAll('.kpi');
+
+        for (let posicao = 0; posicao < 3; posicao++) {
+
+          let kpiAtual = kpis[posicao];
+
+        // Remova todas as classes de cor
+        kpiAtual.classList.remove('kpi-verde', 'kpi-amarelo', 'kpi-vermelho');
+
+        // Aplique a classe correta com base no valor de resposta[posicao].limite
+        if (resposta[posicao].limite < 3) {
+          kpiAtual.classList.add('kpi-verde');
+        } else if (resposta[posicao].limite >= 3 && resposta[posicao].limite <= 4) {
+          kpiAtual.classList.add('kpi-amarelo');
+        } else {
+          kpiAtual.classList.add('kpi-vermelho');
+        }
+
+        }
 
       });
     } else {
