@@ -12,13 +12,54 @@
 
 <body>
     <header>
+        <div class="container">
+            <div class="nav-header">
+                <a href="index.html">
+                    <img class="logotipo" src="assets/icon/art-icon.png" alt="">
+                </a>
+                <div class="header-title">
+                    <h1>SUPORTE</h1>
+                </div>
 
-        <div class="nav-header">
-            <a href="index.html">
-                <img class="logotipo" src="assets/icon/art-icon.png" alt="">
-            </a>
-            <div class="header-title">
-                <h1>SUPORTE</h1>
+                <div class="nav-profile" onclick="toggleMenu()">
+                    <div class="user-profile-button" id="user_profile-image">
+                        <i class="fa-solid fa-user icon-modify"></i>
+                        <p>perfil</p>
+                    </div>
+
+                    <!-- CONTAINER DO MENU -->
+                    <div class="sub-menu-wrap" id="sub-menu-wrap">
+                        <!-- SUBMENU -->
+                        <div class="submenu">
+                            <!-- INFORMAÇÕES DO USUARIO -->
+                            <div class="user-info">
+                                <i class="fa-solid fa-user icon-modify"></i>
+                                <h3 class="username" id="username">C.Frizza</h3>
+                            </div>
+
+                            <!-- OPTION AMBIENTES -->
+                            <a href="endereco.html" class="submenu-option">
+                                <i class="fa-solid fa-house-chimney icon-modify"></i>
+                                <p>Endereços</p>
+                                <span> > </span>
+                            </a>
+
+                            <!-- OPTION AJUDA E SUPORTE -->
+                            <a href="calculadora.html" class="submenu-option">
+                                <i class="fa-solid fa-circle-question icon-modify"></i>
+                                <p>Ajuda & Suporte</p>
+                                <span> > </span>
+                            </a>
+
+                            <!-- OPTION SAIR -->
+                            <a href="index.html " class="submenu-option" onclick="limparSessao()">
+                                <i class="fa-solid fa-door-open icon-modify"></i>
+                                <p>Sair</p>
+                                <span> > </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -34,48 +75,53 @@
                 </div>
                 <div class="content">
                     <details>
-                        <summary>A Infinity Art vai fornecer quais equipamentos?</summary>
+                        <summary>Quais equipamentos a Infinity Art fornecerá?</summary>
                         <p>A Infinity Art vai fornecer os equipamentos necessários para o sistema funcionar
-                            como por exemplo o case que será disponibilizado com todo nosso circuito 
+                            como por exemplo o case que será disponibilizado com todo nosso circuito
                             que ao ser instalado vai fazer o trabalho de monitorar suas obras de arte,
                             já os computadores que serão necessários para fazer o sistema funcionar devem
                             ser adquridos pelo cliente. </p>
                     </details>
                     <details>
                         <summary>Como posso acessar os dados captados pelo sistema?</summary>
-                        <p>Basta acessar o nosso site institucional e criar sua conta, após terminar de 
-                            criar sua conta cadastre um novo endereço, ambiente e obra, após terminar este
+                        <p>Basta acessar o nosso site institucional e criar sua conta, após terminar de
+                            criar sua conta, cadastre um novo endereço, ambiente e obra, terminando este
                             processo confira se o sistema da Infinity Art está de fato ligado e funcionando
-                            corretamente na obra cadastrada e confira os dados das medidas.  
+                            corretamente na obra cadastrada e confira os dados das medidas em nossa dashboard.
                         </p>
                     </details>
                     <details>
                         <summary>O sistema envia avisos e captura os dados em tempo real?</summary>
                         <p>Sim! Os dados captados pelo sistema e todo seu processo para aparecerem na dashboard
-                            são atualizados em tempo real e podem ser visualizados imediatamente pelo portador de 
+                            são atualizados em tempo real e podem ser visualizados imediatamente pelo portador de
                             nossos serviços!
                         </p>
                     </details>
                     <details>
-                        <summary>O sistema vai funcionar sem internet?</summary>
+                        <summary>O sistema vai funcionar sem conexão com a internet?</summary>
                         <p>Não, por conta da necessidade do site em ter conexões com um servidor para gerar as
-                           informações e fornecer as credênciais, será necessário uma conexão de internet para
-                           o sistema funcionar.  
+                            informações e fornecer as credênciais, será necessária uma conexão com a internet para
+                            o sistema funcionar.
                         </p>
                     </details>
                     <details>
-                        <summary>Ocorreu algum problema como o circuito do sistema e por algum motivo não funciona</summary>
+                        <summary>Ocorreu algum problema com o circuito do sistema e por algum motivo não funciona?
+                        </summary>
                         <p>Primeiramente verifique se o case que foi disponibilizado pela Infinity Art está de fato
                             ligado ou dando sinais de funcionamento e reinicie, verifique as conexões USB e confira no
-                            nosso manual de instalação algum tópico que pode se encaixar em seu problema, se precisar 
-                            você pode nos contatar e abrir um chamado para nossa equipe te auxiliar, em casos de circuitos 
-                            defeituosos ou deteriorados, será analisado a situação para poder ser fornecido um novo circuito. 
+                            nosso manual de instalação algum tópico que pode se encaixar em seu problema, caso considere necessário,
+                            você poderá nos contatar e abrir um chamado para nossa equipe te auxiliar da melhor forma possível, em casos de
+                            circuitos
+                            defeituosos ou deteriorados, será analisada a situação para poder ser fornecido um novo
+                            circuito.
                         </p>
                     </details>
                     <details>
                         <summary>Onde posso obter um suporte técnico adicional?</summary>
-                        <p>Basta você nos contatar abrindo um chamado e vamos analisar a situação para te dar o melhor suporte
-                            técnico possível, temos especialistas técnicos e contamos com o uso inteligência artifical para 
+                        <p>Basta você nos contatar abrindo um chamado e vamos analisar a situação para te dar o melhor
+                            suporte
+                            técnico possível, temos especialistas técnicos e contamos com o uso inteligência artifical
+                            para
                             solucionar o seu problema!
                         </p>
                     </details>
@@ -101,7 +147,7 @@
                                 questões rapidamente. Estamos aqui para garantir a melhor experiência para você!</p>
                         </div>
                         <div class="button-section">
-                            <a href="https://infinityarthelpdesk.hipporello.net/desk?tourToken=1402305086ae40ef95b8695236c44c63">
+                            <a href="https://infinityartsuporte.hipporello.net/desk">
                                 Contate-nos
                             </a>
                         </div>
@@ -114,6 +160,10 @@
 
 </html>
 <script>
+    let nomeUsuario = sessionStorage.NOME_USUARIO;
+
+    username.innerHTML = `${nomeUsuario}`
+
     let subMenu = document.getElementById("sub-menu-wrap");
 
     function toggleMenu() {
