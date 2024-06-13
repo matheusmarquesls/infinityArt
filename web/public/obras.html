@@ -26,7 +26,12 @@
 
             <h1>OBRAS</h1>
 
-            <div class="user"></div>
+            <div class="nav-profile">
+                <div class="user-profile-button" id="user_profile-image">
+                    <i class="fa-solid fa-user icon-modify"></i>
+                    <p id="username"></p>
+                </div>
+            </div>
 
         </div>
 
@@ -222,7 +227,9 @@
         el.addEventListener("click", () => togglemodalObra());
     });
 
+    let nomeUsuario = sessionStorage.NOME_USUARIO;
 
+    username.innerHTML = `${nomeUsuario}`
 
 </script>
 

@@ -1,4 +1,6 @@
-// let obrasPerigo = 0;
+let nomeUsuario = sessionStorage.NOME_USUARIO;
+
+username.innerHTML = `${nomeUsuario}`
 
 let metricas = [];
 
@@ -7,19 +9,19 @@ if (metricas.length == 0) {
   let lux = document.getElementById('ideal_lux');
   let temp = document.getElementById('ideal_temp');
   let umid = document.getElementById('ideal_umid');
-  
+
   if (sessionStorage.getItem('ID_TINTA') == 'Oleo') {
-      metricas.push('Até 200Lx')
-      metricas.push('18°C - 21°C')
-      metricas.push('40% - 45%')
+    metricas.push('Até 200Lx')
+    metricas.push('18°C - 21°C')
+    metricas.push('40% - 45%')
   } else if (sessionStorage.getItem('ID_TINTA') == 'Guache') {
-      metricas.push('Até 50Lx')
-      metricas.push('19°C - 21°C')
-      metricas.push('45% - 55%')
+    metricas.push('Até 50Lx')
+    metricas.push('19°C - 21°C')
+    metricas.push('45% - 55%')
   } else {
-      metricas.push('Até 50Lx')
-      metricas.push('18°C - 21°C')
-      metricas.push('40% - 60%')
+    metricas.push('Até 50Lx')
+    metricas.push('18°C - 21°C')
+    metricas.push('40% - 60%')
   }
 
   lux.innerHTML = metricas[0];
@@ -183,7 +185,7 @@ function dadosGraficoLdr() {
         throw "Nenhum resultado encontrado!!";
       }
 
-        resposta.json().then(function (resposta) {
+      resposta.json().then(function (resposta) {
         console.log("Dados recebidos: ", JSON.stringify(resposta));
 
         findGrafioLDR.data.datasets[0].data = [];
@@ -279,7 +281,7 @@ function dadosGraficoEstado() {
         throw "Nenhum resultado encontrado!!";
       }
 
-        resposta.json().then(function (resposta) {
+      resposta.json().then(function (resposta) {
         console.log("Dados recebidos: ", JSON.stringify(resposta));
 
         findGraficoEstado.data.datasets[0].data = [];
@@ -288,13 +290,13 @@ function dadosGraficoEstado() {
 
         for (let posicao = 0; posicao < resposta.length; posicao++) {
 
-            posicaoAtual = resposta[posicao]
+          posicaoAtual = resposta[posicao]
 
-            let min = posicaoAtual.minimo;
-            let max = posicaoAtual.maximo;
+          let min = posicaoAtual.minimo;
+          let max = posicaoAtual.maximo;
 
-            findGraficoEstado.data.datasets[0].data.push(min)
-            findGraficoEstado.data.datasets[1].data.push(max)
+          findGraficoEstado.data.datasets[0].data.push(min)
+          findGraficoEstado.data.datasets[1].data.push(max)
 
         }
 
@@ -360,7 +362,7 @@ function dadosGraficoSemana() {
           let diaAtual = resposta[posicao].limites_atingidos;
 
           if (diaAtual == null || diaAtual == undefined) {
-              diaAtual = 0;
+            diaAtual = 0;
           }
 
           findGraficoSemana.data.datasets[0].data.push(diaAtual);
@@ -412,17 +414,17 @@ function listarKpis() {
 
           let kpiAtual = kpis[posicao];
 
-        // Remova todas as classes de cor
-        kpiAtual.classList.remove('kpi-verde', 'kpi-amarelo', 'kpi-vermelho');
+          // Remova todas as classes de cor
+          kpiAtual.classList.remove('kpi-verde', 'kpi-amarelo', 'kpi-vermelho');
 
-        // Aplique a classe correta com base no valor de resposta[posicao].limite
-        if (resposta[posicao].limite < 3) {
-          kpiAtual.classList.add('kpi-amarelo');
-        } else if (resposta[posicao].limite >= 3 && resposta[posicao].limite <= 4) {
-          kpiAtual.classList.add('kpi-laranja');
-        } else {
-          kpiAtual.classList.add('kpi-vermelho');
-        }
+          // Aplique a classe correta com base no valor de resposta[posicao].limite
+          if (resposta[posicao].limite < 3) {
+            kpiAtual.classList.add('kpi-amarelo');
+          } else if (resposta[posicao].limite >= 3 && resposta[posicao].limite <= 4) {
+            kpiAtual.classList.add('kpi-laranja');
+          } else {
+            kpiAtual.classList.add('kpi-vermelho');
+          }
 
         }
 

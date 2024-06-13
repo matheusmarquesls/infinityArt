@@ -7,15 +7,33 @@
   <title>Dashboard</title>
   <link rel="shortcut icon" href="assets/icon/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="css/dashboard.css" />
+  <script src="https://kit.fontawesome.com/64ceb195cd.js" crossorigin="anonymous"></script>
 </head>
 
-<script src="https://kit.fontawesome.com/64ceb195cd.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 <body
   onload="dadosGraficoEstado(), dadosGraficoDht(), dadosGraficoLdr(), dadosGraficoSemana(), listarKpis(), atualizarGraficos()">
 
-  <header></header>
+  <header>
+
+    <div class="nav-header">
+
+        <img class="logotipo" src="assets/icon/art-icon.png" alt="">
+
+        <h1>DASHBOARD</h1>
+
+        <div class="nav-profile">
+            <div class="user-profile-button" id="user_profile-image">
+                <i class="fa-solid fa-user icon-modify"></i>
+                <p id="username"></p>
+            </div>
+        </div>
+
+    </div>
+
+</header>
 
   <div class="dashboard">
 

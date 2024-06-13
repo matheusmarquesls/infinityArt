@@ -44,6 +44,36 @@ html {
     color: white;
 }
 
+.nav-profile {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .user-profile-button {
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .user-profile-button p {
+    margin-top: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  .user-profile-button .icon-modify {
+    color: var(--cinza);
+    padding: 10px;
+    border-radius: 100%;
+    border: 2px solid var(--branco);
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+  }
+
 .title {
     color: white;
     display: flex;
