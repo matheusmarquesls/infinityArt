@@ -1,4 +1,4 @@
-DROP DATABasE IF EXISTS infinity_art;
+-- DROP DATABasE IF EXISTS infinity_art;
 
 CREATE DATABasE IF NOT EXISTS infinity_art;
 USE infinity_art;
@@ -13,8 +13,7 @@ CREATE TABLE usuario (
 )AUTO_INCREMENT = 1000;
 
 INSERT INTO usuario (nome, sobrenome, email, senha) values 
-('Sid', 'Pimentinha', 'sid@gmail.com', 'JP2005ma'),
-('Fernandão', 'Brandão', 'brandao@gmail.com', 'JP2005ma');
+('Frizza', 'Sptech', 'frizza@gmail.com', 'JP2005ma'),
 
 -- Criaando a tabela endereco
 CREATE TABLE endereco (
@@ -33,11 +32,7 @@ CREATE TABLE endereco (
 INSERT INTO endereco (nome, estado, cidade, bairro, logradouro, complemento, cep, fkUsuario)
 VALUES 
 ('Casa das Flores', 'FH', 'Cidade Felicidade', 'Bairro Primavera', 'Rua das Flores', NULL, '12345-678', 1000),
-('Residência Estrela', 'SE', 'Cidade Aurora', 'Bairro Luz Celestial', 'Avenida dos Sonhos', 'Bloco B, Apto 302', '98765-432', 1000),
-('Lindao', 'SE', 'Cidade Aurora', 'Bairro Luz Celestial', 'Avenida dos Sonhos', 'Bloco B, Apto 302', '98765-432', 1000),
-('Atibaia', 'MG', 'Terra do Morango', 'Vida de Morango', 'Rua do Mel', NULL, '12345-678', 1001);
-
-select * from endereco;
+('Residência Estrela', 'SE', 'Cidade Aurora', 'Bairro Luz Celestial', 'Avenida dos Sonhos', 'Bloco B, Apto 302', '98765-432', 1000);
 
 -- Criando a tabela ambiente
 CREATE TABLE ambiente (
@@ -49,40 +44,21 @@ CREATE TABLE ambiente (
 
 INSERT INTO ambiente (nome, fkEndereco) values
 ('Cozinha das Flores', 1),
-('Sala das Flores', 1),
-('Quarto Patrick', 2),
-('Pé de Morango', 3);
-
-select * from ambiente;
+('Sala das Flores', 1);
 
 -- Criando a tabela obras
 CREATE TABLE obras (
     idObras INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
     tipoTinta VARCHAR(45) NOT NULL,
-    descricao VARCHAR(150) NULL,
     fkAmbiente INT NOT NULL,
     FOREIGN KEY (fkAmbiente) REFERENCES ambiente(idAmbiente)
 );
 
-INSERT INTO obras (nome, tipoTinta, descricao, fkAmbiente) values
--- Sid
+INSERT INTO obras (nome, tipoTinta, fkAmbiente) values
+-- Frizza
 ('Belissima', 'Oleo', 'Bonita demias', 1),
-('Monalisa', 'Oleo', 'Bonita demias', 1),
-('Monalisa', 'Oleo', 'Bonita demias', 3),
-('Monalisa', 'Oleo', 'Bonita demias', 3),
-('Monalisa', 'Oleo', 'Bonita demias', 3),
-('Noite Estrelada', 'Acrilica', 'Ta noited demais', 2),
-('O grito', 'Guache', 'Gritod emais', 2),
-('Ecce Mocho', 'Oleo', 'Ta feio edmais', 1),
-('Sapo Cururu', 'Guache', 'Vish amria', 1),
--- Brandão
-('Morango de Gala', 'Guache', 'A vida não é um morango', 4),
-('Suco de Morango', 'Oleo', 'A vida não é um morango', 4),
-('Morangão', 'Guache', 'A vida não é um morango', 4);
-
-select * from obras
-order by idObras;
+('Belissima', 'Oleo', 'Bonita demias', 1);
 
 -- Criando a tabela sensor
 CREATE TABLE sensor (
@@ -93,19 +69,7 @@ CREATE TABLE sensor (
 
 INSERT INTO sensor (estado, idSensor) values 
 ('Ativo', 1),
-('Ativo', 2),
-('Ativo', 3),
-('Ativo', 4),
-('Ativo', 5),
-('Ativo', 6),
-('Ativo', 7),
-('Ativo', 8),
-('Ativo', 9),
-('Ativo', 10),
-('Ativo', 11),
-('Ativo', 12);
-
-select * from sensor;
+('Ativo', 2);
 
 -- Criando a tabela leituras
 CREATE TABLE leituras ( 
@@ -119,22 +83,9 @@ CREATE TABLE leituras (
     FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
 );
 
-INSERT INTO leituras (dht11_umidade, dht11_temperatura, ldr_lux, fkSensor, dataLeitura) VALUES
-(80.3, 25.5, 220, 1, '2024-06-10 08:00:00'),
-(65.8, 25.2, 280, 1, '2024-06-10 08:05:00'),
-(92.1, 14.8, 260, 1, '2024-06-10 08:10:00'),
-(38.7, 23.1, 270, 1, '2024-06-10 08:15:00'),
-(38.6, 21.3, 290, 1, '2024-06-10 08:20:00'),
-(45.2, 14.9, 220, 2, '2024-06-12 08:00:00'),
-(88.9, 11.7, 250, 2, '2024-06-12 08:05:00'),
-(72.4, 12.2, 230, 2, '2024-06-13 08:10:00'),
-(86.3, 15.5, 210, 2, '2024-06-13 08:15:00'),
-(70.0, 16.0, 240, 2, '2024-06-13 08:20:00');
+-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-select dht11_temperatura from leituras
-order by 1 desc; 
-
-	-- Criando view para aumentar a velocidade de resposta do endereço
+	-- Seleção dos Endereços de um determinado cliente
     
 	create view vw_select_enderecos as
 	select 
@@ -191,7 +142,7 @@ order by 1 desc;
     
 -- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	-- Criando view para aumentar a velocidade de resposta do ambientes
+	-- Seleção dos Ambientes de um determinado cliente
     
 	create view vw_select_ambientes as
 	select e.fkUsuario as idUsuario,
@@ -242,9 +193,9 @@ order by 1 desc;
     from vw_select_ambientes
     where idUsuario = 1000 and endereco = 1;
     
--- ------------------------------------------------------------
+-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--- View Obras
+-- Seleção das Obras de um determinado cliente
 
 create view vw_select_obras
 as
@@ -290,8 +241,14 @@ o.tipoTinta as tipo_tinta,
 		left join leituras as l on l.fkSensor = s.idSensor
 		group by a.idAmbiente, o.idObras;
 
-select * from vw_select_obras
-order by situacao;
+select id, nome, tipo_tinta, situacao 
+from vw_select_obras 
+where id_ambiente = 4
+order by situacao desc;
+
+-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Seleção da quantidade de obras e obras em perigo
 
 select
 count(distinct id) as kpi
@@ -305,18 +262,10 @@ count(situacao) as kpi
 from vw_select_obras 
 where situacao = 1 and id_ambiente = 1;
 
-select id, nome, tipo_tinta, situacao 
-from vw_select_obras 
-where id_ambiente = 4
-order by situacao desc;
 
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- DASHBOARD
-
-select * from leituras
-where fkSensor = 1
-order by dataLeitura desc;
 
 -- Grafico DHT11
 
@@ -329,9 +278,13 @@ from leituras as l
 order by l.dataLeitura desc
 limit 7;
 
-select leitura, umid, temp
-from vw_grafico_dht
-where id = 1;
+select l.dataLeitura as leitura,
+l.fkSensor as id,
+l.dht11_umidade as umid,
+l.dht11_temperatura as temp
+from leituras as l 
+order by l.dataLeitura desc
+limit 7;
 
 -- Grafico LDR
 
@@ -343,9 +296,6 @@ from leituras as l
 order by l.dataLeitura desc
 limit 7;
 
-select * from vw_grafico_ldr
-where id = 1;
-
 select l.dataLeitura as leitura,
 l.fkSensor as id,
 l.ldr_lux as lux
@@ -354,7 +304,11 @@ where l.fkSensor = 1
 order by l.dataLeitura desc
 limit 7;
 
--- Grafico Limite
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- View para pegar os dados do Dia Atual
+
+-- TEMPERATURA
 
 create view vw_temp_dia_atual as
 select 	o.tipoTinta as tipo_tinta,
@@ -382,7 +336,7 @@ select 	o.tipoTinta as tipo_tinta,
 		join obras as o on s.idSensor = o.idObras
         group by o.idObras, l.dataLeitura;
 
--- Limite Umid
+-- UMIDADE
 
 create view vw_umid_dia_atual as
 select 	o.tipoTinta as tipo_tinta,
@@ -425,7 +379,7 @@ select 	o.tipoTinta as tipo_tinta,
 		join obras as o on s.idSensor = o.idObras
 		group by o.idObras, l.dataLeitura;
         
--- Lux
+-- LUMINOSIDADE
 
 create view vw_lux_dia_atual as
 select 	o.tipoTinta as tipo_tinta,
@@ -449,6 +403,10 @@ select 	o.tipoTinta as tipo_tinta,
         group by o.idObras, l.dataLeitura;
         
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Views para o calculo de Histórico Semanal
+
+-- TEMPERATURA
 
 create view vw_temp as
 select 	l.fkSensor as id,
@@ -474,6 +432,8 @@ select 	l.fkSensor as id,
 		join sensor as s on s.idSensor = l.fkSensor
 		join obras as o on s.idSensor = o.idObras
         group by l.fkSensor, weekday(dataLeitura);
+
+-- UMIDADE
 
 create view vw_umid as
 select 	l.fkSensor as id,	
@@ -515,6 +475,8 @@ select 	l.fkSensor as id,
 		join obras as o on s.idSensor = o.idObras
          group by l.fkSensor, weekday(dataLeitura);
 
+-- LUMINOSIDADE
+
 create view vw_lux as
 select 	l.fkSensor as id,
 		weekday(dataLeitura) as dia_da_semana,
@@ -535,7 +497,10 @@ select 	l.fkSensor as id,
 		join obras as o on s.idSensor = o.idObras
         group by l.fkSensor, weekday(dataLeitura);
 
-create view vw_semana as
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- SELECT do histórico semanal usando as views
+
 select 
 
     'Segunda-feira' as dia_da_semana,
@@ -592,6 +557,11 @@ select
     (select (sum(vw_umid.qtd_min_umid) + sum(vw_umid.qtd_max_umid)) from vw_umid where vw_umid.dia_da_semana = 6 and id = 1) +
     (select (sum(vw_lux.qtd_max_lux)) from vw_lux where vw_lux.dia_da_semana = 6 and id = 1) as limites_atingidos;
 
+
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Minimo e Maximo, utilizando a VIEW DO DIA ATUAL
+
 select 
 sum(qtd_min_lux) as minimo,
 sum(qtd_max_lux) as maximo
@@ -611,6 +581,8 @@ from vw_temp_dia_atual
 where id = 1 and date(dataL) = current_date();
 
 
+-- KPIS DO DIA ATUAL
+
 select sum(qtd_min_lux) + sum(qtd_max_lux) 
         as limite from vw_lux_dia_atual
         where id = 1 and date(dataL) = current_date()
@@ -623,12 +595,4 @@ select sum(qtd_min_lux) + sum(qtd_max_lux)
         as limite from vw_umid_dia_atual
         where id = 1 and date(dataL) = current_date();
         
-        select l.dataLeitura as leitura,
-        l.fkSensor as id,
-        l.dht11_umidade as umid,
-        l.dht11_temperatura as temp
-        from leituras as l 
-        where l.fkSensor = 1
-        order by l.dataLeitura desc
-        limit 7;
         

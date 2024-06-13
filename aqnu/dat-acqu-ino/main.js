@@ -31,9 +31,9 @@ const serial = async (
         {
             // altere!
             // Credenciais do banco de dados
-            host: '127.0.0.1',
-            user: 'gustavo',//USUARIO_DO_BANCO_LOCAL
-            password: 'luz230331',
+            host: '10.18.36.15',
+            user: 'admin',//USUARIO_DO_BANCO_LOCAL
+            password: 'JP2005ma_',
             database: 'infinity_art', //DATABASE_LOCAL
             port: 3307
         }
