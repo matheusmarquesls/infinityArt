@@ -13,7 +13,7 @@ CREATE TABLE usuario (
 )AUTO_INCREMENT = 1000;
 
 INSERT INTO usuario (nome, sobrenome, email, senha) values 
-('Frizza', 'Sptech', 'frizza@gmail.com', 'JP2005ma'),
+('Frizza', 'Sptech', 'frizza@gmail.com', 'JP2005ma');
 
 -- Criaando a tabela endereco
 CREATE TABLE endereco (
