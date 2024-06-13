@@ -31,8 +31,8 @@ CREATE TABLE endereco (
 
 INSERT INTO endereco (nome, estado, cidade, bairro, logradouro, complemento, cep, fkUsuario)
 VALUES 
-('Casa das Flores', 'FH', 'Cidade Felicidade', 'Bairro Primavera', 'Rua das Flores', NULL, '12345-678', 1000),
-('Residência Estrela', 'SE', 'Cidade Aurora', 'Bairro Luz Celestial', 'Avenida dos Sonhos', 'Bloco B, Apto 302', '98765-432', 1000);
+('Casa', 'SP', 'São Paulo', 'Jardins', 'Objetivo, 123', 'Bloco B, Apto 302', '12345-678', 1000),
+('Galeria', 'RJ', 'Rio de Janeiro', 'Barra da Tijuca', 'Alegra, 874', NULL, '98765-432', 1000);
 
 -- Criando a tabela ambiente
 CREATE TABLE ambiente (
@@ -43,8 +43,8 @@ CREATE TABLE ambiente (
 );
 
 INSERT INTO ambiente (nome, fkEndereco) values
-('Cozinha das Flores', 1),
-('Sala das Flores', 1);
+('Sala de Estar', 1),
+('Sessão 1', 1);
 
 -- Criando a tabela obras
 CREATE TABLE obras (
@@ -57,8 +57,8 @@ CREATE TABLE obras (
 
 INSERT INTO obras (nome, tipoTinta, fkAmbiente) values
 -- Frizza
-('Belissima', 'Oleo', 'Bonita demias', 1),
-('Belissima', 'Oleo', 'Bonita demias', 1);
+('Monalisa', 'Oleo', 1),
+('Noite Estrela', 'Guache', 1);
 
 -- Criando a tabela sensor
 CREATE TABLE sensor (
