@@ -44,7 +44,7 @@ CREATE TABLE ambiente (
 
 INSERT INTO ambiente (nome, fkEndereco) values
 ('Sala de Estar', 1),
-('Sessão 1', 1);
+('Sessão 1', 2);
 
 -- Criando a tabela obras
 CREATE TABLE obras (
@@ -58,7 +58,7 @@ CREATE TABLE obras (
 INSERT INTO obras (nome, tipoTinta, fkAmbiente) values
 -- Frizza
 ('Monalisa', 'Oleo', 1),
-('Noite Estrela', 'Guache', 1);
+('Noite Estrela', 'Guache', 2);
 
 -- Criando a tabela sensor
 CREATE TABLE sensor (
