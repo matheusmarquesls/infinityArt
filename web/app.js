@@ -17,7 +17,6 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var avisosRouter = require("./src/routes/avisos");
 var enderecoRouter = require("./src/routes/enderecos");
 var ambientesRouter = require("./src/routes/ambientes");
 var obrasRouter = require ("./src/routes/obras");
@@ -31,7 +30,6 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
-app.use("/avisos", avisosRouter);
 app.use("/enderecos", enderecoRouter);
 app.use("/ambientes", ambientesRouter);
 app.use("/obras", obrasRouter);
