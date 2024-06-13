@@ -12,7 +12,8 @@
 <script src="https://kit.fontawesome.com/64ceb195cd.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<body onload="dadosGraficoEstado(), dadosGraficoDht(), dadosGraficoLdr(), dadosGraficoSemana(), listarKpis(), atualizarGraficos()">
+<body
+  onload="dadosGraficoEstado(), dadosGraficoDht(), dadosGraficoLdr(), dadosGraficoSemana(), listarKpis(), atualizarGraficos()">
 
   <header></header>
 
@@ -57,13 +58,26 @@
       <div class="grid-kpi">
         <!-- Luminosidade -->
         <div class="kpi kpis-colorido">
+
           <div class="title">
             <h2>Atingiu Limite</h2>
             <i class="fa-solid fa-sun"></i>
           </div>
+
           <div class="value">
             <h2><span id="kpi_lux"></span> Vezes</h2>
           </div>
+
+          <div class="info">
+            <i class="fa-solid fa-circle-info">
+              <div class="modal-info">
+                <span class="span-1">KPI-AMARELO:</span> menor que 3. <br>
+                <span class="span-2">KPI-LARANJA:</span>  entre 3 a 4.<br>
+                <span class="span-3">KPI-VERMELHO:</span> maior que 4. <br>
+              </div>
+            </i>
+          </div>
+
         </div>
 
         <!-- Temperatura -->
@@ -75,6 +89,16 @@
           <div class="value">
             <h2><span id="kpi_temp"></span> Vezes</h2>
           </div>
+
+          <div class="info">
+            <i class="fa-solid fa-circle-info">
+              <div class="modal-info">
+                <span class="span-1">KPI-AMARELO:</span> menor que 3. <br>
+                <span class="span-2">KPI-LARANJA:</span>  entre 3 a 4.<br>
+                <span class="span-3">KPI-VERMELHO:</span> maior que 4. <br>
+              </div>
+            </i>
+          </div>
         </div>
 
         <!-- Umidade -->
@@ -85,6 +109,16 @@
           </div>
           <div class="value">
             <h2><span id="kpi_umid"></span> Vezes</h2>
+          </div>
+
+          <div class="info">
+            <i class="fa-solid fa-circle-info">
+              <div class="modal-info">
+                <span class="span-1">KPI-AMARELO:</span> menor que 3. <br>
+                <span class="span-2">KPI-LARANJA:</span>  entre 3 a 4.<br>
+                <span class="span-3">KPI-VERMELHO:</span> maior que 4. <br>
+              </div>
+            </i>
           </div>
         </div>
 
@@ -163,14 +197,14 @@
           <div class="grafico-semana">
             <div class="card-template graficoSemana">
               <div class="chart-title">
-                <h2>Grafico de Limites Semanais</h2>
+                <h2>Limites atingidos na semana</h2>
               </div>
               <canvas id="grafico-semana"></canvas>
             </div>
           </div>
           <div class="card-template grafico-estado">
             <div class="chart-title">
-              <h2>Limites minímos e maximos</h2>
+              <h2>Limites mínimos e máximos</h2>
             </div>
             <div class=" graficoEstado">
               <canvas id="graficoEstado"></canvas>
@@ -185,8 +219,6 @@
 
 </body>
 
-  <script src="js/dashboard.js"></script>
+<script src="js/dashboard.js"></script>
 
 </html>
-
-  

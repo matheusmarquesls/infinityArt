@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/endereco.css">
     <title>Endereço</title>
-    <link
-      rel="shortcut icon"
-      href="assets/icon/favicon.ico"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="assets/icon/favicon.ico" type="image/x-icon" />
     <script src="https://kit.fontawesome.com/80ec270284.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <!-- Font Awesome para os ícones -->
@@ -87,6 +83,13 @@
                         </div>
 
                         <div class="kpi-info" id="div_quantidade_endereco_perigo"></div>
+                        <div class="info">
+                            <i class="fa-solid fa-circle-info">
+                                <div class="modal-info">
+                                    <span class="span-3">ALERTA VERMELHO:</span> uma ou mais obras em perigo <br>
+                                </div>
+                            </i>
+                        </div>
 
                     </div>
 
@@ -145,70 +148,58 @@
 
         <div class="modal_content">
 
-        <!-- Cad Ambiente -->
-  
-        <div class="container">
-          <div class="center">
-            <div class="cover">
-              <div class="imgCad">
-                  
-              </div>
-              <div class="form">
-                <div class="title">Cadastrar meus endereços</div>
-  
-                <label class="label-input" for="">
-                  <i class="fa-solid fa-house-user icon-modify"></i>
-                  <input id="input_nome"
-                    class="input-style"
-                    type="text"
-                    placeholder="Nome Endereço"
-                  />
-                </label>
-  
-                <label class="label-input" for="">
-                  <i class="fa-solid fa-globe icon-modify"> </i>
-                  <input id="input_estado"
-                  class="input-style" type="text" placeholder="Estado"/>
-                </label>
-  
-                <label class="label-input" for="">
-                  <i class="fa-solid fa-city icon-modify"></i>
-                  <input id="input_cidade"
-                   class="input-style" type="text" placeholder="Cidade" />
-                </label>
-  
-                <label class="label-input" for="">
-                  <i class="fa-solid fa-tree icon-modify"></i>
-                  <input id="input_bairro"
-                  class="input-style" type="text" placeholder="Bairro" />
-                </label>
-  
-                <label class="label-input" for="">
-                  <i class="fa-solid fa-road icon-modify"></i>
-                  <input id="input_rua"
-                  class="input-style" type="text" placeholder="Rua" />
-                </label>
-  
-                <label class="label-input" for="">
-                  <i class="fa-solid fa-circle-plus icon-modify"></i>
-                  <input id="input_complemento"
-                    class="input-style"
-                    type="text"
-                    placeholder="Complemento (Opcional)"
-                  />
-                </label>
-  
-                <label class="label-input" for="">
-                  <i class="fa-solid fa-map-location-dot icon-modify"></i>
-                  <input id="input_cep"
-                   class="input-style" type="text" placeholder="CEP" />
-                </label>
-  
-                <button class="btn-form" onclick="cadastrarEnderecos()">Cadastrar</button>
-              </div>
+            <!-- Cad Ambiente -->
+
+            <div class="container">
+                <div class="center">
+                    <div class="cover">
+                        <div class="imgCad">
+
+                        </div>
+                        <div class="form">
+                            <div class="title">Cadastrar meus endereços</div>
+
+                            <label class="label-input" for="">
+                                <i class="fa-solid fa-house-user icon-modify"></i>
+                                <input id="input_nome" class="input-style" type="text" placeholder="Nome Endereço" />
+                            </label>
+
+                            <label class="label-input" for="">
+                                <i class="fa-solid fa-globe icon-modify"> </i>
+                                <input id="input_estado" class="input-style" type="text" placeholder="Estado" />
+                            </label>
+
+                            <label class="label-input" for="">
+                                <i class="fa-solid fa-city icon-modify"></i>
+                                <input id="input_cidade" class="input-style" type="text" placeholder="Cidade" />
+                            </label>
+
+                            <label class="label-input" for="">
+                                <i class="fa-solid fa-tree icon-modify"></i>
+                                <input id="input_bairro" class="input-style" type="text" placeholder="Bairro" />
+                            </label>
+
+                            <label class="label-input" for="">
+                                <i class="fa-solid fa-road icon-modify"></i>
+                                <input id="input_rua" class="input-style" type="text" placeholder="Rua" />
+                            </label>
+
+                            <label class="label-input" for="">
+                                <i class="fa-solid fa-circle-plus icon-modify"></i>
+                                <input id="input_complemento" class="input-style" type="text"
+                                    placeholder="Complemento (Opcional)" />
+                            </label>
+
+                            <label class="label-input" for="">
+                                <i class="fa-solid fa-map-location-dot icon-modify"></i>
+                                <input id="input_cep" class="input-style" type="text" placeholder="CEP" />
+                            </label>
+
+                            <button class="btn-form" onclick="cadastrarEnderecos()">Cadastrar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
         </div>
 
@@ -227,7 +218,7 @@
 </html>
 
 <script>
-    
+
     const btnOpenModal = document.querySelector("#openModal");
     const modalEndereco = document.querySelector("#modalEndereco");
     const fadeModal = document.querySelector("#fadeModal");

@@ -285,22 +285,18 @@ function dadosGraficoEstado() {
         findGraficoEstado.data.datasets[0].data = [];
         findGraficoEstado.data.datasets[1].data = [];
 
-        let minLux = resposta[0].minimo;
-        let maxLux = resposta[0].maximo;
 
-        let minUmid = resposta[1].minimo;
-        let maxUmid = resposta[1].maximo;
+        for (let posicao = 0; posicao < resposta.length; posicao++) {
 
-        let minTemp = resposta[2].minimo;
-        let maxTemp = resposta[2].maximo;
+            posicaoAtual = resposta[posicao]
 
-        findGraficoEstado.data.datasets[0].data.push(minLux);
-        findGraficoEstado.data.datasets[0].data.push(minUmid);
-        findGraficoEstado.data.datasets[0].data.push(minTemp);
+            let min = posicaoAtual.minimo;
+            let max = posicaoAtual.maximo;
 
-        findGraficoEstado.data.datasets[1].data.push(maxLux);
-        findGraficoEstado.data.datasets[1].data.push(maxUmid);
-        findGraficoEstado.data.datasets[1].data.push(maxTemp);
+            findGraficoEstado.data.datasets[0].data.push(min)
+            findGraficoEstado.data.datasets[1].data.push(max)
+
+        }
 
         findGraficoEstado.update()
 
@@ -364,7 +360,7 @@ function dadosGraficoSemana() {
           let diaAtual = resposta[posicao].limites_atingidos;
 
           if (diaAtual == null || diaAtual == undefined) {
-            diaAtual = 0;
+              diaAtual = 0;
           }
 
           findGraficoSemana.data.datasets[0].data.push(diaAtual);
@@ -421,9 +417,9 @@ function listarKpis() {
 
         // Aplique a classe correta com base no valor de resposta[posicao].limite
         if (resposta[posicao].limite < 3) {
-          kpiAtual.classList.add('kpi-verde');
-        } else if (resposta[posicao].limite >= 3 && resposta[posicao].limite <= 4) {
           kpiAtual.classList.add('kpi-amarelo');
+        } else if (resposta[posicao].limite >= 3 && resposta[posicao].limite <= 4) {
+          kpiAtual.classList.add('kpi-laranja');
         } else {
           kpiAtual.classList.add('kpi-vermelho');
         }
