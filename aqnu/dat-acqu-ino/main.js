@@ -31,11 +31,11 @@ const serial = async (
         {
             // altere!
             // Credenciais do banco de dados
-            host: 'localhost',
-            user: 'root',//USUARIO_DO_BANCO_LOCAL
-            password: 'joaoGAMES_09',
+            host: '127.0.0.1',
+            user: 'gustavo',//USUARIO_DO_BANCO_LOCAL
+            password: 'luz230331',
             database: 'infinity_art', //DATABASE_LOCAL
-            port: 3306
+            port: 3307
         }
     ).promise();
 

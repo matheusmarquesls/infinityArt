@@ -131,7 +131,6 @@ INSERT INTO leituras (dht11_umidade, dht11_temperatura, ldr_lux, fkSensor, dataL
 (86.3, 15.5, 210, 2, '2024-06-13 08:15:00'),
 (70.0, 16.0, 240, 2, '2024-06-13 08:20:00');
 
-
 select dht11_temperatura from leituras
 order by 1 desc; 
 
